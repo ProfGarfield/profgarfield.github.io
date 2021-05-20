@@ -452,7 +452,7 @@ local myThirdTable = {[1]=valueOne,[2]=valueTwo,[3]=valueThree}
 ```
 What's more, we can define tables inside of tables, e.g.
 ```Lua
-local coordinates = {{110,44,0},{111,45,0},{109,43,0}}
+local coordinates = { {110,44,0},{111,45,0},{109,43,0} }
 ```
 If we wanted to print the numbers in the second coordinate, we would write:
 ```Lua
