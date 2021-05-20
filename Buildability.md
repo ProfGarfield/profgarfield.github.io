@@ -150,7 +150,7 @@ Now, let us make this last restriction apply only to human players.  We'll do th
 The `computerOnly` restriction is easy enough to understand.  For `alternateParameters`, you provide the exact same kind of table that you would provide to specify buildability if you weren't having alternate legitimate ways of building the item.  Note that even if you only provide one table of alternate parameters, you must wrap it in a table.  (This is to make the code in `canBuild.lua` work properly.)
 
 ```Lua
-unitTypeBuild[object.uElephant.id]={alternateParameters = {{computerOnly=true}}, location=elephantRecruitment}
+unitTypeBuild[object.uElephant.id]={alternateParameters = { {computerOnly=true} }, location=elephantRecruitment}
 ```
 
 Change the Elephant restriction as shown above, save the settings, and re-load the game.  Elephants should now be buildable everywhere by the Carthaginians.  Set yourself to the Carthaginian player, and see the restriction apply to you.
@@ -291,7 +291,7 @@ Make the fix, and load the game again to check that it works.
 
 For our next error, we'll misspell elephantRecruitment (we'll forget the t in elephant) when we define it:
 ```Lua
-local elephanRecruitment = {{31,61,0},{36,62,0},{40,72,0}}
+local elephanRecruitment = { {31,61,0},{36,62,0},{40,72,0} }
 ```
 
 The console gives a lot of information this time:
@@ -339,7 +339,7 @@ Fix the error, and load to make sure it is fixed.
 
 Now, omit the `local` on that line:
 ```Lua
-elephantRecruitment = {{31,61,0},{36,62,0},{40,72,0}}
+elephantRecruitment = { {31,61,0},{36,62,0},{40,72,0} }
 ```
 The console tells us:
 ```
@@ -368,7 +368,7 @@ To find where the problem is, we again look at lines where the error was discove
 
 For our next error, we'll forget to wrap our alternateParameters in a table.  That is:
 ```Lua
-unitTypeBuild[object.uElephant.id]={alternateParameters = {{computerOnly=true}}, location=elephantRecruitment}
+unitTypeBuild[object.uElephant.id]={alternateParameters = { {computerOnly=true} }, location=elephantRecruitment}
 ```
 Will become
 ```Lua
