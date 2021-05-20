@@ -119,7 +119,7 @@ Save `canBuildSettings.lua` and open the game to check this new restriction.  (I
 This tells us there are a number of ways to specify that an object can only be built in certain locations.  For now, we will restrict elephant construction to Hippo Regius, Carthage, and Leptis.  We'll specify these locations using coordinate triples:
 
 ```Lua
-local elephantRecruitment = {{31,61,0},{36,62,0},{40,72,0}}
+local elephantRecruitment = { {31,61,0},{36,62,0},{40,72,0} }
 local unitTypeBuild = {}
 unitTypeBuild[object.uLegion.id]={allImprovements=object.iBarracks, minimumPopulation=5}
 unitTypeBuild[object.uElephant.id]={location=elephantRecruitment}
