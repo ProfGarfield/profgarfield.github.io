@@ -10,9 +10,9 @@ Lua Scenario Template Documentation
 
 # Functionality and Documentation
 
-[Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/)  
+[Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/) (Civfanatics Thread)   
 [Lua Execution Points](LuaExecutionPoints.md)  
-[Key Codes](Keyboard.md)  
+[Key Codes](Keyboard.md) (Reference for keyboard.lua Module) 
 
 
 

@@ -1,3 +1,4 @@
+[&larr;Buildability Settings and Errors](Buildability.md) | [Home](index.md) | [Conditional Code&rarr;](ConditionalCode.md)
 # Programming Our First Event
 
 Although we've learned a bit about Lua, we've only written tables to specify what already existing functionality should do.
@@ -129,6 +130,7 @@ The function that is executed at a particular execution point provides us with a
 >function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 >
 >end
+>```
 
 In this case, we are provided with the units that were involved in combat.  Per the documentation for this execution point, `loser`, `winner`, `aggressor` and `victim` are just different names for the units involved in combat, not the tribes involved, and the other arguments don't help us either.  So, we have access to the units involved in combat, but not the tribes.  Let us return to the [Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/).  This time, we'll look at the index at the top of the thread:
 
@@ -235,3 +237,6 @@ This may have seemed like a lot of work, but very quickly you'll learn the Lua c
 
 
 
+## Next Lesson: [Conditoinal Code](ConditoinalCode.md)
+
+[&larr;Buildability Settings and Errors](Buildability.md) | [Home](index.md) | [Conditional Code&rarr;](ConditionalCode.md)

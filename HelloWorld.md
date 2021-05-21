@@ -1,3 +1,4 @@
+[Home](index.md) | [The Lua Scenario Template&rarr;](TheLuaScenarioTemplate.md) 
 # Hello World
 
 Start a new game of Civilization II Test of Time using the Test of Time Patch Project, [version 0.16](https://forums.civfanatics.com/threads/the-test-of-time-patch-project.517282/page-54#post-16064118) or a later version [if it has been released](https://forums.civfanatics.com/threads/the-test-of-time-patch-project.517282/).  Start (or load) the game as a basic 'original' game.
@@ -61,3 +62,7 @@ Now, create 2 warriors, one from a different tribe, and make them fight.  You sh
 ![](Images/HelloWorld6.jpg)
 
 Congratulations!  You have just completed your first steps into programming Civilization II events with Lua.
+
+## Next Lesson: [The Lua Scenario Template](TheLuaScenarioTemplate.md)
+
+[Home](index.md) | [The Lua Scenario Template&rarr;](TheLuaScenarioTemplate.md) 

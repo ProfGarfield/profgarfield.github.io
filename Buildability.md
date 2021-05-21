@@ -1,3 +1,4 @@
+[&larr;Lua Basics](LuaBasics.md) | [Home](index.md) | [Building Our First Event&rarr;](BuildingFirstEvent.md)
 # Buildability Settings and Errors
 ## Changing Buildabilty Settings
 
@@ -442,3 +443,7 @@ Line 488        if not city:hasImprovement(improvementOrWonder) then
 This suggests that the error in an `allImprovements` restriction, so we could look at recent changes to our `canBuildSettings.lua` file and see if anything had an `allImprovements` added or changed.  If we're not sure, we can comment out certain restrictions, load the game, and see if the error still occurs.  In this case, our most recent change was to the Legion restrictions, so we examine that, find our error and fix it.
 
 If you ever get stuck on an error, it doesn't hurt to post your code to the forums and ask for help.  Sometimes, a second (more experienced) pair of eyes can figure out what you've missed.
+
+## Next Lesson:  [Building Our First Event](BuildingFirstEvent.md)
+
+[&larr;Lua Basics](LuaBasics.md) | [Home](index.md) | [Building Our First Event&rarr;](BuildingFirstEvent.md)

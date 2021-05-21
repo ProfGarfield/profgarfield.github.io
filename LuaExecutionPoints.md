@@ -1,3 +1,4 @@
+[Home](index.md)
 # Lua Execution Points
 
 Lua Events function by "injecting" code into the Civilization II: Test of Time game at certain predetermined points of the game.  We'll use the term Lua Execution Point, (or just Execution Point) to refer to these parts of the game.  Everything we want to achieve with Lua will must happen at one of these Execution Points.  We may occasionally need to use several of these in order to make more complicated events work.
@@ -666,3 +667,5 @@ Uses the [City Yield Calculation](#city-yield-calculation&uarr;) execution point
 
 
 
+
+[Back to Index&uarr;](index.md)

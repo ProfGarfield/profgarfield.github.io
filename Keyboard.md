@@ -1,3 +1,4 @@
+[Home](index.md)
 # Reference for keyboard.lua Module
 ```lua
 local keyboard = require("keyboard")

@@ -1,3 +1,4 @@
+[&larr;Hello World](HelloWorld.md) | [Home](index.md) | [Lua Basics&rarr;](LuaBasics.md)
 
 # The Lua Scenario Template
 
@@ -194,3 +195,7 @@ Save your changes to `canBuildSettings.lua`, and load the game again.  In Rome, 
 But in Neapolis, you will not:
 
 ![](Images/LST11.png)
+
+## Next Lesson: [Lua Basics](LuaBasics.md)
+
+[&larr;Hello World](HelloWorld.md) | [Home](index.md) | [Lua Basics&rarr;](LuaBasics.md)
