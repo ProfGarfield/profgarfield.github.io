@@ -1,5 +1,5 @@
 # Reference for keyboard.lua Module
-```Lua
+```lua
 local keyboard = require("keyboard")
 ```
 Use these codes to refer to the corresponding keys.  That is, if you need the key code for `K`, write in `keyboard.k`.  The actual key code is available here, but you probably shouldn't use the number itself in the code.

@@ -113,7 +113,7 @@ In order to to write Lua events, you are going to need a program called a "Text 
 
 Here is a snippet of code from the Boudicca Scenario:
 
-```Lua
+```lua
 	if loser.type == object.uLegionStandard and loserLocation == object.lXXvictrixEvocati and loser.owner == object.tTheGods and winner.owner == object.tRomans then 
 		if aggressor.type == object.uDispatchRider then 
 		    civ.ui.text("Recent retirees of the XX Valeria Victrix answer the call and rally behind their Evocati standard! They are a bit rusty, but battle will cure that!") -- Note you can have text this way as well if you don't want to store it in the object file
@@ -167,19 +167,19 @@ We will learn more about `object.lua` and its contents in later lessons.  For no
 
 The top of this file has some `require` lines, which we will learn about in due course.  It also has a lot of comments documenting the various restrictions available.  For now, scroll down past the comments until you find the line
 
-```Lua
+```lua
 local unitTypeBuild = {}
 ```
 
 Directly below this line, type in this line to make it so that legions can only be built in cities with the Barracks improvement.  We'll cover why this is what you must write in due course.
 
-```Lua
+```lua
 unitTypeBuild[object.uLegion.id]={allImprovements={object.iBarracks}}
 ```
 
 The nearby lines should look something like this:
 
-```Lua
+```lua
 local unitTypeBuild = {}
 unitTypeBuild[object.uLegion.id]={allImprovements={object.iBarracks}}
 

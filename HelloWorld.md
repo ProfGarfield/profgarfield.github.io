@@ -6,7 +6,7 @@ Activate the Cheat Mode, and press ```Ctrl+Shift+F3``` to open the Lua Console.
 
 In the Input Bar at the bottom of the Lua Console, type:
 
-```Lua
+```lua
 print("Hello World") 
 ```
 
@@ -20,7 +20,7 @@ Your console should now look like this:
 
 The command `print()` displays to the console, and this will be useful later for debugging code.  However, our reason for using Lua is to interact with the game itself.  Therefore, enter the code
 
-```Lua
+```lua
 civ.ui.text("Hello World!")
 ```
 
@@ -30,7 +30,7 @@ A text box should appear in the game like this:
 
 Now, let us make an error typing in a command.  We will type `C` instead of `c`.
 
-```Lua
+```lua
 Civ.ui.text("Hello World!")
 ```
 
@@ -42,7 +42,7 @@ We can access a previous command and make changes to it by pressing the up arrow
 
 Thus far, we've only got the game to do something by writing a command in the Lua Console.  Now, we weill write an event.  Don't worry about why the event is written this way.  What you need to know will be explained when you actually start writing events.
 
-```Lua
+```lua
 civ.scen.onActivateUnit(function() civ.ui.text("Hello World!") end)
 ```
 
@@ -52,7 +52,7 @@ If no error is printed, close the Lua Console (the `X` button in the top left co
 
 Next, open the Lua Console again, and enter the following code:
 
-```Lua
+```lua
 civ.scen.onUnitKilled(function() civ.ui.text("Goodbye Cruel World!") end)
 ```
 

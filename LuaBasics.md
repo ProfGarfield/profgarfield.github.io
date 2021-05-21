@@ -18,7 +18,7 @@ Commenting can also be useful to stop Lua from executing code that you might sti
 
 Let us now write some print commands (in an empty file):
 
-```Lua
+```lua
 -- This is the first verse of The Maple Leaf Forever
 print("In Days of yore, from Britain's shore,")
 print("Wolfe, the dauntless hero, came")
@@ -68,7 +68,7 @@ Restore MapleLeafForever.lua to print the song lyrics in the correct order, but 
 
 Additionally, add two lines of
 
-```Lua
+```lua
 print(" ")
 ```
 
@@ -79,14 +79,14 @@ to the top of `MapleLeafForever.lua` in order to leave 2 lines between each prin
 Thus far, the only instruction we've given the Lua Console is to print some text. Now, let us learn some more instructions.
 
 The first instruction we need is the ability to create a variable and assign a value to it. For example
-```Lua
+```lua
 myVariable = "My Value"
 ```
 assigns `"My Value"` to `myVariable`. Whenever we write `myVariable` later in our code, the Lua interpreter will replace it with `"My Value"` unless we assign something else to `myVariable`.  Think of variables as places in memory that we can put something for later use.
 
 For the next little while we're not going to use any Civilization II related commands, so we're going to use an online Lua interpreter to run our code for a little bit.  This will be more convenient than writing scripts and running them using the Test of Time Lua Console.  Go to the lua demo site https://www.lua.org/demo.html and run the following code:
 
-```Lua
+```lua
 myVariable = "My Value"
 print(myVariable)
 ```
@@ -99,7 +99,7 @@ The output will be
 
 Now, reverse the two commands.
 
-```Lua
+```lua
 print(myVariable)
 myVariable = "My Value"
 ```
@@ -108,7 +108,7 @@ You will find that even though `"My Value"` was assigned to `myVariable` in the 
 
 Look at the code below, and predict what it will do. Be careful, there is a trick that touches on something mentioned in the [Hello World](HelloWorld.md) Lesson. Write down what you think will happen. Once you've done that, cut and paste this code into the Lua Demo and compare your prediction to the actual result.
 
-```Lua
+```lua
 myVariable = "Ten"
 print(myVariable)
 print(myVariable)
@@ -138,7 +138,7 @@ These follow the normal order of operations. You can use parentheses to make sur
 
 Let us convert kilometers to miles, using the conversion 2.54 cm equals 1 inch.
 
-```Lua
+```lua
 distanceInKM = 12
 cmPerKM = 100000
 kmPerCM = 1/cmPerKM
@@ -158,7 +158,7 @@ Specifying all the conversion ratios was a bit of overkill for this one unit con
 
 Distance conversions are essentially one line operations. After defining the conversion ratios at the top of the script, all that has to be done is to write the multiplication for the conversion. Let's do something slightly more complicated, converting from Fahrenheit to Celsius
 
-```Lua
+```lua
 tempInF = 68  -- Temperature we want to convert
 fFreezeTemp = 32 -- Water freezing point in Fahrenheit
 fPerC = 1.8 -- This is the number of Fahrenheit degrees per degree Celsius
@@ -175,7 +175,7 @@ Play around with the Lua demo and try doing some simple arithmetic.
 
 In the last section, we converted a temperature in Fahrenheit to its Celsius equivalent.  Suppose, however, that we wanted to convert several temperatures.  Using what we know so far, we would have to write code like this:
 
-```Lua
+```lua
 fFreezeTemp = 32 -- Water freezing point in Fahrenheit
 fPerC = 1.8 -- This is the number of Fahrenheit degrees per degree Celsius
 
@@ -197,14 +197,14 @@ print(tempInC)
 
 We don't have to copy
 
-```Lua
+```lua
 fFreezeTemp = 32 -- Water freezing point in Fahrenheit
 fPerC = 1.8 -- This is the number of Fahrenheit degrees per degree Celsius
 ```
 
 every time, since these values don't change, but everything else does need to be repeated for each new conversion.  This would get annoying very fast, although we could cut and paste. However, there is a way to specify instructions in advance. We do this by creating a `function`.  We do so with the following code:
 
-```Lua
+```lua
 function myFunction(input1,input2)
 
 end
@@ -216,7 +216,7 @@ Later, we'll see `end` used in other places. Think of end as a sort of ')', wher
 
 The code to create a function for our Fahrenheit to Celsius conversion is:
 
-```Lua
+```lua
 function fToC(tempInF)
     local fFreezeTemp = 32 -- Water freezing point in Fahrenheit
     local fPerC = 1.8 -- This is the number of Fahrenheit degrees per degree Celsius
@@ -228,7 +228,7 @@ end
 
 There are a few things to address now. First, the command '`return`' immediately ends the function execution, regardless of what other commands might still be available, and turns `myFunction(inputA,inputB)` into the value to the right of '`return`'.  A function doesn't have to return anything.  This can be achieved either by having a line 
 
-```Lua
+```lua
     return
 ```
 with no value to return, or simply by reaching the `end` of the function.
@@ -241,7 +241,7 @@ For now, remember that `local` inside a file means that only other code in that 
 
 Consider the following code:
 
-```Lua
+```lua
 function buggy(input)
     j = 3
     print(input)
@@ -258,7 +258,7 @@ nil
 3
 ```
 Why?
-```Lua
+```lua
 function buggy(input)
     j = 3
     print(input)
@@ -266,26 +266,26 @@ end
 ```
 This set of code creates the function `buggy`, which has a single input.  On the second line, the `global` variable `j` is set to `3`.  (Since there is no `local` variable `j`.)  On the third line, the input is printed.  Since the function has only been *defined* and not run, `j` is not changed and nothing is printed.
 
-```Lua
+```lua
 print(j)
 ```
 "nil" is printed since `j` has not been assigned a value yet, and `nil` is the default value for a `global` variable.
-```Lua
+```lua
 j = 7
 ```
 The global variable `j` is set to `7`, nothing is printed.
-```Lua
+```lua
 buggy(8)
 ```
 `j` is set to `3`, and "8" is printed.
-```Lua
+```lua
 print(j)
 ```
 Since `j` has a value of `3`, "3" is printed.  The issue here is that if we didn't know what `buggy` did, we would expect `j` to still have a value of `7`.  Sometimes, this sort of thing is desirable, but we certainly don't want to do it by accident, since it will create strange bugs that are hard to find.
 
 Our code will do what we expect, if we write it like this:
 
-```Lua
+```lua
 function buggy(input)
     local j = 3 -- notice the local here
     print(input) 
@@ -303,7 +303,7 @@ nil
 ```
 
 Why does this code work differently?
-```Lua
+```lua
 function buggy(input)
     local j = 3 -- notice the local here
     print(input) 
@@ -311,25 +311,25 @@ end
 ```
 This function now creates a new `local` variable `j`  (accessible within the current instance of the `buggy` function) and sets it equal to 3.  Then, the input is printed.
 
-```Lua
+```lua
 print(j)
 ```
 There is no local variable `j` (even if `buggy` were run and it were created, that local variable wouldn't be accessible outside of `buggy`), so Lua assumes this means the global variable `j`, which has a value of `nil`, so "nil" is printed.
 
-```Lua
+```lua
 j = 7
 buggy(8)
 ```
 The global variable `j` is now set to 7.  A local variable in `buggy` is set to `3`, and "8" is printed.
 
-```Lua
+```lua
 print(j)
 ```
 The global `j` was not changed by `buggy`, so 7 is printed.
 
 Let us re-arrange the code a bit, and see what happens when 2 local variables have the same name.
 
-```Lua
+```lua
 local j = 7 -- notice local here
 function buggy(input)
     local j = 3 -- notice the local here
@@ -361,7 +361,7 @@ Now that we're starting to use commands and functions, we need to know about the
 
 [Run](https://www.lua.org/cgi-bin/demo) the following code:
 
-```Lua
+```lua
 print("Maple"+"Leaf"+"Forever")
 ```
 You will get an error:
@@ -393,24 +393,24 @@ A `table` contains pairs of '`keys`' and '`values`'. A '`key`' in a `table` can 
 
 We can declare an empty table as 
 
-```Lua
+```lua
 local myTable = {}
 ```
 
 We can assign a value to a specific key with the following assignment syntax:
 
-```Lua
+```lua
 myTable[keyOne] = myValue
 ```
 
 We can then access `myValue` by using
 
-```Lua
+```lua
 myTable[keyOne]
 ```
 
 Let us [run some code](https://www.lua.org/cgi-bin/demo):
-```Lua
+```lua
 local myTable = {}
 myTable[1] = 2
 print(myTable[1])
@@ -419,7 +419,7 @@ print(myTable[1])
 2
 ```
 Now, let us add another value to the table:
-```Lua
+```lua
 myTable["tree"] = "leaf"
 print(myTable["tree"])
 ```
@@ -429,11 +429,11 @@ Adding this to the previous code, and running the whole thing yields:
 leaf
 ```
 We can create a table with initialized data as follows:
-```Lua
+```lua
 local myOtherTable = {[keyOne] = valueOne,[keyTwo] = valueTwo, [keyThree] = valueThree,}
 ```
 The ',' after valueThree isn't necessary, but it doesn't hurt anything either.  Let us run another example:
-```Lua
+```lua
 local populationTable = {["China"]=1.411e9, ["India"]=1.377e9, ["United States"]=0.331e9,}
 print(populationTable["China"])
 print(populationTable["United States"])
@@ -445,19 +445,19 @@ print(populationTable["India"])
 1377000000.0
 ```
 We can also write:
-```Lua
+```lua
 local myThirdTable = {valueOne,valueTwo,valueThree}
 ```
 which is equivalent to
-```Lua
+```lua
 local myThirdTable = {[1]=valueOne,[2]=valueTwo,[3]=valueThree}
 ```
 What's more, we can define tables inside of tables, e.g.
-```Lua
+```lua
 local coordinates = { {110,44,0},{111,45,0},{109,43,0} }
 ```
 If we wanted to print the numbers in the second coordinate, we would write:
-```Lua
+```nua
 print(coordinates[2][1],coordinates[2][2],coordinates[2][3])
 ```
 and get
@@ -490,7 +490,7 @@ MySecondString	MySecondString
 Three	Three
 ```
 Notice that defining a `key` `value` pair using the `.` method doesn't preclude the use of `[""]` method for accessing the value, or vice versa.  Of course, the key must qualify.  For example,
-```Lua
+```lua
 local populationTable = {["China"]=1.411e9, ["India"]=1.377e9, ["United States"]=0.331e9,}
 print(populationTable.United States)
 ```
@@ -499,13 +499,13 @@ results in a syntax error, since the `"United States"` string has a space.
 input:2: ')' expected near 'States'
 ```
 However, 
-```Lua
+```lua
 print(populationTable.China)
 ```
 works just fine.
 
 Now, what happens if we try to access the value associated with a key that is not in a table?  For example, what happens here:
-```Lua
+```lua
 local populationTable = {["China"]=1.411e9, ["India"]=1.377e9, ["United States"]=0.331e9,}
 print(populationTable["Indonesia"])
 ```
@@ -513,7 +513,7 @@ print(populationTable["Indonesia"])
 nil
 ```
 The result for trying to access any key not in the table is that the key is defined to have the value `nil` associated with it.  In fact, if we want to remove a value from a table, we change the value of its associated key to `nil`.
-```Lua
+```lua
 local populationTable = {["China"]=1.411e9, ["India"]=1.377e9, ["United States"]=0.331e9,}
 populationTable["China"]=nil
 ```
@@ -522,7 +522,7 @@ This will become more important later, when we discuss loops and the `pairs` fun
 As a final note, this feature of tables where any missing key is defined to have a value of `nil` is a huge reason why global variables are disabled in the Lua Scenario Template.  Global variables are implemented as keys of a special "Global" table.  If there is no local variable with a particular name, the Lua Interpreter instead checks the Global table for a value associated with that key, and a value will always be found, even if it is nil.  This means that typos don't raise errors directly, but instead wait until later in the code to cause problems.
 
 A simple example will clarify this:
-```Lua
+```lua
 local mynumber = 10
 print(myNumber*2)
 ```
@@ -532,7 +532,7 @@ input:2: attempt to perform arithmetic on a nil value (global 'myNumber')
 The error that is raised makes us try to figure out why `myNumber` has a value of `nil` instead of a `number`, but doesn't point us to the possibility of a typo somewhere, which is the actual cause of the problem.  If your code is complicated, it can take some detective work to figure out why the problem exists, and if `nil` is a reasonable value for `myNumber` to take, then my code will run, just not work properly.
 
 There is a final note to make for tables.  When you store a table in a variable, what is stored is the *name* of the table, not the table itself.  That is, if you "copy" a table into another variable, changes to the "copy" are also made in the original.  Here's an example:
-```Lua
+```lua
 local myTable = {1,2,3}
 local myOtherTable = myTable
 myTable[2] = "Not Two"
@@ -544,7 +544,7 @@ Not Two
 Not Two
 ```
 Notice how `myOtherTable` was also changed.  This is different than copying things like strings or integers:
-```Lua
+```lua
 local myString = "A nice string"
 local myOtherString = myString
 myString = "A bad string"

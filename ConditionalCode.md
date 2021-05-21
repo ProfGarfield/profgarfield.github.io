@@ -24,7 +24,7 @@ We must first decide which [Lua Execution Point](LuaExecutionPoints.md) to use f
 >### Description
 >Runs code at the "start" of a turn, after the Purple tribe has played, and before the Barbarians move.  Use `onTurn.lua` in the `UniversalTriggerEvents` folder, within the `LuaTriggerEvents` folder.
 >
->```Lua
+>```lua
 >function onTurn.onTurn(turn)
 >
 >end
@@ -34,7 +34,7 @@ We must first decide which [Lua Execution Point](LuaExecutionPoints.md) to use f
 This tells us to find the file `onTurn.lua` in the `UniversalTriggerEvents` folder, and work with that file.
 
 The file is currently very empty.  These are the entire contents:
-```Lua
+```lua
 local onTurn = {}
 function onTurn.onTurn(turn)
 

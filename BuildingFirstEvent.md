@@ -9,25 +9,25 @@ For the start of the next lesson, I will provide a new Classic Rome scenario fol
 For our first event, navigate to the `LuaTriggerEvents` directory, then to the `UniversalTriggerEvents` directory within that.  Finally, open the file `onUnitKilled.lua`.
 
 Within `onUnitKilled.lua`, find the following lines of code:
-```Lua
+```lua
 function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
 
 end
 ```
 Above this code, create a local variable campaignCost, and set it equal to 1:
-```Lua
+```lua
 local campaignCost = 1
 function unitKilledEvents.unitKilledInCombat(loser, winner, aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
 
 end
 ```
 Next, within the function, add these two lines:
-```Lua
+```lua
     loser.owner.money = math.max(loser.owner.money -campaignCost,0)
     winner.owner.money = math.max(winner.owner.money-campaignCost,0)
 ```
 The relevant code all together will look like this:
-```Lua
+```lua
 -- This will only run when a unit is killed in combat (i.e. not when an event
 -- 'kills' a unit)
 -- note that if the aggressor loses, aggressor.location will not work
@@ -86,7 +86,7 @@ The Initiate Combat execution point is relatively complicated to deal with, so w
 >### Description
 >This code is run when a unit is killed in "combat," which is to say in regular Civilization II combat.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 >
->```Lua
+>```lua
 >function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 >
 >end
@@ -99,7 +99,7 @@ The Initiate Combat execution point is relatively complicated to deal with, so w
 >Runs code when a unit is "defeated," either in standard combat or by use of the `gen.defeatUnit` function.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 >
 >
->```Lua
+>```lua
 >function unitKilledEvents.unitDefeated(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 >
 >end
@@ -125,7 +125,7 @@ This tells us that by using the `money` key of the `tribe` object, we can get th
 
 The function that is executed at a particular execution point provides us with access to information about the *specific* instance of execution.
 
->```Lua
+>```lua
 >function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 >
 >end

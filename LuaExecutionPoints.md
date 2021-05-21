@@ -35,7 +35,7 @@ Lua Events function by "injecting" code into the Civilization II: Test of Time g
 Code can be executed whenever a unit is activated.
 Use the file `unitActivation.lua` in the `LuaRulesEvents` folder.
 
-```Lua
+```lua
 function unitActivation.activateFunction(unit,source)
 
 
@@ -55,7 +55,7 @@ civ.scen.onActivateUnit(function (unit, source) -> void) -> void)
 ### Description
 Code will be executed whenever a unit is bribed.  Use the file `onBribeUnit.lua` in the `LuaUniversalTriggers` folder, found in the `LuaTriggerEvents` folder.
 
-```Lua
+```lua
 function bribeUnitEvents.onBribeUnit(unit,previousOwner)
 
 end
@@ -76,7 +76,7 @@ Use the file `calculateCityYield.lua` in the `LuaRulesEvents` folder.
 
 In addition to executing code for arbitrary purposes, this execution point allows for changing city production levels.
 
-```Lua
+```lua
 function cityYield.onCalculateCityYield(city,food,shields,trade)
     local extraFood,extraShields,extraTrade = 0,0,0 -- resources to add to compensate
             -- for terrain changes made during the city yield calculation
@@ -167,7 +167,7 @@ civ.scen.onCanBuild(function (defaultBuildFunction, city, item) -> boolean)
 
 Run code when a tribe wins the space race.  Use the file `onCentauriArrival.lua` within the `UniversalTriggerEvents` folder, found in the `LuaTriggerEvents` folder.
 
-```Lua 
+```lua 
 function centauriArrival.onCentauriArrival(tribe)
 
 end
@@ -185,7 +185,7 @@ civ.scen.onCentauriArrival(function (tribe) -> void)
 
 Run code when a city is destroyed.  Use the file `onCityDestroyed.lua` in the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function cityDestroyed.onCityDestroyed(city)
 
 end
@@ -202,7 +202,7 @@ civ.scen.onCityDestroyed(function (city) -> void)
 
 Runs code when a city is founded.  Code is executed when the player presses `b` to found the city, even if they decide not to build the city during the name selection.  (Relevant if making changes to the terrain or whatnot.)  Use the file `onCityFounded.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function cityFounded.onCityFounded(city)
 
 end
@@ -222,7 +222,7 @@ civ.scen.onCityFounded(function (city) -> void)
 
 Runs code when a city completes production on something.  Use the file `onCityProduction.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
 
-```Lua
+```lua
 function cityProduction.onCityProduction(city,prod)
 
 end
@@ -238,7 +238,7 @@ civ.scen.onCityProduction(function (city, prod) -> void)
 ### Description
 Runs code when a city is captured.  Use the file `onCityTaken.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
  
-```Lua
+```lua
 function cityTaken.onCityTaken(city,defender)
 
 end
@@ -256,7 +256,7 @@ civ.scen.onCityTaken(function (city, defender) -> void)
 ### Description
 
 Code to run when the game ends.  Use the file `onGameEnds.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
-```Lua
+```lua
 function gameEnd.onGameEnds(reason)
 
 end
@@ -273,7 +273,7 @@ civ.scen.onGameEnds(function (reason) -> boolean)
 
 Code to run before combat starts.  This also allows altering the rules of combat, and even allowing combat to end before a unit is killed.  Use the file `initiateCombat.lua` found in the `LuaRulesEvents` directory.
 
-```Lua
+```lua
 function onInitiateCombat.makeCoroutine(attacker,defender,attackerDie,attackerPower,defenderDie,defenderPower)
 
     local maxCombatRounds = math.huge -- If you want to limit combat to a specific number of
@@ -335,7 +335,7 @@ civ.scen.onInitiateCombat(function (attacker, defender, attackerDie, attackerPow
 >Registers a function to be called every time combat is initiated. The callback takes up to six parameters, the attacker, the defender, attackerDie ('die' as in dice, the attacker's chance to hit), attackerPower (attacker's firepower), defenderDie and defenderPower. Returns a coroutine that yields every time it wants to process a round, and returns when it wants combat to end.
 >
 >Example:
-```Lua
+```lua
 civ.scen.onInitiateCombat(function (attacker, defender, attackerDie, attackerPower, defenderDie, defenderPower)
   print("Attacker's die: 1d" .. attackerDie .. ", firepower: " .. attackerPower)
   print("Defender's die: 1d" .. defenderDie .. ", firepower: " .. defenderPower)
@@ -375,7 +375,7 @@ end)
 ## Key Press[&uarr;](#execution-points)
 
 Code can be run when keys are pressed.  See the [Keyboard](Keyboard.md) documentation to get the codes for each key.  Use the file `keyPressEvents.lua` in the `LuaRulesEvents` folder.
-```Lua
+```lua
 keyPressFunctions[keyboard.zero] = function()
 
 end
@@ -491,7 +491,7 @@ civ.scen.onSave( function () --> string)
 
 Code here is run when you start a new game, or load a game.  If your scenario has "seasons" or similar mechanics, you will set them up here so that they are applied when you load the game, in addition to wherever you make the seasons change in the middle of a session.  Use the file `scenarioLoaded.lua` in the `LuaRulesEvents` folder.
 
-```Lua
+```lua
 function scenarioLoaded.scenarioLoadedFn()
     legacy.doScenarioLoadedEvents()
 end
@@ -509,7 +509,7 @@ civ.scen.onScenarioLoaded(function () -> void)
 
 Runs code whenever a tribe (the `talker`) attempts to negotiate with another tribe (the `listener`).  The function returns a `boolean` which determines if the tribes can, in fact, negotiate.  Use the `negotiationSettings.lua` file in the `LuaRulesEvents` folder.
 
-```Lua
+```lua
 function negotiationSettings.negotiation(talker,listener)
     legacy.doNegotiationEvents(talker,listener)
     --return false
@@ -527,7 +527,7 @@ civ.scen.onNegotiation(function (talker, listener) -> boolean)
 
 ### Description
 Runs code when a 'schism' (civil war) could happen as the result of the loss of a capital.  The returned value also determines if a schism can actually take place.  Use the `onSchism.lua` within the `LuaRulesEvents` folder.
-```Lua
+```lua
 function onSchism.onSchism(tribe)
     return legacy.doNoSchismEvents(tribe)
 end
@@ -543,7 +543,7 @@ civ.scen.onSchism(function (tribe) -> boolean)
 ### Description
 Runs code at the "start" of a turn, after the Purple tribe has played, and before the Barbarians move.  Use `onTurn.lua` in the `UniversalTriggerEvents` folder, within the `LuaTriggerEvents` folder.
 
-```Lua
+```lua
 function onTurn.onTurn(turn)
 
 end
@@ -559,7 +559,7 @@ civ.scen.onTurn(function (turn) -> void)
 ### Description
 This code is run when a unit is killed in "combat," which is to say in regular Civilization II combat.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 
 end
@@ -579,7 +579,7 @@ Also, information about the loserLocation and the combatant veteran statuses are
 Runs code when a unit is "defeated," either in standard combat or by use of the `gen.defeatUnit` function.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
 
-```Lua
+```lua
 function unitKilledEvents.unitDefeated(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 
 end
@@ -595,7 +595,7 @@ In `events.lua`, there is code to link this both to the General Library `gen.def
 ### Description
 Runs code when a unit 'dies,' either in combat, or through use of `gen.killUnit` or `gen.defeatUnit` as long as that unit is not replaced.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function unitKilledEvents.unitDeath(dyingUnit)
 
 end
@@ -605,7 +605,7 @@ end
 
 In `events.lua`, there is code to link this both to the General Library `gen.defeatUnit` and `gen.killUnit` functions and to the [killed in combat](#unit-killed-in-combat&uarr;) execution point.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function unitKilledEvents.unitDeathOutsideCombat(dyingUnit)
 
 end
@@ -616,7 +616,7 @@ end
 ### Description
 Runs code when a unit dies through use of the `gen.killUnit` function, but not through "combat" or "defeat."  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
-```Lua
+```lua
 function unitKilledEvents.unitDeathOutsideCombat(dyingUnit)
 
 end
@@ -632,7 +632,7 @@ In `events.lua` there is code to link this to the General Library for use with t
 
 Executes code after all cities have been processed for the current player, and before that player gets a chance to move units.  Use `afterProduction.lua` in the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
 
-```Lua
+```lua
 function afterProdEvents.afterProduction(turn,tribe)
    -- civ.ui.text("After Production for turn "..tostring(turn).." and tribe "..tribe.name)
 
@@ -651,7 +651,7 @@ If the tribe doesn't have any active units on a given turn, this execution point
 ### Description
 
 Executes code before any cities are processed for the current player.  Use `beforeProduction.lua` in the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
-```Lua
+```lua
 function beforeProduction.beforeProduction(turn,tribe)
 
 end
