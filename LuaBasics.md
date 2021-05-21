@@ -1,4 +1,5 @@
 [&larr;The Lua Scenario Template](TheLuaScenarioTemplate.md) | [Home](index.md) | [Buildability Settings and Errors&rarr;](Buildability.md)
+
 # Lua Basics: Giving Instructions to Your Computer
 
 In order to write events, we must understand some basic programming.  If you feel intimidated, don't be.  You can achieve an awful lot with a small amount of knowledge.  In fact, I could teach you most of the power of the `canBuildSettings.lua` file without calling it "programming," but we wouldn't be able to build on that kind of an explanation.  Instead, we will learn a bit more, and return to that later.  That said, if you want to look at a `canBuildSettings.lua` file from a different scenario, and try to mimic it or make changes, there would be little harm.
@@ -612,4 +613,5 @@ This is one of the rare "set" keys that is *not* ephemeral, presumably because t
 
 
 ## Next Lesson: [Buildability Settings and Errors](Buildability.md)
+
 [&larr;The Lua Scenario Template](TheLuaScenarioTemplate.md) | [Home](index.md) | [Buildability Settings and Errors&rarr;](Buildability.md)

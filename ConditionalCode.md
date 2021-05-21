@@ -1,4 +1,5 @@
-[&larr;Building Our First Event](BuildingFirstEvent.md) | [Home](index.md) |
+[&larr;Building Our First Event](BuildingFirstEvent.md) | [Home](index.md) 
+
 # Conditional Code
 
 In the last lesson, we wrote an event that deducted money from tribes each time they were involved in combat.  This event always happens, regardless of who is fighting or how much money they have. In this lesson, we will see how to run code only if certain conditions are met.
@@ -127,11 +128,12 @@ return onTurn
 ```
 Make these changes to `onTurn.lua`, and load the game.  The Trade Advisor is one place where you can see your leader's name.  At the moment on the first turn of the game, it will be Scipio.  End the turn, and wait for the next turn.  If you open the Trade Advisor again, you should see that your name is now Fabius.
 
-## Using `and` and `or`
+## Using "and" and "or"
 
 Now, let us make a more complicated event.  We will give the Celts a bonus against the Romans.  Our goal is that if the Celts own Milan and the square (37,15) is either empty or defended by the Celts, then the Celts get a chariot at the square every turn.
 
 
 
 ## Next Lesson: 
-[&larr;Building Our First Event](BuildingFirstEvent.md) | [Home](index.md) |
+
+[&larr;Building Our First Event](BuildingFirstEvent.md) | [Home](index.md) 
