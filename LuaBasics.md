@@ -353,6 +353,8 @@ Next, `j` is printed, and that selects the `j` that was created on line 1 to pri
 
 Don't worry *too* much about this stuff now.  If you make a habit of initializing new variables with `local`, you will probably be fine.  In fact, the Lua Scenario Template disables the use of global variables, so you will typically get errors if you fail to use `local`.  We need a bit more knowledge of Lua to fully explain why the Template disables global variables by default. 
 
+I should also point out that there is no problem if you *reference* variables declared outside of a function.  We'll do this quite a bit.  But, you want to be careful when *changing* variables declared outside your function, and using `local` to declare all new variables prevents this.
+
 ## Types of Values
 
 Now that we're starting to use commands and functions, we need to know about the different types of values. It is important to understand types of variables since most functions can only accept a particular type of value as input.

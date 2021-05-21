@@ -556,10 +556,11 @@ civ.scen.onTurn(function (turn) -> void)
 
 ## Unit Killed In Combat[&uarr;](#execution-points)
 
+### Description
 This code is run when a unit is killed in "combat," which is to say in regular Civilization II combat.  Use `onUnitKilled.lua` within the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` directory.
 
 ```Lua
-function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
+function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 
 end
 ```
