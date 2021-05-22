@@ -20,14 +20,14 @@ For our first event, navigate to the `LuaTriggerEvents` directory, then to the `
 
 Within `onUnitKilled.lua`, find the following lines of code:
 ```lua
-function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
+function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 
 end
 ```
 Above this code, create a local variable campaignCost, and set it equal to 1:
 ```lua
 local campaignCost = 1
-function unitKilledEvents.unitKilledInCombat(loser, winner, aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
+function unitKilledEvents.unitKilledInCombat(loser, winner, aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
 
 end
 ```
@@ -43,7 +43,7 @@ The relevant code all together will look like this:
 -- note that if the aggressor loses, aggressor.location will not work
 --
 local campaignCost = 1
-function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetSatus)
+function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
     loser.owner.money = math.max(loser.owner.money -campaignCost,0)
     winner.owner.money = math.max(winner.owner.money-campaignCost,0)
 end
@@ -195,7 +195,7 @@ At this point, it occurs to us that a tribe might be involved in combat even if 
 When I searched duckduckgo for "lua maximum function", these were my first four results:
 
 1. [Lua - Functions - Tutorialspoint](https://www.tutorialspoint.com/lua/lua_functions.htm)
-2. [Max | Roblox Lua Wiki | Fandom](https://arebeexlua.fandom.com/wiki/Max)
+2. [Max \| Roblox \| Lua Wiki  Fandom](https://arebeexlua.fandom.com/wiki/Max)
 3. [lua - Returning key of maximum or minimum number in a ...](https://stackoverflow.com/questions/20827259/returning-key-of-maximum-or-minimum-number-in-a-table)
 4. [Lua - Math library - Tutorialspoint](https://www.tutorialspoint.com/lua/lua_math_library.htm)
 
