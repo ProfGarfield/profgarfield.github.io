@@ -123,7 +123,7 @@ Next, we must know *where* to put our code.  The description lets us know that w
 We want to change the treasury of the combatant tribes, so we have to figure out how to do that.  One place to look is the [Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/) Civfanatics Forum Thread.  This thread is where The Nameless One (Creator of the TOTPP) documents the ways of using Lua to interact with the game.  One way to find this information is to search the webpage (`ctrl+F` on most web browsers) for what we want using a keyword.  We want to change the treasury, so we'll try searching for "treasury".
 
 The only instance of "treasury" on the page brings us to:
->__**money (get/set)**__
+>__money (get/set)__
 >
 >tribe.money -> integer
 >
@@ -171,7 +171,7 @@ In this case, we are provided with the units that were involved in combat.  Per 
 
 Since we have `unit` objects available to us, it looks like [The *unit* object](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#unit) is probably where we want to start looking.  If we scroll down through the various keys, we get to
 
-> __**owner (get/set)**__  
+> __owner (get/set)__  
 >unit.owner -> tribe
 >
 >Returns the unit's owner.
@@ -195,7 +195,7 @@ At this point, it occurs to us that a tribe might be involved in combat even if 
 When I searched duckduckgo for "lua maximum function", these were my first four results:
 
 1. [Lua - Functions - Tutorialspoint](https://www.tutorialspoint.com/lua/lua_functions.htm)
-2. [Max \| Roblox \| Lua Wiki  Fandom](https://arebeexlua.fandom.com/wiki/Max)
+2. [Max - Roblox Lua Wiki - Fandom](https://arebeexlua.fandom.com/wiki/Max)
 3. [lua - Returning key of maximum or minimum number in a ...](https://stackoverflow.com/questions/20827259/returning-key-of-maximum-or-minimum-number-in-a-table)
 4. [Lua - Math library - Tutorialspoint](https://www.tutorialspoint.com/lua/lua_math_library.htm)
 
