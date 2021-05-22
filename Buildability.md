@@ -221,17 +221,17 @@ But, how do we find out where the error is?  For that, we check the rest of the 
 
 >stack traceback:
 >
->	[C]: in function **'error'**
+>[C]: in function **'error'**
 >
->	... Time\Scenarios\ClassicRome\LuaParameterFiles\\**object.lua:504:**
+>... Time\Scenarios\ClassicRome\LuaParameterFiles\\__object.lua:504:__
 >
-> in **metamethod '__index'**
+> in __metamethod '__index'__
 >
->	...cenarios\ClassicRome\LuaRulesEvents\\**canBuildSettings.lua:157:** in main chunk
+>...cenarios\ClassicRome\LuaRulesEvents\\__canBuildSettings.lua:157:__ in main chunk
 >
->	[C]: in **function 'require'**
+>[C]: in __function 'require'__
 >
->	...op\drive_c\Test of Time\Scenarios\ClassicRome\\**events.lua:55:** in main chunk
+>...op\drive_c\Test of Time\Scenarios\ClassicRome\\__events.lua:55:__ in main chunk
 
 The bold tells us what the Lua Interpreter was doing at the time of the error, and what file and line that corresponds to.  `events.lua` isn't a file we should be modifying, so we won't look there unless we either need clues to solve our problem, or we're pretty sure the rest of our code is correct.  If we look in object.lua near line 504, we get
 
