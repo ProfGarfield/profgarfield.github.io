@@ -1,3 +1,11 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
+
 [Home](index.md)
 # Reference for keyboard.lua Module
 ```lua

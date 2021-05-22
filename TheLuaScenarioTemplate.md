@@ -1,3 +1,11 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
+
 [&larr;Hello World](HelloWorld.md) | [Home](index.md) | [Lua Basics&rarr;](LuaBasics.md)
 
 # The Lua Scenario Template

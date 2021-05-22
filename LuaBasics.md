@@ -1,3 +1,11 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
+
 [&larr;The Lua Scenario Template](TheLuaScenarioTemplate.md) | [Home](index.md) | [Buildability Settings and Errors&rarr;](Buildability.md)
 
 # Lua Basics: Giving Instructions to Your Computer

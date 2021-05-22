@@ -1,3 +1,11 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
+
 [&larr;Building Our First Event](BuildingFirstEvent.md) | [Home](index.md) 
 
 # Conditional Code

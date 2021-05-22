@@ -1,3 +1,11 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
+
 [&larr;Buildability Settings and Errors](Buildability.md) | [Home](index.md) | [Conditional Code&rarr;](ConditionalCode.md)
 
 # Programming Our First Event
