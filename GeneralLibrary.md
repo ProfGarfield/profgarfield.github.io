@@ -743,8 +743,8 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 </p>
 </details>
 
-<details><summary><code>gen.removeSeeTowSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
-<code>gen.removeSeeTowSpaces(unitType)-->void
+<details><summary><code>gen.removeSeeTwoSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeSeeTwoSpaces(unitType)-->void
 </code>
 
 </p>
