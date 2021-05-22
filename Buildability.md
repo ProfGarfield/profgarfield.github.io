@@ -1,5 +1,12 @@
 [&larr;Lua Basics](LuaBasics.md) | [Home](index.md) | [Building Our First Event&rarr;](BuildingFirstEvent.md)
 
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
 # Buildability Settings and Errors
 ## Changing Buildabilty Settings
 
