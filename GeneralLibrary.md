@@ -19,6 +19,11 @@ The "Building Blocks" are miscellaneous functions that are likely to be useful i
 ## Building Blocks
 
 ## Flag Functions
+[Bitwise Tools](#bitwise-tools)  
+[Terrain Improvements](#terrain-improvements)  
+[Unit Orders](#unit-orders)  
+[Unit Type Flags](#unit-type-flags)  
+[City Attribute Flags](#city-attribute-flags)  
 
 ### Bitwise Tools
 
@@ -144,7 +149,7 @@ Note: Lua does not actually allow you to type in integers specified in binary (t
 </p>
 </details>
 
-## Terrain Improvements
+### Terrain Improvements
 
 Any function here that accepts a tile will also
 accept a table `{[1]=x,[2]=y,[3]=z}`, a table 
@@ -471,5 +476,1252 @@ Returns true if the tile has a transporter.
 </code>
 Removes transporter from tile if present.
 <br>Does nothing if city present.
+</p>
+</details>
+
+
+### Unit Orders
+
+
+<details><summary><code>gen.isFortifying(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isFortifying(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToFortifying(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToFortifying(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isFortified(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isFortified(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToFortified(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToFortified(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isSleeping(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isSleeping(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToSleeping(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToSleeping(unit)-->void
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.isBuildingFortress(unit) --> boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildingFortress(unit) --> boolean
+</code>
+
+</p>
+</details>
+
+
+<details><summary><code>gen.setToBuildingFortress(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToBuildingFortress(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBuildingRoad(unit) --> boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildingRoad(unit) --> boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToBuildingRoad(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToBuildingRoad(unit)-->void
+</code>
+
+</p>
+</details>
+
+
+<details><summary><code>gen.isIrrigating(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isIrrigating(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToIrrigating(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToIrrigating(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isMining(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMining(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToMining(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToMining(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isTransformingTerrain(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isTransformingTerrain(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToTransformingTerrain(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToTransformingTerrain(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isCleaningPollution(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isCleaningPollution(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToCleaningPollution(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToCleaningPollution(unit)-->void
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.isBuildingAirbase(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildingAirbase(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToBuildingAirbase(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToBuildingAirbase(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBuildingTransporter(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildingTransporter(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToBuildingTransporter(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToBuildingTransporter(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isGoingTo(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isGoingTo(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToGoingTo(unit,tile or nil)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToGoingTo(unit,tile or nil)-->void
+</code>
+Gives the unit a goto order for the tile.
+<br>If nil is submitted, and the unit already has a goto order, the unit will be changed to no orders.
+<br>(setting <code>unit.gotoTile=nil</code> results in an error)
+<br>If nil is submitted, and the unit already has some other order, it will keep that order.
+<br>Note: this function also accepts a table of coordinates as a tile (just as all other tile functions do in the General Library).
+</p>
+</details>
+
+<details><summary><code>gen.isNoOrder(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isNoOrder(unit)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setToNoOrders(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToNoOrders(unit)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isWaiting(unit)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.isWaiting(unit)-->bool
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.setToWaiting(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setToWaiting(unit)-->void
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.clearWaiting(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearWaiting(unit)-->void
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.isParadropped(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isParadropped(unit)-->boolean
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.setParadropped(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setParadropped(unit)-->void
+</code>
+
+</p>
+</details>
+ <details><summary><code>en.clearParadropped(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearParadropped(unit)-->void
+</code>
+
+</p>
+</details>
+<details><summary><code>gen.isMoved(unit)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMoved(unit)-->boolean
+</code>
+The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
+<br> The unit won't heal on the next turn if this flag is set.
+</p>
+</details>
+<details><summary><code>gen.setMoved(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setMoved(unit)-->void
+</code>
+The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
+<br> The unit won't heal on the next turn if this flag is set.
+</p>
+</details>
+<details><summary><code>gen.clearMoved(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearMoved(unit)-->void
+</code>
+The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
+<br> The unit won't heal on the next turn if this flag is set.
+</p>
+</details>
+
+### Unit Type Flags
+
+<details><summary><code>gen.isSeeTwoSpaces(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isSeeTwoSpaces(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveSeeTwoSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveSeeTwoSpaces(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeSeeTowSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeSeeTowSpaces(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isIgnoreZOC(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isIgnoreZOC(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveIgnoreZOC(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveIgnoreZOC(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeIgnoreZOC(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeIgnoreZOC(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAmphibious(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAmphibious(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveAmpibious(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveAmpibious(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeAmphibious(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeAmphibious(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isSubmarine(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isSubmarine(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveSubmarine(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveSubmarine(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeSubmarine(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeSubmarine(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttackAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttackAir(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveAttackAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveAttackAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeAttackAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeAttackAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isCoastal(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isCoastal(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveCoastal(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveCoastal(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeCoastal(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeCoastal(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isIgnoreWalls(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isIgnoreWalls(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveIngoreWalls(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveIngoreWalls(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeIgnoreWalls(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeIgnoreWalls(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isCarryAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isCarryAir(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveCarryAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveCarryAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeCarryAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeCarryAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isParadrop(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isParadrop(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveParadrop(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveParadrop(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeParadrop(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeParadrop(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAlpine(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAlpine(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveAlpine(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveAlpine(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeAlpine(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeAlpine(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBonusAgainstHorse(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBonusAgainstHorse(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveBonusAgainstHorse(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveBonusAgainstHorse(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeBonusAgainstHorse(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeBonusAgainstHorse(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isFreeSupportUnderFundamentalism(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isFreeSupportUnderFundamentalism(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveFreeSupportUnderFundamentalism(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveFreeSupportUnderFundamentalism(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeFreeSupportUnderFundamentalism(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeFreeSupportUnderFundamentalism(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isDestroyedAfterAttacking(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isDestroyedAfterAttacking(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveDestroyedAfterAttacking(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveDestroyedAfterAttacking(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeDestroyedAfterAttacking(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeDestroyedAfterAttacking(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBonusAgainstAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBonusAgainstAir(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveBonusAgainstAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveBonusAgainstAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeBonusAgainstAir(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeBonusAgainstAir(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isSpotSubmarines(unitType)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isSpotSubmarines(unitType)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.giveSpotSubmarines(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.giveSpotSubmarines(unitType)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.removeSpotSubmarines(unitType)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.removeSpotSubmarines(unitType)-->void
+</code>
+
+</p>
+</details>
+
+
+### City Attribute Flags
+
+The functions of many of the city attribute flags are unknown at this time.  As more functionality is discovered, these functions will be given properly descriptive names.  However, for backwards compatibility, `gen.commandAttributeXX` will remain available in the General Library (though it may be removed from this document).  If you discover the function of a flag, please in this [Civfanatics Forum Thread](https://forums.civfanatics.com/threads/totpp-lua-scenario-template.660244/).
+
+<details><summary><code>gen.isCivilDisorder(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isCivilDisorder(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setCivilDisorder(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setCivilDisorder(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearCivilDisorder(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearCivilDisorder(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isWeLoveTheKing(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isWeLoveTheKing(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setWeLoveTheKing(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setWeLoveTheKing(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearWeLoveTheKing(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearWeLoveTheKing(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isImprovementSold(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isImprovementSold(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setImprovementSold(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setImprovementSold(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearImprovementSold(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearImprovementSold(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isTechnologyStolen(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isTechnologyStolen(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setTechnologyStolen(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setTechnologyStolen(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearTechnologyStolen(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearTechnologyStolen(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAutoBuild(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute6(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute6(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute6(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute6(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute6(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute6(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute7(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute7(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute7(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute7(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute7(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute7(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBuildCoastal(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildCoastal(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setBuildCoastal(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setBuildCoastal(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearBuildCoastal(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearBuildCoastal(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute9(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute9(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute9(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute9(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute9(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute9(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute10(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute10(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute10(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute10(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute10(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute10(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute11(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute11(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute11(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute11(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute11(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute11(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBuildHydroPlant(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildHydroPlant(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setBuildHydroPlant(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setBuildHydroPlant(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearBuildHydroPlant(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearBuildHydroPlant(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute13(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute13(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute13(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute13(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute13(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute13(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute14(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute14(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute14(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute14(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute14(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute14(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute15(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute15(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute15(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute15(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute15(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute15(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute16(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute16(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute16(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute16(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute16(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute16(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isUsedAirport(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isUsedAirport(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setUsedAirport(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setUsedAirport(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearUsedAirport(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearUsedAirport(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute18(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute18(city)-->boolean
+</code>
+
+</p>
+</details>
+
+
+<details><summary><code>gen.setAttribute18(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute18(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute18(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute18(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute19(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute19(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute19(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute19(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute19(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute19(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute20(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute20(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute20(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute20(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute20(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute20(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute21(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute21(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute21(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute21(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute21(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute21(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isBuildShips(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isBuildShips(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setBuildShips(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setBuildShips(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearBuildShips(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearBuildShips(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isCityInvestigated(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isCityInvestigated(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setCityInvestigated(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setCityInvestigated(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearCityInvestigated(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearCityInvestigated(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute24(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute24(city)-->boolean
+</code>
+
+</p>
+</details>
+
+
+<details><summary><code>gen.setAttribute24(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute24(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute24(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute24(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isMilitaryAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMilitaryAutoBuild(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setMilitaryAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setMilitaryAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearMilitaryAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearMilitaryAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isDomesticAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isDomesticAutoBuild(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setDomesticAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setDomesticAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearDomesticAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearDomesticAutoBuild(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isObjective(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isObjective(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setObjective(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setObjective(city)-->void
+</code>
+Sets the city as a scenario "objective."
+<br>Removes the major objective flag if it is set, since the objective flag overrides it.
+
+</p>
+</details>
+
+<details><summary><code>gen.clearObjective(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearObjective(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute28(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute28(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute28(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute28(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute28(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute28(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isMajorObjective(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMajorObjective(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setMajorObjective(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setMajorObjective(city)-->void
+</code>
+Sets the city as a scenario "Major Objective.
+<br>Clears the regular objective flag if it exists, since the objective flag overrides the major objective flag.
+</p>
+</details>
+
+<details><summary><code>gen.clearMajorObjective(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearMajorObjective(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isUsedTransporter(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isUsedTransporter(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setUsedTransporter(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setUsedTransporter(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearUsedTransporter(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearUsedTransporter(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute31(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute31(city)-->boolean
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.setAttribute31(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute31(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.clearAttribute31(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute31(city)-->void
+</code>
+
+</p>
+</details>
+
+<details><summary><code>gen.isAttribute32(city)-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isAttribute32(city)-->boolean
+</code>
+
+</p>
+</details>
+
+ <details><summary><code>gen.setAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute32(city)-->void
+</code>
+
+</p>
+</details>
+
+ <details><summary><code>gen.clearAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAttribute32(city)-->void
+</code>
+
 </p>
 </details>
