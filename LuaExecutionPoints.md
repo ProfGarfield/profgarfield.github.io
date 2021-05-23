@@ -19,7 +19,7 @@ Lua Events function by "injecting" code into the Civilization II: Test of Time g
 3. [Centauri Arrival](#centauri-arrival)
 3. [City Destruction](#city-destruction)
 3. [City Founded](#city-founded)
-3. [City Production](#City-production)
+3. [City Production](#city-production)
 3. [City Captured](#city-captured)
 3. [Game End](#game-end)
 3. [Initiate Combat](#initiate-combat)

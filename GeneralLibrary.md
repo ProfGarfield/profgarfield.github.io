@@ -2539,7 +2539,125 @@ Sets the city as a scenario "Major Objective.
 ## Small Features[&uarr;](#general-library)  
   These functions create features for the Lua Scenario Template that are too small to merit a separate module.
 
+
+### Re-Home Units When City Captured
+
+#### Description
+
+In standard Civilization II, when a city is captured, the units supported by that city are immediately disbanded.  It is possible to override that feature of the game with Lua.
+With this feature, units supported by a captured city are re-homed to a nearby friendly city that can support them.
+
+To activate this feature, open the `simpleSettings.lua` file in the `LuaRulesEvents` directory, and change the line
+```lua
+simpleSettings.rehomeUnitsOnCityCapture = false
+```
+to 
+```lua
+simpleSettings.rehomeUnitsOnCityCapture = true
+```
+
+#### Functions
+
+<details><summary><code>gen.rehomeUnitsInCapturedCity(city,defender) --> void</code></summary><p style="margin-left: 25px">
+<code>
+gen.rehomeUnitsInCapturedCity(city,defender) --> void</code>
+When the city is captured from the defender tribe, all units supported by that city are re-homed to the nearest friendly city that has extra production to support them.
+<br>Valid Arguments:
+<code>
+city: cityObject
+defender: tribeObject
+</code>
+Note: Should be placed in the <A href="LuaExecutionPoints.html#city-captured"> City Captured</A> execution point if not using the Lua Scenario Template.
+<br>
+</p>
+</details>
+
+### Custom Unit Activation
+
+#### Description
+
+Changes the way the next active unit is selected by the game, so that the annoying behavior of units activating far away or on different maps is minimized.
+Occasionally, there is a bug where pressing 'W' makes it appear that only a couple nearby units are the only ones that haven't moved, but there are other units elsewhere that are still available.
+
+To activate this feature, open the `simpleSettings.lua` file in the `LuaRulesEvents` directory, and change the line
+```lua
+simpleSettings.enableCustomUnitSelection = false
+```
+to
+```lua
+simpleSettings.enableCustomUnitSelection = true
+```
+
+If you want to modify how the unit is selected, write a function of the form
+```
+weightFunction(unit,activeUnit)-->integer
+```
+and place it as the value for this line in `simpleSettings.lua`.
+```lua
+simpleSettings.doNotDeleteAITextArchives = nil
+```
+The `weightFunction` gives every unit that could be activated a 'weight,' based on the unit that was just activated, and chooses the unit with the smallest 'weight' to be activated next (assuming it hasn't already been told to wait).
+
+By default, a `weightFunction` is used that adds 1 if the `unit` is a different type than the `activeUnit`, adds 2 times the distance between the units, and 10000 if the units are on different maps.
+
+#### Functions
+
+
+<details><summary><code>gen.selectNextActiveUnit(activeUnit,source,customWeightFn)-->void</code></summary><p style="margin-left: 25px">
+<code>
+gen.selectNextActiveUnit(activeUnit,source)-->void
+gen.selectNextActiveUnit(activeUnit,source,customWeightFn)-->void
+</code>
+Uses a "weightFunction" to determine the 'best' unit to activate next, and gives all other units owned by the active unit's tribe the `wait` command, so they don't activate instead.  If no weightFunction is provided, the weight is +1 if the unit isn't the same type as the active unit, +2 per square of distance between the units, and +10000 if the units are on different maps.  The 'source' argument is a boolean, the same as the 'source' in the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point.
+<br>No effect on AI controlled tribes.
+<br>Valid Arguments:
+<code>
+activeUnit: unitType
+source: boolean
+customWeightFn: function(unit,ActiveUnit)-->integer
+(both arguments are unitType objects)
+</code>
+Notes: If implementing outside the Lua Scenario template, use as the first line inside the function provided to
+<code>
+civ.scen.onActivateUnit(function(unit,source)-->void)
+</code>
+<br>
+</p>
+</details>
+
+<details><summary><code>gen.betterUnitManualWait() --> void </code></summary><p style="margin-left: 25px">
+<code>
+gen.betterUnitManualWait() --> void </code>
+Makes the `W` key work for Custom Unit Activation (by storing waiting units in a table), since the actual 'waiting' flag is manipulated.
+<br>Notes: If implementing outside of the Lua Scenario Template, this should be run when there is an active unit, and the key pressed has id 87. (keyboard.w)  E.g.:
+<code>
+if civ.getActiveUnit() and keyID == 87 then
+    gen.betterUnitManualWait()
+end
+</code>
+<br>
+</p>
+</details>
+
+
+
 ## Technical Functions[&uarr;](#general-library)
   These functions are necessary to integrate the General Library with the Lua Events.  You are unlikely to need these working with the Lua Scenario Template.
+
+
+<details><summary><code>gen.linkActivationFunction(unitActivationFunction)-->void</code></summary><p style="margin-left: 25px">
+<code>
+gen.linkActivationFunction(unitActivationFunction)-->void</code>
+Links the function to be run every time a unit is activated.  The TOTPP method <code>unit:activate()</code> doesn't trigger the <A href="LuaExecutionPoints.html#unit-activation">Unit Activation</A> execution point, so the general library provides <code>gen.activate</code> and <code>gen.activateSource</code> instead.
+This function provides the code these functions will run once the unit is activated.  It is not necessary to provide the code for the <A href="LuaExecutionPoints.html#after-production"> execution point</A>.
+<br>Valid Arguments:
+<code>
+unitActivationFunction: function(unit,source)-->void
+(unit: unitType, source: boolean)
+</code>
+<br>
+</p>
+</details>
+
 ## Obsolete Functions[&uarr;](#general-library)
   These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
