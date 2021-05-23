@@ -1,7 +1,9 @@
 # Just a page to test things on
 
 <details><summary> Summary </summary>
-  [Internal link](Jargon.md)
+  <A href="Jargon.html">Internal Link</A>
+  
+  
   </details>
 [Internal link](Jargon.md)
 
