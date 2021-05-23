@@ -186,8 +186,9 @@ Considers a polygon with corners given by the tableOfCoordinates.  Function retu
 tile: tileObject
 tableOfCoordinates: Table with integer keys starting at 1, with no gaps.  Values for these keys are tables {[1]=xCoord,[2]=yCoord}.  Optional key is "doesNotCrossThisX", which has a number value.  
 </code>
-<br><a href="#geninpolygon">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 Notes: The order of the coordinates is the order that you would reach the corners of the polygon if you were drawing its edges without lifting your pen off the paper.  The key <code>"doesNotCrossThisX"</code> represents an x coordinate on the map that the polygon doesn't cross over.  If it is absent, 0 is used.
+<br><a href="#geninpolygon">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
 </p>
 </details>
 
@@ -198,8 +199,9 @@ Returns true if the city has enough production to support all existing units and
 <br>Valid Arguments:
 <code>
 city: cityObject
-<br><a href="#gencitycansupportanotherunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 </code>
+<br><a href="#gencitycansupportanotherunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
 </p>
 </details>
 
@@ -355,7 +357,7 @@ destRankFn: function(unitToMove,candidateTile) --> integer or false
 (unitToMove:unitObject, candidateTile: tileObject)
 </code>
 The default destRankFn ranks empty tiles as 0 (most preferred), tiles occupied by friendly units as 1, and tiles with enemy units or cities as false (can't move there).
-<a href="genmoveunitadjacent">link for here</a>
+<br><a href="genmoveunitadjacent">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
@@ -980,8 +982,6 @@ Removes transporter from tile if present.
 <details id="genisfortifying"><summary><code>gen.isFortifying(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isFortifying(unit)-->boolean
 </code>
-
-
 <br><a href="#genisfortifying">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -991,8 +991,6 @@ Removes transporter from tile if present.
 <details id="gensettofortifying"><summary><code>gen.setToFortifying(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToFortifying(unit)-->void
 </code>
-
-
 <br><a href="#gensettofortifying">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1002,8 +1000,6 @@ Removes transporter from tile if present.
 <details id="genisfortified"><summary><code>gen.isFortified(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isFortified(unit)-->boolean
 </code>
-
-
 <br><a href="#genisfortified">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1013,8 +1009,6 @@ Removes transporter from tile if present.
 <details id="gensettofortified"><summary><code>gen.setToFortified(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToFortified(unit)-->void
 </code>
-
-
 <br><a href="#gensettofortified">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1024,8 +1018,6 @@ Removes transporter from tile if present.
 <details id="genissleeping"><summary><code>gen.isSleeping(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isSleeping(unit)-->boolean
 </code>
-
-
 <br><a href="#genissleeping">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1035,8 +1027,6 @@ Removes transporter from tile if present.
 <details id="gensettosleeping"><summary><code>gen.setToSleeping(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToSleeping(unit)-->void
 </code>
-
-
 <br><a href="#gensettosleeping">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1045,8 +1035,6 @@ Removes transporter from tile if present.
 <details id="genisbuildingfortress"><summary><code>gen.isBuildingFortress(unit) --> boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildingFortress(unit) --> boolean
 </code>
-
-
 <br><a href="#genisbuildingfortress">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1057,8 +1045,6 @@ Removes transporter from tile if present.
 <details id="gensettobuildingfortress"><summary><code>gen.setToBuildingFortress(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToBuildingFortress(unit)-->void
 </code>
-
-
 <br><a href="#gensettobuildingfortress">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1068,8 +1054,6 @@ Removes transporter from tile if present.
 <details id="genisbuildingroad"><summary><code>gen.isBuildingRoad(unit) --> boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildingRoad(unit) --> boolean
 </code>
-
-
 <br><a href="#genisbuildingroad">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1079,8 +1063,6 @@ Removes transporter from tile if present.
 <details id="gensettobuildingroad"><summary><code>gen.setToBuildingRoad(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToBuildingRoad(unit)-->void
 </code>
-
-
 <br><a href="#gensettobuildingroad">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1091,8 +1073,6 @@ Removes transporter from tile if present.
 <details id="genisirrigating"><summary><code>gen.isIrrigating(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isIrrigating(unit)-->boolean
 </code>
-
-
 <br><a href="#genisirrigating">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1102,8 +1082,6 @@ Removes transporter from tile if present.
 <details id="gensettoirrigating"><summary><code>gen.setToIrrigating(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToIrrigating(unit)-->void
 </code>
-
-
 <br><a href="#gensettoirrigating">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1113,8 +1091,6 @@ Removes transporter from tile if present.
 <details id="genismining"><summary><code>gen.isMining(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isMining(unit)-->boolean
 </code>
-
-
 <br><a href="#genismining">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1124,8 +1100,6 @@ Removes transporter from tile if present.
 <details id="gensettomining"><summary><code>gen.setToMining(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToMining(unit)-->void
 </code>
-
-
 <br><a href="#gensettomining">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1135,8 +1109,6 @@ Removes transporter from tile if present.
 <details id="genistransformingterrain"><summary><code>gen.isTransformingTerrain(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isTransformingTerrain(unit)-->boolean
 </code>
-
-
 <br><a href="#genistransformingterrain">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1146,8 +1118,6 @@ Removes transporter from tile if present.
 <details id="gensettotransformingterrain"><summary><code>gen.setToTransformingTerrain(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToTransformingTerrain(unit)-->void
 </code>
-
-
 <br><a href="#gensettotransformingterrain">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1157,8 +1127,6 @@ Removes transporter from tile if present.
 <details id="geniscleaningpollution"><summary><code>gen.isCleaningPollution(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isCleaningPollution(unit)-->boolean
 </code>
-
-
 <br><a href="#geniscleaningpollution">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1168,8 +1136,6 @@ Removes transporter from tile if present.
 <details id="gensettocleaningpollution"><summary><code>gen.setToCleaningPollution(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToCleaningPollution(unit)-->void
 </code>
-
-
 <br><a href="#gensettocleaningpollution">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1178,8 +1144,6 @@ Removes transporter from tile if present.
 <details id="genisbuildingairbase"><summary><code>gen.isBuildingAirbase(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildingAirbase(unit)-->boolean
 </code>
-
-
 <br><a href="#genisbuildingairbase">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1189,8 +1153,6 @@ Removes transporter from tile if present.
 <details id="gensettobuildingairbase"><summary><code>gen.setToBuildingAirbase(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToBuildingAirbase(unit)-->void
 </code>
-
-
 <br><a href="#gensettobuildingairbase">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1200,8 +1162,6 @@ Removes transporter from tile if present.
 <details id="genisbuildingtransporter"><summary><code>gen.isBuildingTransporter(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildingTransporter(unit)-->boolean
 </code>
-
-
 <br><a href="#genisbuildingtransporter">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1211,8 +1171,6 @@ Removes transporter from tile if present.
 <details id="gensettobuildingtransporter"><summary><code>gen.setToBuildingTransporter(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToBuildingTransporter(unit)-->void
 </code>
-
-
 <br><a href="#gensettobuildingtransporter">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1222,8 +1180,6 @@ Removes transporter from tile if present.
 <details id="genisgoingto"><summary><code>gen.isGoingTo(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isGoingTo(unit)-->boolean
 </code>
-
-
 <br><a href="#genisgoingto">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1238,7 +1194,6 @@ Gives the unit a goto order for the tile.
 <br>(setting <code>unit.gotoTile=nil</code> results in an error)
 <br>If nil is submitted, and the unit already has some other order, it will keep that order.
 <br>Note: this function also accepts a table of coordinates as a tile (just as all other tile functions do in the General Library).
-
 <br><a href="#gensettogoingto">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1248,8 +1203,6 @@ Gives the unit a goto order for the tile.
 <details id="genisnoorder"><summary><code>gen.isNoOrder(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isNoOrder(unit)-->boolean
 </code>
-
-
 <br><a href="#genisnoorder">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1259,8 +1212,6 @@ Gives the unit a goto order for the tile.
 <details id="gensettonoorders"><summary><code>gen.setToNoOrders(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToNoOrders(unit)-->void
 </code>
-
-
 <br><a href="#gensettonoorders">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1270,8 +1221,6 @@ Gives the unit a goto order for the tile.
 <details id="geniswaiting"><summary><code>gen.isWaiting(unit)-->bool</code></summary><p style="margin-left: 25px">
 <code>gen.isWaiting(unit)-->bool
 </code>
-
-
 <br><a href="#geniswaiting">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1280,8 +1229,6 @@ Gives the unit a goto order for the tile.
 <details id="gensettowaiting"><summary><code>gen.setToWaiting(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setToWaiting(unit)-->void
 </code>
-
-
 <br><a href="#gensettowaiting">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1290,8 +1237,6 @@ Gives the unit a goto order for the tile.
 <details id="genclearwaiting"><summary><code>gen.clearWaiting(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearWaiting(unit)-->void
 </code>
-
-
 <br><a href="#genclearwaiting">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1300,8 +1245,6 @@ Gives the unit a goto order for the tile.
 <details id="genisparadropped"><summary><code>gen.isParadropped(unit)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isParadropped(unit)-->boolean
 </code>
-
-
 <br><a href="#genisparadropped">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1310,8 +1253,6 @@ Gives the unit a goto order for the tile.
 <details id="gensetparadropped"><summary><code>gen.setParadropped(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setParadropped(unit)-->void
 </code>
-
-
 <br><a href="#gensetparadropped">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1330,7 +1271,6 @@ Gives the unit a goto order for the tile.
 </code>
 The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
 <br> The unit won't heal on the next turn if this flag is set.
-
 <br><a href="#genismoved">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1341,7 +1281,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 </code>
 The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
 <br> The unit won't heal on the next turn if this flag is set.
-
 <br><a href="#gensetmoved">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1352,7 +1291,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 </code>
 The game sets this flag when a unit moves (even if no movement point is spent, such as when travelling on a railroad).
 <br> The unit won't heal on the next turn if this flag is set.
-
 <br><a href="#genclearmoved">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1364,8 +1302,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisseetwospaces"><summary><code>gen.isSeeTwoSpaces(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isSeeTwoSpaces(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisseetwospaces">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1375,8 +1311,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveseetwospaces"><summary><code>gen.giveSeeTwoSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveSeeTwoSpaces(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveseetwospaces">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1386,8 +1320,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveseetwospaces"><summary><code>gen.removeSeeTwoSpaces(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeSeeTwoSpaces(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveseetwospaces">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1397,8 +1329,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisignorezoc"><summary><code>gen.isIgnoreZOC(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isIgnoreZOC(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisignorezoc">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1408,8 +1338,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveignorezoc"><summary><code>gen.giveIgnoreZOC(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveIgnoreZOC(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveignorezoc">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1419,8 +1347,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveignorezoc"><summary><code>gen.removeIgnoreZOC(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeIgnoreZOC(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveignorezoc">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1430,8 +1356,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisamphibious"><summary><code>gen.isAmphibious(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAmphibious(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisamphibious">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1441,8 +1365,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveampibious"><summary><code>gen.giveAmpibious(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveAmpibious(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveampibious">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1452,8 +1374,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveamphibious"><summary><code>gen.removeAmphibious(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeAmphibious(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveamphibious">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1463,8 +1383,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genissubmarine"><summary><code>gen.isSubmarine(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isSubmarine(unitType)-->boolean
 </code>
-
-
 <br><a href="#genissubmarine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1474,8 +1392,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivesubmarine"><summary><code>gen.giveSubmarine(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveSubmarine(unitType)-->void
 </code>
-
-
 <br><a href="#gengivesubmarine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1485,8 +1401,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovesubmarine"><summary><code>gen.removeSubmarine(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeSubmarine(unitType)-->void
 </code>
-
-
 <br><a href="#genremovesubmarine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1496,8 +1410,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisattackair"><summary><code>gen.isAttackAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttackAir(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisattackair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1507,8 +1419,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveattackair"><summary><code>gen.giveAttackAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveAttackAir(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveattackair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1518,8 +1428,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveattackair"><summary><code>gen.removeAttackAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeAttackAir(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveattackair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1529,8 +1437,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="geniscoastal"><summary><code>gen.isCoastal(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isCoastal(unitType)-->boolean
 </code>
-
-
 <br><a href="#geniscoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1540,8 +1446,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivecoastal"><summary><code>gen.giveCoastal(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveCoastal(unitType)-->void
 </code>
-
-
 <br><a href="#gengivecoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1551,8 +1455,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovecoastal"><summary><code>gen.removeCoastal(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeCoastal(unitType)-->void
 </code>
-
-
 <br><a href="#genremovecoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1562,8 +1464,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisignorewalls"><summary><code>gen.isIgnoreWalls(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isIgnoreWalls(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisignorewalls">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1573,8 +1473,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveingorewalls"><summary><code>gen.giveIngoreWalls(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveIngoreWalls(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveingorewalls">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1584,8 +1482,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveignorewalls"><summary><code>gen.removeIgnoreWalls(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeIgnoreWalls(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveignorewalls">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1595,8 +1491,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="geniscarryair"><summary><code>gen.isCarryAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isCarryAir(unitType)-->boolean
 </code>
-
-
 <br><a href="#geniscarryair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1606,8 +1500,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivecarryair"><summary><code>gen.giveCarryAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveCarryAir(unitType)-->void
 </code>
-
-
 <br><a href="#gengivecarryair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1617,8 +1509,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovecarryair"><summary><code>gen.removeCarryAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeCarryAir(unitType)-->void
 </code>
-
-
 <br><a href="#genremovecarryair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1628,8 +1518,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisparadrop"><summary><code>gen.isParadrop(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isParadrop(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisparadrop">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1639,8 +1527,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengiveparadrop"><summary><code>gen.giveParadrop(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveParadrop(unitType)-->void
 </code>
-
-
 <br><a href="#gengiveparadrop">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1650,8 +1536,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremoveparadrop"><summary><code>gen.removeParadrop(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeParadrop(unitType)-->void
 </code>
-
-
 <br><a href="#genremoveparadrop">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1661,8 +1545,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisalpine"><summary><code>gen.isAlpine(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAlpine(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisalpine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1672,8 +1554,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivealpine"><summary><code>gen.giveAlpine(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveAlpine(unitType)-->void
 </code>
-
-
 <br><a href="#gengivealpine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1683,8 +1563,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovealpine"><summary><code>gen.removeAlpine(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeAlpine(unitType)-->void
 </code>
-
-
 <br><a href="#genremovealpine">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1694,8 +1572,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisbonusagainsthorse"><summary><code>gen.isBonusAgainstHorse(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBonusAgainstHorse(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisbonusagainsthorse">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1705,8 +1581,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivebonusagainsthorse"><summary><code>gen.giveBonusAgainstHorse(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveBonusAgainstHorse(unitType)-->void
 </code>
-
-
 <br><a href="#gengivebonusagainsthorse">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1716,8 +1590,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovebonusagainsthorse"><summary><code>gen.removeBonusAgainstHorse(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeBonusAgainstHorse(unitType)-->void
 </code>
-
-
 <br><a href="#genremovebonusagainsthorse">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1727,8 +1599,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisfreesupportunderfundamentalism"><summary><code>gen.isFreeSupportUnderFundamentalism(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isFreeSupportUnderFundamentalism(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisfreesupportunderfundamentalism">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1738,8 +1608,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivefreesupportunderfundamentalism"><summary><code>gen.giveFreeSupportUnderFundamentalism(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveFreeSupportUnderFundamentalism(unitType)-->void
 </code>
-
-
 <br><a href="#gengivefreesupportunderfundamentalism">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1749,8 +1617,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovefreesupportunderfundamentalism"><summary><code>gen.removeFreeSupportUnderFundamentalism(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeFreeSupportUnderFundamentalism(unitType)-->void
 </code>
-
-
 <br><a href="#genremovefreesupportunderfundamentalism">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1760,8 +1626,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisdestroyedafterattacking"><summary><code>gen.isDestroyedAfterAttacking(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isDestroyedAfterAttacking(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisdestroyedafterattacking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1771,8 +1635,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivedestroyedafterattacking"><summary><code>gen.giveDestroyedAfterAttacking(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveDestroyedAfterAttacking(unitType)-->void
 </code>
-
-
 <br><a href="#gengivedestroyedafterattacking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1782,8 +1644,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovedestroyedafterattacking"><summary><code>gen.removeDestroyedAfterAttacking(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeDestroyedAfterAttacking(unitType)-->void
 </code>
-
-
 <br><a href="#genremovedestroyedafterattacking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1793,8 +1653,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisbonusagainstair"><summary><code>gen.isBonusAgainstAir(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBonusAgainstAir(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisbonusagainstair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1804,8 +1662,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivebonusagainstair"><summary><code>gen.giveBonusAgainstAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveBonusAgainstAir(unitType)-->void
 </code>
-
-
 <br><a href="#gengivebonusagainstair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1815,8 +1671,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovebonusagainstair"><summary><code>gen.removeBonusAgainstAir(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeBonusAgainstAir(unitType)-->void
 </code>
-
-
 <br><a href="#genremovebonusagainstair">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1826,8 +1680,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genisspotsubmarines"><summary><code>gen.isSpotSubmarines(unitType)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isSpotSubmarines(unitType)-->boolean
 </code>
-
-
 <br><a href="#genisspotsubmarines">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1837,8 +1689,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="gengivespotsubmarines"><summary><code>gen.giveSpotSubmarines(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.giveSpotSubmarines(unitType)-->void
 </code>
-
-
 <br><a href="#gengivespotsubmarines">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1848,8 +1698,6 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <details id="genremovespotsubmarines"><summary><code>gen.removeSpotSubmarines(unitType)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.removeSpotSubmarines(unitType)-->void
 </code>
-
-
 <br><a href="#genremovespotsubmarines">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1864,8 +1712,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="geniscivildisorder"><summary><code>gen.isCivilDisorder(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isCivilDisorder(city)-->boolean
 </code>
-
-
 <br><a href="#geniscivildisorder">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1875,8 +1721,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetcivildisorder"><summary><code>gen.setCivilDisorder(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setCivilDisorder(city)-->void
 </code>
-
-
 <br><a href="#gensetcivildisorder">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1886,8 +1730,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearcivildisorder"><summary><code>gen.clearCivilDisorder(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearCivilDisorder(city)-->void
 </code>
-
-
 <br><a href="#genclearcivildisorder">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1897,8 +1739,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="geniswelovetheking"><summary><code>gen.isWeLoveTheKing(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isWeLoveTheKing(city)-->boolean
 </code>
-
-
 <br><a href="#geniswelovetheking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1908,8 +1748,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetwelovetheking"><summary><code>gen.setWeLoveTheKing(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setWeLoveTheKing(city)-->void
 </code>
-
-
 <br><a href="#gensetwelovetheking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1919,8 +1757,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearwelovetheking"><summary><code>gen.clearWeLoveTheKing(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearWeLoveTheKing(city)-->void
 </code>
-
-
 <br><a href="#genclearwelovetheking">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1930,8 +1766,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisimprovementsold"><summary><code>gen.isImprovementSold(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isImprovementSold(city)-->boolean
 </code>
-
-
 <br><a href="#genisimprovementsold">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1941,8 +1775,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetimprovementsold"><summary><code>gen.setImprovementSold(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setImprovementSold(city)-->void
 </code>
-
-
 <br><a href="#gensetimprovementsold">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1952,8 +1784,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearimprovementsold"><summary><code>gen.clearImprovementSold(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearImprovementSold(city)-->void
 </code>
-
-
 <br><a href="#genclearimprovementsold">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1963,8 +1793,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genistechnologystolen"><summary><code>gen.isTechnologyStolen(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isTechnologyStolen(city)-->boolean
 </code>
-
-
 <br><a href="#genistechnologystolen">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1974,8 +1802,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensettechnologystolen"><summary><code>gen.setTechnologyStolen(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setTechnologyStolen(city)-->void
 </code>
-
-
 <br><a href="#gensettechnologystolen">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1985,8 +1811,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gencleartechnologystolen"><summary><code>gen.clearTechnologyStolen(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearTechnologyStolen(city)-->void
 </code>
-
-
 <br><a href="#gencleartechnologystolen">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -1996,8 +1820,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisautobuild"><summary><code>gen.isAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAutoBuild(city)-->boolean
 </code>
-
-
 <br><a href="#genisautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2007,8 +1829,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetautobuild"><summary><code>gen.setAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#gensetautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2018,8 +1838,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearautobuild"><summary><code>gen.clearAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#genclearautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2029,8 +1847,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute6"><summary><code>gen.isAttribute6(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute6(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute6">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2040,8 +1856,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute6"><summary><code>gen.setAttribute6(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute6(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute6">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2051,8 +1865,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute6"><summary><code>gen.clearAttribute6(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute6(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute6">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2062,8 +1874,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute7"><summary><code>gen.isAttribute7(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute7(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute7">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2073,8 +1883,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute7"><summary><code>gen.setAttribute7(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute7(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute7">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2084,8 +1892,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute7"><summary><code>gen.clearAttribute7(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute7(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute7">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2095,8 +1901,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisbuildcoastal"><summary><code>gen.isBuildCoastal(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildCoastal(city)-->boolean
 </code>
-
-
 <br><a href="#genisbuildcoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2106,8 +1910,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetbuildcoastal"><summary><code>gen.setBuildCoastal(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setBuildCoastal(city)-->void
 </code>
-
-
 <br><a href="#gensetbuildcoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2117,8 +1919,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearbuildcoastal"><summary><code>gen.clearBuildCoastal(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearBuildCoastal(city)-->void
 </code>
-
-
 <br><a href="#genclearbuildcoastal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2128,8 +1928,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute9"><summary><code>gen.isAttribute9(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute9(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute9">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2139,8 +1937,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute9"><summary><code>gen.setAttribute9(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute9(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute9">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2150,8 +1946,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute9"><summary><code>gen.clearAttribute9(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute9(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute9">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2161,8 +1955,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute10"><summary><code>gen.isAttribute10(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute10(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute10">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2172,8 +1964,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute10"><summary><code>gen.setAttribute10(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute10(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute10">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2183,8 +1973,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute10"><summary><code>gen.clearAttribute10(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute10(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute10">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2194,8 +1982,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute11"><summary><code>gen.isAttribute11(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute11(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute11">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2205,8 +1991,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute11"><summary><code>gen.setAttribute11(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute11(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute11">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2216,8 +2000,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute11"><summary><code>gen.clearAttribute11(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute11(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute11">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2227,8 +2009,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisbuildhydroplant"><summary><code>gen.isBuildHydroPlant(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildHydroPlant(city)-->boolean
 </code>
-
-
 <br><a href="#genisbuildhydroplant">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2238,8 +2018,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetbuildhydroplant"><summary><code>gen.setBuildHydroPlant(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setBuildHydroPlant(city)-->void
 </code>
-
-
 <br><a href="#gensetbuildhydroplant">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2249,8 +2027,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearbuildhydroplant"><summary><code>gen.clearBuildHydroPlant(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearBuildHydroPlant(city)-->void
 </code>
-
-
 <br><a href="#genclearbuildhydroplant">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2260,8 +2036,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute13"><summary><code>gen.isAttribute13(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute13(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute13">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2271,8 +2045,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute13"><summary><code>gen.setAttribute13(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute13(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute13">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2282,8 +2054,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute13"><summary><code>gen.clearAttribute13(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute13(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute13">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2293,8 +2063,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute14"><summary><code>gen.isAttribute14(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute14(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute14">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2304,8 +2072,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute14"><summary><code>gen.setAttribute14(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute14(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute14">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2315,8 +2081,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute14"><summary><code>gen.clearAttribute14(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute14(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute14">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2326,8 +2090,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute15"><summary><code>gen.isAttribute15(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute15(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute15">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2337,8 +2099,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute15"><summary><code>gen.setAttribute15(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute15(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute15">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2348,8 +2108,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute15"><summary><code>gen.clearAttribute15(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute15(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute15">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2359,8 +2117,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute16"><summary><code>gen.isAttribute16(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute16(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute16">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2370,8 +2126,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute16"><summary><code>gen.setAttribute16(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute16(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute16">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2381,8 +2135,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute16"><summary><code>gen.clearAttribute16(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute16(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute16">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2392,8 +2144,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisusedairport"><summary><code>gen.isUsedAirport(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isUsedAirport(city)-->boolean
 </code>
-
-
 <br><a href="#genisusedairport">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2403,8 +2153,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetusedairport"><summary><code>gen.setUsedAirport(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setUsedAirport(city)-->void
 </code>
-
-
 <br><a href="#gensetusedairport">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2414,8 +2162,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearusedairport"><summary><code>gen.clearUsedAirport(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearUsedAirport(city)-->void
 </code>
-
-
 <br><a href="#genclearusedairport">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2425,8 +2171,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute18"><summary><code>gen.isAttribute18(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute18(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute18">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2437,8 +2181,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute18"><summary><code>gen.setAttribute18(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute18(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute18">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2448,8 +2190,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute18"><summary><code>gen.clearAttribute18(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute18(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute18">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2459,8 +2199,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute19"><summary><code>gen.isAttribute19(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute19(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute19">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2470,8 +2208,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute19"><summary><code>gen.setAttribute19(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute19(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute19">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2481,8 +2217,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute19"><summary><code>gen.clearAttribute19(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute19(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute19">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2492,8 +2226,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute20"><summary><code>gen.isAttribute20(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute20(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute20">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2503,8 +2235,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute20"><summary><code>gen.setAttribute20(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute20(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute20">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2514,8 +2244,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute20"><summary><code>gen.clearAttribute20(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute20(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute20">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2525,8 +2253,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute21"><summary><code>gen.isAttribute21(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute21(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute21">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2536,8 +2262,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute21"><summary><code>gen.setAttribute21(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute21(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute21">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2547,8 +2271,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute21"><summary><code>gen.clearAttribute21(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute21(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute21">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2558,8 +2280,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisbuildships"><summary><code>gen.isBuildShips(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isBuildShips(city)-->boolean
 </code>
-
-
 <br><a href="#genisbuildships">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2569,8 +2289,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetbuildships"><summary><code>gen.setBuildShips(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setBuildShips(city)-->void
 </code>
-
-
 <br><a href="#gensetbuildships">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2580,8 +2298,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearbuildships"><summary><code>gen.clearBuildShips(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearBuildShips(city)-->void
 </code>
-
-
 <br><a href="#genclearbuildships">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2591,8 +2307,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="geniscityinvestigated"><summary><code>gen.isCityInvestigated(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isCityInvestigated(city)-->boolean
 </code>
-
-
 <br><a href="#geniscityinvestigated">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2602,8 +2316,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetcityinvestigated"><summary><code>gen.setCityInvestigated(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setCityInvestigated(city)-->void
 </code>
-
-
 <br><a href="#gensetcityinvestigated">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2613,8 +2325,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearcityinvestigated"><summary><code>gen.clearCityInvestigated(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearCityInvestigated(city)-->void
 </code>
-
-
 <br><a href="#genclearcityinvestigated">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2624,8 +2334,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisattribute24"><summary><code>gen.isAttribute24(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute24(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute24">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2636,8 +2344,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetattribute24"><summary><code>gen.setAttribute24(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute24(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute24">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2647,8 +2353,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearattribute24"><summary><code>gen.clearAttribute24(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute24(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute24">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2658,8 +2362,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genismilitaryautobuild"><summary><code>gen.isMilitaryAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isMilitaryAutoBuild(city)-->boolean
 </code>
-
-
 <br><a href="#genismilitaryautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2669,8 +2371,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetmilitaryautobuild"><summary><code>gen.setMilitaryAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setMilitaryAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#gensetmilitaryautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2680,8 +2380,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genclearmilitaryautobuild"><summary><code>gen.clearMilitaryAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearMilitaryAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#genclearmilitaryautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2691,8 +2389,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisdomesticautobuild"><summary><code>gen.isDomesticAutoBuild(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isDomesticAutoBuild(city)-->boolean
 </code>
-
-
 <br><a href="#genisdomesticautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2702,8 +2398,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gensetdomesticautobuild"><summary><code>gen.setDomesticAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setDomesticAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#gensetdomesticautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2713,8 +2407,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="gencleardomesticautobuild"><summary><code>gen.clearDomesticAutoBuild(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearDomesticAutoBuild(city)-->void
 </code>
-
-
 <br><a href="#gencleardomesticautobuild">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2724,8 +2416,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 <details id="genisobjective"><summary><code>gen.isObjective(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isObjective(city)-->boolean
 </code>
-
-
 <br><a href="#genisobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2737,8 +2427,6 @@ The functions of many of the city attribute flags are unknown at this time.  As 
 </code>
 Sets the city as a scenario "objective."
 <br>Removes the major objective flag if it is set, since the objective flag overrides it.
-
-
 <br><a href="#gensetobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2748,8 +2436,6 @@ Sets the city as a scenario "objective."
 <details id="genclearobjective"><summary><code>gen.clearObjective(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearObjective(city)-->void
 </code>
-
-
 <br><a href="#genclearobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2759,8 +2445,6 @@ Sets the city as a scenario "objective."
 <details id="genisattribute28"><summary><code>gen.isAttribute28(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute28(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute28">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2770,8 +2454,6 @@ Sets the city as a scenario "objective."
 <details id="gensetattribute28"><summary><code>gen.setAttribute28(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute28(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute28">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2781,8 +2463,6 @@ Sets the city as a scenario "objective."
 <details id="genclearattribute28"><summary><code>gen.clearAttribute28(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute28(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute28">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2792,8 +2472,6 @@ Sets the city as a scenario "objective."
 <details id="genismajorobjective"><summary><code>gen.isMajorObjective(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isMajorObjective(city)-->boolean
 </code>
-
-
 <br><a href="#genismajorobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2805,7 +2483,6 @@ Sets the city as a scenario "objective."
 </code>
 Sets the city as a scenario "Major Objective.
 <br>Clears the regular objective flag if it exists, since the objective flag overrides the major objective flag.
-
 <br><a href="#gensetmajorobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2815,8 +2492,6 @@ Sets the city as a scenario "Major Objective.
 <details id="genclearmajorobjective"><summary><code>gen.clearMajorObjective(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearMajorObjective(city)-->void
 </code>
-
-
 <br><a href="#genclearmajorobjective">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2826,8 +2501,6 @@ Sets the city as a scenario "Major Objective.
 <details id="genisusedtransporter"><summary><code>gen.isUsedTransporter(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isUsedTransporter(city)-->boolean
 </code>
-
-
 <br><a href="#genisusedtransporter">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2837,8 +2510,6 @@ Sets the city as a scenario "Major Objective.
 <details id="gensetusedtransporter"><summary><code>gen.setUsedTransporter(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setUsedTransporter(city)-->void
 </code>
-
-
 <br><a href="#gensetusedtransporter">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2848,8 +2519,6 @@ Sets the city as a scenario "Major Objective.
 <details id="genclearusedtransporter"><summary><code>gen.clearUsedTransporter(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearUsedTransporter(city)-->void
 </code>
-
-
 <br><a href="#genclearusedtransporter">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2859,8 +2528,6 @@ Sets the city as a scenario "Major Objective.
 <details id="genisattribute31"><summary><code>gen.isAttribute31(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute31(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute31">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2870,8 +2537,6 @@ Sets the city as a scenario "Major Objective.
 <details id="gensetattribute31"><summary><code>gen.setAttribute31(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.setAttribute31(city)-->void
 </code>
-
-
 <br><a href="#gensetattribute31">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2881,8 +2546,6 @@ Sets the city as a scenario "Major Objective.
 <details id="genclearattribute31"><summary><code>gen.clearAttribute31(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute31(city)-->void
 </code>
-
-
 <br><a href="#genclearattribute31">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
@@ -2892,23 +2555,21 @@ Sets the city as a scenario "Major Objective.
 <details id="genisattribute32"><summary><code>gen.isAttribute32(city)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.isAttribute32(city)-->boolean
 </code>
-
-
 <br><a href="#genisattribute32">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
 
 
- <details id="gensetattribute32"><summary><code>gen.setAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
-<code>gen.setAttribute32(city)-->void
+<details id="gensetattribute32"><summary><code>gen.setAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setAttribute32(city)-->void</code>
 <br><a href="#gensetattribute32">Link to here.</a> (Click link, then copy the link from your browser address bar.)
-</code>
+<br>
 </p>
 </details>
 
 
- <details id="genclearattribute32"><summary><code>gen.clearAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
+<details id="genclearattribute32"><summary><code>gen.clearAttribute32(city)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.clearAttribute32(city)-->void
 </code>
 <br><a href="#genclearattribute32">Link to here.</a> (Click link, then copy the link from your browser address bar.)
