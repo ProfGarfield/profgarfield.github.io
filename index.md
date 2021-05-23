@@ -21,9 +21,8 @@ Lua Scenario Template Documentation
 [Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/) (Civfanatics Thread)   
 [Lua Execution Points](LuaExecutionPoints.md)  
 [General Library](GeneralLibrary.md)  
-[Key Codes](Keyboard.md) (Reference for keyboard.lua Module) 
-
-
+[Key Codes](Keyboard.md) (Reference for keyboard.lua Module)   
+[Jargon Glossary](Jargon.md)
 
 
 # Files
