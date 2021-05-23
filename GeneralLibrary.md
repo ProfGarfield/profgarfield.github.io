@@ -11,15 +11,15 @@
 # General Library
 
 The General Library offers a variety of tools to make it easier to build events.  These functions are divided into several sections:
-* [Building Blocks](#building-blocks&uaar;)  
+* [Building Blocks](#building-blocks)  
   These are miscellaneous functions that are likely to be useful in building larger events or other modules.
-* [Flag Functions](#flag-functions&uarr;)
+* [Flag Functions](#flag-functions)
   These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.
-* [Small Features](#small-features&uarr;)  
+* [Small Features](#small-features)  
   These functions create features for the Lua Scenario Template that are too small to merit a separate module.
-* [Technical Functions](#technical-functions&uarr;)  
+* [Technical Functions](#technical-functions)  
   These functions are necessary to integrate the General Library with the Lua Events.  You are unlikely to need these working with the Lua Scenario Template.
-* [Obsolete Functions](#obsolete-functions&uarr;)  
+* [Obsolete Functions](#obsolete-functions)  
   These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
 
 
@@ -144,13 +144,13 @@ Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
 
 ## Flag Functions[&uarr;](#general-library)
 These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.  
-[Bitwise Tools](#bitwise-tools&uarr;)  
-[Terrain Improvements](#terrain-improvements&uarr;)  
-[Unit Orders](#unit-orders&uarr;)  
-[Unit Type Flags](#unit-type-flags&uarr;)  
-[City Attribute Flags](#city-attribute-flags&uarr;)  
+[Bitwise Tools](#bitwise-tools)  
+[Terrain Improvements](#terrain-improvements)  
+[Unit Orders](#unit-orders)  
+[Unit Type Flags](#unit-type-flags)  
+[City Attribute Flags](#city-attribute-flags)  
 
-### Bitwise Tools[&uarr;](#flag-functions&uarr;)
+### Bitwise Tools[&uarr;](#flag-functions)
 
 
 <details> <summary><code>gen.checkBits(integer,string) --> boolean</code></summary>
@@ -288,7 +288,7 @@ Note: Lua does not actually allow you to type in integers specified in binary (t
 <br>
 </details>
 
-### Terrain Improvements[&uarr;](#flag-functions&uarr;)
+### Terrain Improvements[&uarr;](#flag-functions)
 
 Any function here that accepts a tile will also
 accept a table `{[1]=x,[2]=y,[3]=z}`, a table 
@@ -698,7 +698,7 @@ Removes transporter from tile if present.
 </details>
 
 
-### Unit Orders[&uarr;](#flag-functions&uarr;)
+### Unit Orders[&uarr;](#flag-functions)
 
 
 <details><summary><code>gen.isFortifying(unit)-->boolean</code></summary>
@@ -1015,7 +1015,7 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 <br>
 </details>
 
-### Unit Type Flags[&uarr;](#flag-functions&uarr;)
+### Unit Type Flags[&uarr;](#flag-functions)
 
 <details><summary><code>gen.isSeeTwoSpaces(unitType)-->boolean</code></summary>
 <code>gen.isSeeTwoSpaces(unitType)-->boolean
@@ -1423,7 +1423,7 @@ The game sets this flag when a unit moves (even if no movement point is spent, s
 </details>
 
 
-### City Attribute Flags[&uarr;](#flag-functions&uarr;)
+### City Attribute Flags[&uarr;](#flag-functions)
 
 The functions of many of the city attribute flags are unknown at this time.  As more functionality is discovered, these functions will be given properly descriptive names.  However, for backwards compatibility, `gen.commandAttributeXX` will remain available in the General Library (though it may be removed from this document).  If you discover the purpose of a flag, please report it in this [Civfanatics Forum Thread](https://forums.civfanatics.com/threads/totpp-lua-scenario-template.660244/).
 
