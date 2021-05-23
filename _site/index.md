@@ -29,5 +29,3 @@ Lua Scenario Template Documentation
 # Files
 * [Classic Rome](GameFiles/ClassicRome.zip)
 * [Classic Rome 2](GameFiles/ClassicRome2.zip) (Start of Conditional Code Lesson)
-
-[Testing Page](TestingPage.md) (Just a place for me to test Github Pages Markdown)
