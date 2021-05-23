@@ -3,3 +3,4 @@
 <details><summary> Summary </summary>
   [Internal link](Jargon.md)
   </details>
+[Internal link](Jargon.md)
