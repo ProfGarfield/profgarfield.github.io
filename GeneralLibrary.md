@@ -11,6 +11,8 @@
 # General Library
 
 The General Library offers a variety of tools to make it easier to build events.  These functions are divided into several sections:
+* [Replacement Functions](#replacement-functions)
+  These functions should be used in place of the similar tools provided by the `civ` library.
 * [Building Blocks](#building-blocks)  
   These are miscellaneous functions that are likely to be useful in building larger events or other modules.
 * [Flag Functions](#flag-functions)
@@ -21,6 +23,35 @@ The General Library offers a variety of tools to make it easier to build events.
   These functions are necessary to integrate the General Library with the Lua Events.  You are unlikely to need these working with the Lua Scenario Template.
 * [Obsolete Functions](#obsolete-functions)  
   These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
+
+## Replacement Functions[&uarr;](#general-library)
+
+
+<details><summary><code>gen.activate(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.activate(unit)-->void</code>
+<br>Use to activate a unit.  This assumes that the 'source' of the activation is <code>true</code> (i.e. human generated).  Use <code> gen.activateWithSource</code> if false might be needed.
+<br>Valid Arguments:
+<code>
+unit: unitType
+</code>
+Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
+<br>
+</p>
+</details>
+
+<details><summary><code>gen.activateSource(unit,source)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.activateSource(unit,source)-->void
+</code>
+Use to activate a unit.
+<br>Valid Arguments:
+<code>
+unit: unitType
+source: boolean
+</code>
+Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
+<br>
+</p>
+</details>
 
 
 ## Building Blocks[&uarr;](#general-library)
@@ -163,6 +194,90 @@ city: cityObject
 </p>
 </details>
 
+
+<details><summary><code>gen.homeToNearestCity(unit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.homeToNearestCity(unit)-->void</code>
+<br> Finds the nearest city (of the same tribe) that can support another unit, and sets the unit's home city to that city.  If there is no suitable city, the unit's home city isn't changed.  (It is <em>not</em> set to <code>nil</code> in this case, so if you want that functionality, use <code>unit.homeCity=nil</code> on the previous line.)
+<br>Valid Arguments:
+<code>
+unit: unitType
+</code>
+Note: The distance is computed using <code>gen.tileDist</code>.
+<br>
+</p>
+</details>
+
+
+<details><summary><code>gen.getActivationFunction()-->function(unit,source)</code></summary><p style="margin-left: 25px">
+<code>gen.getActivationFunction()-->function(unit,source)</code>
+Returns the code to be run when a unit is activated.
+<br>Valid Arguments:
+<code>
+unit: unitType
+source: boolean
+</code>
+Note: Some code might not be available if it isn't necessary to run every single time a unit is activated, such as, for example, the code associated with the <A href="LuaExecutionPoints.html#after-production"> After Production</A> execution point.  The function returned is the one provided through <code>gen.linkActivationFunction</code>.
+<br>
+</p>
+</details>
+
+
+<details><summary><code>gen.getTileID(tile)-->int </code></summary><p style="margin-left: 25px">
+<code>gen.getTileID(tile)-->int
+gen.getTileID(x,y)-->int 
+gen.getTileID(x,y,z)-->int 
+</code>
+Returns a single-value numeric key that uniquely identifies a tile on any map.  Very useful if you want to store a tile as a key in a table.  If providing x and y provided, but not z, z is set to 0.
+<br>Valid Arguments:
+<code>
+tile: tileObject
+x,y: integers representing map coordinates
+x,y,z: integers representing map coordinates. 
+</code>
+Notes: ID numbers will not be the same in different scenarios (if maps are different sizes).  Function created by Knighttime, and modified by Prof. Garfield.
+<br>
+</p>
+</details>
+
+<details><summary><code>gen.getTileId(tile)-->int </code></summary><p style="margin-left: 25px">
+<code>gen.getTileID(tile)-->int
+gen.getTileID(x,y)-->int 
+gen.getTileID(x,y,z)-->int 
+</code>
+Returns a single-value numeric key that uniquely identifies a tile on any map.  Very useful if you want to store a tile as a key in a table.  If providing x and y provided, but not z, z is set to 0.
+<br>Valid Arguments:
+<code>
+tile: tileObject
+x,y: integers representing map coordinates
+x,y,z: integers representing map coordinates. </code>
+<br>Notes: ID numbers will not be the same in different scenarios (if maps are different sizes).  Function created by Knighttime, and modified by Prof. Garfield.
+<br> Same function as above, so that you don't have to remember if it is ID or Id.
+<br>
+</p>
+</details>
+
+<details><summary><code>gen.getTileFromID(tileID) --> tileObject</code></summary><p style="margin-left: 25px">
+<code>gen.getTileFromID(tileID) --> tileObject</code>
+Reverses the function <code>gen.getTileID</code>.
+<br>Valid Arguments:
+<code>
+tileID: integer representing an ID created by gen.getTileID
+</code>
+Note: ID numbers will not be the same in different scenarios (if maps are different sizes).
+</p>
+</details>
+
+<details><summary><code>gen.getTileFromId(tileID) --> tileObject</code></summary><p style="margin-left: 25px">
+<code>gen.getTileFromId(tileID) --> tileObject</code>
+Reverses the function <code>gen.getTileID</code>.
+<br>Valid Arguments:
+<code>
+tileID: integer representing an ID created by gen.getTileID
+</code>
+Note: ID numbers will not be the same in different scenarios (if maps are different sizes).
+<br> Same function as above, so that you don't have to remember if it is ID or Id.
+</p>
+</details>
 
 ## Flag Functions[&uarr;](#general-library)
 These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.  
@@ -2559,9 +2674,8 @@ simpleSettings.rehomeUnitsOnCityCapture = true
 #### Functions
 
 <details><summary><code>gen.rehomeUnitsInCapturedCity(city,defender) --> void</code></summary><p style="margin-left: 25px">
-<code>
-gen.rehomeUnitsInCapturedCity(city,defender) --> void</code>
-When the city is captured from the defender tribe, all units supported by that city are re-homed to the nearest friendly city that has extra production to support them.
+<code>gen.rehomeUnitsInCapturedCity(city,defender) --> void</code>
+<br>When the city is captured from the defender tribe, all units supported by that city are re-homed to the nearest friendly city that has extra production to support them.
 <br>Valid Arguments:
 <code>
 city: cityObject
@@ -2604,8 +2718,7 @@ By default, a `weightFunction` is used that adds 1 if the `unit` is a different 
 
 
 <details><summary><code>gen.selectNextActiveUnit(activeUnit,source,customWeightFn)-->void</code></summary><p style="margin-left: 25px">
-<code>
-gen.selectNextActiveUnit(activeUnit,source)-->void
+<code>gen.selectNextActiveUnit(activeUnit,source)-->void
 gen.selectNextActiveUnit(activeUnit,source,customWeightFn)-->void
 </code>
 Uses a "weightFunction" to determine the 'best' unit to activate next, and gives all other units owned by the active unit's tribe the `wait` command, so they don't activate instead.  If no weightFunction is provided, the weight is +1 if the unit isn't the same type as the active unit, +2 per square of distance between the units, and +10000 if the units are on different maps.  The 'source' argument is a boolean, the same as the 'source' in the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point.
@@ -2626,9 +2739,8 @@ civ.scen.onActivateUnit(function(unit,source)-->void)
 </details>
 
 <details><summary><code>gen.betterUnitManualWait() --> void </code></summary><p style="margin-left: 25px">
-<code>
-gen.betterUnitManualWait() --> void </code>
-Makes the `W` key work for Custom Unit Activation (by storing waiting units in a table), since the actual 'waiting' flag is manipulated.
+<code>gen.betterUnitManualWait() --> void </code>
+<br>Makes the `W` key work for Custom Unit Activation (by storing waiting units in a table), since the actual 'waiting' flag is manipulated.
 <br>Notes: If implementing outside of the Lua Scenario Template, this should be run when there is an active unit, and the key pressed has id 87. (keyboard.w)  E.g.:
 <code>
 if civ.getActiveUnit() and keyID == 87 then
@@ -2646,8 +2758,7 @@ end
 
 
 <details><summary><code>gen.linkActivationFunction(unitActivationFunction)-->void</code></summary><p style="margin-left: 25px">
-<code>
-gen.linkActivationFunction(unitActivationFunction)-->void</code>
+<code>gen.linkActivationFunction(unitActivationFunction)-->void</code>
 Links the function to be run every time a unit is activated.  The TOTPP method <code>unit:activate()</code> doesn't trigger the <A href="LuaExecutionPoints.html#unit-activation">Unit Activation</A> execution point, so the general library provides <code>gen.activate</code> and <code>gen.activateSource</code> instead.
 This function provides the code these functions will run once the unit is activated.  It is not necessary to provide the code for the <A href="LuaExecutionPoints.html#after-production"> execution point</A>.
 <br>Valid Arguments:
