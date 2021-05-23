@@ -27,7 +27,7 @@ The General Library offers a variety of tools to make it easier to build events.
 ## Replacement Functions[&uarr;](#general-library)
 
 
-<details><summary><code>gen.activate(unit)-->void</code></summary><p style="margin-left: 25px">
+<details id="genactivate"><summary><code>gen.activate(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.activate(unit)-->void</code>
 <br>Use to activate a unit.  This assumes that the 'source' of the activation is <code>true</code> (i.e. human generated).  Use <code> gen.activateWithSource</code> if false might be needed.
 <br>Valid Arguments:
@@ -35,11 +35,12 @@ The General Library offers a variety of tools to make it easier to build events.
 unit: unitType
 </code>
 Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
+<a href="genactivate">Link to Here.</a>
 <br>
 </p>
 </details>
 
-<details><summary><code>gen.activateSource(unit,source)-->void</code></summary><p style="margin-left: 25px">
+<details id="genactivatesource"><summary><code>gen.activateSource(unit,source)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.activateSource(unit,source)-->void
 </code>
 Use to activate a unit.
@@ -49,6 +50,7 @@ unit: unitType
 source: boolean
 </code>
 Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
+<a href="genactivatesource">Link to Here.</a>
 <br>
 </p>
 </details>
@@ -338,6 +340,7 @@ destRankFn: function(unitToMove,candidateTile) --> integer or false
 (unitToMove:unitObject, candidateTile: tileObject)
 </code>
 The default destRankFn ranks empty tiles as 0 (most preferred), tiles occupied by friendly units as 1, and tiles with enemy units or cities as false (can't move there).
+<a href="genmoveunitadjacent">link for here</a>
 <br>
 </p>
 </details>
@@ -2891,3 +2894,5 @@ unitActivationFunction: function(unit,source)-->void
 
 ## Obsolete Functions[&uarr;](#general-library)
   These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
+
+
