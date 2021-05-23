@@ -26,9 +26,6 @@ The General Library offers a variety of tools to make it easier to build events.
 ## Building Blocks[&uarr;](#general-library)
 These are miscellaneous functions that are likely to be useful in building larger events or other modules.
 
->! Hidden line 1
->! Hidden Line 2
-
 <details><summary><code>gen.applyWonderBonus(wonder,tribe)-->boolean</code></summary>
 <code>gen.applyWonderBonus(wonder,tribe)-->boolean</code>
 
