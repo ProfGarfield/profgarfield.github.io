@@ -1,7 +1,7 @@
 # Just a page to test things on
 
 <details><summary> Summary </summary>
-  <A href="Jargon.html">Internal Link</A>
+  <A href="Jargon.html#Atomic Movement Points">Internal Link</A>
   
   Other hidden stuff.
   </details>
