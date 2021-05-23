@@ -325,7 +325,7 @@ tile: tileObject,
 </details>
 
 
-<details><summary><a id="genmoveunitadjacent"><code>gen.moveUnitAdjacent(unit)-->tile or false</code></a></summary><p style="margin-left: 25px">
+<details id="genmoveunitadjacent"><summary><code>gen.moveUnitAdjacent(unit)-->tile or false</code></summary><p style="margin-left: 25px">
 <code>gen.moveUnitAdjacent(unit)-->tile or false
 gen.moveUnitAdjacent(unit,destRankFn)-->tile or false
 </code>
@@ -2866,7 +2866,7 @@ isProtectingUnit(unitObject): returns true if unit is a "protecting" unit
 isProtectedUnit(unitObject): returns true if unit is a unit that can be "protected"
 isProtectedTile(tileObject): returns true if the tile can be "protected"
 </code>
-See <a href="genmoveunitadjacent"><code>gen.moveUnitAdjacent</code></a> for the destRankFn explanation and behaviour if absent.
+See <a href="#genmoveunitadjacent"><code>gen.moveUnitAdjacent</code></a> for the destRankFn explanation and behaviour if absent.
 
 <br>
 </p>
