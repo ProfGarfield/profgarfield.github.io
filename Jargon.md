@@ -38,3 +38,6 @@ In Civilization II, a unit can move a fraction of a movement point.  For example
     Cost to move into plains: 20  
     Cost to move into hills: 40  
 
+### Execution Points
+
+An "Execution Point" is the term we use to describe the point where the Civilization II Game "asks" the Lua Interpreter to execute code.  You can read more about that [on this page](LuaExecutionPoints.md).

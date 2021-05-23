@@ -139,6 +139,29 @@ Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
 </details>
 
 
+<details><summary><code>gen.inPolygon(tile,tableOfCoordinates)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.inPolygon(tile,tableOfCoordinates)-->bool</code>
+Considers a polygon with corners given by the tableOfCoordinates.  Function returns true if the tile is within that polygon, and false if it is not.  Map is not considered for this function, even if the coordinates provided have entries for a z coordinate, so you must check it separately.
+<br>The <A href="Scripts.html#polygon-maker"> Polygon Maker</A> script will produce valid polygon coordinate tables for you.
+<br>Valid Arguments:
+<code>
+tile: tileObject
+tableOfCoordinates: Table with integer keys starting at 1, with no gaps.  Values for these keys are tables {[1]=xCoord,[2]=yCoord}.  Optional key is "doesNotCrossThisX", which has a number value.  
+</code>
+Notes: The order of the coordinates is the order that you would reach the corners of the polygon if you were drawing its edges without lifting your pen off the paper.  The key <code>"doesNotCrossThisX"</code> represents an x coordinate on the map that the polygon doesn't cross over.  If it is absent, 0 is used.
+</p>
+</details>
+
+
+<details><summary><code>gen.cityCanSupportAnotherUnit(city)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.cityCanSupportAnotherUnit(city)-->bool</code>
+Returns true if the city has enough production to support all existing units and at least one other unit.  Units that get free support under fundamentalism are still counted as "supported," since they still take up a free support "slot" if they are among the first 8 units supported by the city.
+<br>Valid Arguments:
+<code>
+city: cityObject
+</code>
+</p>
+</details>
 
 
 ## Flag Functions[&uarr;](#general-library)
