@@ -1,7 +1,7 @@
 # Just a page to test things on
 
 <details><summary> Summary </summary>
-  <A href="GeneralLibrary.html#Technical Functions">Technical Functions</A>
+  <A href="GeneralLibrary.html#technical-functions">Technical Functions</A>
   <br>
   Other hidden stuff.
   </details>
