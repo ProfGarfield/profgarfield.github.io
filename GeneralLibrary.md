@@ -35,7 +35,7 @@ The General Library offers a variety of tools to make it easier to build events.
 unit: unitType
 </code>
 Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
-<a href="genactivate">Link to Here.</a>
+<br><a href="#genactivate">Link to Here.</a>
 <br>
 </p>
 </details>
@@ -50,7 +50,7 @@ unit: unitType
 source: boolean
 </code>
 Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExecutionPoints.html#unit-activation"> Unit Activation </A> execution point, hence why this is preferred.
-<a href="genactivatesource">Link to Here.</a>
+<br><a href="#genactivatesource">Link to Here.</a>
 <br>
 </p>
 </details>
@@ -59,7 +59,7 @@ Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExec
 ## Building Blocks[&uarr;](#general-library)
 These are miscellaneous functions that are likely to be useful in building larger events or other modules.
 
-<details><summary><code>gen.applyWonderBonus(wonder,tribe)-->boolean</code></summary><p style="margin-left: 25px">
+<details id="genapplywonderbonus"><summary><code>gen.applyWonderBonus(wonder,tribe)-->boolean</code></summary><p style="margin-left: 25px">
 <code>gen.applyWonderBonus(wonder,tribe)-->boolean</code>
 <br>Returns true if the wonder has been built, has not expired or been destroyed, and is owned by the tribe.
 <br>Valid Arguments:
@@ -67,12 +67,13 @@ These are miscellaneous functions that are likely to be useful in building large
 wonder: wonderObject, integer (wonder.id)
 tribe: tribeObject, integer (tribe.id)
 </code>
+<br><a href="#genactivatesource">Link to Here.</a>
 <br>
 </p>
 </details>
 
 
-<details><summary><code>gen.toTile(tileOrTable)-->tile</code></summary><p style="margin-left: 25px">
+<details id="gentotile"><summary><code>gen.toTile(tileOrTable)-->tile</code></summary><p style="margin-left: 25px">
 <code>gen.toTile(tileOrTable)-->tile</code>
 <br> Accepts a tile object or table representing coordinates as an argument, and returns the corresponding tile.  Returns a useful error if an invalid argument is provided, for easier debugging.
 <br> If 2 only coordinates are provided in the table, the third is assumed to be 0.
@@ -84,6 +85,7 @@ tileOrTable: tileObject,
              {["x"]=xCoord,["y"]=yCoord}, 
              {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
 </code>
+<br><a href="#genactivatesource">Link to Here.</a>
 <br>
 </p>
 </details>
