@@ -3,7 +3,7 @@
 <details><summary> Summary </summary>
   <A href="Jargon.html">Internal Link</A>
   
-  
+  Other hidden stuff.
   </details>
 [Internal link](Jargon.md)
 
