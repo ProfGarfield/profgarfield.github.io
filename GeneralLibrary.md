@@ -67,7 +67,7 @@ These are miscellaneous functions that are likely to be useful in building large
 wonder: wonderObject, integer (wonder.id)
 tribe: tribeObject, integer (tribe.id)
 </code>
-<br><a href="#genactivatesource">Link to Here.</a>
+<br><a href="#genapplywonderbonus">Link to Here.</a>
 <br>
 </p>
 </details>
@@ -85,13 +85,13 @@ tileOrTable: tileObject,
              {["x"]=xCoord,["y"]=yCoord}, 
              {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
 </code>
-<br><a href="#genactivatesource">Link to Here.</a>
+<br><a href="#gentotile">Link to Here.</a>
 <br>
 </p>
 </details>
 
 
-<details><summary><code>gen.distance(objectA,objectB)-->integer</code></summary><p style="margin-left: 25px">
+<details id="gendistance"><summary><code>gen.distance(objectA,objectB)-->integer</code></summary><p style="margin-left: 25px">
 <code>gen.distance(objectA,objectB)-->integer
 gen.distance(objectA,objectB,zDist)-->integer
 </code>
@@ -108,13 +108,13 @@ objectA,objectB: tileObject,
 zDist: integer,nil
 </code>
 Notes: This doesn't compute the distance using the typical <A href="https://en.wikipedia.org/wiki/Euclidean_distance"> "Euclidean Distance"</A> that you might be familiar with, but rather the <A href="https://en.wikipedia.org/wiki/Taxicab_geometry"> "Taxicab Distance,"</A> so that the result is the number of tiles an air unit would have to cross to get from A to B.  The distance between adjacent tiles on the same map is always 2 in the "Taxicab Distance," even diagonal movement.  This function divides the coordinate distance by 2 to get the result in terms of tiles.
-
+<br><a href="#gendistance">Link to Here.</a> (Click link, then copy the link from your Browser URL Bar.)
 <br>
 </p>
 </details>
 
 
-<details><summary><code>gen.tileDist(tileA,tileB)</code></summary><p style="margin-left: 25px">
+<details id="gentiledist"><summary><code>gen.tileDist(tileA,tileB)</code></summary><p style="margin-left: 25px">
 <code>gen.tileDist(tileA,tileB)
 gen.tileDist(tileA,tileB,zDist)</code>  
 <br>Computes the distance in tiles between tileA and tileB.  Does not pre-process arguments like gen.distance, so might be slightly quicker (though this will probably never matter).  By default, the vertical distance between maps is 0 tiles, but this can be changed with the optional argument zDist.
@@ -124,13 +124,13 @@ tileA,tileB: tileObject
 zDist: integer, nil
 </code>
 Notes: This doesn't compute the distance using the typical <A href="https://en.wikipedia.org/wiki/Euclidean_distance"> "Euclidean Distance"</A> that you might be familiar with, but rather the <A href="https://en.wikipedia.org/wiki/Taxicab_geometry"> "Taxicab Distance,"</A> so that the result is the number of tiles an air unit would have to cross to get from A to B.  The distance between adjacent tiles on the same map is always 2 in the "Taxicab Distance," even diagonal movement.  This function divides the coordinate distance by 2 to get the result in terms of tiles.
+<br><a href="#gentiledist">Link to Here.</a> (Click link, then copy the link from your Browser URL Bar.)
 <br>
 </p>
 </details>
 
 
-<details>
-<summary> <code>gen.wonderModifiedMoves(unit) --> integer</code> </summary><p style="margin-left: 25px">
+<details id="genwondermodifiedmoves"><summary> <code>gen.wonderModifiedMoves(unit) --> integer</code> </summary><p style="margin-left: 25px">
 <code>gen.wonderModifiedMoves(unit) -->integer
 </code>
 Returns the movement allowance of a unit, after taking into account nuclear power and wonders.  
@@ -139,12 +139,13 @@ Returns the movement allowance of a unit, after taking into account nuclear powe
 <code>
 unit: unitType
 </code>
+<br><a href="#genwondermodifiedmoves">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
 
 
-<details><summary><code>gen.maxMoves(unit) --> integer</code></summary><p style="margin-left: 25px">
+<details id="genmaxmoves"><summary><code>gen.maxMoves(unit) --> integer</code></summary><p style="margin-left: 25px">
 <code>gen.maxMoves(unit) --> integer
 </code>
 Returns movement allowance for a unit after taking damage into account.
@@ -153,13 +154,14 @@ Returns movement allowance for a unit after taking damage into account.
 <code>
 unit: unitType
 </code>
+<br><a href="#genmaxmoves">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
 
 
  
-<details><summary><code>gen.moveRemaining(unit) --> integer</code></summary><p style="margin-left: 25px">
+<details id="genmoveremaining"><summary><code>gen.moveRemaining(unit) --> integer</code></summary><p style="margin-left: 25px">
 <code>gen.moveRemaining(unit) --> integer
 </code>
 Returns the remaining movement allowance for the unit this turn.
@@ -169,6 +171,7 @@ Returns the remaining movement allowance for the unit this turn.
 unit: unitType
 </code>
 Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
+<br><a href="#genmoveremaining">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
