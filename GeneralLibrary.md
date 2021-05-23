@@ -145,10 +145,17 @@ Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
 ## Flag Functions[&uarr;](#general-library)
 These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.  
 [Bitwise Tools](#bitwise-tools)  
+<<<<<<< HEAD
 [Terrain Improvements](#terrain-improvements)  
 [Unit Orders](#unit-orders)  
 [Unit Type Flags](#unit-type-flags)  
 [City Attribute Flags](#city-attribute-flags)  
+=======
+[Terrain Improvements](#terrain-improvements&uarr;)  
+[Unit Orders](#unit-orders&uarr;)  
+[Unit Type Flags](#unit-type-flags&uarr;)  
+[City Attribute Flags](#city-attribute-flags&uarr;)  
+>>>>>>> aa99f3074b3d8518f156ad6e0027d84c0219b3c3
 
 ### Bitwise Tools[&uarr;](#flag-functions)
 
