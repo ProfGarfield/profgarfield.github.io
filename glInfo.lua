@@ -190,90 +190,9 @@ end
 
 
 
---gen.unitTypeOnTile(tile,unitTypeOrTableOfUnitType)-->bool
---returns true if tile has any of the unit types listed in the table,
---false otherwise
-function gen.unitTypeOnTile(tile,unitTypeTable)
-    if civ.isUnitType(unitTypeTable) then
-        unitTypeTable = {unitTypeTable}
-    end
-    for unit in tile.units do
-        for __,unitType in pairs(unitTypeTable) do
-            if unit.type == unitType then
-                return true
-            end
-        end
-    end
-    return false
-end
 
---#gen.getAdjacentTiles(tile)-->tableOfTiles
--- returns a table (indexed by integers) with all adjacent
--- tiles to the input tile
-local function getAdjacentTiles(tile)
-    tile = toTile(tile)
-    local xVal,yVal,zVal = tile.x,tile.y,tile.z
-    if civ.game.rules.flatWorld then
-        return {civ.getTile(xVal-2,yVal,zVal),
-                civ.getTile(xVal-1,yVal+1,zVal),
-                civ.getTile(xVal,yVal+2,zVal),
-                civ.getTile(xVal+1,yVal+1,zVal),
-                civ.getTile(xVal+2,yVal,zVal),
-                civ.getTile(xVal+1,yVal-1,zVal),
-                civ.getTile(xVal,yVal-2,zVal),
-                civ.getTile(xVal-1,yVal-1,zVal),}
-    else
-        local xMax,yMax,zMax = civ.getMapDimensions()
-        return {civ.getTile((xVal-2)%xMax,yVal,zVal),
-                civ.getTile((xVal-1)%xMax,yVal+1,zVal),
-                civ.getTile((xVal)%xMax,yVal+2,zVal),
-                civ.getTile((xVal+1)%xMax,yVal+1,zVal),
-                civ.getTile((xVal+2)%xMax,yVal,zVal),
-                civ.getTile((xVal+1)%xMax,yVal-1,zVal),
-                civ.getTile((xVal)%xMax,yVal-2,zVal),
-                civ.getTile((xVal-1)%xMax,yVal-1,zVal),}
-    end
-end
-gen.getAdjacentTiles = getAdjacentTiles
 
--- gen.moveUnitAdjacent(unit,destRankFn=suitableDefault)-->tile or bool
--- Moves the unit to an adjacent tile, choosing the tile based on the 
--- destRankFn(unit,tile)--> integer or false
--- lower values mean preferred tiles, false means unit can't move to tile
--- default is prefer empty squares before squares with units on them
--- returns the tile the unit is moved to, or false if the unit can't be moved
-local function moveUnitAdjacent(unit,destRankFn)
-    local function defaultDestinationRank(theUnit,destTile)
-        if (destTile.defender and destTile.defender ~=theUnit.owner) or(destTile.city and destTile.city.owner ~= theUnit.owner) or (not civ.canEnter(theUnit.type,destTile)) then
-            return false
-        end
-        if destTile.defender then
-            return 1
-        else
-            return 0
-        end
-    end
-    destRankFn = destRankFn or defaultDestinationRank
-    local bestTile = nil
-    local bestRank = math.huge
-    local tileList = getAdjacentTiles(unit.location)
-    for __,destTile in pairs(tileList) do
-        local rank = destRankFn(unit,destTile)
-        if rank and rank < bestRank then
-            bestTile = destTile
-            bestRank = rank
-        end
-    end
-    if bestTile then
-        unit:teleport(bestTile)
-        return bestTile
-    else
-        return false
-    end
-end
-gen.moveUnitAdjacent = moveUnitAdjacent
 
---#gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile)-->void
 -- isProtectingUnit(unit)-->bool
 -- if true, the unit is a 'protecting' unit that must be moved
 -- e.g. air units with range >= 2 in air protected stacks
@@ -285,7 +204,6 @@ gen.moveUnitAdjacent = moveUnitAdjacent
 -- if true, the protecting unit must be moved, if not it can stay
 -- e.g. clear tiles are true in air protected stacks,
 -- cities, airbases, tiles with carriers return false for air protected stacks
-
 function gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)
     -- if the tile has no defender, it is not protected
     if tile.defender == nil then

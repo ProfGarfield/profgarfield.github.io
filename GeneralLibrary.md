@@ -279,6 +279,79 @@ Note: ID numbers will not be the same in different scenarios (if maps are differ
 </p>
 </details>
 
+
+<details><summary><code>gen.unitTypeOnTile(tile,unitType)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.unitTypeOnTile(tile,unitType)-->bool
+gen.unitTypeOnTile(tile,unitTypeTable)-->bool</code>
+<br>Returns true if the tile has the unit type, or any of the unit types listed in the table, if a table is provided.
+<br>Returns false otherwise
+<br>Valid Arguments:
+<code>
+tile: tileObject
+unitType: unitTypeObject
+unitTypeTable: table with all values unitTypeObject
+</code>
+<br>
+</p>
+</details>
+
+
+<details><summary><code>gen.getAdjacentTiles(tile)-->tableOfTiles</code></summary><p style="margin-left: 25px">
+<code>gen.getAdjacentTiles(tile)-->tableOfTiles
+</code>
+Returns a table (indexed by integers) with all adjacent tiles to the input tile.  Table is indexed this way:
+<code>
+      #       #       #     
+  #       #       #       # 
+      #       7       #     
+  #       8       6       # 
+      1      tile     5     
+  #       2       4       # 
+      #       3       #     
+  #       #       #       # 
+      #       #       #     
+</code>
+If any keys do not correspond to a valid tile (at edge of map), the corresponding value for that key is nil.
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+</code>
+<br>
+</p>
+</details>
+
+
+<details><summary><a id="genmoveunitadjacent"><code>gen.moveUnitAdjacent(unit)-->tile or false</code></a></summary><p style="margin-left: 25px">
+<code>gen.moveUnitAdjacent(unit)-->tile or false
+gen.moveUnitAdjacent(unit,destRankFn)-->tile or false
+</code>
+Moves unit off its current tile to an adjacent tile.  If the move is successful, the destination tile is returned.  If not, false is returned.
+<br> The destRankFn determines the square to move the unit, choosing one of the tiles with the lowest rank.  If destRankFn returns false, the unit won't be moved to that tile under any circumstances.
+<br>Valid Arguments:
+<code>
+unit: unitObject
+destRankFn: function(unitToMove,candidateTile) --> integer or false
+(unitToMove:unitObject, candidateTile: tileObject)
+</code>
+The default destRankFn ranks empty tiles as 0 (most preferred), tiles occupied by friendly units as 1, and tiles with enemy units or cities as false (can't move there).
+<br>
+</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
 ## Flag Functions[&uarr;](#general-library)
 These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.  
 [Bitwise Tools](#bitwise-tools)  
@@ -2751,7 +2824,53 @@ end
 </p>
 </details>
 
+### Unprotecting Stacks
 
+#### Description 
+
+The Lua Scenario Template provides a built in way to thwart stacking air units on ground units for protection.  When a unit is activated, all adjacent tiles are checked to determine if any are air protected stacks, and if so, the air units are moved to alternate tiles.  
+
+To activate this feature, open the `simpleSettings.lua` file in the `LuaRulesEvents` directory, and change the line
+```lua
+simpleSettings.clearAdjacentAirProtectionAI = false
+simpleSettings.clearAdjacentAirProtectionHuman = false
+
+```
+to
+```lua
+simpleSettings.clearAdjacentAirProtectionAI = true
+simpleSettings.clearAdjacentAirProtectionHuman = true
+```
+
+You can create other forms of stack "unprotecting" by using the functions in the next section.  Perhaps you have a unit type that shouldn't be able to 'hide' behind a strong defender, for example.
+
+#### Functions
+
+
+<details><summary><code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code></summary><p style="margin-left: 25px">
+<code>
+gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile)-->void
+gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code>
+<br>Valid Arguments:
+<code>
+tile: tileObject
+isProtectingUnit: function(unitObject) --> bool
+isProtectedUnit: function(unitObject) --> bool
+isProtectedTile: function(tileObject) --> bool
+destRankFn: function(unitToMove,candidateTile) --> integer or false
+(unitToMove:unitObject, candidateTile: tileObject)
+</code>
+This code checks all the units on a tile.  If there are any "protecting" units (air units in air protected stacks) on the tile <em>and also</em> any "protected" units (land/sea units in air protected stacks) <em>and finally</em> the tile is "protected" (doesn't have city/airbase or carrier unit in air protected stacks), then the "protecting" units are moved off the tile.  If any of these conditions are not met, the units stay where they are.
+<code>
+isProtectingUnit(unitObject): returns true if unit is a "protecting" unit
+isProtectedUnit(unitObject): returns true if unit is a unit that can be "protected"
+isProtectedTile(tileObject): returns true if the tile can be "protected"
+</code>
+See <a href="genmoveunitadjacent"><code>gen.moveUnitAdjacent</code></a> for the destRankFn explanation and behaviour if absent.
+
+<br>
+</p>
+</details>
 
 ## Technical Functions[&uarr;](#general-library)
   These functions are necessary to integrate the General Library with the Lua Events.  You are unlikely to need these working with the Lua Scenario Template.

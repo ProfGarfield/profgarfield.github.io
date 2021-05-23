@@ -50,6 +50,7 @@ function unitActivation.activateFunction(unit,source)
 
 end
 ```
+For human controlled units, the code is executed when the unit is first selected.  For AI controlled units, the code is executed on every tile the unit moves through.
 
 ### Linkage Details
 
