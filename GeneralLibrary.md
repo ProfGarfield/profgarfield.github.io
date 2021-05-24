@@ -308,7 +308,7 @@ tile: tileObject
 unitType: unitTypeObject
 unitTypeTable: table with all values unitTypeObject
 </code>
-<br><a href="#genunittypeontile">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<a href="#genunittypeontile">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
@@ -338,7 +338,66 @@ tile: tileObject,
       {["x"]=xCoord,["y"]=yCoord}, 
       {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
 </code>
-<br><a href="#gengetadjacenttiles">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<a href="#gengetadjacenttiles">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gencityradiustiles"><summary><code>gen.cityRadiusTiles(location) --> table</code></summary><p style="margin-left: 25px">
+<code>gen.cityRadiusTiles(location) --> table
+</code>
+Returns a table (indexed by integers) with all the tiles a city radius of the location.  The table is indexed as show below, which is based on how <code>city.workers</code> determines which tiles a city is working.  The key 21 corresponds to the tile itself.
+<code>
+    #       #       #       #       #
+        #       #       #       #       #
+    #       #       #       #       #
+        #       20      13      #       #
+    #       12      8       9       #
+        19      7       1       14      #
+    #       6       21      2       #
+        18      5       3       15      #
+    #       11      4       10      #
+        #       17      16      #       #
+    #       #       #       #       #
+        #       #       #       #       #
+</code>
+If any tile in this radius doesn't exist, the corresponding key has a nil value.
+<br>Valid Arguments:
+<code>
+location: cityObject, tileObject,
+          {[1]=xCoord,[2]=yCoord},
+          {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+          {["x"]=xCoord,["y"]=yCoord}, 
+          {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+</code>
+<a href="#gencityradiustiles">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gengettilesinradius"><summary><code>gen.getTilesInRadius(center,radius) --> table</code></summary><p style="margin-left: 25px">
+<code>gen.getTilesInRadius(center,radius) --> table
+gen.getTilesInRadius(center,radius,minRadius) --> table
+gen.getTilesInRadius(center,radius,minRadius,maps) --> table
+</code>
+Returns a tiles nearby to "center," indexed by integers, with the first index 1, and no missing indices (if the ring goes off the map, the next valid tile gets the next index).  A smaller index means a tile closer to the "center" tile (or, at least, not any farther away, and assuming there to be 0 distance in the z direction).
+<br>The "radius" is the distance (in tiles) from the "center" to the furthest tiles desired. 
+<br>The "minRadius" is the distance (in tiles) from the "center" to the nearest tiles to be included.  (E.g. if you don't want the center" itself, set minRadius=1.) tiles. If you only want a 'ring' of tiles, set minRadius=radius.  By default, this is 0, meaning we collect the "center" tile.
+<br>"maps" determines which maps we collect tiles from.  By default, it is the map the "center" is on.  If integer, use that map.  If table of integers, use the integers appearing as values in the table.  E.g. {1,3} means get tiles from maps 1 and 3.
+<br>Valid Arguments:
+<code>
+center: tile, 
+        {[1]=xCoord,[2]=yCoord},
+        {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+        {["x"]=xCoord,["y"]=yCoord}, 
+        {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+radius: integer
+minRadius: integer or nil
+maps: nil, integer in 0-3, table of integers
+</code>
+Note: If minRadius > radius, an empty table is returned.
+<br><a href="#gengettilesinradius">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
@@ -363,12 +422,139 @@ The default destRankFn ranks empty tiles as 0 (most preferred), tiles occupied b
 </details>
 
 
+<details id="genintable"><summary><code>gen.inTable(object,table)--> bool</code></summary><p style="margin-left: 25px">
+<code>gen.inTable(object,table)--> bool
+</code>
+Returns true if the object is a value for any key in the table, and false otherwise.
+<br>Valid Arguments:
+<code>
+object: any Lua data type except nil
+table: table
+</code>
+<!--<br>--><a href="#genintable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gencopytable"><summary><code>gen.copyTable(table)-->table</code></summary><p style="margin-left: 25px">
+<code>gen.copyTable(table)-->table
+</code>
+Constructs and returns a new table with the same keys and values as the input table.  If the value is a table, that table (and any tables within it) is also copied into a new table.
+<br>Valid Arguments:
+<code>
+table: table
+</code>
+Note: This function is necessary because when you store a table in a variable, you are storing its "name", or a reference to it, rather than the table itself (this is different from a number or a string).  Hence, when you copy table to a new variable, you are only copying its name, and changes to the orignal table also change the copy (and vice versa).  E.g.
+<code>
+local myTable = {1,2,3}
+local myOtherTable = myTable
+myTable[2] = "Not Two"
+print(myTable[2])
+print(myOtherTable[2])
+</code>
+Outputs:
+<code>
+Not Two
+Not Two
+</code>
+However,
+<code>
+local myTable = {1,2,3}
+local myOtherTable = gen.copyTable(myTable)
+myTable[2] = "Not Two"
+print(myTable[2])
+print(myOtherTable[2])
+</code>
+Outputs:
+<code>
+Not Two
+2
+</code>
+As we might want.
+<br><a href="#gencopytable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 
+<details id="gencleargapsinarray"><summary><code>gen.clearGapsInArray(table,lowestIndex)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearGapsInArray(table)-->void
+gen.clearGapsInArray(table,lowestIndex)-->void
+</code>
+Re-indexes all integer keys and their corresponding values in the table, so that there are no gaps.  Starts at "lowestIndex" and maintains the order of the values with integer keys.
+Non-integer keys (including other numbers) and their values are left unchanged.
+Integer keys below lowestIndex and their values are left unchanged also.
+By default, lowestIndex equals 1.
+<br>Valid Arguments:
+<code>
+table: table
+lowestIndex: integer or nil
+</code>
+<a href="#gencleargapsinarray">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genmakearrayoneton"><summary><code>gen.makeArrayOneToN(table)</code></summary><p style="margin-left: 25px">
+<code>gen.makeArrayOneToN(table)
+</code>
+All integer key and their associated values are re-indexed so that the keys start at 1 and proceed without gaps (maintaining the prior ordering of the keys).
+<br>All non-integer keys (including other numbers) and their values are ignored.
+<br>Valid Arguments:
+<code>
+table: table
+</code>
+<br><a href="#genmakearrayoneton">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 
+<details id="gentablewrap"><summary><code>gen.tableWrap(item)-->table</code></summary><p style="margin-left: 25px">
+<code>gen.tableWrap(item)-->table
+gen.tableWrap(item,needsWrapFn)-->table or item
+</code>
+Determines if "item" should be "wrapped" in a table or not, using "needsWrapFn".
+<br> If item is "wrapped", a table is returned with item as the value of the first key.  That is, {[1]=item}.  Otherwise, the item itself is returned.
+By default, any item that is not already a table is wrapped, so a table is always returned.  Submitting a "needsWrapFn" allows alternate behaviour, either wrapping some tables (e.g. coordinates), or not wrapping items that are not tables.  "needsWrapFn" should return true when the item should be wrapped, and false otherwise.
+<br>Valid Arguments:
+<code>
+item: any Lua value
+needsWrapFn: nil or function(item)-->boolean
+            (item: any Lua value)
+</code>
+<a href="#gentablewrap">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
+<details id="genisempty"><summary><code>gen.isEmpty(table)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.isEmpty(table)-->bool
+</code>
+Returns true if the table has no keys and values, and false otherwise.
+<br>Valid Arguments:
+<code>
+table: table
+</code>
+Note: I got this idea from <a href="https://stackoverflow.com/questions/1252539/most-efficient-way-to-determine-if-a-lua-table-is-empty-contains-no-entries"> this Stackoverflow question</a>.
+<br><a href="#genisempty">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
+<details id="genmergetablevalues"><summary><code>gen.mergeTableValues(table,table) --> table</code></summary><p style="margin-left: 25px">
+<code>gen.mergeTableValues(table,table) --> table
+gen.mergeTableValues(table,table,...) --> table
+</code>
+Accepts an arbitrary number of tables as arguments, and returns a table with all the values from all the tables.  Table keys are lost, and replaced by integers starting at 1.  Duplicate values will appear multiple times.
+<br>Valid Arguments:
+<code>
+table: table
+</code>
+<br><a href="#genmergetablevalues">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 
 
@@ -2687,9 +2873,9 @@ end
 
 #### Description 
 
-The Lua Scenario Template provides a built in way to thwart stacking air units on ground units for protection.  When a unit is activated, all adjacent tiles are checked to determine if any are air protected stacks, and if so, the air units are moved to alternate tiles.  
+The Lua Scenario Template provides a built in way to thwart stacking air units on ground units for protection.  When a unit is activated, all adjacent tiles are checked to determine if any are air protected stacks, and if so, the air units are moved to alternate tiles.  (The human player will have to use 'V' and 'A' to activate the unit again, but AI units are activated every square, so it will happen automatically for them.)
 
-To activate this feature, open the `simpleSettings.lua` file in the `LuaRulesEvents` directory, and change the line
+To activate this feature, open the `simpleSettings.lua` file in the `LuaRulesEvents` directory, and change the lines
 ```lua
 simpleSettings.clearAdjacentAirProtectionAI = false
 simpleSettings.clearAdjacentAirProtectionHuman = false
@@ -2700,6 +2886,7 @@ to
 simpleSettings.clearAdjacentAirProtectionAI = true
 simpleSettings.clearAdjacentAirProtectionHuman = true
 ```
+If you only want the AI (or only Human players) to have adjacent air protection removed, only set one of the lines to true.  The first line will clear air protection beside any AI unit that is activated.
 
 You can create other forms of stack "unprotecting" by using the functions in the next section.  Perhaps you have a unit type that shouldn't be able to 'hide' behind a strong defender, for example.
 
@@ -2707,8 +2894,7 @@ You can create other forms of stack "unprotecting" by using the functions in the
 
 
 <details id="genunprotecttile"><summary><code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code></summary><p style="margin-left: 25px">
-<code>
-gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile)-->void
+<code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile)-->void
 gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code>
 <br>Valid Arguments:
 <code>
@@ -2726,10 +2912,91 @@ isProtectedUnit(unitObject): returns true if unit is a unit that can be "protect
 isProtectedTile(tileObject): returns true if the tile can be "protected"
 </code>
 See <a href="#genmoveunitadjacent"><code>gen.moveUnitAdjacent</code></a> for the destRankFn explanation and behaviour if absent.
+Here are the functions used for unprotecting air protected stacks:
+<code>
+local function isProtectedTile(tile)
+    if tile.city or gen.hasAirbase(tile) then
+        return false
+    end
+    for unit in tile.units do
+        if gen.isCarryAir(unit.type) then
+            return false
+        end
+    end
+    return true
+end
+local function isProtectingUnit(unit)
+    if unit.type.domain == 1 and unit.type.range >= 2 then
+        return true
+    else
+        return false
+    end
+end
+local function isProtectedUnit(unit)
+    return not isProtectingUnit(unit)
+end
+local function tileHasGroundUnit(tile)
+    for unit in tile.units do
+        if isProtectedUnit(unit) then
+            return true
+        end
+    end
+    return false
+end
+local function destRankFn(unit,tile)
+    -- don't want an air unit to be moved to a
+    -- city, airbase, or carrier
+    if not isProtectedTile(tile) then
+        return false
+    end
+    if (tile.defender and tile.defender ~=unit.owner) or
+        (tile.city and tile.city.owner ~= unit.owner) or
+        (not civ.canEnter(unit.type,tile)) then
+        return false
+    end
+    if tile.defender == nil then
+        return 0
+    elseif tileHasGroundUnit(tile) then
+        return 2
+    else
+        return 1
+    end
+end</code>
 <br><a href="#genunprotecttile">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
+
+
+<details id="genclearairprotection"><summary><code>gen.clearAirProtection(tile)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.clearAirProtection(tile)-->void
+</code>
+If the tile is an air protected stack, the air units are moved off the stack.
+<br>Valid Arguments:
+<code>
+tile: tileObject
+</code>
+<a href="#genclearairprotection">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genclearadjacentairprotection"><summary><code>gen.clearAdjacentAirProtection(unit) -->void </code></summary><p style="margin-left: 25px">
+<code>gen.clearAdjacentAirProtection(unit) -->void 
+</code>
+Clears air protection (by moving air units) from all tiles adjacent to the unit, except for those tiles defended by the unit's owner.
+<br>Valid Arguments:
+<code>
+unit: unitObject
+</code>
+Notes: This is the function used by the Lua Scenario Template to implement clearing air protection (though it is built with the functions described above.  In the Lua Scenario Template, this function is included in the <A href="LuaExecutionPoints.html#unit-activation">Unit Activation</A> execution point (though in the part in <code>events.lua</code>).  This works for the AI, since the Unit Activation execution point triggers on every tile for AI units.
+<br><a href="#genclearadjacentairprotection">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+--clears air protection for tiles adjacent to the unit that are not owned by the unit's owner
+
+
 
 ## Technical Functions[&uarr;](#general-library)
   These functions are necessary to integrate the General Library with the Lua Events.  You are unlikely to need these working with the Lua Scenario Template.
