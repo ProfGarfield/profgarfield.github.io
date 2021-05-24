@@ -26,6 +26,7 @@ The General Library offers a variety of tools to make it easier to build events.
 
 ## Replacement Functions[&uarr;](#general-library)
 
+These functions should be used in place of the similar tools provided by the `civ` library.
 
 <details id="genactivate"><summary><code>gen.activate(unit)-->void</code></summary><p style="margin-left: 25px">
 <code>gen.activate(unit)-->void</code>
@@ -56,7 +57,93 @@ Note: <code>unit:activate()</code> doesn't run the code for the <A href="LuaExec
 </details>
 
 
+<details id="genplaymusic"><summary><code>gen.playMusic(fileName)</code></summary><p style="margin-left: 25px">
+<code>gen.playMusic(fileName)
+</code>
+Plays the sound in the file "fileName" as in game music (rather than sound).  Searches for the file in the <code>Sound</code> folder within the scenario folder.
+<br>Valid Arguments:
+<code>
+fileName: string (including file extension)
+</code>
+The function <code>civ.playMusic(filename)</code> plays music from <code>&lt;Test Of Time Dir&gt;\Music</code>, which is not very useful for distributing custom sounds to play.
+<br> The directory to within which to find the music file can be changed by <a href="#gensetmusicdirectory"><code>gen.setMusicDirectory</code></a>.
+<br><a href="#genplaymusic">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gendefeatunit"><summary><code>gen.defeatUnit(loser,winner,aggressor,victim, loserLocation,winnerVetStatus,loserVetStatus)-->unit or nil</code></summary><p style="margin-left: 25px">
+<code>gen.defeatUnit(loser,winner,aggressor,victim, loserLocation,winnerVetStatus,loserVetStatus)-->unit or nil
+</code>
+"Defeats" the loser, deletes the loser, and returns a unit if and only if the loser was "demoted" to that unit.  Otherwise, nil is returned.
+This function integrates the various unit death <a href="LuaExecutionPoints.html"> execution points</a> along with the <a href="PromotionDemotion.html"> Promotion and Demotion Module</a>.
+<br> This function is suitable if you have a "combat-like" event.
+<br>Valid Arguments:
+<code>
+loser: unitObject
+winner: unitObject
+aggressor: unitObject
+victim: unitObject
+loserLocation: tileObject
+winnerVetStatus: boolean
+loserVetStatus: boolean
+</code>
+<a href="#gendefeatunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="genkillunit"><summary><code>gen.killUnit(dyingUnit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.killUnit(dyingUnit)-->void
+</code>
+Kills "dyingUnit".
+This function integrates the various unit death <a href="LuaExecutionPoints.html"> execution points</a> along with the <a href="PromotionDemotion.html"> Promotion and Demotion Module</a>.
+<br>Valid Arguments:
+<code>
+dyingUnit: unitObject
+</code>
+<br><a href="#genkillunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gendeleteunit"><summary><code>gen.deleteUnit(deletedUnit,replacementUnit)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.deleteUnit(deletedUnit)-->void
+gen.deleteUnit(deletedUnit,replacementUnit)-->void
+</code>
+This function integrates the  <a href="LuaExecutionPoints.html#unit-deleted"> unit deleted</a> execution point.
+<br>Valid Arguments:
+<code>
+deletedUnit: unitObject
+replacementUnit: unitObject or nil
+</code>
+<br><a href="#gendeleteunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="genreplaceunit"><summary><code>gen.replaceUnit(oldUnit,replacementType)--> unit</code></summary><p style="margin-left: 25px">
+<code>gen.replaceUnit(oldUnit,replacementType)--> unit
+</code>
+Creates a unit to replace "oldUnit," copies the oldUnit's attributes, and deletes the oldUnit (applying <code>gen.deleteUnit</code>.
+<br>Returns the newly created unit.
+<br>Valid Arguments:
+<code>
+oldUnit: unitObject
+replacementType: unitTypeObject
+</code>
+<br><a href="#genreplaceunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+
 ## Building Blocks[&uarr;](#general-library)
+
 These are miscellaneous functions that are likely to be useful in building larger events or other modules.
 
 <details id="genapplywonderbonus"><summary><code>gen.applyWonderBonus(wonder,tribe)-->boolean</code></summary><p style="margin-left: 25px">
@@ -556,6 +643,117 @@ table: table
 </p>
 </details>
 
+
+<details id="genlimitedexecutions"><summary><code>gen.limitedExecutions(key,maxTimes,limitedFunction)--> void</code></summary><p style="margin-left: 25px">
+<code>gen.limitedExecutions(key,maxTimes,limitedFunction)--> void
+</code>
+Executes the "limitedFunction" if and only if <code>gen.limitedExecutions</code> has been called (and executed a function) less than "maxTimes" for the provided "key".
+<br>Valid Arguments:
+<code>
+key: string or integer
+maxTimes: integer
+limitedFunction: function() --> void
+</code>
+Notes: This works by maintaining a table within the state table that counts each time limitedExecutions has been called (and executed) for that key.
+<br> In principle, you could have 2 or more locations in code with different functions provided for "limitedFunction," and all of them together would be executed at most maxTimes.
+<br><a href="#genlimitedexecutions">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genjustonce"><summary><code>gen.justOnce(key,limitedFunction) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.justOnce(key,limitedFunction) --> void
+</code>
+Executes limitedFunction if and only if <code>gen.justOnce</code> has never been executed with the current "key."
+<br>Valid Arguments:
+<code>
+key: string or integer
+limitedFunction: function() --> void
+</code>
+Notes: This is a wrapper for <a href="#genlimitedexecutions"><code>gen.limitedExecution</code></a>, so an execution with the same key in that function will also stop execution with <code>gen.justOnce</code>.  Using the same key for multiple events will result in only the first of those events happening, which might be useful.
+<br><a href="#genjustonce">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="genissingleplayergame"><summary><code>gen.isSinglePlayerGame() --> boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isSinglePlayerGame() --> boolean
+</code>
+Returns true if there is exactly one human player, false otherwise.
+<br><a href="#genissingleplayergame">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gencopyunitattributes"><summary><code>gen.copyUnitAttributes(parent,child)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.copyUnitAttributes(parent,child)-->void
+</code>
+Copies the attributes of the 'parent' unit to the 'child' unit.
+<br>All attributes accessible through Lua are copied (except unit type,
+and unit id number, and carriedBy).
+<br> If you are replacing the "parent," you should probably use <a href="#genreplaceunit"><code>gen.replaceUnit</code></a> instead.
+<br>Valid Arguments:
+<code>
+parent: unitObject
+child: unitObject
+</code>
+<a href="#gencopyunitattributes">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gennearbyunits"><summary><code>gen.nearbyUnits(center,radius) --> iterator providing units</code></summary><p style="margin-left: 25px">
+<code>gen.nearbyUnits(center,radius) --> iterator providing units
+</code>
+Provides an iterator returning all the units within "radius" tiles of the "center" tile.  Finds the units on all maps.
+<br>Valid Arguments:
+<code>
+center: tileObject, 
+        {[1]=xCoord,[2]=yCoord},
+        {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+        {["x"]=xCoord,["y"]=yCoord}, 
+        {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+radius: integer
+</code>
+<br><a href="#gennearbyunits">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gengettileproduction"><summary><code>gen.getTileProduction(tile,city) --> integer (food), integer(shields), integer(trade)</code></summary><p style="margin-left: 25px">
+<code>gen.getTileProduction(tile,city) --> integer (food), integer(shields), integer(trade)
+</code>
+Returns the "tile" production values, presuming that the "city" given is the wone owrking the tile.  That is to say, returns the values that would be seen on the tile in the city's worker allocation window.  Doesn't check if the city is actually working the tile.
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+city: cityObject
+</code>
+<br><a href="#gengettileproduction">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gencomputebaseproduction"><summary><code>gen.computeBaseProduction(city)-->integer(food), integer(shields), integer(trade)</code></summary><p style="margin-left: 25px">
+<code>gen.computeBaseProduction(city)-->integer(food), integer(shields), integer(trade)
+</code>
+Computes the resources harvested by the city from the terrain.  Includes superhighway/supermarket/railroad bonuses, but not factories/powerplants. 
+<br>Valid Arguments:
+<code>
+city: cityObject
+</code>
+<br><a href="#gencomputebaseproduction">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 
 ## Flag Functions[&uarr;](#general-library)
@@ -2893,9 +3091,9 @@ You can create other forms of stack "unprotecting" by using the functions in the
 #### Functions
 
 
-<details id="genunprotecttile"><summary><code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code></summary><p style="margin-left: 25px">
-<code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile)-->void
-gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn)-->void</code>
+<details id="genunprotecttile"><summary><code>gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit, isProtectedTile,destRankFn)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.unprotectTile(tile,isProtectingUnit, isProtectedUnit,isProtectedTile)-->void
+gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit, isProtectedTile,destRankFn)-->void</code>
 <br>Valid Arguments:
 <code>
 tile: tileObject
@@ -2994,7 +3192,6 @@ Notes: This is the function used by the Lua Scenario Template to implement clear
 <br>
 </p>
 </details>
---clears air protection for tiles adjacent to the unit that are not owned by the unit's owner
 
 
 
@@ -3016,7 +3213,71 @@ unitActivationFunction: function(unit,source)-->void
 </p>
 </details>
 
+
+<details id="gensetmusicdirectory"><summary><code>gen.setMusicDirectory(path)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setMusicDirectory(path)-->void
+</code>
+Sets the directory path where <a href="#genplaymusic"><code>gen.playMusic</code></a> will look for files.  This is set relative to <code>&lt;Test Of Time Dir&gt;\Music</code>, which is where <code>civ.playMusic(filename)</code> looks for music.  In the Lua Scenario Template, this is set in the <code>events.lua</code> file.
+<br>Valid Arguments:
+<code>
+path: string (valid folder path)
+</code>
+In the Lua Scenario Template, this is the relevant code:
+<code>
+local eventsPath = string.gsub(debug.getinfo(1).source, "@", "")
+local musicFolder= string.gsub(eventsPath,civ.getToTDir(),"..")
+musicFolder= string.gsub(musicFolder,"events.lua","").."\\Sound"
+gen.setMusicDirectory(musicFolder)
+</code>
+<code>gen.playMusic(fileName)</code> is then equivalent to <code>civ.playMusic(musicFolder.."\\"..fileName)</code>.
+<a href="#gensetmusicdirectory">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+
 ## Obsolete Functions[&uarr;](#general-library)
-  These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
+
+These functions have functionality that has been rendered obsolete by more recent developments.  They are still included in the General Library for backwards compatibility.
 
 
+<details id="genismapflat"><summary><code>gen.isMapFlat()-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMapFlat()-->boolean
+</code>
+Returns true if map is flat, and false if it is round.
+<br> Use <code>civ.game.rules.flatWorld</code> instead.
+<br>Note: This function simply returns the above code now.
+<br><a href="#genismapflat">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genismapround"><summary><code>gen.isMapRound()-->boolean</code></summary><p style="margin-left: 25px">
+<code>gen.isMapRound()-->boolean
+</code>
+Returns true if the map is round, and false if it is flat.
+<br>Use <code> not civ.game.rules.flatWorld </code> instead.
+<br>Note: This function simply returns the above code now.
+<br><a href="#genismapround">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gendeclaremapflat"><summary><code>gen.declareMapFlat()-->void</code></summary><p style="margin-left: 25px">
+<code>gen.declareMapFlat()-->void
+</code>
+No effect.  Prior to TOTPP v0.16, it changed a variable referenced by <code>gen.isMapRound</code> and <code>gen.isMapFlat</code>.
+<br><a href="#gendeclaremapflat">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gendeclaremapround"><summary><code>gen.declareMapRound()-->void</code></summary><p style="margin-left: 25px">
+<code>gen.declareMapRound()-->void
+</code>
+No effect.  Prior to TOTPP v0.16, it changed a variable referenced by <code>gen.isMapRound</code> and <code>gen.isMapFlat</code>.
+<br><a href="#gendeclaremapround">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>

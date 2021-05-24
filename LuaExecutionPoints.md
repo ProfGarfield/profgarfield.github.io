@@ -34,6 +34,7 @@ Lua Events function by "injecting" code into the Civilization II: Test of Time g
 3. [Unit Defeated](#unit-defeated)
 3. [Unit Death](#unit-death)
 3. [Unit Death Outside Combat](#unit-death-outside-combat)
+3. [Unit Deleted](#unit-deleted)
 3. [After Production](#after-production)
 3. [Before Production](#before-production)
 
@@ -635,6 +636,25 @@ end
 ### Linkage Details
 
 In `events.lua` there is code to link this to the General Library for use with the `gen.killUnit` function.
+
+
+## Unit Deleted[&uarr;](#execution-points)
+
+### Description
+
+Runs code that happens when a unit is deleted for some reason (except when disbanded, since there is no execution point for that).  If units have some special status that must be transferred to a replacement unit, it should go here.
+
+```lua
+function unitKilledEvents.unitDeleted(deletedUnit,replacingUnit)
+
+end
+```
+If the `deletedUnit` isn't being replaced, `replacementUnit` should be `nil`.
+
+
+### Linkage Details
+
+In `events.lua` there is code to link this to the General Library for use with the `gen.killUnit`, `gen.deleteUnit`, and `gen.defeatUnit` functions, as well as the standard unit killed event.
 
 ## After Production[&uarr;](#execution-points)
 

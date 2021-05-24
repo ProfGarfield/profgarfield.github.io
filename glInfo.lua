@@ -1,105 +1,3 @@
--- I will be cutting functions and information out of this as I move it
--- to GeneralLibrary.md
-
-
--- The General Lua Library
--- This set of code is meant to provide basic functionality
--- in order to facilitate the writing of events and
--- other Civilization II Libraries
-
--- BRIEF DOCUMENTATION
--- More documentation about how these functions work can
--- be found at their definition.
-
--- Any function here that accepts a tile will also
--- accept a table {[1]=x,[2]=y,[3]=z}, a table 
--- {[1]=x,[2]=y} and assume z = 0, or a table
--- {x=x,y=y,z=z}, or a table {x=x,y=y} and assume
--- z = 0
---
--- LIST OF FUNCTIONS
--- * means planned but not implemented
--- # means needs testing
---
---
---gen.makeThresholdTable(table or nil)-->thresholdTable
---#applyWonderBonus(wonderObject or integer,tribeObject or integer)-->boolean
---#gen.toTile(tile or table)-->tile
---#gen.isMapFlat()-->boolean
---#gen.isMapRound()-->boolean
---#gen.declareMapFlat()-->void
---#gen.declareMapRound()-->void
---#gen.tileDist(locA,locB,zDist=0)-->integer
---#gen.distance(tileUnitCityA,tileUnitCityB,zDist=0)-->integer
---
---#gen.wonderModifiedMoves(unit)-->integer
---#gen.maxMoves(unit) --> integer
---#gen.moveRemaining(unit) --> integer
---#gen.inPolygon(tile,tableOfCoordinates)-->bool
---#gen.cityCanSupportAnotherUnit(city)-->bool
---#gen.rehomeUnitsInCapturedCity(city,defender) --> void
---#gen.homeToNearestCity(unit)-->void
---#gen.activate(unit)-->void
---#gen.activateWithSource(unit,source)-->void
---#gen.linkActivationFunction(function(unit,source)-->void)-->void
---#gen.getActivationFunction()-->function(unit,source)
---#gen.getTileID(tileObject or int,int or nil,int or nil)-->int (by Knighttime, converts a tile/coordinates to a single integer as an ID number)
---#gen.getTileId(tileObject or int,int or nil,int or nil)-->int (by Knighttime, converts a tile/coordinates to a single integer as an ID number)
--- gen.getTileFromID(tileID) --> tileObject -- undoes gen.getTileID
--- gen.getTileFromId(tileID) --> tileObject -- undoes gen.getTileID
---#gen.unitTypeOnTile(tile,unitTypeOrTableOfUnitType)-->bool
---#gen.getAdjacentTiles(tile)-->tableOfTiles
---#gen.moveUnitAdjacent(unit,destRankFn=suitableDefault)-->tile or bool
---#gen.unprotectTile(tile,isProtectingUnit,isProtectedUnit,isProtectedTile,destRankFn=suitableDefault)-->void
---#gen.clearAirProtection(tile)-->void
---#gen.clearAdjacentAirProtection(unit) -->void clears air protection for tiles adjacent to the unit that are not owned by the unit's owner
---#gen.inTable(object,table)--> bool
---#gen.copyTable(table)-->table
---#gen.errorForNilKey(table,tableName)-->void
---#gen.noNewKey(table,tableName)-->void
---#gen.noGlobal()
---#gen.linkState(stateTable)
---#gen.getState()-->table
---#gen.cityRadiusTiles(cityOrTileOrCoordTable) --> table
---#gen.getTilesInRadius(centre,radius,minRadius=0,maps=nil) --> table
---#gen.clearGapsInArray(table,lowestValue=1)
---#gen.playMusic(fileName)
---#gen.setMusicDirectory(path)
---#gen.getEphemeralTable()-->table
---#gen.linkGeneralLibraryState(stateTable) --> void
---#gen.limitedExecutions(key,maxTimes,limitedFunction)--> void
--- gen.justOnce(key,limitedFunction)-->void
---
---#gen.isSinglePlayerGame() --> boolean
---#gen.tableWrap(item)-->table
---#gen.tableWrap(item,needsWrapFn)-->table
---
---#gen.copyUnitAttributes(parent,child)-->void
---#gen.nearbyUnits(center,radius) --> iterator providing units
---
---#gen.setDeathFunctions(defeatFunction,deathFunction,deletionFunction) --> void
---#gen.defeatUnit(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)-->unit or nil
---#gen.killUnit(dyingUnit)-->void
---#gen.deleteUnit(deletedUnit,replacementUnit=nil)-->void
---#gen.replaceUnit(oldUnit,replacementType)--> unit
---#gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool
---#gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table
---#gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile
---#gen.isEmpty(table)-->bool
---#gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)
---#gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile
---#gen.createUnit(unitType,tribe,locations,options) --> table of units
--- gen.getTileProduction(tile,city) --> integer (food), integer(shields), integer(trade)
--- gen.computeBaseProduction(city)-->integer(food), integer(shields), integer(trade)
--- gen.persistentRandom(key) --> number between 0 and 1
--- gen.clearPersistentRandom(key) --> void
--- gen.getPersistentRandomTable() --> table
--- gen.mergeTableValues(table,table,...) --> table
---
--- FUNCTION IMPLEMENTATIONS
---
-
-local gen = {}
 
 
 local thresholdTableMetatable = { __index = function(thresholdTable,key)
@@ -132,6 +30,21 @@ local thresholdTableMetatable = { __index = function(thresholdTable,key)
 -- myTable["three"] = nil
 -- myTable[0.5]=0
 --
+
+<details id="genmakethresholdtable"><summary><code>gen.makeThresholdTable(table or nil)-->thresholdTable</code></summary><p style="margin-left: 25px">
+<code>gen.makeThresholdTable(table or nil)-->thresholdTable
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#genmakethresholdtable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 -- gen.makeThresholdTable(table or nil)-->thresholdTable
 -- makes an input a threshold table or creates an empty thresholdTable
 -- Also returns the table value
@@ -142,37 +55,18 @@ end
 
 
 
--- by default, the map is considered flat
--- use gen.declareMapRound to say the map is round
--- with TOTPP v 16, we can access directly whether world is flat
--- reference to the variable flatMap has been removed in this
--- file, the variable itself is left to avoid errors
--- with the declareMap functions.
-local flatMap = civ.game.rules.flatWorld
-print(flatMap)
--- gen.isMapFlat()-->boolean
-function gen.isMapFlat()
-    return civ.game.rules.flatWorld
-end
+<details id="gensetterraintype"><summary><code>gen.setTerrainType(tile,terrainID)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setTerrainType(tile,terrainID)-->void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
 
--- gen.isMapRound()-->boolean
-function gen.isMapRound()
-    return not civ.game.rules.flatWorld
-end
-
--- gen.declareMapFlat()-->void
--- tells this module that the map should be considered flat
--- for things like distances and adjacent squares
--- no longer has practical effect, since above
--- functions access world shape directly with TOTPP v16
-function gen.declareMapFlat()
-    flatMap = true
-end
-
--- gen.declareMapRound()-->void
-function gen.declareMapRound()
-    flatMap = false
-end
+</code>
+<br><a href="#gensetterraintype">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 
 -- gen.setTerrainType(tile,terrainID)-->void
@@ -187,6 +81,18 @@ end
 --
 
 
+<details id="generrorfornilkey"><summary><code>gen.errorForNilKey(table,tableName)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.errorForNilKey(table,tableName)-->void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#generrorfornilkey">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 --#gen.errorForNilKey(table,tableName)-->void
 -- generates an error when a key with a nil
@@ -197,6 +103,21 @@ function gen.errorForNilKey(table,tableName)
     setmetatable(table,mt)
     mt.__index = function(myTable,key) error("The "..tableName.." table doesn't have a value associated with "..tostring(key)..".") end
 end
+
+
+<details id="gennonewkey"><summary><code>gen.noNewKey(table,tableName)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.noNewKey(table,tableName)-->void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gennonewkey">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
 -- gen.noNewKey(table,tableName)-->void
 -- generates an error if attempting to set a key in
 -- a table that doesn't already exist
@@ -206,6 +127,21 @@ function gen.noNewKey(table,tableName)
     mt.__newindex = function(myTable,key)
         error("The "..tableName.." table can't accept values for indices that don't already exist.  Key value is: "..tostring(key))end
 end
+
+<details id="gennoglobal"><summary><code>gen.noGlobal()</code></summary><p style="margin-left: 25px">
+<code>gen.noGlobal()
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gennoglobal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 
 -- gen.noGlobal()
 -- after gen.noGlobal is run, errors will be generated when trying to create a new
@@ -255,7 +191,18 @@ function gen.noGlobal()
     print('Global variables are disabled')
 end
 
+<details id="genrestoreglobal"><summary><code>gen.restoreGlobal()</code></summary><p style="margin-left: 25px">
+<code>gen.restoreGlobal()
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
 
+</code>
+<br><a href="#genrestoreglobal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 function gen.restoreGlobal()
     local mt = getmetatable(_G) or {}
@@ -269,6 +216,21 @@ if rawget(_G,"console") then
 end
 
 local state = "stateNotLinked"
+
+<details id="genlinkstate"><summary><code>gen.linkState(stateTable)</code></summary><p style="margin-left: 25px">
+<code>gen.linkState(stateTable)
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#genlinkstate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 
 -- gen.linkState(stateTable)
 -- links the state table to the General Library
@@ -284,6 +246,21 @@ function gen.linkState(stateTable)
     end
 end
 
+<details id="gengetstate"><summary><code>gen.getState()</code></summary><p style="margin-left: 25px">
+<code>gen.getState()
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gengetstate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+
 -- gen.getState()
 -- returns the state table submitted to gen.linkState
 -- If you're writing a module intended for use by others,
@@ -296,64 +273,7 @@ end
 
 
 
-function gen.clearGapsInArray(table,lowestValue)
-    lowestValue = lowestValue or 1
-    local largestIndex = lowestValue-1
-    for index,val in pairs(table) do
-        if type(index) == "number" and index > largestIndex then
-            largestIndex = index
-        end
-    end
-    local nextIndex = lowestValue
-    for i=lowestValue,largestIndex do
-        if table[i] ~= nil then
-            if nextIndex < i then
-                table[nextIndex] = table[i]
-                table[i] = nil
-            end
-            nextIndex = nextIndex+1
-        end
-    end
-end
 
-function gen.makeArrayOneToN(table)
-    local lowestIntKey = math.huge
-    local highestIntKey = -math.huge
-    local function isInt(number)
-        return type(number)=="number" and number == math.floor(number)
-    end
-    local tempTable = {}
-    for key,value in pairs(table) do
-        if isInt(key) then
-            if key < lowestIntKey then
-                lowestIntKey = key
-            end
-            if key > highestIntKey then
-                highestIntKey = key
-            end
-            tempTable[key] = value
-            table[key] = nil
-        end
-    end
-    local newIndex = 1
-    for i=lowestIntKey,highestIntKey do
-        if tempTable[i] ~= nil then
-            table[newIndex] = tempTable[i]
-            newIndex = newIndex+1
-        end
-    end
-end
-
-local musicFolder = ""
--- gen.playMusic(fileName)
-function gen.playMusic(fileName)
-    civ.playMusic(musicFolder.."\\"..fileName)
-end
-
--- gen.setMusicDirectory(path)
-function gen.setMusicDirectory(path)
-    musicFolder = path
-end
 
 -- the ephemeralTable is a table for shared data
 -- since it is not saved, it doesn't have to be serializeable,
@@ -361,12 +281,42 @@ end
 -- values text or numbers
 -- However, the information will not be preserved after a save and load
 local ephemeralTable = {}
+
+
+<details id="gengetephemeraltable"><summary><code>gen.getEphemeralTable()-->table</code></summary><p style="margin-left: 25px">
+<code>gen.getEphemeralTable()-->table
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gengetephemeraltable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
 -- gen.getEphemeralTable()-->table
 function gen.getEphemeralTable()
     return ephemeralTable
 end
 
 local genStateTable = "stateTableNotLinked"
+
+
+<details id="genlinkgenerallibrarystate"><summary><code>gen.linkGeneralLibraryState(stateTable) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.linkGeneralLibraryState(stateTable) --> void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#genlinkgenerallibrarystate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
 -- gen.linkGeneralLibraryState(stateTable) --> void
 -- links a sub table of the state table for the purposes of
 -- providing a table for functions in the General Library
@@ -382,87 +332,10 @@ function gen.linkGeneralLibraryState(stateTable)
     genStateTable.persistentRandom = genStateTable.persistentRandom or {}
 end
 
--- gen.limitedExecutions(key,maxTimes,limitedFunction)--> void
--- if the value at key is less than maxTimes, limitedFunction will execute,
--- and the value at key will increment by 1
--- Otherwise, don't execute limitedFunction
--- Note: limitedFunction()-->void
-function gen.limitedExecutions(key,maxTimes,limitedFunction)
-    genStateTable.limitedExecutions[key] = genStateTable.limitedExecutions[key] or 0
-    if genStateTable.limitedExecutions[key] < maxTimes then
-        genStateTable.limitedExecutions[key] = genStateTable.limitedExecutions[key]+1
-        limitedFunction()
-    end
-end
-
--- gen.justOnce(key,limitedFunction) --> void
--- wrapper for gen.limitedExecutions with maxTimes being 1
-function gen.justOnce(key,limitedFunction)
-    gen.limitedExecutions(key,1,limitedFunction)
-end
-
--- gen.isSinglePlayerGame() --> boolean
--- returns true if there is exactly one human player, false otherwise
-
-function gen.isSinglePlayerGame()
-    local humanMask = civ.game.humanPlayers
-    -- not humanMask >= 0, so don't have to worry about negatives
-    if humanMask == 0 then
-        -- no human player, so not single player game
-        return false
-    end
-    -- if there is exactly one human player, then humanMask
-    -- will be a power of 2, and so will have an integer logarithm
-    return (math.log(humanMask,2) == math.floor(math.log(humanMask,2)))
-end
 
 
 
-function gen.tableWrap(item,needsWrapFn)
-    needsWrapFn = needsWrapFn or function(item) return type(item)~="table" end
-    if needsWrapFn(item) then
-        return {item}
-    else
-        return item
-    end
-end
 
---
--- gen.copyUnitAttributes(parent,child)-->void
--- copies the attributes of the 'parent' unit to the 'child' unit
--- all attributes accessible through lua are copied (except unit type,
--- and unit id number, and carriedBy)
---  Useful if a unit's type must be changed (by creating a new unit), but everything
---  else should stay the same
-function gen.copyUnitAttributes(parent,child)
-    child.owner = parent.owner
-    child:teleport(parent.location)
-    child.homeCity = parent.homeCity
-    child.damage = parent.damage
-    child.moveSpent = parent.moveSpent
-    if parent.gotoTile then
-        gen.setToGoingTo(child,parent.gotoTile)
-    else
-        child.order = parent.order
-    end
-    child.attributes = parent.attributes
-    child.veteran = parent.veteran
-    child.domainSpec = parent.domainSpec
-end
-
--- gen.nearbyUnits(center,radius) --> iterator providing units
---      provides an iterator over all the units within radius
---      tiles of the center tile
-
-function gen.nearbyUnits(center,radius)
-    return coroutine.wrap(function ()
-        for __,tile in pairs(gen.getTilesInRadius(center,radius,0,{0,1,2,3,})) do
-            for unit in tile.units do
-                coroutine.yield(unit)
-            end
-        end
-    end)
-end
 
 
 --
@@ -473,6 +346,22 @@ local defeatFunction = nil
 local deathFunction = nil 
 local deletionFunction = nil
 local deathOutsideCombat = nil
+
+
+<details id="gensetdeathfunctions"><summary><code>gen.setDeathFunctions(defeatFunction,deathFunction,deletionFunction) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.setDeathFunctions(defeatFunction,deathFunction,deletionFunction) --> void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gensetdeathfunctions">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 -- gen.setDeathFunctions(defeatFunction,deathFunction,deletionFunction) --> void
 --      defeatFunction(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)--> nil or unit
 --          function for when a unit is defeated either in game combat or in an event representing combat
@@ -492,48 +381,20 @@ function gen.setDeathFunctions(defeatFn,deathFn,deletionFn,deathNoCombatFn)
     deathOutsideCombat = deathNoCombatFn
 end
 
--- gen.defeatUnit(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)-->unit or nil
---      "defeats" the loser, deletes the loser, and returns a unit if and only if the loser 
---      was demoted, otherwise nil is returned
-function gen.defeatUnit(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
-    local survivor = defeatFunction(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)
-    deathFunction(loser)
-    deletionFunction(loser,survivor)
-    civ.deleteUnit(loser)
-    return survivor
-end
 
--- gen.killUnit(dyingUnit)-->void
---      "kills" the dying unit
-function gen.killUnit(dyingUnit)
-    deathFunction(dyingUnit)
-    deathOutsideCombat(dyingUnit)
-    deletionFunction(dyingUnit,nil)
-    civ.deleteUnit(dyingUnit)
-    return
-end
+<details id="genmakeallowedterrainfunction"><summary><code>gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
 
--- gen.deleteUnit(deletedUnit,replacementUnit=nil)-->void
---      deletes the deleted unit
---      if the unit is being 'replaced', the replacing unit must be provided
-function gen.deleteUnit(deletedUnit,replacementUnit)-->void
-    replacementUnit=replacementUnit or nil
-    deletionFunction(deletedUnit,replacementUnit)
-    civ.deleteUnit(deletedUnit)
-    return
-end
+</code>
+<br><a href="#genmakeallowedterrainfunction">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
--- gen.replaceUnit(oldUnit,replacementType)--> unit
--- creates a unit to replace the old unit, 
--- copies the old unit's attributes, and
--- deletes the old unit (applying the deletion function)
--- returns the newly created unit
-function gen.replaceUnit(oldUnit,replacementType)
-    local newUnit = civ.createUnit(replacementType,oldUnit.owner,oldUnit.location)
-    gen.copyUnitAttributes(oldUnit,newUnit)
-    gen.deleteUnit(oldUnit,newUnit)
-    return newUnit
-end
 
 -- gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool
 --      converts a table of integer values into a function that returns
@@ -552,6 +413,18 @@ function gen.makeAllowedTerrainFunction(allowedTilesList)
     return allowedTile
 end
 
+<details id="gennearbyunoccupiedtiles"><summary><code>gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table</code></summary><p style="margin-left: 25px">
+<code>gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gennearbyunoccupiedtiles">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 -- 
 -- gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table
 --      returns the table of nearby unoccupied tiles
@@ -579,6 +452,19 @@ function gen.nearbyUnoccupiedTiles(centerTile,distance,allowedTiles)
     return tileList
 end
 
+<details id="gengetrandomnearbyunoccupiedtile"><summary><code>gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile</code></summary><p style="margin-left: 25px">
+<code>gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gengetrandomnearbyunoccupiedtile">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
 -- gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile
 --      returns a random square near tile, on the same map
 --      tile is that you want to find other tiles near to (on same map)
@@ -598,6 +484,20 @@ function gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles)
         return nil
     end
 end
+
+
+ <details id="gennearbyopentilesfortribe"><summary><code>gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)</code></summary><p style="margin-left: 25px">
+<code> gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gennearbyopentilesfortribe">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 --  gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)
 --      returns a table of nearby tiles that are either unoccupied or occupied
@@ -627,6 +527,20 @@ function gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)
     return tileList
 end
 
+<details id="gengetrandomnearbyopentilefortribe"><summary><code>gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile</code></summary><p style="margin-left: 25px">
+<code>gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gengetrandomnearbyopentilefortribe">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 -- gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile
 --      returns a random square near tile, on the same map, that is either
 --      empty or only has units/city of the same tribe
@@ -648,6 +562,19 @@ function gen.getRandomNearbyOpenTileForTribe(centerTile,distance,allowedTiles,tr
         return nil
     end
 end
+
+<details id="gencreateunit"><summary><code>gen.createUnit(unitType,tribe,locations,options) --> table of units</code></summary><p style="margin-left: 25px">
+<code>gen.createUnit(unitType,tribe,locations,options) --> table of units
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gencreateunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 -- gen.createUnit(unitType,tribe,locations,options) --> table of units
 --      This is a createUnit function, meant to supersede civlua.createUnit
@@ -827,245 +754,19 @@ function gen.createUnit(unitType,tribe,locations,options)
     return returnUnits
 end
 
--- gen.getTileProduction(tile,city) --> integer (food), integer(shields), integer(trade)
--- returns the tile production values, presuming that the city
--- given is the one working the tile
--- That is to say, returns the values that would be seen on the tile in the city window
--- Doesn't check if that city is actually working the tile
 
-local function getTileProduction(tile,city)
-    tile = toTile(tile)
-    local terrain = tile.terrain
-    local baseTerrain = tile.baseTerrain
-    local trade = terrain.trade
-    local shields = terrain.shields
-    local food = terrain.food
-    if baseTerrain.type == 10 then
-        -- the ocean has a different computation than
-        -- other terrain in several areas
-        -- road and river don't add trade to ocean
-        -- colossus always adds trade to ocean, even if it doesn't
-        -- have any trade production
-        if civ.getWonder(2).city == city and applyWonderBonus(civ.getWonder(2),city.owner) then
-            trade = trade+1
-        end
-        local tribeGovernment = city.owner.government
-        if tribeGovernment >= 5 or (tribeGovernment >= 2 and gen.isWeLoveTheKing(city)) then
-            -- republic/democracy bonus, wltkd for other gov'ts
-            if trade >= 1 then
-                trade = trade+1
-            end
-        elseif (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if trade >= 3 then
-                trade = trade -1
-            end
-        end
-        -- highways apply to ocean
-        if (gen.hasRoad(tile) or tile.city) and city:hasImprovement(civ.getImprovement(25)) then
-            trade = (3*trade)//2
-        end
-        -- pollution occurs after highway bonus
-        -- 6 trade  -> 9 (highway) -> 5 (pollution) observed
-        -- 6 trade -> 3 (pollution) -> 4 (highway) NOT observed
-        if gen.hasPollution(tile) then
-            trade = trade - (trade//2)
-        end
+<details id="genpersistentrandom"><summary><code>gen.persistentRandom(key) --> number between 0 and 1</code></summary><p style="margin-left: 25px">
+<code>gen.persistentRandom(key) --> number between 0 and 1
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
 
-        -- shields
-        -- mining doesn't increase ocean shield production
-
-        -- apply offshore platform
-        if city:hasImprovement(civ.getImprovement(31)) then
-            shields = shields+1
-        end
-        -- King Richard's Crusade
-        if civ.getWonder(8).city == city and applyWonderBonus(civ.getWonder(8),city.owner) then
-            shields = shields+1
-        end
-        -- railroads apply to ocean
-        if gen.hasRailroad(tile) or (tile.city and city.owner:hasTech(civ.getTech(67))) then
-            shields = (3*shields)//2
-        end
-        -- despotism seems to happen after railroads
-        if (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if shields >= 3 then
-                shields = shields -1
-            end
-        end
-        -- despotism is applied before pollution
-        -- 6 ->5 (despotism)->3 (pollution) observed
-        -- 6 ->3 (pollution) -> 2 (despotism) not observed
-        if gen.hasPollution(tile) then
-            shields = shields - (shields//2)
-        end
-        -- irrigation doesn't increase food production on the ocean
-        -- Farmland doesn't affect it either
-
-        -- apply harbour
-        if city:hasImprovement(civ.getImprovement(30)) then
-            food = food+1
-        end
-        if (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if food >= 3 then
-                food = food -1
-            end
-        end
-        -- harbour is applied before pollution
-        -- 7 ->8 (harbour) -> 4 (Pollution) observed
-        -- 7 -> 4 (pollution) ->5 (harbour) Not observed
-        -- despotism is applied before pollution
-        -- 6 ->5 (despotism)->3 (pollution) observed
-        -- 6 ->3 (pollution) -> 2 (despotism) not observed
-        if gen.hasPollution(tile) then
-            food = food - (food//2)
-        end
-
-    else
-        -- calculation for non-ocean tiles
-
-        -- river adds 1 trade to all tiles (except ocean)
-        if tile.river  then
-            trade = trade+1
-        end
-        -- road
-        -- If the tile has a road, it gets +1 trade if it already has some trade,
-        -- or if totpp.roadTrade says it should (baseTerrain.type+1, since id starts counting
-        -- at 0, but isBit1 starts counting from 1
-        -- Oceans don't get +1 road trade, ever
-        if (gen.hasRoad(tile) or tile.city) and (isBit1(totpp.roadTrade[tile.z],baseTerrain.type+1) or trade > 0) then 
-            trade = trade+1
-        end
-        -- apply colossus
-        if civ.getWonder(2).city == city and trade >= 1 and applyWonderBonus(civ.getWonder(2),city.owner) then
-            -- colossus adds 1 trade to each tile that already has a trade arrow,
-            -- (also adds 1 trade to ocean even if no trade arrow, see above)
-            trade = trade+1
-        end
-        -- republic/democracy trade bonus happens before highways are applied
-        -- despotism penalty happens before highways
-        local tribeGovernment = city.owner.government
-        if tribeGovernment >= 5 or (tribeGovernment >= 2 and gen.isWeLoveTheKing(city)) then
-            -- republic/democracy bonus, wltkd for other gov'ts
-            if trade >= 1 then
-                trade = trade+1
-            end
-        elseif (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if trade >= 3 then
-                trade = trade -1
-            end
-        end
-        -- Well known highways happen after republic/democracy bonus.  They also happen after despotism
-        -- penalty.  4 trade square (3+1 for road) becomes 4 after highway and despotism,
-        --  4->3 (despotism)->4(highway)  Observed`
-        --  4 -> 6 (highway) -> 5 (despotism) Not observed
-        -- apply highways bonus
-        if (gen.hasRoad(tile) or tile.city) and city:hasImprovement(civ.getImprovement(25)) then
-            trade = (3*trade)//2
-        end
-        -- pollution occurs after highway bonus
-        -- 6 trade (5+road) -> 9 (highway) -> 5 (pollution) observed
-        -- 6 trade -> 3 (pollution) -> 4 (highway) NOT observed
-        if gen.hasPollution(tile) then
-            trade = trade - (trade//2)
-        end
-
-        -- pollution occurs after despotism penalty, since 6 ->5 ->3 and not 6->3->2
-        -- a bit more detail is below with the pollution penalty for food
-        --shields
-        -- Apply mine bonus.  
-        -- A city gives the mine bonus only if the irrigation bonus is 0
-        if gen.hasMine(tile) or (tile.city and baseTerrain.irrigateBonus == 0)  then
-            shields = shields + baseTerrain.mineBonus
-        end
-        -- grasslands without shields don't produce shields, except with KRC, which gives +1
-        -- Or, the 1 shield minimum from being on a city square
-        if baseTerrain.type == 2 and not tile.grasslandShield then
-            shields = 0
-        end
-        -- cities (except on ocean) guarantee 1 shield of production
-        if tile.city then
-            shields = math.max(1,shields)
-        end
-        -- KRC happens after 1 shield minimum, before the railroad bonus
-        -- King Richard's Crusade
-        if civ.getWonder(8).city == city and applyWonderBonus(civ.getWonder(8),city.owner) then
-            shields = shields+1
-        end
-        if gen.hasRailroad(tile) or (tile.city and city.owner:hasTech(civ.getTech(67))) then
-            shields = (3*shields)//2
-        end
-        -- despotism seems to happen after railroads
-        if (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if shields >= 3 then
-                shields = shields -1
-            end
-        end
-        -- pollution occurs after despotism penalty, since 6 ->5 ->3 and not 6->3->2
-        -- a bit more detail is below with the pollution penalty for food
-        if gen.hasPollution(tile) then
-            shields = shields - (shields//2)
-        end
-
-
-        -- tiles with city or irrigation get the irrigation bonus, regardless of whether
-        -- the tile can actually be irrigated
-        if tile.city or gen.hasIrrigation(tile) then
-            food = food + baseTerrain.irrigateBonus
-        end
-        -- don't need refrigeration tech to take advantage of farm production, just supermarket
-        -- city tile counts as farmland even without refrigeration
-        if city:hasImprovement(civ.getImprovement(24)) and (tile.city or gen.hasFarmland(tile)) then
-            food = (3*food)//2
-        end
-
-        -- 4 food production pre farmland results in 5 production after applying supermarket,
-        -- meaning that the despotism penalty applies after supermarkets (6-1=5 instead of 3*3/2 = 4)
-        if (tribeGovernment == 1 and not gen.isWeLoveTheKing(city)) or tribeGovernment == 0 then
-            -- despotism penalty if wltkd not in place, or anarchy always
-            if food >= 3 then
-                food = food -1
-            end
-        end
-
-        -- pollution occurs after farmland, since 6 food before farm becomes 9 with farm then
-        -- 5 after pollution.  Pollution before farm would mean 6 becomes 3 with pollution, then
-        -- 4 after pollution
-        -- pollution occurs after despotism.  6 food becomes 5 with despotism, becomes 3 after pollution
-        -- If pollution were factored before despotism, 6 would become 3, which would become 2,
-        -- 6->5->3 holds with and without farmland
-        if gen.hasPollution(tile) then
-            food = food - (food//2)
-        end
-    end
-    return food, shields, trade
-end
-gen.getTileProduction = getTileProduction
-
--- gen.computeBaseProduction(city)-->integer(food), integer(shields), integer(trade)
--- Computes the resources harvested by the city from the terrain
--- includes superhighway/supermarket/railroad bonus, but not factories/powerplants
-function gen.computeBaseProduction(city)
-    local tileList = gen.cityRadiusTiles(city)
-    local cityWorkers = city.workers
-    local foodTotal = 0
-    local shieldTotal = 0
-    local tradeTotal = 0
-    for workerIndex,tile in pairs(tileList) do
-        if isBit1(cityWorkers,workerIndex) then
-            local tileFood,tileShields,tileTrade = getTileProduction(tile,city)
-            foodTotal = foodTotal+tileFood
-            shieldTotal = shieldTotal+tileShields
-            tradeTotal = tradeTotal+tileTrade
-            --print(tile.x,tile.y,tileShields, shieldTotal)
-        end
-    end
-    return foodTotal,shieldTotal,tradeTotal
-end
+</code>
+<br><a href="#genpersistentrandom">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
 
 -- gen.persistentRandom(key) --> number between 0 and 1
 -- checks the persistentRandom table (within the state table)
@@ -1086,6 +787,22 @@ function gen.persistentRandom(key)
     return genStateTable.persistentRandom[key]
 end
 
+<details id="genclearpersistentrandom"><summary><code>gen.clearPersistentRandom(key) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.clearPersistentRandom(key) --> void
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#genclearpersistentrandom">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+
+
 -- gen.clearPersistentRandom(key) --> void
 -- sets the value associated with the key in the
 -- persistentRandom table.  This could either be for reuse of the key,
@@ -1093,6 +810,21 @@ end
 function gen.clearPersistentRandom(key)
     genStateTable.persistentRandom[key] = nil
 end
+
+<details id="gengetpersistentrandomtable"><summary><code>gen.getPersistentRandomTable() --> table</code></summary><p style="margin-left: 25px">
+<code>gen.getPersistentRandomTable() --> table
+</code>
+Description Here.
+<br>Valid Arguments:
+<code>
+
+</code>
+<br><a href="#gengetpersistentrandomtable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
 
 -- gen.getPersistentRandomTable() --> table
 -- returns the persistentRandom table
