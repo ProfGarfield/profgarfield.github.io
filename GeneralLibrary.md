@@ -1,10 +1,5 @@
 
-<style>
-  code {
-    white-space : pre-wrap !important;
-    word-break: break-word;
-  }
-</style>
+
 
 [Home](index.md)
 
@@ -974,9 +969,9 @@ options:    a table with the following keys:
 ## Data Structures[&uarr;](#general-library)
 
 These functions provide tools for creating and manipulating special data structures.  
-[Threshold Tables](#threshold-tables)
-[Persistent Random Numbers](#persistent-random-numbers)
-[Tables With Nil Value Errors](#tables-with-nil-value-errors)
+[Threshold Tables](#threshold-tables)  
+[Persistent Random Numbers](#persistent-random-numbers)  
+[Tables With Nil Value Errors](#tables-with-nil-value-errors)  
 
 ### Threshold Tables[&uarr;](#data-structures)
 
