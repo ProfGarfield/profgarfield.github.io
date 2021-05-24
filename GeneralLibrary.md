@@ -11,10 +11,12 @@
 # General Library
 
 The General Library offers a variety of tools to make it easier to build events.  These functions are divided into several sections:
-* [Replacement Functions](#replacement-functions)
-  These functions should be used in place of the similar tools provided by the `civ` library.
+* [Replacement Functions](#replacement-functions)  
+  These functions should be used in place of the similar tools provided by the `civ` library.  
 * [Building Blocks](#building-blocks)  
   These are miscellaneous functions that are likely to be useful in building larger events or other modules.
+* [Data Structures](#data-structures)  
+  These functions provide tools for creating and manipulating special data structures.
 * [Flag Functions](#flag-functions)
   These facilitate working with the many attributes that Civilization II stores as 0's and 1's in memory, and which Lua groups together and provides as integers.
 * [Small Features](#small-features)  
@@ -139,7 +141,6 @@ replacementType: unitTypeObject
 <br>
 </p>
 </details>
-
 
 
 ## Building Blocks[&uarr;](#general-library)
@@ -751,6 +752,381 @@ Computes the resources harvested by the city from the terrain.  Includes superhi
 city: cityObject
 </code>
 <br><a href="#gencomputebaseproduction">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gengetstate"><summary><code>gen.getState()</code></summary><p style="margin-left: 25px">
+<code>gen.getState()
+</code>
+Returns a table within the state table, enabling the user to save data without relying on a separate module.  
+Important: gen.getState() must be in each function that accesses it; it doesn't provide the state table during the initialization of the events.
+<br>Use:
+<code>
+local function myFunction(key)
+  local state=gen.getState()
+  print(state[key])
+end
+</code>
+and NOT:
+<code>
+local state=gen.getState()
+local function myFunction(key)
+  print(state[key])
+end
+</code>
+Notes: Returns the table submitted to <a href="#genlinkstate"><code>gen.linkState</code></a>, not which is not the entire State Table in the Lua Scenario Template (to avoid key conflicts).
+<br> If you are writing a "module" that you intend to be used by others, consider using a "linkState" system to avoid accidental key conflicts.  The General Library code provides an example of this, so search for <a href="#genlinkstate"><code>gen.linkState</code></a> in the code. 
+<br><a href="#gengetstate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gengetephemeraltable"><summary><code>gen.getEphemeralTable()-->table</code></summary><p style="margin-left: 25px">
+<code>gen.getEphemeralTable()-->table
+</code>
+Returns the "Ephemeral Table."
+The "Ephemeral Table" is a table for shared data.  Since it is not saved, it doesn't have to be serializeable,
+so you don't have to worry about limiting keys and
+values to text and numbers.
+However, the information will not be preserved after a save and load.
+<br><a href="#gengetephemeraltable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genmakeallowedterrainfunction"><summary><code>gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool</code></summary><p style="margin-left: 25px">
+<code>gen.makeAllowedTerrainFunction() --> function(tile)-->true
+gen.makeAllowedTerrainFunction(allowedTilesTable) --> function(tile)-->bool
+</code>
+Generates a function that determines if <code>tile.terrainType % 16</code> was in the list of integers provided by "allowedTilesTable."  If so, the function returns true, if not, it returns false.
+If "allowedTilesTable" is nil, the output funciton returns true for all 16 terrain types.
+<br>Valid Arguments:
+<code>
+allowedTilesTable: table with integer values or nil
+</code>
+<br><a href="#genmakeallowedterrainfunction">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gennearbyunoccupiedtiles"><summary><code>gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table</code></summary><p style="margin-left: 25px">
+<code>gen.nearbyUnoccupiedTiles(tile,distance) --> table
+gen.nearbyUnoccupiedTiles(tile,distance,allowedTiles) --> table
+</code>
+Returns a table of tiles near "tile" that are unoccupied, on the same map.  Indices start at 1 and have no gaps, but the tiles are in no particular order.
+<br>"tile" is the tile you wish to find other tiles nearby to.
+<br>"distance" is the number of squares away from "tile" to search.
+<br>"allowedTiles" determines which tiles are allowed (nil means all allowed).
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+distance: integer
+allowedTiles: nil, table with integer values,
+            function(potentialTile)-->bool
+            (potentialTile: tile; return true if potentialTile is allowed, false if not)
+</code>
+<a href="#gennearbyunoccupiedtiles">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gengetrandomnearbyunoccupiedtile"><summary><code>gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile</code></summary><p style="margin-left: 25px">
+<code>gen.getRandomNearbyUnoccupiedTile(tile,distance) --> tile
+gen.getRandomNearbyUnoccupiedTile(tile,distance,allowedTiles) --> tile
+</code>
+Returns a random tileObject that is nearby to "tile," and unoccupied.
+<br>"tile" is the tile you wish to find another tile nearby to.
+<br>"distance" is the number of squares away from "tile" to search.
+<br>"allowedTiles" determines which tiles are allowed (nil means all allowed).
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+distance: integer
+allowedTiles: nil, table with integer values,
+            function(potentialTile)-->bool
+            (potentialTile: tile; return true if potentialTile is allowed, false if not)
+</code>
+Note: <a href="#gennearbyunoccupiedtiles"><code>gen.nearbyUnoccupiedTiles</code></a> generates the list of tiles from which the returned tile is selected.
+<br><a href="#gengetrandomnearbyunoccupiedtile">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gennearbyopentilesfortribe"><summary><code>gen.nearbyOpenTilesForTribe(tile,distance,allowedTiles,tribe)</code></summary><p style="margin-left: 25px">
+<code> gen.nearbyOpenTilesForTribe(tile,distance,allowedTiles,tribe)
+</code>
+Returns a table of tiles near "tile" that are unoccupied or are occupied by "tribe," on the same map.  Indices start at 1 and have no gaps, but the tiles are in no particular order.
+<br>"tile" is the tile you wish to find other tiles nearby to.
+<br>"distance" is the number of squares away from "tile" to search.
+<br>"allowedTiles" determines which tiles are allowed (nil means all allowed).
+<br>"tribe" is the tribe that can occupy the tiles.
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+distance: integer
+allowedTiles: nil, table with integer values,
+            function(potentialTile)-->bool
+            (potentialTile: tile; return true if potentialTile is allowed, false if not)
+tribe: tribeObject
+</code>
+<br><a href="#gennearbyopentilesfortribe">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gengetrandomnearbyopentilefortribe"><summary><code>gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile</code></summary><p style="margin-left: 25px">
+<code>gen.getRandomNearbyOpenTileForTribe(tile,distance,allowedTiles,tribe) --> tile
+</code>
+Returns a random tile near "tile," that is unoccupied or occupied by "tribe," on the same map.
+<br>"tile" is the tile you wish to find a random tile nearby to.
+<br>"distance" is the number of squares away from "tile" to search.
+<br>"allowedTiles" determines which tiles are allowed (nil means all allowed).
+<br>"tribe" is the tribe that can occupy the tile.
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+distance: integer
+allowedTiles: nil, table with integer values,
+            function(potentialTile)-->bool
+            (potentialTile: tile; return true if potentialTile is allowed, false if not)
+tribe: tribeObject
+</code>
+<br><a href="#gengetrandomnearbyopentilefortribe">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gencreateunit"><summary><code>gen.createUnit(unitType,tribe,locations,options) --> table of units</code></summary><p style="margin-left: 25px">
+<code>gen.createUnit(unitType,tribe,locations,options) --> table of units
+</code>
+Creates one or several units.  Meant to provide improve upon <code>civlua.createUnit</code>. 
+Returns a table of units, indexed by integers starting at 1 (unless no units were created, in which case an empty table is returned, and a message printed to the console, but no error is generated).
+"unitType" is the unit type that will be created.
+"tribe" is the tribe that will own the unit(s).
+"locations" specifies where the unit will be created.  If a table is provided, this is the order in which to try to place the units, unless a different option is specified in "options."
+"options" a table with various keys and values.  See the Valid Arguments section.
+<br>Valid Arguments:
+<code>
+unitType: unitTypeObject
+tribe: tribeObject
+locations:  a tile object,
+            a table of 3 elements, (indexed by integers 1,2,3) corresponding to x,y,z coordinate,
+            a table of tile objects (indexed by integers)
+            a table of coordinate triple tables (indexed by integers)
+options:    a table with the following keys:
+    count = integer
+        the number of units to create
+        nil means 1
+    randomize = bool or nil
+        if true, randomize the list of locations
+        if false or nil, try to place at the tile with the smallest index in table first
+    scatter = bool or nil
+        if true, and if randomize is true, each unit is created on a random tile
+        in the location table
+    inCapital = bool or nil
+        if true, attempt to place in the capital before other locations
+        in case of multiple capitals, capitals are ranked with smallest city id first
+        randomize/scatter applies to list of capitals if this is selected
+    veteran = bool or fraction in 0-1 or integer or nil
+        if true, make the created unis veteran
+        if a fraction in 0-1, each unit created has that chance of being veteran
+        if number >= 1, this many of the count are veteran (take floor)
+        nil or false means no veterans
+    homeCity = city or true or nil
+        if city, that city is the home city
+        if true, the game selects the home city (probably the same way a city is chosen 
+        if you create a unit by using the cheat menu)
+        if nil, no home city
+    overrideCanEnter = bool or nil
+        if true, unit will be placed even if unitType:canEnter(tile) returns false
+        false or nil means follow the restriction 
+        civ.canEnter appears to check if the terrain is impassible, or the unit can cross impassible
+    overrideDomain = bool or nil
+        if true, sea units can be created on land outside cities, and land units at sea
+        false or nil means units can only be created where they could travel naturally
+    overrideDefender = bool or nil
+        if true, unit can be placed on tiles with enemy units or cities
+        false or nil means the tile must have no enemy cities, and no enemy defender
+</code>
+<br><a href="#gencreateunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+## Data Structures[&uarr;](#general-library)
+
+These functions provide tools for creating and manipulating special data structures.  
+[Threshold Tables](#threshold-tables)
+[Persistent Random Numbers](#persistent-random-numbers)
+[Tables With Nil Value Errors](#tables-with-nil-value-errors)
+
+### Threshold Tables[&uarr;](#data-structures)
+
+A "Threshold Table" is a table modified such that if the value of numerical key is requested, and that
+numerical key doesn't correspond to key in the table, the value of the largest
+numerical index in the table that is less than the requested key is used.
+If there is no numerical index smaller than the key, false is returned
+(nil is returned for non-numerical keys not in table).
+Use a key `-math.huge` to provide values for arbitrarily small numerical keys.  
+Example:
+```lua
+myTable = gen.makeThresholdTable({[-1]=-1,[0]=0,[1]=1,})
+myTable[-2] --> false
+myTable[-1] --> -1
+myTable[-0.6] --> -1
+myTable[3.5] --> 1
+myTable["three"] --> nil
+myTable[0.5] --> 0
+```
+
+<details id="genmakethresholdtable"><summary><code>gen.makeThresholdTable(table)-->thresholdTable</code></summary><p style="margin-left: 25px">
+<code>gen.makeThresholdTable()-->thresholdTable
+gen.makeThresholdTable(table)-->thresholdTable
+</code>
+Transforms the submitted table into a threshold table, and returns that table.  If no table is submitted, a new (empty) threshold table is created and returned.
+<br>Valid Arguments:
+<code>
+table: table or nil
+</code>
+The Threshold Table functionality is achieved by using a <a href="https://www.tutorialspoint.com/lua/lua_metatables.htm"> metatable</a>, the details of which can be found in the code.
+<br><a href="#genmakethresholdtable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+### Persistent Random Numbers[&uarr;](#data-structures)
+
+Random numbers allow for events to sometimes happen, and sometimes not happen.  The most basic too that Lua has for randomness, [`math.random`](http://lua-users.org/wiki/MathLibraryTutorial), generates a new random number every time.  However, sometimes we want to use the *same* random number several times, and only generate it once.
+
+Example of use: WWII scenario with seasons
+
+You may want to have some games where the 1941 spring starts
+in April, and other games where it starts in May.  When
+determining whether to load winter or summer terrain stats during
+1941, you would use `gen.persistentRandom("EarlySpring1941") < 0.5`
+as part of the season check in April, and load summer if the value is less than 0.5
+and winter otherwise.  This way, every time the game is loaded that month, the season will always be the same.
+
+
+<details id="genpersistentrandom"><summary><code>gen.persistentRandom(key) --> number between 0 and 1</code></summary><p style="margin-left: 25px">
+<code>gen.persistentRandom(key) --> number between 0 and 1
+</code>
+checks the 'persistentRandom table' (within the state table)
+for a value associated with key. If it exits, the value is
+returned.  If it does not exist, a random number between
+0 and 1 is generated, stored in the table under the key,
+and also returned
+<br>Valid Arguments:
+<code>
+key: string or integer
+</code>
+<a href="#genpersistentrandom">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="genclearpersistentrandom"><summary><code>gen.clearPersistentRandom(key) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.clearPersistentRandom(key) --> void
+</code>
+Clears the value associated with the key in the
+persistentRandom table. (That is, sets it to <code> nil</code>)  This could either be for reuse of the key,
+or to prevent the key from staying in the state table indefinitely, if it is no longer needed.
+<br>Valid Arguments:
+<code>
+key: string or integer
+</code>
+<a href="#genclearpersistentrandom">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gengetpersistentrandomtable"><summary><code>gen.getPersistentRandomTable() --> table</code></summary><p style="margin-left: 25px">
+<code>gen.getPersistentRandomTable() --> table
+</code>
+Returns the table that stores the Persistent Random Values.
+Note: Not clear why you would want this, but it is available just in case.
+<br><a href="#gengetpersistentrandomtable">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+### Tables With Nil Value Errors[&uarr;](#data-structures)
+
+It occasionally happens that we want our tables to cause errors when we try to read or write to keys with `nil` values.  This is because we've written our program in such a way that keys with `nil` values shouldn't be accessed, and trying to access them is an indication that our program has some sort of error in it.
+
+
+<details id="generrorfornilkey"><summary><code>gen.errorForNilKey(table,tableName)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.errorForNilKey(table,tableName)-->void
+</code>
+Generates an error when a key with a nil value is accessed from the table.
+Useful for debugging in certain circumstances.
+The "tableName" provides a name for the table in the error that is produced.  It is recommended that you use the variable name you've given the table, to help you find and correct your error.
+<br>Valid Arguments:
+<code>
+table: table
+talbeName: string
+</code>
+Note: This is achieved with a <a href="https://www.tutorialspoint.com/lua/lua_metatables.htma"> metatable</a>.
+<br><a href="#generrorfornilkey">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gennonewkey"><summary><code>gen.noNewKey(table,tableName)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.noNewKey(table,tableName)-->void
+</code>
+Causes an error to be generated if the program attempts to set a value for a key that is not already in the table.
+Useful for debugging in certain circumstances.
+The "tableName" provides a name for the table in the error that is produced.  It is recommended that you use the variable name you've given the table, to help you find and correct your error.
+<br>Valid Arguments:
+<code>
+table: table
+talbeName: string
+</code>
+Note: This is achieved with a <a href="https://www.tutorialspoint.com/lua/lua_metatables.htma"> metatable</a>.
+<br><a href="#gennonewkey">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="gennoglobal"><summary><code>gen.noGlobal()</code></summary><p style="margin-left: 25px">
+<code>gen.noGlobal()-->void
+</code>
+After <code>gen.noGlobal()-->void</code> is run, errors will be generated when trying to create a new global variable, or when attempting to reference a global variable that does not already exist.  Errors explaining the problem will be generated.
+<br>This is run in <code>events.lua</code> in the Lua Scenario Template, after createing 2 global variables <code>console</code> and <code>global</code>.  Various commands that you might want to run from the Lua Console are stored as values in the "console" table, and "global" is provided in case you decide that you do want some global variables.
+<br> If you need temporary access to global variables (perhaps you're working in the Lua Console, which doesn't let you use local variables), you can run the command <code>console.restoreGlobal()</code>, which runs <a href="#genrestoreglobal"><code>gen.restoreGlobal</code></a>.
+<br><a href="#gennoglobal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genrestoreglobal"><summary><code>gen.restoreGlobal()</code></summary><p style="margin-left: 25px">
+<code>gen.restoreGlobal()
+</code>
+Restores the ability to use global variables, after <a href="#gennoglobal"><code>gen.noGlobal</code></a> has been used.
+<br> The Lua Scenario Template makes this accessible through the console via <code>console.restoreGlobal</code>.
+<br><a href="#genrestoreglobal">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
@@ -3235,6 +3611,60 @@ gen.setMusicDirectory(musicFolder)
 </p>
 </details>
 
+<details id="gensetdeathfunctions"><summary><code>gen.setDeathFunctions(defeatFunction,deathFunction, deletionFunction, deathNoCombatFn) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.setDeathFunctions(defeatFunction,deathFunction, deletionFunction, deathNoCombatFn) --> void
+</code>
+Registers functions to be performed when a unit is defeated (either in game combat or events)
+or deleted by events in some other way
+<br>Arguments:
+<code>
+defeatFunction(loser,winner,aggressor,victim,loserLocation,winnerVetStatus,loserVetStatus)--> nil or unit
+    function for when a unit is defeated either in game combat or in an event representing combat
+    if a unit is returned, that is a replacement unit for demotion
+deathFunction(dyingUnit) --> void
+    for when a unit 'dies', either in standard or event combat, or through some other event 'kill'
+deletionFunction(deletedUnit,replacingUnit=nil) --> void
+    maintenance for when a unit is deleted, either because of combat, death, replacement or some other 'administrative' situation.  If no replacing unit, the replacingUnit argument is nil
+deathNoCombatFn(dyingUnit) --> void
+    for when a unit dies, but not in combat or through the gen.defeatUnit function
+</code>
+<br><a href="#gensetdeathfunctions">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="genlinkstate"><summary><code>gen.linkState(stateTable)</code></summary><p style="margin-left: 25px">
+<code>gen.linkState(stateTable)
+</code>
+Links the state table to the General Library so that <a href="#gengetstate"><code>gen.getState()</code></a> can provide it.
+<br>Valid Arguments:
+<code>
+stateTable: table within the State Table
+</code>
+Notes: The link is within <code>events.lua</code>, found within <code> linkStateTableToModules()</code>.  Actually links a sub table within the State Table, so that key choice doesn't override keys for other modules.
+<br><a href="#genlinkstate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+<details id="genlinkgenerallibrarystate"><summary><code>gen.linkGeneralLibraryState(stateTable) --> void</code></summary><p style="margin-left: 25px">
+<code>gen.linkGeneralLibraryState(stateTable) --> void
+</code>
+Links the General Library to the state table, for the purposes of internal functionality that requires saving data.  E.g. <a href="genlimitedexecutions">limited executions</a> and <a href="genpersistentrandom"> persistent random</a>.
+<br>Valid Arguments:
+<code>
+stateTable: table within the State Table
+</code>
+Notes: The link is within <code>events.lua</code>, found within <code> linkStateTableToModules()</code>.  
+<br><a href="#genlinkgenerallibrarystate">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+
+
+
 
 
 ## Obsolete Functions[&uarr;](#general-library)
@@ -3278,6 +3708,29 @@ No effect.  Prior to TOTPP v0.16, it changed a variable referenced by <code>gen.
 </code>
 No effect.  Prior to TOTPP v0.16, it changed a variable referenced by <code>gen.isMapRound</code> and <code>gen.isMapFlat</code>.
 <br><a href="#gendeclaremapround">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br>
+</p>
+</details>
+
+<details id="gensetterraintype"><summary><code>gen.setTerrainType(tile,terrainID)-->void</code></summary><p style="margin-left: 25px">
+<code>gen.setTerrainType(tile,terrainID)-->void
+</code>
+This was supposed to "future proof" setting terrain types, but I don't think it was ever used.  I (Prof. Garfield, who wrote this Library) forgot about it.  With TOTPP v0.16, we now have the new method to change terrain anyway.
+<br> This is what my documentation said about it:
+changes the terrain type of tile to terrainID
+have this function, so that if
+terrainType key functionality is changed, this
+function can change instead of all code everywhere
+<br>Valid Arguments:
+<code>
+tile: tileObject, 
+      {[1]=xCoord,[2]=yCoord},
+      {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+      {["x"]=xCoord,["y"]=yCoord}, 
+      {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+terrainID: integer from 0 to 15
+</code>
+<br><a href="#gensetterraintype">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>
