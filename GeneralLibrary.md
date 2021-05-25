@@ -1,4 +1,10 @@
 
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
 
 
 [Home](index.md)
@@ -76,17 +82,17 @@ The function <code>civ.playMusic(filename)</code> plays music from <code>&lt;Tes
 "Defeats" the loser, deletes the loser, and returns a unit if and only if the loser was "demoted" to that unit.  Otherwise, nil is returned.
 This function integrates the various unit death <a href="LuaExecutionPoints.html"> execution points</a> along with the <a href="PromotionDemotion.html"> Promotion and Demotion Module</a>.
 <br> This function is suitable if you have a "combat-like" event.
-<br>Valid Arguments:
+<br>Valid Arguments:  
 <code>
-loser: unitObject
-winner: unitObject
-aggressor: unitObject
-victim: unitObject
-loserLocation: tileObject
-winnerVetStatus: boolean
-loserVetStatus: boolean
+loser: unitObject  
+winner: unitObject  
+aggressor: unitObject  
+victim: unitObject  
+loserLocation: tileObject  
+winnerVetStatus: boolean  
+loserVetStatus: boolean  
 </code>
-<a href="#gendefeatunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
+<br><a href="#gendefeatunit">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
 </p>
 </details>

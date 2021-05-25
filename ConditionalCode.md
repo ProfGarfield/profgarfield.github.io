@@ -140,6 +140,94 @@ Make these changes to `onTurn.lua`, and load the game.  The Trade Advisor is one
 
 Now, let us make a more complicated event.  We will give the Celts a bonus against the Romans.  Our goal is that if the Celts own Milan and the square (37,15) is either empty or defended by the Celts, then the Celts get a chariot at the square every turn.
 
+The first thing we must do is choose an [execution point](LuaExecutionPoints.md) for our code.  Since we want this to happen every turn, there are three suitable execution points: [Between Turns](LuaExecutionPoints.md#between-turns), [After Production](LuaExecutionPoints.md#after-production), and [Before Production](LuaExecutionPoints.md#before-production).  We will again use the Between Turns execution point, so we again open `onTurn.lua`.
+
+Let us first give a name to the tile that we wish to produce a chariot on.  Add this line:
+```lua
+local oddTurnLeader = "Fabius" --This line is already in the file.
+local chariotSquare = civ.getTile(37,15,0) -- This is the new line.
+```
+`civ.getTile` is the basic function that converts 3 coordinates to a tile.  Now, the first thing we want to do is to check if we can place the chariot on the tile, which we only want to do if the tile either has no units on it, or has Celtic units on it.  The function `civ.createUnit` won't stop us from creating units on tiles occupied by units of a different tribe, so we have to check this ourselves.  (`civlua.createUnit` and [`gen.createUnit](GeneralLibrary.md#gencreateunit) do offer that feature.)
+
+For a given tile, `tile.defender` gives the tribe that has a unit on the tile, or `nil` if no tribe has a unit on the tile.  Hence, we check if `chariotSquare` is undefended by using:
+```lua
+chariotSquare.defender == nil
+```
+And we check if `chariotSquare` is defended by the Celts by the code
+```lua
+chariotSquare.defender == object.pCelts
+```
+
+We will ignore the Milan ownership requirement for now.  What we want is an if statement that will run if either of these conditions is true.  For that, we use `or`.  The expression
+```lua
+A or B
+```
+is true if either A is true, or B is true (or both).
+```lua
+true or false --> true
+false or true --> true
+true or true --> true
+false or false --> false
+```
+Hence, for our if statement, we have:
+```lua
+if chariotSquare.defender == nil or chariotSquare.defender == object.pCelts then
+```
+
+Next, we must create the unit.  From the [Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/), `civ.createUnit` has the following information:
+
+> __createUnit__  
+>`civ.createUnit(unittype, tribe, tile) -> unit`
+>
+>Creates a unit of type `unittype`, owned by `tribe`, at the location given by `tile`.
+
+So, to create our unit, we replace `unittype` with `object.uChariot`, `tribe` with `object.pCelts`, and `tile` with `chariotSquare`.  We will name the newly created unit `newChariot`.  Hence:
+```lua
+```lua
+if chariotSquare.defender == nil or chariotSquare.defender == object.pCelts then
+    local newChariot = civ.createUnit(object.uChariot, object.pCelts, chariotSquare)
+```
+Now, we want to give our `newChariot` a couple attributes.  We want to make sure it is not veteran (it won't be anyway, but this won't hurt), and we want to make sure it has no home city (I think if you don't do anything, the home city is determined the same way as if you used cheat mode to create the unit.)  For this, we set a couple of the keys for newChariot:
+```lua
+    newChariot.veteran = false
+    newChariot.homeCity = nil
+```
+Putting this all together, we get
+```lua
+if chariotSquare.defender == nil or chariotSquare.defender == object.pCelts then
+    local newChariot = civ.createUnit(object.uChariot, object.pCelts, chariotSquare)
+    newChariot.veteran = false
+    newChariot.homeCity = nil
+end
+```
+
+Type this code into the `onTurn.onTurn` function.  It doesn't matter if it is before or after the code to change leader names.  All together, your `onTurn.lua` file should look like this:
+
+```lua
+local object = require("object")
+local onTurn = {}
+local evenTurnLeader = "Scipio"
+local oddTurnLeader = "Fabius"
+local chariotSquare = civ.getTile(37,15,0)
+function onTurn.onTurn(turn)
+    if turn % 2 == 0 then
+        -- We only get here if the turn is even
+        object.pRomans.leader.name = evenTurnLeader
+    end
+    if turn % 2 == 1 then
+        -- We only get here if the turn is odd
+        object.pRomans.leader.name = oddTurnLeader
+    end
+    if chariotSquare.defender == nil or chariotSquare.defender == object.pCelts then
+        local newChariot = civ.createUnit(object.uChariot, object.pCelts, chariotSquare)
+        newChariot.veteran = false
+        newChariot.homeCity = nil
+    end
+end
+
+return onTurn
+```
+Save `onTurn.lua`, load the testing save, and test the new code.  Make sure you've revealed all units on the map.  Be sure to test with no defender on the tile, with a Celtic unit on the tile, and with a unit from a different tribe on the tile.
 
 
 ## Next Lesson: 
