@@ -1,6 +1,6 @@
 # Just a page to test things on
 
-<details><summary id="thisplace"><a href="#thisplace"><code> Summary</code> </summary>
+<details><summary id="thisplace"><a href="#thisplace"><code> Summary</code></a> </summary>
   <A href="GeneralLibrary.html#technical-functions">Technical Functions</A>
   <br>
   Other hidden stuff.  Use lower case and hyphen.

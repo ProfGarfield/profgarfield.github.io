@@ -5,7 +5,7 @@
   }
 </style>
 
-[&larr;Conditional Code](ConditionalCode.md) | [Home](index.md) | 
+[&larr;Conditional Code](ConditionalCode.md) | [Home](index.md) | [More Logic&rarr;](MoreLogic.md)
 
 # Loops
 
@@ -235,12 +235,90 @@ A unit's heath is stored as "damage," not as remaining health.  `unit.hitpoints`
 
 Add this loop to `onTurn.onTurn`, and test the events once again.  When you place units in the desert, you will see their hitpoints drop until they have only 1 left, but it won't drop below that.
 
+## Loop Error
 
+Now, let us create a couple errors in our loop code to fix.  Make the change indicated by the comment, and run `console.onTurn()`.
 
+```lua
+local barbTable = {
+{location = {44,12}, unit = object.uArchers},
+{location = {35,38}, unit = object.uHorsemen}, --<Change 39 to 38 here
+{location = {64,16}, unit = object.uHorsemen},
+}-- close barbTable
+```
+Your error should look something like this:
 
+```
+...cRome\LuaTriggerEvents\UniversalTriggerEvents\onTurn.lua:28: attempt to index a nil value (local 'tile')
+stack traceback:
+	...cRome\LuaTriggerEvents\UniversalTriggerEvents\onTurn.lua:28: in function 'UniversalTriggerEvents\onTurn.onTurn'
+	...Scenarios\ClassicRome\LuaTriggerEvents\triggerEvents.lua:102: in function 'triggerEvents.onTurn'
+	...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:152: in upvalue 'onTurnFn'
+	...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:160: in function <...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:160>
+	(...tail calls...)
+```
+At line 28 in `onTurn.lua`, we attempt to index a nil value, called local 'tile'.  Let's look at the code near line 28 (noted by L28):
+```lua
+        for __, barbCreate in pairs(barbTable) do
+            local tile = civ.getTile(barbCreate.location[1],barbCreate.location[2],0)
+--[[L28]]   if tile.defender == object.pBarbarians or tile.defender == nil then
+               civ.createUnit(barbCreate.unit,object.pBarbarians,tile)
+            end
+        end
+```
+So, at some point when executing this loop, we get to line 28, and it turns out that `tile` is `nil` instead of a `tileObject`.  Since `tile` is defined on the previous line, we look there:
+```lua
+    local tile = civ.getTile(barbCreate.location[1],barbCreate.location[2],0)
+```
+`civ.getTile` returns `nil` if it is given coordinates for a tile that does not exist, which would explain how the `tile` variable took the value `nil` instead of a `tileObject`.  We could look through our table and try to spot coordinates that don't make sense, but our table has 3 entries.  That's way too many to look through and double check one by one.  What else can we do?
 
+One option, which we will be one of our regular strategies when debugging, is to print data to the console so we can try to figure out when the data becomes bad.  Let us use `print` to print the coordinates used to create the tile, on the line after the tile is created (but before we try to get `tile.defender`).
+```lua
+    for __, barbCreate in pairs(barbTable) do
+        local tile = civ.getTile(barbCreate.location[1],barbCreate.location[2],0)
+        print(barbCreate.location[1],barbCreate.location[2],0)
+        if tile.defender == object.pBarbarians or tile.defender == nil then
+           civ.createUnit(barbCreate.unit,object.pBarbarians,tile)
+        end
+    end
+```
+I literally cut and pasted `(barbCreate.location[1],barbCreate.location[2],0)`, so that I didn't make an error when copying the data we want.  I strongly recommend cutting and pasting whenever possible while trying to find errors.  Otherwise, you might miss typos in the existing code, or introduce them into the code you are using to debug.
 
+Add the `print` line to `onTurn.lua`, and test the event again.
 
+This time, we get this information:
+```
+44, 12, 0
+35, 38, 0
+...cRome\LuaTriggerEvents\UniversalTriggerEvents\onTurn.lua:29: attempt to index a nil value (local 'tile')
+stack traceback:
+	...cRome\LuaTriggerEvents\UniversalTriggerEvents\onTurn.lua:29: in function 'UniversalTriggerEvents\onTurn.onTurn'
+	...Scenarios\ClassicRome\LuaTriggerEvents\triggerEvents.lua:102: in function 'triggerEvents.onTurn'
+	...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:152: in upvalue 'onTurnFn'
+	...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:160: in function <...op\drive_c\Test of Time\Scenarios\ClassicRome\events.lua:160>
+	(...tail calls...)
+```
+Of note is that **35, 38, 0** was the last set of coordinates printed before we got the error.  Hence, these must be causing the error.  We use our text editor's search function to find "35,38", which will enable us to fix our problem.  Perhaps, however, we can be even cleverer.  Let us print the key for the `barbCreate` table that is giving us trouble.  That will tell us where in our table the problem is (remember, `pairs` is not guaranteed to loop in the order we submitted data).
 
+We named the key `__` (2 underscores), so we print that first:
+```lua
+        print(__,barbCreate.location[1],barbCreate.location[2],0)
+```
+Load the game and run the code again to get:
+```
+1, 44, 12, 0
+2, 35, 38, 0
+...cRome\LuaTriggerEvents\UniversalTriggerEvents\onTurn.lua:29: attempt to index a nil value (local 'tile')
+stack traceback:
+```
+This tells us that the corresponding key in `barbTable` is 2.  Since we didn't explicitly specify keys, 2 was the key assigned to the second entry we defined in that table.  Fix the error, and run the code again.  Now, our print statement prints to the console, but no error is produced:
+```
+.
+> console.onTurn()
+1, 44, 12, 0
+2, 35, 39, 0
+3, 64, 16, 0
+```
+Now, we comment out our print line.  We could delete it outright, but we might make another mistake in our table, and it is easier to uncomment.  We could leave the print statement in, but it would clutter the console (and sometimes printing can make code run noticeably slower if you do it thousands of times in a loop).
 
-[&larr;Conditional Code](ConditionalCode.md) | [Home](index.md) | 
+[&larr;Conditional Code](ConditionalCode.md) | [Home](index.md) | [More Logic&rarr;](MoreLogic.md)

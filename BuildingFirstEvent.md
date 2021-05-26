@@ -48,7 +48,11 @@ function unitKilledEvents.unitKilledInCombat(loser,winner,aggressor,victim,loser
     winner.owner.money = math.max(winner.owner.money-campaignCost,0)
 end
 ```
-Create a couple enemy units and test out this event.  When a unit is killed, the winner's tribe and the loser's tribe both lose 1 gold.
+Create a couple enemy units and test out this event.  When a unit is killed, the winner's tribe and the loser's tribe both lose 1 gold.  Try to test the event thoroughly.  Is there anything unexpected about the event?
+
+<details><summary>Try to test thoroughly before checking here.</summary>
+You might notice that killing a stack of 2 units causes twice the supposed campaign cost to be deducted.  This isn't necessarily wrong, but it might not be what we want.  We will revisit this event in a [later lesson](MoreLogic.md#elseif-statements).
+</details>
 
 ## Building the Campaign Cost Event
 
