@@ -11,6 +11,10 @@
 
 # General Library
 
+```lua
+local gen = require("generalLibrary")
+```
+
 The General Library offers a variety of tools to make it easier to build events.  These functions are divided into several sections:
 * [Replacement Functions](#replacement-functions)  
   These functions should be used in place of the similar tools provided by the `civ` library.  

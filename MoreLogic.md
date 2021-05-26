@@ -257,7 +257,153 @@ Similarly,
 A or B --> B if A is false or nil
 A or B --> A if A is anything else
 ```
-This makes no difference when determining whether to execute the body of an if statement, but it is quite useful when using `and` or `or` in other contexts.  Or, rather, it is useful to use `or` in other contexts, as we will see.  I don't have a reasonable example where `and` is used outside an if statement.
+This makes no difference when determining whether to execute the body of an if statement, but it is quite useful when using `and` or `or` in other contexts.  Or, rather, it is useful to use `or` in other contexts, as we will see.  I don't think I've used `and` outside an if statement, but [this page](https://www.lua.org/pil/3.3.html) has an example if you want it.
+
+On the other hand, I use `or` quite frequently outside of if statements, because it is quite useful for setting up default values.  Run this code in the [Lua Demo](https://www.lua.org/cgi-bin/demo):
+```lua
+local animals = {cats = 4, dogs = 3, pigs = 2}
+animals.horses = animals.horses + 4
+print(animals.horses)
+```
+You will get the following error:
+```
+input:2: attempt to perform arithmetic on a nil value (field 'horses')
+```
+This is because there is no key in the `animals` table called `horses`, so `animals.horses` returns `nil`.  One thing we can do is use an `if` statement to check if `animals.horses` already exists.  If it doesn't, we can initialize to a value of 0.
+```lua
+local animals = {cats = 4, dogs = 3, pigs = 2}
+if animals.horses == nil then
+    animals.horses = 0
+end
+animals.horses = animals.horses + 4
+print(animals.horses)
+```
+This code works as we would like, but we can make it more compact by using `or`.
+
+```lua
+animals = {cats = 4, dogs = 3, pigs = 2}
+animals.horses = animals.horses or 0
+animals.horses = animals.horses + 4
+print(animals.horses)
+```
+The relevant line is 
+```lua
+animals.horses = animals.horses or 0
+```
+On the Left Hand Side, we are setting the value of animals.horses.  On the Right Hand Side, if animals.horses already has a value (unless that value is false), `animals.horses or 0` will return `animals.horses`, because `or` returns the left value if that value is "truthy."  `nil` is "falsy," so if animals.horses hasn't been assigned a value, `animals.horses or 0` will return the value to the right of `or`, which is 0. Hence, 0 will be assigned to animals.horses.  If we wanted, we could even combine those two lines:
+```lua
+animals = {cats = 4, dogs = 3, pigs = 2}
+animals.horses = (animals.horses or 0) + 4
+print(animals.horses)
+animals.horses = (animals.horses or 0) + 3
+print(animals.horses)
+```
+I have added another addition line, so we can see that once `animals.horses` has a value, teh value will be maintained.  It is important to remember that you can't use this "Lua Idiom" if your table will have false values, but that is actually rather uncommon.
+
+## Tables and Logic
+
+
+
+Let's build an event that will chide the player if they win a battle with a "modern" unit.  We'll begin by checking if the unit is an Armor unit.  This event will be another `unitKilledInCombat` event.
+```lua
+if winner.type == object.uArmor and winner.owner.isHuman then
+    civ.ui.text("I didn't know they had tanks back then.")
+end
+```
+The `civ.ui.text` function is the basic way to show a text box.  Add this code to the game, and test the event.  You should get this text box message:
+
+![](Images/MoreLogic1.png)
+
+Now, let's add Mech. Inf. to the unit types that will trigger this event.  We will also customize the message based on the unit type and owner of the unit.
+```lua
+if (winner.type == object.uArmor or winner.type == object.uMechInf) and winner.owner.isHuman then
+    civ.ui.text("I didn't know the "..winner.owner.name.." used "..winner.type.name..".")
+end
+```
+![](Images/MoreLogic2.png)
+
+![](Images/MoreLogic3.png)
+The `..` operator concatenates strings, and `tribe.name` and `unitType.name` both return strings as well.  With string concatenation, we build the custom message.
+
+Now, let us add Helicopter units to the list of unit types that trigger this event.  Also, let us give a "title" to the text box.  One way to do that is to use the [dialog object](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#dialog), but we're going to import the [`text` module](TextModule.md) and use `text.simple` instead.
+
+```lua
+local text = require("text")
+```
+```lua
+if (winner.type == object.uArmor or winner.type == object.uMechInf
+    or winner.type == object.uHelicopter) and winner.owner.isHuman then
+    text.simple("I didn't know the "..winner.owner.name.." used "..winner.type.name..".","Historian")
+end
+```
+The second (and optional) argument of `text.simple` provides the title ("Historian") of the text box, as we see when testing this code:
+
+![](Images/MoreLogic4.png)
+
+By now, you've probably noticed that checking if the winner's unit type triggers this event is using a lot of code in the if statement.  We can use a table to make this check:
+
+```lua
+local modernUnits={
+    [object.uArmor.id]=true,
+    [object.uMechInf.id]=true,
+    [object.uHelicopter.id]=true,
+    [object.uParatroopers.id]=true,
+}
+```
+(The above table can go before `unitKilledEvents.unitKilledInCombat`, along with the other parameters.)
+```lua
+if modernUnits[winner.type.id] and winner.owner.isHuman then
+    text.simple("I didn't know the "..winner.owner.name.." used "..winner.type.name..".","Historian")
+end
+```
+If a `unitType` `id` is a key in `modernUnits`, then `modernUnits[winner.type.id]` will be `true` if the winner is one of those types and `nil` (hence, false) if it is not.  Try this code out with the four unit types, and a couple that are not "modern." 
+
+In this next example, we will use a table where the values actually have relevant information for our function.  In `onTurn.lua`, we already change the name of the Roman leader based on whether the turn is even or odd.  Now, we will change the name of the ruler of the Seleucids, based on the game year.  Here is an incomplete list of the [Seleucid rulers](https://en.wikipedia.org/wiki/List_of_Seleucid_rulers) from the time period of the scenario.  The key is the year in which they gained power.
+```lua
+local seleucidRulers = {
+[-281] = {name = "Antiochus I Soter", female = false},
+[-278] = {name = "Antiochus I Soter", female = false}, -- this is the year the game starts
+[-261] = {name = "Antiochus II Theos", female = false},
+[-246] = {name = "Seleucus II Callinicus", female = false},
+[-225] = {name = "Seleucus III Ceraunus", female = false},
+-- this makes the point
+[-126] = {name = "Cleopatra Thea", female = true},
+-- have a female ruler to test, though
+}--close seleucidRulers
+```
+Antiochus I Soter is included twice, with one time being the year this scenario begins, so that the Seleucid Ruler will be renamed on the first turn.  We note that years here are not turns, so we use `civ.getGameYear()` to get the year (which is negative for B.C. years).
+
+The code to change the name (and gender) of the Seleucid Greeks is:
+
+```lua
+if seleucidRulers[civ.getGameYear()] then
+    -- if there is no entry for this index, it returns nil, which the if statement counts as false.
+    object.pSeleucidGreeks.leader.name = seleucidRulers[civ.getGameYear()].name
+    object.pSeleucidGreeks.leader.female = seleucidRulers[civ.getGameYear()].female
+end --if seleucidRulers[civ.getGameYear()]
+```
+
+If the year is a year for which the Seleucid ruler must change, this code is run.
+
+
+Copy this data and code into `onTurn.lua`, and start a new game to make sure that the Seleucid Greeks have the correct name.
+
+![](Images/MoreLogic5.png)
+
+Now, change the game year to 262 B.C. (Turn 16), and end the turn.  Between turns, the name of the ruler will change.
+
+![](Images/MoreLogic6.png)
+
+To check that the female ruler part works, change the year to 127 B.C. (Turn 151), and end your turn again.
+
+![](Images/MoreLogic7.png)
+
+
+
+
+
+
+
 
 
 
