@@ -32,7 +32,7 @@ N! = N*(N-1)*(N-2)*...*3*2*1
 ```
 We can calculate factorials with the following function:
 ```lua
-function factorial(N)
+local function factorial(N)
     local productSoFar = 1
     local factor = 1
     while factor <= N do
@@ -101,7 +101,7 @@ If `increment` is omitted, 1 is used as the `increment`. If the `increment` is l
 Returning to our factorial example, we could write it as:
 
 ```lua
-function factorial(N)
+local function factorial(N)
     local productSoFar = 1
     for factor=1,N do
         productSoFar = factor*productSoFar
@@ -185,7 +185,55 @@ Test this code using `console.onTurn()`.  Make sure to test one or two tiles to 
 
 The final type of "for loop" is also considered a "Generic" for loop and it is used with a special type of function called an "iterator." Iterators are a part of Lua (in fact `pairs` technically creates an iterator) and can be written by the user, but for our purposes we will get iterators when using certain ToTPP built in functionality.
 
+A generic for loop using an iterator looks like this:
+```lua
+for object in iterator do
+    -- loop body
+end
+```
 
+These functions return iterators, and you will probably use them quite a bit:
+
+>iterateCities  
+>civ.iterateCities() -> iterator  
+>Returns an iterator yielding all cities in the game.  
+
+>iterateUnits  
+>civ.iterateUnits() -> iterator  
+>Returns an iterator yielding all units in the game.  
+
+>units (get)  
+>tile.units -> iterator  
+>Returns an iterator yielding all units at the tile's location.  
+
+For this example, let us make it difficult for an army to cross the desert.  Between turns, we will cut in half the remaining hitpoints of all units in desert terrain (rounded up, so that the unit will always have at least 1 hp).
+
+```lua
+for unit in civ.iterateUnits() do
+    if unit.location.baseTerrain == object.bDesert then
+        local newDamage = math.floor(unit.hitpoints/2)
+        unit.damage = unit.damage+newDamage
+    end
+end
+```
+Let us again break down the the code here:
+```lua
+for unit in civ.iterateUnits() do
+```
+The function `civ.iterateUnits()` returns another function, which is the "iterator" over all the units in the game.  `unit` is the variable name for unit currently being processed in the body of the loop.
+
+```lua
+    if unit.location.baseTerrain == object.bDesert then
+```
+There are 3 different keys that extract terrain data from a tile.  `tile.baseTerrain` returns a `baseTerrain` object, which provides access to the aspects of the terrain type that don't change if there is a special resource on the tile or not.  Since we're not accounting for special resources in this example, this is the terrain data we want to check against.  `tile.terrain` returns a `terrain` object provides access to those parts of terrain data which change for special resources (terrain productivity and a few other 'housekeeping keys').  `tile.terrainType` is obsolete; ask in the [Scenario League Forum](https://forums.civfanatics.com/forums/civ2-scenario-league.428/) if you need information for some reason.
+```lua
+        local newDamage = math.floor(unit.hitpoints/2)
+        unit.damage = unit.damage+newDamage
+    end
+```
+A unit's heath is stored as "damage," not as remaining health.  `unit.hitpoints` will give us the remaining health of the unit, but it is not a "set" attribute, so we must set `unit.damage`.  We want to remove half of the unit's remaining hitpoints, so we add damage (`newDamage`) equal to half the unit's remaining hitpoints.  `math.floor` rounds down this damage.
+
+Add this loop to `onTurn.onTurn`, and test the events once again.  When you place units in the desert, you will see their hitpoints drop until they have only 1 left, but it won't drop below that.
 
 
 
