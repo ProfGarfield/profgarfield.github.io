@@ -32,26 +32,27 @@ The Text Module offers functionality to facilitate the creation of text boxes an
 [`text.menu(menuTable,menuText,menuTitle,canCancel,imageInfo)-->integer`](#textmenu)  
 [`text.openArchive()`](#textopenarchive)  
 [`text.deleteAIArchives()`](#textdeleteaiarchives)  
-[`text.substitute(rawText,substitutionTable)`](#textsubstitute)  
-[`text.convertTableToColumnText()`](#textconverttabletocolumntext)  
-[`text.makeTableText()`](#textmaketabletext)  
-[`text.copyTableAsText()`](#textcopytableastext)  
-[`text.simpleTabulation()`](#textsimpletabulation)  
-[`text.simpleTabTableToText()`](#textsimpletabtabletotext)  
-[`text.tabulationMenu()`](#texttabulationmenu)  
-[`text.checkboxMenu()`](#textcheckboxmenu)  
-[`text.groupDigits()`](#textgroupdigits)  
-[`text.setDigitGroupSeparator()`](#textsetdigitgroupseparator)  
-[`text.money()`](#textmoney)  
-[`text.setMoney()`](#textsetmoney)  
-[`text.getVeteranTitle()`](#textgetveterantitle)  
+[`text.substitute(rawText,substitutionTable)-->string`](#textsubstitute)  
+[`text.convertTableToColumnText(colTable,dataTable,borderWidth)--> string`](#textconverttabletocolumntext)  
+[`text.makeTableText(table)`](#textmaketabletext)  
+[`text.copyTableAsText(table)-->table`](#textcopytableastext)  
+[`text.simpleTabulation(tabulationData,title)`](#textsimpletabulation)  
+[`text.simpleTabTableToText(tabulationData)-->string`](#textsimpletabtabletotext)  
+[`text.tabulationMenu(tabMenuTable,menuText,menuTitle)-->integer`](#texttabulationmenu)  
+[`text.tabulationWithOptions(...)-->integer`](#texttabulationwithoptions)
+[`text.checkboxMenu(checkboxNameTable,checkboxStatusTable,menuText,menuTitle)`](#textcheckboxmenu)  
+[`text.groupDigits(number)-->string`](#textgroupdigits)  
+[`text.setDigitGroupSeparator(character)`](#textsetdigitgroupseparator)  
+[`text.money(amount)-->string`](#textmoney)  
+[`text.setMoney(substitutionString)`](#textsetmoney)  
+[`text.getVeteranTitle()-->string`](#textgetveterantitle)  
 [`text.setVeteranTitle()`](#textsetveterantitle)  
-[`text.getShortVeteranTitle()`](#textgetshortveterantitle)  
+[`text.getShortVeteranTitle()-->string`](#textgetshortveterantitle)  
 [`text.setShortVeteranTitle()`](#textsetshortveterantitle)  
-[`text.makeReverseListNoGaps()`](#textmakereverselistnogaps)  
-[`text.niceList()`](#textnicelist)  
-[`text.coordinates()`](#textcoordinates)  
-[`text.linkState()`](#textlinkstate)  
+[`text.makeReverseListNoGaps(tableOfStrings)-->string`](#textmakereverselistnogaps)  
+[`text.niceList(table)-->string`](#textnicelist)  
+[`text.coordinates(tileObject)-->string`](#textcoordinates)  
+[`text.linkState(tableInState)`](#textlinkstate)  
 
 ## Data Definitions
 
@@ -342,7 +343,7 @@ Deletes all messages in archives owned by AI tribes.
 
 ### `text.substitute`[&uarr;](#functions)
 ```lua
-text.substitute(rawText,substitutionTable)
+text.substitute(rawText,substitutionTable)-->
 ```
 Substitutes %STRINGX (for X in 0-9) in the `rawText` with the corresponding value in the `substitutionTable`.  That is,
 ```
@@ -367,39 +368,408 @@ Note: Substitutions for %STRING10 and above are forbidden, since the %STRING1 in
 
 
 ### `text.convertTableToColumnText`[&uarr;](#functions)
+```lua
+text.convertTableToColumnText(colTable,dataTable)--> string
+text.convertTableToColumnText(colTable,dataTable,borderWidth)--> string
+```
+
+The `dataTable` is a table of "`rowTables`".  Each `rowTable` has keys and values for those keys.
+
+The `colTable` is a table of "`columnSpecifications`".  Each `columnSpecification` is a table of 2 keys: `"column"` and `"align"`.  The value for the `"column"` key is one of the keys for the `rowTables`.  The optional `"align"` key determines if data in the row will be aligned to the `"left"`, `"center"`, or `"right"`.  The default is `"left"`.  Due to the limitation of the text box display, this alignment is only approximate.
+
+The order of the `columnSpecifications` in the `colTable` determines the order of the columns produced.
+
+`borderWidth` determines the spacing between columns.  Default value is 1.
+
+Valid Arguments:
+```
+colTable: table (integer keys) of
+          {["column"]=dataKey, ["align"]= "left" or "right" or "center"}
+rowTable: table (integer keys) of
+          {[dataKey]=dataValue}
+borderWidth: integer
+```
+
+This code was written by the Civfanatics user [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/).  Small changes to the code have been made.
+
+<details>
+<summary>Example Code</summary>
+Use this as an events.lua file to run the example.
+<p><code>
+--[[
+events.lua
+by Knighttime
+Example implementation of the columnText.lua module
+
+This example displays a table containing basic information on your first 15 cities
+	(a portion of what you see on the City Status popup available by pressing F1)
+	when you press the plus sign key [+] on the numeric keyboard (not the [Shift][=] combination!)
+	
+As a result, the code here is placed within the civ.scen.onKeyPress() trigger,
+	but you could use this in any trigger and to display any information of your choosing.
+
+Step-by-step instructions are inline below.
+]]
+
+local func = require "functions"
+
+local eventsPath = string.gsub(debug.getinfo(1).source, "@", "")
+local scenarioFolderPath = string.gsub(eventsPath, "events.lua", "?.lua")
+if string.find(package.path, scenarioFolderPath, 1, true) == nil then
+   package.path = package.path .. ";" .. scenarioFolderPath
+end
+
+package.loaded["columnText"] = nil
+local columnText = require("columnText")
+
+civ.scen.onKeyPress(function (keyCode)  
+	-- keyCode 171 is the plus sign on the numeric keypad (right side of a standard full-size keyboard)
+	if keyCode == 171 then
+			-- STEP 1: Create and populate a table that defines the layout of the information you want to present
+		--		This table itself is not displayed, rather, it's where you explain the structure of your content
+		--		Each display column is added as a separate table element
+		--		The field named "column" is required and must be populated with a string that will be used as a table key for a data element (column)
+		--			that you wish to populate and display (see Steps 2 and 3)
+		--		The field named "align" is optional.  Valid values are "center" and "right".  Any other value, including nil, means "left".
+		local columnTable = {
+			{column = "size", align = "right"},
+			{column = "city"},
+			{column = "food", align = "right"},
+			{column = "shields", align = "right"},
+			{column = "trade", align = "right"}
+		}
+		-- STEP 2: Create a table that will contain the content you wish to display
+		--		You can initialize it to { } if you do not wish to display a header row
+		--		If you wish to display a header row of labels, define those statically here as the first table element
+		--		Notice that the *fields* in this table (size, city, etc.) must exactly match the values of the *column* field
+		--			in the rows of the columnTable defined in Step 1
+		local dataTable = { {size = "SIZE", city = "CITY", food = "FOOD", shields = "SHIELDS", trade = "TRADE"} }
+		for city in civ.iterateCities() do				
+			if city.owner == civ.getPlayerTribe() and #dataTable <= 16 then
+				-- STEP 3: Append an element to your data table for each row of content that it should contain
+				--		As was pointed out in Step 2, notice that the *fields* in this table (size, city, etc.) must exactly match
+				--			the values of the *column* field in the rows of the columnTable defined in Step 1
+				--		Any other fields that you include (which do not match those defined in step 1) are ignored
+				table.insert(dataTable, {
+					size = city.size,
+					city = city.name, 
+					food = city.totalFood,
+					shields = city.totalShield,
+					trade = city.totalTrade
+				})
+			end
+		end
+		-- STEP 4: Call "columnText.convertTableToColumnText" to convert the content of your dataTable to a single string
+		--		The first parameter is the name of the table you created in Step 1, with the data structure
+		--		The second parameter is the name of the table you created in Step 2 and populated in Step 3, with the actual content to display
+		--		The third parameter is the number of blank spaces you want to appear *between* each column in your output
+		-- 			i.e., how widely spaced apart the columns should be
+		local textString = columnText.convertTableToColumnText(columnTable, dataTable, 4)
+		-- STEP 5: Display the string
+		--		Note that you could combine this with the previous step and avoid introducing a separate textString variable;
+		--			the separate variable is used here just for clarity
+		--		Also, as an alternative to using civ.ui.text() to display the content, you could instead use civ.ui.createDialog() to
+		--			create a dialog object, and then pass your string to the addText() function of that object
+		civ.ui.text(func.splitlines(textString))
+	end
+end)
+</code>
+</p>
+</details>
 
 ### `text.makeTableText`[&uarr;](#functions)
+```lua
+text.makeTableText(table)
+```
+
+Changes all values in the `table` to strings, by applying the `tostring` function.  If any values are tables, `tostring` is instead applied to the values of those tables (and so on, down the line).
+
+Valid Argument:
+```
+table: table
+```
+
 
 ### `text.copyTableAsText`[&uarr;](#functions)
+```lua
+text.copyTableAsText(table) --> table
+```
+
+Duplicates a table (that is, leaves the original table unchanged), and all its subtables.  All values are transformed to strings using the `tostring` function.  Returns the duplicate table.
+
+Valid Argument:
+```
+table: table
+```
 
 ### `text.simpleTabulation`[&uarr;](#functions)
+```lua
+text.simpleTabulation(tabulationData)
+text.simpleTabulation(tabulationData,title)
+text.simpleTabulation(tabulationData,title,borderWidth)
+text.simpleTabulation(tabulationData,title,borderWidth,page)
+```
+Displays a formatted text based on the entries in `tabulationData` table.
+If `tabulationData` has many rows, it is split into multiple pages, with navigation options.
+
+`tabulationData[m][n]` is the value of the `n`th column in row `m`.  
+`tabulationData[0][n]` is the header for the `n`th column.  The header is displayed on every page.  `tabulationData[0]=nil` means no header.
+
+Columns are left aligned.
+
+`title` determines the title of the text box(es). Default is `""`.
+
+`borderWidth` determines the spacing between columns.  Default is 4.
+
+`page` determines which page of the data will be opened.  Default is 1.
+
+Valid Arguments:
+```
+tabulationData: table of tables, both having integer keys (keys start at 1, no gaps)
+title: string or nil
+borderWidth: integer or nil
+page: integer or nil
+```
+
+Note: Uses [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/)'s [text.convertTableToColumnText](#textconverttabletocolumntext).
 
 ### `text.simpleTabTableToText`[&uarr;](#functions)
 
+```lua
+text.simpleTabTableToText(tabulationData)-->string
+text.simpleTabTableToText(tabulationData,borderWidth)-->string
+```
+
+
+Creates a formatted string based on the entries in `tabulationData` table.
+
+`tabulationData[m][n]` is the value of the `n`th column in row `m`.  
+`tabulationData[0][n]` is the header for the `n`th column.  
+`tabulationData[0]=nil` means no header.  (You could also use the first row as the header.)
+
+Columns are left aligned.
+
+`borderWidth` determines the spacing between columns.  Default is 4.
+
+
+Valid Arguments:
+```
+tabulationData: table of tables, both having integer keys (keys start at 1, no gaps)
+borderWidth: integer or nil
+```
+Notes: You can also submit `borderWidth` as a third argument instead of the second.  Older versions of this module had a "title" as a second argument, but it had no use.  Allowing a third argument to be the borderWidth allows for backwards compatibility.  
+Uses [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/)'s [text.convertTableToColumnText](#textconverttabletocolumntext).
+
 ### `text.tabulationMenu`[&uarr;](#functions)
+```lua
+text.tabulationMenu(tabMenuTable,menuText)-->integer
+text.tabulationMenu(tabMenuTable,menuText,menuTitle)-->integer
+text.tabulationMenu(tabMenuTable,menuText,menuTitle,canCancel)-->integer
+text.tabulationMenu(tabMenuTable,menuText,menuTitle,canCancel,page)-->integer
+```
+Produces a menu based on `tabMenuTable`.
+
+`tabMenuTable[m][n]` is the value of the `n`th column in row `m`.  Returns the number `m` of the row selected.  `tabMenuTable` must have keys starting at 1 and be uninterrupted.  Columns are left aligned.
+
+`menuText` is the text is the text displayed before the menu options.  If you want a header for each column, place it here.  `menuTitle` is the text box title for the menu.  Default is `""`.  `canCancel` determines if a "Cancel" option (returning 0) is provided by the menu.  Default is no cancel option.  `menuPage` is the page of the menu to open.  Default is 1.
+
+Valid Arguments:
+```
+tabMenuTable: table of tables, both having integer keys (keys start at 1, no gaps)
+menuText: string
+menuTtile: string or nil
+canCancel: boolean or nil
+page: integer or nil
+```
+
+Note: Uses [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/)'s [text.convertTableToColumnText](#textconverttabletocolumntext).
+
+
+### `text.tabulationWithOptions`[&uarr;](#functions)
+```lua
+text.tabulationWtihOptions(dataTable,colTable,title,borderWidth,headerRows,
+             firstPagePreviousSubstitute,lastPageCloseSubstitute,
+             regPageExtraOptionsTable,lastPageExtraOptionsTable,page)-->integer
+```
+`dataTable` is a table of "`dataRow`s".  Each data row is a table of key-value pairs.  `dataTable[n]` will be displayed in the `n`th row.  Navigation options between pages are provided.
+
+The `colTable` is a table of "`columnSpecifications`".  Each `columnSpecification` is a table of 2 keys: `"column"` and `"align"`.  The value for the `"column"` key is one of the keys for the `rowTables`.  The optional `"align"` key determines if data in the row will be aligned to the `"left"`, `"center"`, or `"right"`.  The default is `"left"`.  Due to the limitation of the text box display, this alignment is only approximate.
+
+The order of the `columnSpecifications` in the `colTable` determines the order of the columns produced.  That is, if `columnTable[m]={column=dataKey}` then `dataTable[n][dataKey]` will be displayed in row `n`, column `m`.
+
+`title` is a string to be shown as the title of the text box.  Default value is `""`.
+
+`borderWidth` determines the spacing between columns.  Default value is 4.
+
+`headerRows` is the number of rwos taht should be repeated at the top of each page.  For example, if `headerRows=2`, then `dataTable[1]` and `dataTable[2]` will be repeated at the top of each page.  Default is 0.
+
+`firstPagePreviousSubstitute` is an option that replaces the "previous page" option on the first page of the menu.  If selected, -1 is returned.  By default, there is no substitute argument for the first page.
+
+`lastPageCloseSubstitute` is the option that replaces the "next page" option on the last page of the menu.  If selected, 0 is returned.  By default, `"Close"` is the option.
+
+`regPageExtraOptionsTable` is a table indexed by integers that are at least 1, and with string values, and provides menu options at the bottom of each page, except the last page.  Choices are displayed key in order, and keys do not need to be consecutive.  Returns the key of the choice made.  Default is no extra options.
+
+`lastPageExtraOptionsTable` is a table indexed by integers that are at least 1, and with values, and provides menu options at the bottom of the last page.  Choices are displayed in key order, and keys do not need to be consecutive.  Returns the key of the choice made.  Default is no extra options.
+
+`page` determines which page to open to.  Default is 1.
+
+
+Valid Arguments:
+```
+dataTable: table (integer keys) of
+          {[dataKey]=dataValue}
+colTable: table (integer keys) of
+          {["column"]=dataKey, ["align"]= "left" or "right" or "center"}
+title: string or nil
+borderWidth: integer or nil
+headerRows: integer or nil
+firstPagePreviousSubstitute: string or nil
+lastPageCloseSubstitute: string or nil
+regPageExtraOptionsTable: {[integer]=string} or nil
+lastPageExtraOptionsTable: {[integer]=string} or nil
+page: nil or integer
+```
+
+
+Note: Uses [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/)'s [text.convertTableToColumnText](#textconverttabletocolumntext).
 
 ### `text.checkboxMenu`[&uarr;](#functions)
+```lua
+text.checkboxMenu(checkboxNameTable,checkboxStatusTable)
+text.checkboxMenu(checkboxNameTable,checkboxStatusTable,menuText)
+text.checkboxMenu(checkboxNameTable,checkboxStatusTable,menuText,menuTitle)
+text.checkboxMenu(checkboxNameTable,checkboxStatusTable,menuText,menuTitle,menuPage)
+```
+Creates a menu using `checkboxNameTable` to change the (boolean) values in `checkboxStatusTable`.  If multiple pages are required, they will be shown in sequence.  It is not possible to navigate to previous pages.
+
+`checkboxNameTable` is a table with integer keys and string values.  The string values are shown beside the appropriate checkbox.  Nil value means option does not appear.  Keys start at 1, appear in order, and non integer keys cause errors.
+
+`checkboxStatusTable` is a table with integer keys and boolean (or nil) values.  If the box for `checkboxNameTable[i]` is checked, then `checkboxStatusTable[i]` is set to `true`.  If it is unchecked, the value is set to `false`.
+
+The `menuText` is text shown before the checkboxes.  Default is `""`.
+
+The `menuTitle` is the title of the text boxes.  Default is `""`.
+
+`menuPage` is the page of the menu first displayed.  Default is 1.
+
+Valid Arguments:
+```
+checkboxNameTable: {[integer]=string}
+checkboxStatusTable: {[integer]=boolean}
+menuText: string or nil
+menuTitle: string or nil
+menuPage: nil or integer
+```
 
 ### `text.groupDigits`[&uarr;](#functions)
+```lua
+text.groupDigits(number)-->string
+```
+
+Takes the [floor](https://www.tutorialspoint.com/lua/lua_math_library.htm) of `number`, converts it to a string, adds a digit group separator, and returns that string.
+
+By default, the separator is `,`, but it can be changed using [`text.setDigitGroupSeparator`](#textsetdigitgroupseparator).
+
+Examples:
+```lua
+text.groupDigits(12345) --> "12,345"
+text.groupDigits(1234567.89) --> "1,234,567"
+```
+
+Valid Argument:
+```
+number: number
+```
 
 ### `text.setDigitGroupSeparator`[&uarr;](#functions)
+```lua
+text.setDigitGroupSeparator(character)
+```
+
+Changes the "Digit Group Separator" (used when displaying numbers with [`text.groupDigits`](#textgroupdigits) and [`text.money`](#textmoney)) from the default of `,` to `character`.  If you want no separator, use `""`.
+
+Valid Argument:
+```
+character: string
+```
 
 ### `text.money`[&uarr;](#functions)
+```lua
+text.money(amount)-->string
+```
+Converts an integer to an appropriate string denoting money, also applying [`text.groupDigits`](#textgroupdigits) to the amount.  By default, returns `"<amount> Gold"`, but that can be changed using [`text.setMoney`](#textsetmoney).
+
+Examples:
+```lua
+text.setMoney(12345) --> "12,345 Gold"
+text.setMoney(55) --> "55 Gold"
+```
+
+Valid Arguments:
+```
+amount: integer
+```
 
 ### `text.setMoney`[&uarr;](#functions)
+```lua
+text.setMoney(substitutionString)
+```
+
+Sets the method of conversion of an integer to a money amount for [`text.money`](#textmoney).
+
+[`text.money`](#textmoney) will substitute `%STRING1` in `substitutionString` fo the money amount, add [digit separators](#textgroupdigits), and return the string.
+
+Examples:
+```lua
+text.setMoney("%STRING1 Drachmae")
+text.money(1450) --> "1,450 Drachmae"
+text.setMoney("$%STRING1,000")
+text.money(456) -->"$456,000"
+```
+
+Valid Argument:
+```
+substitutionString: string containing %STRING1
+```
+
+
 
 ### `text.getVeteranTitle`[&uarr;](#functions)
+```lua
+text.getVeteranTitle()-->string
+```
 
 ### `text.setVeteranTitle`[&uarr;](#functions)
+```lua
+text.setVeteranTitle()
+```
 
 ### `text.getShortVeteranTitle`[&uarr;](#functions)
+```lua
+text.getShortVeteranTitle()-->string
+```
 
 ### `text.setShortVeteranTitle`[&uarr;](#functions)
+```lua
+text.setShortVeteranTitle()
+```
 
 ### `text.makeReverseListNoGaps`[&uarr;](#functions)
+```lua
+text.makeReverseListNoGaps(tableOfStrings)-->string
+```
 
 ### `text.niceList`[&uarr;](#functions)
+```lua
+text.niceList(table)-->string
+```
 
 ### `text.coordinates`[&uarr;](#functions)
+```lua
+text.coordinates(tileObject)-->string
+```
 
 ### `text.linkState`[&uarr;](#functions)
+```lua
+text.linkState(tableInState)
+```
