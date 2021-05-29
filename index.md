@@ -15,7 +15,8 @@ Lua Scenario Template Documentation
 4. [Buildability Settings and Errors](Buildability.md)
 4. [Building Our First Event](BuildingFirstEvent.md)
 5. [Conditional Code](ConditionalCode.md)
-6. [Loops](Loops.md)
+6. [Loops](Loops.md)  
+7. [More Logic](MoreLogic.md)
 
 # Functionality and Documentation
 

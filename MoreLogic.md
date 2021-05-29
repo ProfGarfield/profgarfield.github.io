@@ -257,7 +257,15 @@ Similarly,
 A or B --> B if A is false or nil
 A or B --> A if A is anything else
 ```
-This makes no difference when determining whether to execute the body of an if statement, but it is quite useful when using `and` or `or` in other contexts.  Or, rather, it is useful to use `or` in other contexts, as we will see.  I don't think I've used `and` outside an if statement, but [this page](https://www.lua.org/pil/3.3.html) has an example if you want it.
+This makes no difference when determining whether to execute the body of an if statement, but it is quite useful when using `and` or `or` in other contexts.  I haven't used `and` outside of if statements very much, but occasionally it can be useful to guard against errors if we are computing using a variable that can sometimes be nil.
+
+Consider the function [`gen.toTile`](GeneralLibrary.md#gentotile), which converts a table of coordinates to the corresponding tileObject, and if a tile is provided, returns that tile as well. If `nil` is provided to that function, an error results.  However, in our hypothetical use case, we want to change tables to tiles, leave tiles alone, and also accept `nil` and return `nil`.  We can use `and` here to achieve this in one line:
+
+```lua
+-- nilOrTileOrTable is a local variable that can either be nil or a tile
+local nilOrTile = nilOrTileOrTable and toTile(nilOrTileOrTable) 
+```
+I have only used `and` in this way a couple times, when writing a function that could accept `nil` as an argument and choose a suitable default behaviour.  [This page](https://www.lua.org/pil/3.3.html) has another example if you want it.
 
 On the other hand, I use `or` quite frequently outside of if statements, because it is quite useful for setting up default values.  Run this code in the [Lua Demo](https://www.lua.org/cgi-bin/demo):
 ```lua
