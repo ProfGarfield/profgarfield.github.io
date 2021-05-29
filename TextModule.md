@@ -693,6 +693,8 @@ Valid Argument:
 character: string
 ```
 
+In the Lua Scenario Template, this function is run in `parameters.lua` (`LuaParameterFiles` directory), but it could be moved elsewhere without issue.
+
 ### `text.money`[&uarr;](#functions)
 ```lua
 text.money(amount)-->string
@@ -732,36 +734,72 @@ Valid Argument:
 substitutionString: string containing %STRING1
 ```
 
-
+In the Lua Scenario Template, this function is run in `parameters.lua` (`LuaParameterFiles` directory), but it could be moved elsewhere without issue.
 
 ### `text.getVeteranTitle`[&uarr;](#functions)
 ```lua
 text.getVeteranTitle()-->string
 ```
 
+Returns the "Veteran Title" set by [`text.setVeteranTitle`](#textsetveterantitle).  
+
+This could be useful if you're writing a reusable module or are unsure what you want the veteran title to be for your scenario.  It is used, for example, in the Promotion Module.
+
 ### `text.setVeteranTitle`[&uarr;](#functions)
 ```lua
 text.setVeteranTitle()
 ```
+
+Sets a string to be returned by [`text.getVeteranTitle()`](#textgetveterantitle).  
+
+In the Lua Scenario Template, this function is run in `parameters.lua` (`LuaParameterFiles` directory), but it could be moved elsewhere without issue.
 
 ### `text.getShortVeteranTitle`[&uarr;](#functions)
 ```lua
 text.getShortVeteranTitle()-->string
 ```
 
+Returns the "Short Veteran Title" set by [`text.setShortVeteranTitle`](#textsetshortveterantitle).
+
+This could be useful if you're writing a reusable module or are unsure what you want the veteran title to be for your scenario.
+
 ### `text.setShortVeteranTitle`[&uarr;](#functions)
 ```lua
 text.setShortVeteranTitle()
 ```
+Sets a string to be returned by [`text.getShortVeteranTitle()`](#textgetshortveterantitle).  
+
+
+In the Lua Scenario Template, this function is run in `parameters.lua` (`LuaParameterFiles` directory), but it could be moved elsewhere without issue.
 
 ### `text.makeReverseListNoGaps`[&uarr;](#functions)
 ```lua
 text.makeReverseListNoGaps(tableOfStrings)-->string
+text.makeReverseListNoGaps(tableOfStrings,listLength)-->string
 ```
+
+Creates a string with the values of the `tableOfStrings`, starting with the value with the largest integer key, and moving backwards to key 1.  Provides "and" between the last 2 elements, and an [Oxford Comma](https://en.wikipedia.org/wiki/Serial_comma) if there are 3 or more elements.  The table keys can have no gaps.  If `listLength` is provided, that will be considered the largest element, otherwise `#tableOfSTrings` is used.
+
+Valid Arguments
+```
+tableOfStrings: a table with integer keys (starting at 1, no gaps), and with string values
+listLength: nil or integer
+```
+
+Note: You would probably want to use [`text.niceList`](#textnicelist) instead of this in most circumstances.  This was actually used to build that function.
 
 ### `text.niceList`[&uarr;](#functions)
 ```lua
 text.niceList(table)-->string
+```
+
+Returns a string with all the items in the `table` printed out, with "and" between the last two elements, and an [Oxford Comma](https://en.wikipedia.org/wiki/Serial_comma) if there are 3 or more elements.
+
+Only values indexed by integers are printed, starting with the smallest integer.  Gaps are allowed in the keys.  The `tostring` function is applied to all values in the list (so they don't have to be strings already).
+
+Valid Argument:
+```
+table: table
 ```
 
 ### `text.coordinates`[&uarr;](#functions)
@@ -769,7 +807,30 @@ text.niceList(table)-->string
 text.coordinates(tileObject)-->string
 ```
 
+Returns the `tileObject` coordinates as a string, separated with commas.
+
+Examples:
+```lua
+text.coordinates(civ.getTile(8,16,0))-->"8,16,0"
+text.coordinates(civ.getTile(101,55,2))-->"101,55,2"
+```
+
+Valid Argument:
+```
+tileObject: tileObject
+```
+
 ### `text.linkState`[&uarr;](#functions)
 ```lua
 text.linkState(tableInState)
 ```
+
+Links the functions in the Text Module to the state table.  In the Lua Scenario Template, this is done in the `events.lua` file.
+
+Example:
+```lua
+state.textState = state.textState or {}
+text.linkState(textState)
+```
+
+The above example should be in the [on load](LuaExecutionPoints.md#on-load) execution point, and also run during the initial code setup.
