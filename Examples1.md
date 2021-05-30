@@ -109,12 +109,13 @@ For our next event, we are going to find the distance to the nearest city.  Befo
 
 At some point in school, you probably learned that the distance between two points \\((x_1,y_1)\\) and \\((x_2,y_2)\\) is given by the formula
 
-\\[\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\\].
+$$\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$$.
 
 Generally speaking, when a Civ II game mechanic needs a distance measure of some sort, it will use an approximation of this calculation.  However, you have probably noticed that when units move, the "distance" they move in one "step" will be different depending on the direction of the step. For example, a unit at square (10,10) can move to square (11,11), which is a distance of about 1.41. However, if the unit instead moves to (12,10), it has moved a distance of 2. This can make thinking about distance in Civ II difficult, especially if you want to think in terms of unit "steps".
 
 It turns out that mathematicians have other notions of "distance" than \\(\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\\), and one of them happens to be extremely convenient for Civilization II:
 
+\\[ distance = \lvert x_1 - x_2 \rvert + \lvert y_1 - y_2 \rvert \\]
 
 ## Finding the Nearest City
 
