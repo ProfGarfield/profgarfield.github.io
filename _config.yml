@@ -2,3 +2,4 @@ title: Lua Scenario Template Documentation
 theme: jekyll-theme-slate
 highlighter: rouge
 markdown: kramdown
+  math_engine: mathjax
