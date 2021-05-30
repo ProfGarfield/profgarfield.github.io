@@ -21,6 +21,10 @@ autoNumber: "AMS"
 se \\( a^2 = b^2 \\). For d
 
 
+$$ a^2 = b^2 + c^2 $$
+
+se $ a^2 = b^2 $. For d
+
 # Just a page to test things on
 
 <details><summary id="thisplace"><a href="#thisplace"><code> Summary</code></a> </summary>
