@@ -16,7 +16,8 @@ Lua Scenario Template Documentation
 4. [Building Our First Event](BuildingFirstEvent.md)
 5. [Conditional Code](ConditionalCode.md)
 6. [Loops](Loops.md)  
-7. [More Logic](MoreLogic.md)
+7. [More Logic](MoreLogic.md)  
+8. [Example Events](Examples1.md)  
 
 # Functionality and Documentation
 

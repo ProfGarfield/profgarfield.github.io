@@ -230,7 +230,7 @@ Returns the movement allowance of a unit, after taking into account nuclear powe
 <br>Returns <A href="Jargon.html#atomic-movement-points"> "atomic" movement points</A>.
 <br>Valid Arguments:
 <code>
-unit: unitType
+unit: unitObject
 </code>
 <br><a href="#genwondermodifiedmoves">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
@@ -241,11 +241,11 @@ unit: unitType
 <details id="genmaxmoves"><summary><code>gen.maxMoves(unit) --> integer</code></summary><p style="margin-left: 25px">
 <code>gen.maxMoves(unit) --> integer
 </code>
-Returns movement allowance for a unit after taking damage into account.
+Returns movement allowance for a unit after taking damage into account.  Also accounts for Lighthouse, Magellan's Expedition, and Nuclear Power.
 <br>Returns <A href="Jargon.html#atomic-movement-points"> "atomic" movement points</A>.
 <br>Valid Arguments:
 <code>
-unit: unitType
+unit: unitObject
 </code>
 <br><a href="#genmaxmoves">Link to here.</a> (Click link, then copy the link from your browser address bar.)
 <br>
@@ -261,7 +261,7 @@ Returns the remaining movement allowance for the unit this turn.
 <br>Returns <A href="Jargon.html#atomic-movement-points"> "atomic" movement points</A>.
 <br>Valid Arguments:
 <code>
-unit: unitType
+unit: unitObject
 </code>
 Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
 <br><a href="#genmoveremaining">Link to here.</a> (Click link, then copy the link from your browser address bar.)
@@ -304,7 +304,7 @@ city: cityObject
 <br> Finds the nearest city (of the same tribe) that can support another unit, and sets the unit's home city to that city.  If there is no suitable city, the unit's home city isn't changed.  (It is <em>not</em> set to <code>nil</code> in this case, so if you want that functionality, use <code>unit.homeCity=nil</code> on the previous line.)
 <br>Valid Arguments:
 <code>
-unit: unitType
+unit: unitObject
 </code>
 Note: The distance is computed using <code>gen.tileDist</code>.
 <br><a href="#genhometonearestcity">Link to here.</a> (Click link, then copy the link from your browser address bar.)

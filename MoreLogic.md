@@ -6,7 +6,7 @@
   }
 </style>
 
-[&larr;Loops](Loops.md) | [Home](index.md) | 
+[&larr;Loops](Loops.md) | [Home](index.md) | [Example Events&rarr;](Examples1.md)
 
 # More Logic
 
@@ -415,4 +415,4 @@ To check that the female ruler part works, change the year to 127 B.C. (Turn 151
 
 
 
-[&larr;Loops](Loops.md) | [Home](index.md) | 
+[&larr;Loops](Loops.md) | [Home](index.md) |  [Example Events&rarr;](Examples1.md)
