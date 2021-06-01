@@ -208,8 +208,8 @@ Notes: This doesn't compute the distance using the typical <A href="https://en.w
 
 
 <details id="gentiledist"><summary><code>gen.tileDist(tileA,tileB)</code></summary><p style="margin-left: 25px">
-<code>gen.tileDist(tileA,tileB)
-gen.tileDist(tileA,tileB,zDist)</code>  
+<code>gen.tileDist(tileA,tileB)-->integer
+gen.tileDist(tileA,tileB,zDist)-->integer</code>  
 <br>Computes the distance in tiles between tileA and tileB.  Does not pre-process arguments like gen.distance, so might be slightly quicker (though this will probably never matter).  By default, the vertical distance between maps is 0 tiles, but this can be changed with the optional argument zDist.
 <br>Valid Arguments:
 <code>
@@ -222,6 +222,26 @@ Notes: This doesn't compute the distance using the typical <A href="https://en.w
 </p>
 </details>
 
+<details id="gengamemechanicdistance"><summary><code>gen.gameMechanicDistance(objectA,objectB)-->integer</code></summary><p style="margin-left: 25px">
+<code>gen.gameMechanicDistance(objectA,objectB)-->integer
+</code>  
+Computes a distance between objectA and objectB.  This is believed to be the distance the game uses for purposes like calculating city corruption and the nearest city of newly created units.  Under this calculation, "diagonal" (using keys 1,3,7,9) movement has a cost of 1, and horizontal and vertical movement (using keys 2,4,6,8) has a cost of 1.5.  The final total is rounded down to the nearest integer.  
+<br>Valid Arguments:
+<code>
+objectA,objectB: tileObject,
+              unitObject,
+              cityObject,
+             {[1]=xCoord,[2]=yCoord},
+             {[1]=xCoord,[2]=yCoord, [3]=zCoord}, 
+             {["x"]=xCoord,["y"]=yCoord}, 
+             {["x"]=xCoord,["y"]=yCoord,["z"]=zCoord}
+</code>
+Notes: This computation is similar to the distance using the typical <A href="https://en.wikipedia.org/wiki/Euclidean_distance"> "Euclidean Distance"</A> that you might be familiar with, but doesn't reflect the number of squares a unit must cross to get from A to B.  If that is what you want, consider the <a href="#gendistance"><code>gen.distance</code></a> function.  
+<br> This is based on Knighttime's <a href="https://forums.civfanatics.com/threads/totpp-get-started-with-lua-events.636192/page-2#post-15947246">work</a> on <A href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#post-15947237">corruption</a>. 
+<br><a href="#gengamemechanicdistance">Link to Here.</a> (Click link, then copy the link from your Browser URL Bar.)
+<br>
+</p>
+</details>
 
 <details id="genwondermodifiedmoves"><summary> <code>gen.wonderModifiedMoves(unit) --> integer</code> </summary><p style="margin-left: 25px">
 <code>gen.wonderModifiedMoves(unit) -->integer
