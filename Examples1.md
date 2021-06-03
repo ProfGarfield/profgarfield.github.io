@@ -109,13 +109,28 @@ For our next event, we are going to find the distance to the nearest city.  Befo
 
 At some point in school, you probably learned that the distance between two points (x<sub>1</sub>,y<sub>1</sub>) and (x<sub>2</sub>,y<sub>2</sub>) is given by the formula
 
-<math><msqrt>(x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup>+(y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup></msqrt></math>
+<span style="font-size: 20px">distance = &radic;</span><span style="border-top: 1px solid #000000; font-size: 17px;">(x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup>+(y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup></span>
 
-Generally speaking, when a Civ II game mechanic needs a distance measure of some sort, it will use an approximation of this calculation.  However, you have probably noticed that when units move, the "distance" they move in one "step" will be different depending on the direction of the step. For example, a unit at square (10,10) can move to square (11,11), which is a distance of about 1.41. However, if the unit instead moves to (12,10), it has moved a distance of 2. This can make thinking about distance in Civ II difficult, especially if you want to think in terms of unit "steps".
+This is known as the ["Euclidean Distance"](https://en.wikipedia.org/wiki/Euclidean_distance), and, generally speaking, when a Civ II game mechanic needs a distance measure of some sort, it will use an approximation of this calculation.
+Moving "diagonally" (using the 1,3,7, or 9 key) has a cost of 1, while moving horizontally or vertically (using the 2,4,6, or 8 key) has a distance of 1.5.
+Using the above formula, the horizontal and vertical distances "should" be about 1.41 if a diagonal move is scaled to have a distance of 1.
+However, this means that when units move, the "distance" they move in one "step" will be different depending on the direction of the step.
+This can make thinking about distance in Civ II difficult, especially if you want to think in terms of unit "steps".
 
-It turns out that mathematicians have other notions of "distance" than \\(\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\\), and one of them happens to be extremely convenient for Civilization II:
+It turns out that mathematicians have other notions of "distance" than <span style="font-size: 17px">&radic;</span><span style="border-top: 1px solid #000000; font-size: 14px;">(x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup>+(y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup></span>, and one of them happens to be extremely convenient for Civilization II:
 
-\\[ distance = \lvert x_1 - x_2 \rvert + \lvert y_1 - y_2 \rvert \\]
+<span style="font-size: 20px">distance = |x<sub>1</sub>-x<sub>2</sub>|+|y<sub>1</sub>-y<sub>2</sub>|</span>
+
+This is typically known as the ["Taxicab Distance"](https://en.wikipedia.org/wiki/Taxicab_geometry) or "Manhattan Distance," because it is the distance between two points when you have to travel on a grid road system. Under this distance system, all unit "steps" have a distance of 2, regardless of direction.  Simply dividing by 2 changes the distance scale so that adjacent squares have a "distance" of 1 between them.
+
+"Circles" (by which we mean all the points which are located at a specified distance from a "center") are "diamond" shaped by this distance measure, which is the same shape as all the tiles an air unit can reach in a turn from its own tile.
+
+If you need a distance measure in your scenario, it is highly likely that the Taxicab distance will be as good, if not better better, than the ordinary "Euclidean" distance you are used to. I'm pretty sure that every time I needed a "distance" in Over the Reich, I used the Taxicab distance.
+
+The General Library provides the following distance functions:  
+[`gen.distance`](GeneralLibrary.md#gendistance)  
+[`gen.tileDistance`](GeneralLibrary.md#gentiledist)    
+[`gen.gameMechanicDistance`](GeneralLibrary.md#gengamemechanicdistance)  
 
 ## Finding the Nearest City
 
