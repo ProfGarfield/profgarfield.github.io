@@ -783,12 +783,12 @@ Now, use backspace and select "Print constructor for Polygon 1 to console.
 
 Open the console, and a line like this should be printed (the exact coordinates will be different unless you chose the exact same tiles that I did for corners).
 ```
-polygon = {{47,79},{47,67},{52,62},{59,63},{64,66},{70,64},{75,63},{81,63},{82,74},{81,79},doesNotCrossThisX=2}
+polygon = { {47,79},{47,67},{52,62},{59,63},{64,66},{70,64},{75,63},{81,63},{82,74},{81,79},doesNotCrossThisX=2}
 ```
 
 We can cut and paste this table constructor into our file:
 ```lua
-local egyptPolygon = {{47,79},{47,67},{52,62},{59,63},{64,66},{70,64},{75,63},{81,63},{82,74},{81,79},doesNotCrossThisX=2}
+local egyptPolygon = { {47,79},{47,67},{52,62},{59,63},{64,66},{70,64},{75,63},{81,63},{82,74},{81,79},doesNotCrossThisX=2}
 ```
 
 Now, let's build an "Iberia" polygon.  We don't want to delete the information from the Egypt polygon, so we press "tab":
@@ -802,11 +802,11 @@ Proceed as before to build the polygon using the K key, and use "backspace" to c
 ![](Images/FirstExamples10.png)
 
 ```
-polygon = {{1,59},{0,58},{0,40},{0,22},{0,10},{7,11},{9,15},{15,21},{17,23},{17,25},{21,29},{24,32},{22,40},{21,47},{21,55},{14,60},{6,60},doesNotCrossThisX=27}
+polygon = { {1,59},{0,58},{0,40},{0,22},{0,10},{7,11},{9,15},{15,21},{17,23},{17,25},{21,29},{24,32},{22,40},{21,47},{21,55},{14,60},{6,60},doesNotCrossThisX=27}
 ```
 
 ```lua
-local iberiaPolygon = {{1,59},{0,58},{0,40},{0,22},{0,10},{7,11},{9,15},{15,21},{17,23},{17,25},{21,29},{24,32},{22,40},{21,47},{21,55},{14,60},{6,60},doesNotCrossThisX=27}
+local iberiaPolygon = { {1,59},{0,58},{0,40},{0,22},{0,10},{7,11},{9,15},{15,21},{17,23},{17,25},{21,29},{24,32},{22,40},{21,47},{21,55},{14,60},{6,60},doesNotCrossThisX=27}
 ```
 
 Add these polygon constructors to `keyPressEvents.lua` and change the key press functions for 8 and 9 as so:
