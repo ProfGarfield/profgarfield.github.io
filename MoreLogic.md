@@ -125,6 +125,8 @@ function unitKilledEvents.unitKilledInCombat(loser ,winner ,aggressor,victim,los
     end
 end
 ```
+<a id="missingrequire"></a>
+
 Note that I commented out the lines that were replaced.  Test this code.  You will run into the following error:
 
 ```
@@ -405,6 +407,8 @@ Now, change the game year to 262 B.C. (Turn 16), and end the turn.  Between turn
 To check that the female ruler part works, change the year to 127 B.C. (Turn 151), and end your turn again.
 
 ![](Images/MoreLogic7.png)
+
+Now that we have a basic idea of how Lua code works, the next lesson will go through some examples.
 
 
 

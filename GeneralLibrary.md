@@ -291,7 +291,8 @@ Note: Returns `gen.maxMoves(unit)-unit.moveSpent`
 
 
 <details id="geninpolygon"><summary><code>gen.inPolygon(tile,tableOfCoordinates)-->bool</code></summary><p style="margin-left: 25px">
-<code>gen.inPolygon(tile,tableOfCoordinates)-->bool</code>
+<code>gen.inPolygon(tile,tableOfCoordinates)-->bool
+</code>
 Considers a polygon with corners given by the tableOfCoordinates.  Function returns true if the tile is within that polygon, and false if it is not.  Map is not considered for this function, even if the coordinates provided have entries for a z coordinate, so you must check it separately.
 <br>The <A href="Scripts.html#polygon-maker"> Polygon Maker</A> script will produce valid polygon coordinate tables for you.
 <br>Valid Arguments:
