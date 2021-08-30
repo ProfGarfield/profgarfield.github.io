@@ -7,7 +7,7 @@
   }
 </style>
 
-[&larr;MoreLogic](MoreLogic.md) | [Home](index.md) | [Example Events&rarr;](Examples1.md)
+[&larr;MoreLogic](MoreLogic.md) | [Home](index.md) | [Fixing Coding Errors&rarr;](FixingErrors.md)
 
 
 # Example Events
@@ -923,4 +923,4 @@ Test this event to make sure that it occurs sometimes, but not always.
 Note: When testing a random event, it is often helpful to change the probability during testing.  For example, if an event has a 5% chance of occurring, you might want to change it to 50% (or even 100%) for testing purposes, so that it actually happens fairly frequently.
 
 
-[&larr;MoreLogic](MoreLogic.md) | [Home](index.md) | [Example Events&rarr;](Examples1.md)
+[&larr;MoreLogic](MoreLogic.md) | [Home](index.md) | [Fixing Coding Errors&rarr;](FixingErrors.md)

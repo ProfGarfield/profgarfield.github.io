@@ -18,6 +18,7 @@ Lua Scenario Template Documentation
 6. [Loops](Loops.md)  
 7. [More Logic](MoreLogic.md)  
 8. [Example Events](Examples1.md)  
+9. [Fixing Coding Errors](FixingErrors.md)
 
 # Functionality and Documentation
 
@@ -34,3 +35,4 @@ Lua Scenario Template Documentation
 * [Classic Rome 2](GameFiles/ClassicRome2.zip) (Start of Conditional Code Lesson)
 
 [Testing Page](TestingPage.md) (Just a place for me to test Github Pages Markdown)
+[Automatic Can Build Settings Code Generator Preview](autoCanBuild.html) (Preview for automatic buildability settings code generator.)
