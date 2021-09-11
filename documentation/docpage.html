@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1">
+	    <meta name="description" content="Resources for Civilization II: Test of Time Lua Events">
+	    <meta name="keywords" content="Lua, Civ, Civ II, Civilization II, Test of Time, ToT, TOTPP, Test of Time Patch Project">
+	    <title>Lua for Civilization II</title>
+	    <link rel="stylesheet" href="css/styles.css">
+
+    </head>
+
+    <body>
+        <div class="function-wrap">
+            <code><button><code>gen</code></button><span><code>.</code></span><button><code>createUnit</code></button><span><code>(</code></span><button><code>unitType</code></button><span><code>,</code></span><button><code>tribe</code></button></span><code>,</code></span><button><code>locations</code></button><span><code>,</code></span><button><code>options</code></button><span><code>) --&gt; </code></span><button><code>units table</code></button></code>
+            <p> Creates a <em>unitType</em> unit or units for <em>tribe</em> at one or more of the <em>locations</em>, with details determined by the <em>options</em> table.</p>
+            <p> Arguments </p>
+            <ol>
+                <li><button><code>unitType</code></button><span>: The type of unit to be created.</span></li>
+                <li><button><code>tribe</code></button><span>: The tribe owning unit(s) being created.</span></li>
+                <li><button><code>locations</code></button><span>: The tile(s) where the unit(s) will be created.</span></li>
+                <li><button><code>options</code></button><span>: The tile(s) where the unit(s) will be created.</span>
+                    <ul>
+                        <li><span><code>"count"</code></span><span>=</span><span><button><code>integerOrNil</code></button><span>:</span><span>The number of units to create.  Nil means create one unit.</span></li>
+                        <li><span><code>"randomize"</code></span><span>=</span><span><button><code>boolOrNil</code></button><span>:</span><span>If true, randomize the list of locations.  If false or nil, try to place the unit(s) on the tile with the smallest index first.</span></li>
+                        <li><span><code>"scatter"</code></span><span>=</span><span><button><code>boolOrNil</code></button><span>:</span><span>If true, and if randomize is true, each unit is created on a random tile in the location table.</span></li>
+
+                    </ul>
+
+                </li>
+                
+
+            </ol>
+
+        </div>
+    </body>
+</html>

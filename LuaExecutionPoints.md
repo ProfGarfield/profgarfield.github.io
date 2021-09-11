@@ -37,6 +37,7 @@ Lua Events function by "injecting" code into the Civilization II: Test of Time g
 3. [Unit Deleted](#unit-deleted)
 3. [After Production](#after-production)
 3. [Before Production](#before-production)
+3. [City Processed](#city-processed)
 
 ## Unit Activation[&uarr;](#execution-points)
 
@@ -137,6 +138,8 @@ function cityYield.onCalculateCityYield(city,food,shields,trade)
             tradeChangeAfterCorruption
 end
 ```
+
+This execution point is triggered every time item under production is changed (even if changed to the same thing) and when a building is sold.
 
 ### Linkage Details
 
@@ -693,8 +696,22 @@ The `turn` is the current turn number, and the `tribe` is the currently active t
 Uses the [City Yield Calculation](#city-yield-calculation&uarr;) execution point (set up in `events.lua`) to create the action.  The flag module is used to keep track of whether After Production has been done for the current turn, with the [on turn](#between-turns&uarr;) execution point used to reset the flags each turn.
 
 
+## City Processed[&uarr;](#execution-points)
+
+### Description
+
+Executes code immediately before a city is processed for production.  Use `onCityProcessed.lua` in the `UniversalTriggerEvents` directory, found in the `LuaTriggerEvents` folder.
+
+```lua
+function cityProcessed.onCityProcessed(city)
 
 
+end
+```
+
+### Linkage Details
+
+Uses the [City Yield Calculation](#city-yield-calculation&uarr;) execution point (set up in `events.lua`) to create the action.  A table keeps track of the id numbers of cities that have been processed already, and the execution point is triggered if the city is owned by the active tribe and not yet in the list of cities processed.  The Before Production machinery clears the list of processed cities for each player.
 
 
 [Back to Index&uarr;](index.md)
