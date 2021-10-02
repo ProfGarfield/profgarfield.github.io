@@ -12,7 +12,7 @@
 
 For this guide, we will be learning to build our Lua Events with the Lua Scenario Template.  The template is larger than what we strictly need to make events in Lua, but it means we can take advantage of many pre built features without having to learn how to join them together.
 
-To begin, there should be a zip file included with this guide called `ClassicRome.zip`, which contains a Test of Time conversion of the "Rome" scenario that shipped with the original game.  The scenario has been altered to have two 'macro' style events, in order to show how the Lua Scenario Template integrates these 'legacy' events.  These two events display text when the Romans capture Taras or Syracuse.
+To begin, there should be a zip file included with this guide called [ClassicRome.zip](GameFiles/ClassicRome.zip), which contains a Test of Time conversion of the "Rome" scenario that shipped with the original game.  The scenario has been altered to have two 'macro' style events, in order to show how the Lua Scenario Template integrates these 'legacy' events.  These two events display text when the Romans capture Taras or Syracuse.
 
 ## Installing the Lua Scenario Template
 
