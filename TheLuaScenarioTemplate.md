@@ -135,7 +135,7 @@ Here is a snippet of code from the Boudicca Scenario:
 		end 
 	end 
 ```
-In this syntax highlighting, the special words `if`, `and`, `then`, `else`, and `end` are in dark blue.  Comments (notes to program readers that are ignored by the computer) are in green, while the special values `true` and `false` are in red, along with "string" (sequences of characters) values.
+In this syntax highlighting, the special words `if`, `and`, `then`, `else`, and `end` are in bold.  The special values `true` and `false` are also in bold.  Comments (notes to program readers that are ignored by the computer) are in grey, while "string" (sequences of characters) values are in red.
 
 The exact highlighting will be different for each text editor.  Some programming environments are more advanced than text editors, called Integrated Development Environments (IDEs), and will come with even more features.  It doesn't really matter which one you use.  If you don't already have a preference, [Notepad++](https://notepad-plus-plus.org/) is a decent choice, and is Licensed under the GNU General Public License, so you should always be able to get a copy, since it is free to redistribute.
 
