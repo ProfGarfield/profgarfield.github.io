@@ -18,7 +18,7 @@ To begin, there should be a zip file included with this guide called [ClassicRom
 
 Extract the ClassicRome scenario into your Scenario directory, just as you would install any other scenario.  This will serve as our 'base' scenario for this guide.  It is not necessary to have everything else completed in your scenario before you start building the Lua Events.
 
-Next, download a copy of the Lua Scenario Template, preferably from this [Github Repository](https://github.com/ProfGarfield/LuaTemplate).  At the time of writing, there is still more work to be done on the template, so downloading from this Github Repository will ensure you get the most up to date version of the template.
+Next, download a copy of the Lua Scenario Template.  The most recent version can be found in this [Github Repository](https://github.com/ProfGarfield/LuaTemplate).  At the time of writing, there is still more work to be done on the template, so downloading from this Github Repository will ensure you get the most up to date version of the template.  However, the file structure has been changed a bit from when I wrote these lessons, so you may find it easier to use the template attached to [this forum post](https://forums.civfanatics.com/threads/totpp-lua-scenario-template.660244/) for these lessons.
 
 You will want to download a ```.zip``` file of the code.  At the time of writing, you click on the green `code` button and select `download zip`.
 
