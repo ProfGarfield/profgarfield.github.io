@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <head><title>dialogObject.lua Documentation</title>
+</head>
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="dialogobject">dialogObject</h1>
+
+<p>A dialog object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a text box that can be displayed to the player and provides properties and methods to customize it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#dialog">Lua Function Reference</a></p>
+
+<h3 id="addcheckbox">addCheckbox</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addCheckbox</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">initial</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a checkbox to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value that can be used in dialog:getCheckboxState to retrieve the state after calling dialog:show. <code class="language-plaintext highlighter-rouge">initial</code> is an optional boolean parameter, if set to <code class="language-plaintext highlighter-rouge">true</code> the checkbox will be checked initially. Can not be used in conjunction with dialog:addOption.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">initial</code> — Default Value is false</p>
+
+<h3 id="addimage">addImage</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">imageObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds an image to the dialog.</p>
+
+<h3 id="addoption">addOption</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addOption</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a selectable option to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value returned by dialog:show if this option was selected. Can not be used in conjunction with dialog:addCheckbox.</p>
+
+<h3 id="addtext">addText</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addText</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a static text string to the dialog.</p>
+
+<h3 id="getcheckboxstate">getCheckboxState</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">getCheckboxState</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns the state of the checkbox identified by <code class="language-plaintext highlighter-rouge">id</code> after dialog:show has been called.</p>
+
+<h3 id="height">height</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.height --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the height of the dialog. Normally this does not need to be set, since the height is automatically calculated from the height of the items.</p>
+
+<h3 id="show">show</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">show</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Renders the dialog on screen. If this is an option dialog, returns the id of the selected option (see dialog:addOption). If this is a checkbox dialog, returns 0 if OK was pressed, -1 if Exit was pressed. Use dialog:getCheckboxState to query the individual checkboxes. This method can only be called once per dialog. It will return an error if invoked a second time.</p>
+
+<h3 id="title">title</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.title --&gt; string
+</code></pre></div></div>
+<p>(get/set) Returns the title of the dialog.</p>
+
+<h3 id="width">width</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.width --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the width of the dialog.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+-->
+<!--
+-->
+      </div>
+      <div class="footer-col">
+        <p>Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+  <li><a rel="me" href="https://github.com/ProfGarfield" target="_blank" title="ProfGarfield"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>ProfGarfield</a></li>
+  <li><a rel="me" href="https://www.youtube.com/user/ProfCiv2" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#youtube"></use></svg>ProfCiv2</a></li>
+  <li><a rel="me" href="https://forums.civfanatics.com/members/prof-garfield.43783/" target="_blank" title="Civfanatics Profile"><img src="/assets/civfanatics_icon.png" class="svg-icon grey"></img>Prof. Garfield</a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

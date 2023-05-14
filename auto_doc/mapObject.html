@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <head><title>mapObject.lua Documentation</title>
+</head>
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="mapobject">mapObject</h1>
+
+<p>A map object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents the overall properties of one of the four possible maps in the game, and provides a means of interacting with it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#map">Lua Function Reference</a></p>
+
+<h3 id="copydefaultresources">copyDefaultResources</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">mapObject</span><span class="p">:</span><span class="n">copyDefaultResources</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Enables custom resources for this map and copies the default resource pattern. Requires the “Custom resources” patch.</p>
+
+<h3 id="customresources">customResources</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapObject.customResources --&gt; boolean
+</code></pre></div></div>
+<p>(get/set) Returns <code class="language-plaintext highlighter-rouge">true</code> if custom resources are enabled for this map, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<h3 id="getbaseterrain">getBaseTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">mapObject</span><span class="p">:</span><span class="n">getBaseTerrain</span><span class="p">(</span><span class="n">terrainId</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">baseTerrain</span><span class="p">:</span> <span class="n">baseTerrainObject</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.getBaseTerrain(map, terrainType)</code></p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">terrainId</code> — The id number of the base terrain type sought</p>
+
+<h3 id="getterrain">getTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">mapObject</span><span class="p">:</span><span class="n">getTerrain</span><span class="p">(</span><span class="n">terrainId</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.getTerrain(map, terrainType, resource)</code></p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">terrainId</code> — The id number of the base terrain type sought.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span><span class="p">:</span>
+    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
+    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
+    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
+</code></pre></div></div>
+
+<h3 id="height">height</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapObject.height --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the height of the map.</p>
+
+<h3 id="id">id</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the id of the map.</p>
+
+<h3 id="width">width</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapObject.width --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the width of the map.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+-->
+<!--
+-->
+      </div>
+      <div class="footer-col">
+        <p>Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+  <li><a rel="me" href="https://github.com/ProfGarfield" target="_blank" title="ProfGarfield"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>ProfGarfield</a></li>
+  <li><a rel="me" href="https://www.youtube.com/user/ProfCiv2" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#youtube"></use></svg>ProfCiv2</a></li>
+  <li><a rel="me" href="https://forums.civfanatics.com/members/prof-garfield.43783/" target="_blank" title="Civfanatics Profile"><img src="/assets/civfanatics_icon.png" class="svg-icon grey"></img>Prof. Garfield</a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

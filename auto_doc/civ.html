@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <head><title>civ.lua Documentation</title>
+</head>
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="civ">civ</h1>
+
+<p>The civ module provides functions which can interact directly with the game.  It is always in scope, so you never need to use a <code class="language-plaintext highlighter-rouge">require</code> call in order to access it.</p>
+
+<h2 id="civ-1">civ</h2>
+
+<h3 id="addimprovement">addImprovement</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">addImprovement</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds city improvement <code class="language-plaintext highlighter-rouge">improvement</code> to city <code class="language-plaintext highlighter-rouge">city</code>.</p>
+
+<h3 id="canenter">canEnter</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">canEnter</span><span class="p">(</span><span class="n">unitType</span><span class="p">:</span> <span class="n">unitTypeObject</span><span class="p">,</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if the given unittype can enter tile <code class="language-plaintext highlighter-rouge">tile</code>, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<h3 id="capturecity">captureCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">captureCity</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Captures city <code class="language-plaintext highlighter-rouge">city</code> for tribe <code class="language-plaintext highlighter-rouge">tribe</code>.</p>
+
+<h3 id="createcity">createCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">createCity</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Creates a city owned by <code class="language-plaintext highlighter-rouge">tribe</code> at the location given by <code class="language-plaintext highlighter-rouge">tile</code>. Returns <code class="language-plaintext highlighter-rouge">nil</code> if a city could not be created.</p>
+
+<h3 id="createunit">createUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">createUnit</span><span class="p">(</span><span class="n">unitType</span><span class="p">:</span> <span class="n">unitTypeObject</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span>
+</code></pre></div></div>
+<p>Creates a unit of type <code class="language-plaintext highlighter-rouge">unittype</code>, owned by <code class="language-plaintext highlighter-rouge">tribe</code>, at the location given by <code class="language-plaintext highlighter-rouge">tile</code>.</p>
+
+<h3 id="deletecity">deleteCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">deleteCity</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Deletes city <code class="language-plaintext highlighter-rouge">city</code> from the game.</p>
+
+<h3 id="deleteunit">deleteUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">deleteUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Deletes unit <code class="language-plaintext highlighter-rouge">unit</code> from the game.
+Consider unsing <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code>, <code class="language-plaintext highlighter-rouge">gen.killUnit</code>, <code class="language-plaintext highlighter-rouge">gen.deleteUnit</code>, or <code class="language-plaintext highlighter-rouge">gen.replaceUnit</code> instead, for event integration.
+<br />Deprecation flag is only here so that designers see the above notice.</p>
+
+<h3 id="destroywonder">destroyWonder</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">destroyWonder</span><span class="p">(</span><span class="n">wonder</span><span class="p">:</span> <span class="n">wonderObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Destroys wonder <code class="language-plaintext highlighter-rouge">wonder</code>, removing it from the game, and marking it as ‘lost’.</p>
+
+<h3 id="enabletechgroup">enableTechGroup</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">enableTechGroup</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">techgroup</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Sets the value of tech group <code class="language-plaintext highlighter-rouge">techgroup</code> (0-7) to value <code class="language-plaintext highlighter-rouge">value</code> (0-2, 0 = can research, can own, 1 = can’t research, can own, 2 = can’t research, can’t own) for tribe <code class="language-plaintext highlighter-rouge">tribe</code>.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">techgroup</code> — integer in [0,7]</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span><span class="p">:</span>
+    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
+    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
+    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
+</code></pre></div></div>
+
+<h3 id="endgame">endGame</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">endGame</span><span class="p">(</span><span class="n">endscreens</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Ends the game. <code class="language-plaintext highlighter-rouge">endscreens</code> is a boolean that determines whether to show the powergraph and related screens.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">endscreens</code> — This argument is false by default.</p>
+
+<h3 id="getactiveunit">getActiveUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getActiveUnit</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span>
+</code></pre></div></div>
+<p>Returns the currently active unit.</p>
+
+<h3 id="getatlasdimensions">getAtlasDimensions</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getAtlasDimensions</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span>
+  <span class="mi">2</span><span class="p">.</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span>
+  <span class="mi">3</span><span class="p">.</span> <span class="n">number_of_maps</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Returns three integers, the width and height of the map and the number of maps.</p>
+
+<h3 id="getbaseterrain">getBaseTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getBaseTerrain</span><span class="p">(</span><span class="n">map</span><span class="p">:</span> <span class="n">integer</span><span class="err">\|</span><span class="n">mapObject</span><span class="p">,</span> <span class="n">terrainId</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">baseTerrain</span><span class="p">:</span> <span class="n">baseTerrainObject</span>
+</code></pre></div></div>
+<p>Returns the base terrain object for the given map and terrain type.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">map</code> — The map for the base terrain type we want, or its id.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">terrainId</code> — The id number of the base terrain type sought</p>
+
+<h3 id="getcity">getCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getCity</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the city with id <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getcommodity">getCommodity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getCommodity</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">commodity</span><span class="p">:</span> <span class="n">commodityObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the commodity with id <code class="language-plaintext highlighter-rouge">id</code> (0-15 for regular commodities, -1 for food supplies), or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getcurrenttile">getCurrentTile</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getCurrentTile</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span>
+</code></pre></div></div>
+<p>Returns the currently selected tile.</p>
+
+<h3 id="getcurrenttribe">getCurrentTribe</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getCurrentTribe</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span>
+</code></pre></div></div>
+<p>Returns the currently active tribe.</p>
+
+<h3 id="getgameyear">getGameYear</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getGameYear</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Returns the current game year.</p>
+
+<h3 id="getimprovement">getImprovement</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getImprovement</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the improvement with id <code class="language-plaintext highlighter-rouge">id</code> (0-39), or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getmap">getMap</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getMap</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">map</span><span class="p">:</span> <span class="n">mapObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the map with id <code class="language-plaintext highlighter-rouge">id</code> (0-3) or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getmapdimensions">getMapDimensions</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getMapDimensions</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span>
+  <span class="mi">2</span><span class="p">.</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span>
+  <span class="mi">3</span><span class="p">.</span> <span class="n">number_of_maps</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Alias for getAtlasDimensions. (deprecated since 0.16)</p>
+
+<h3 id="getopencity">getOpenCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getOpenCity</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the city currently opened in the city window, <code class="language-plaintext highlighter-rouge">nil</code> if the city window is closed.</p>
+
+<h3 id="getplayertribe">getPlayerTribe</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getPlayerTribe</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span>
+</code></pre></div></div>
+<p>Returns the player’s tribe.</p>
+
+<h3 id="gettech">getTech</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getTech</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the tech with id <code class="language-plaintext highlighter-rouge">id</code> (0-99), or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getterrain">getTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getTerrain</span><span class="p">(</span><span class="n">map</span><span class="p">:</span> <span class="n">integer</span><span class="err">\|</span><span class="n">mapObject</span><span class="p">,</span> <span class="n">terrainId</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
+</code></pre></div></div>
+<p>Returns the terrain object for the given map, terrain type and resource. Out of bound id’s cause errors.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">map</code> — The map for the terrain we want, or its id.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">terrainId</code> — The id number of the base terrain type sought.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span><span class="p">:</span>
+    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
+    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
+    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
+</code></pre></div></div>
+
+<h3 id="gettile">getTile</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getTile</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the tile with coordinates <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">z</code>, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">x</code> — the ‘x’ coordinate of the tile</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">y</code> — the ‘y’ coordinate of the tile</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">z</code> — the ‘z’ coordinate of the tile ([0,3])</p>
+
+<h3 id="gettotdir">getToTDir</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getToTDir</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">string</span>
+</code></pre></div></div>
+<p>Returns the absolute path of the ToT installation directory.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="gettribe">getTribe</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getTribe</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the tribe with id <code class="language-plaintext highlighter-rouge">id</code> (0-7), or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getturn">getTurn</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getTurn</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Returns the current turn number.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="getunit">getUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getUnit</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the unit with id <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getunittype">getUnitType</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getUnitType</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">unitType</span><span class="p">:</span> <span class="n">unitTypeObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the unit type with id <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="getwonder">getWonder</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">getWonder</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">wonder</span><span class="p">:</span> <span class="n">wonderObject</span><span class="err">\|</span><span class="kc">nil</span>
+</code></pre></div></div>
+<p>Returns the wonder with id <code class="language-plaintext highlighter-rouge">id</code> (0-27), or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t exist.</p>
+
+<h3 id="givetech">giveTech</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">giveTech</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Gives tech <code class="language-plaintext highlighter-rouge">tech</code> to tribe <code class="language-plaintext highlighter-rouge">tribe</code>.</p>
+
+<h3 id="hasimprovement">hasImprovement</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">hasImprovement</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if city <code class="language-plaintext highlighter-rouge">city</code> has improvement <code class="language-plaintext highlighter-rouge">improvement</code>, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<h3 id="hastech">hasTech</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">hasTech</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if tribe <code class="language-plaintext highlighter-rouge">tribe</code> has tech <code class="language-plaintext highlighter-rouge">tech</code>, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isbaseterrain">isBaseTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isBaseTerrain</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a base terrain, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="iscity">isCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isCity</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a city, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isdialog">isDialog</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isDialog</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a dialog, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isimage">isImage</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isImage</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is an image, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isimprovement">isImprovement</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isImprovement</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a city improvement, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isleader">isLeader</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isLeader</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a leader, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="ismap">isMap</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isMap</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a map, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="istech">isTech</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isTech</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a tech, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isterrain">isTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isTerrain</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a terrain, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="istile">isTile</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isTile</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a tile, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="istraderoute">isTradeRoute</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isTradeRoute</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a trade route, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="istribe">isTribe</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isTribe</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a tribe, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isunit">isUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isUnit</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a unit, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="isunittype">isUnitType</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isUnitType</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a unit type, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="iswonder">isWonder</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">isWonder</span><span class="p">(</span><span class="n">object</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">object</code> is a wonder, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="iteratecities">iterateCities</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">iterateCities</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">iterator</span>
+</code></pre></div></div>
+<p>Returns an iterator yielding all cities in the game.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="iterateunits">iterateUnits</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">iterateUnits</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">iterator</span>
+</code></pre></div></div>
+<p>Returns an iterator yielding all units in the game.</p>
+
+<p>@<em>return</em> —</p>
+
+<h3 id="killtribe">killTribe</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">killTribe</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Removes tribe <code class="language-plaintext highlighter-rouge">tribe</code> from the game. All its cities and units are removed.</p>
+
+<h3 id="makeaggression">makeAggression</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">makeAggression</span><span class="p">(</span><span class="n">who</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">whom</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Cancels any peace treaties between tribe <code class="language-plaintext highlighter-rouge">who</code> and tribe <code class="language-plaintext highlighter-rouge">whom</code>, and make <code class="language-plaintext highlighter-rouge">who</code> declare war on <code class="language-plaintext highlighter-rouge">whom</code>.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">who</code> — The tribe declaring war.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">whom</code> — The tribe not declaring war.</p>
+
+<h3 id="playmusic">playMusic</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">playMusic</span><span class="p">(</span><span class="n">trackOrFilename</span><span class="p">:</span> <span class="n">string</span><span class="err">\|</span><span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Plays CD track <code class="language-plaintext highlighter-rouge">trackNo</code>, or with the DirectShow music patch enabled, play the file given by <code class="language-plaintext highlighter-rouge">filename</code>, where <code class="language-plaintext highlighter-rouge">filename</code> is relative to the ‘Music’ directory.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">trackOrFilename</code> — Track number of cd or filename of music.</p>
+
+<h3 id="playsound">playSound</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">playSound</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Plays the sound file given by <code class="language-plaintext highlighter-rouge">filename</code>.</p>
+
+<h3 id="playvideo">playVideo</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">playVideo</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Plays the video file given by <code class="language-plaintext highlighter-rouge">filename</code>.</p>
+
+<h3 id="removeimprovement">removeImprovement</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">removeImprovement</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Removes city improvement <code class="language-plaintext highlighter-rouge">improvement</code> from city <code class="language-plaintext highlighter-rouge">city</code>.</p>
+
+<h3 id="sleep">sleep</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="n">milliseconds</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Sleeps for the given number of milliseconds.</p>
+
+<h3 id="taketech">takeTech</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">takeTech</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">,</span> <span class="n">collapse</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Takes away tech <code class="language-plaintext highlighter-rouge">tech</code> from tribe <code class="language-plaintext highlighter-rouge">tribe</code>, the optional <code class="language-plaintext highlighter-rouge">collapse</code> parameter determines whether to take away all techs that have <code class="language-plaintext highlighter-rouge">tech</code> as a prerequisite somewhere up the tree.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">collapse</code> — false by default</p>
+
+<h3 id="teleportunit">teleportUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">teleportUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Teleports (i.e. moves at no cost) unit <code class="language-plaintext highlighter-rouge">unit</code> to tile <code class="language-plaintext highlighter-rouge">tile</code>. The unit is moved regardless of whether it is a valid location for the unit. To check this, see <code class="language-plaintext highlighter-rouge">civ.canEnter</code> and <code class="language-plaintext highlighter-rouge">civlua.isValidUnitLocation</code>.</p>
+
+<h2 id="civui">civ.ui</h2>
+
+<h3 id="centerview">centerView</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">centerView</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Centers the map on the given tile.</p>
+
+<h3 id="createdialog">createDialog</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">createDialog</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">dialog</span><span class="p">:</span> <span class="n">dialogObject</span>
+</code></pre></div></div>
+<p>Creates and initializes a dialog. See the dialog section for more details.</p>
+
+<h3 id="loadimage">loadImage</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">loadImage</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">image</span><span class="p">:</span> <span class="n">imageObject</span>
+</code></pre></div></div>
+<p>Loads an image (BMP or GIF) from <code class="language-plaintext highlighter-rouge">filename</code>. Optionally accepts <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">width</code> and <code class="language-plaintext highlighter-rouge">height</code> to load part of the image.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">x</code> — pixel (x,y) is the top left corner of sub image</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">y</code> — pixel (x,y) is the top left corner of sub image</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">width</code> — width of sub image</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">height</code> — height of sub image</p>
+
+<h3 id="loadterrain">loadTerrain</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">loadTerrain</span><span class="p">(</span><span class="n">map</span><span class="p">:</span> <span class="n">integer</span><span class="err">\|</span><span class="n">mapObject</span><span class="p">,</span> <span class="n">filename1</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">filename2</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Replaces terrain graphics for map number <code class="language-plaintext highlighter-rouge">map</code>, loading graphics from <code class="language-plaintext highlighter-rouge">filename1</code> (corresponding to “TERRAIN1.BMP”) and <code class="language-plaintext highlighter-rouge">filename2</code> (corresponding to “TERRAIN2.BMP”)</p>
+
+<h3 id="redrawmap">redrawMap</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">redrawMap</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Redraws the entire map.</p>
+
+<h3 id="redrawtile">redrawTile</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">redrawTile</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Redraws the given tile.</p>
+
+<h3 id="setzoom">setZoom</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">setZoom</span><span class="p">(</span><span class="n">integer</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Sets the zoom level (range from -7 (max zoom out) to 8 (max zoom in)).</p>
+
+<h3 id="text">text</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="o">...</span><span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Display a pop-up text box with the given string as text.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">string</code> — text to show in a text box</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">...</code> — more text</p>
+
+<h3 id="zoomin">zoomIn</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">zoomIn</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Zooms in on the map (increases zoom level by 1).</p>
+
+<h3 id="zoomout">zoomOut</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">ui</span><span class="p">.</span><span class="n">zoomOut</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Zooms out of the map (decreases zoom level by 1).</p>
+
+<h2 id="civcosmic">civ.cosmic</h2>
+
+<h3 id="communismpalacedistance">communismPalaceDistance</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.communismPalaceDistance --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the distance from palace used in happiness calculations under Communism.</p>
+
+<h3 id="foodeaten">foodEaten</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.foodEaten --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the amount of food eaten by each citizen each turn.</p>
+
+<h3 id="foodrows">foodRows</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.foodRows --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of rows in the food box.</p>
+
+<h3 id="goodiehutsmask">goodieHutsMask</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.goodieHutsMask --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the bitmask for goodie huts.</p>
+
+<h3 id="helispickuphuts">helisPickupHuts</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.helisPickupHuts --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns whether helicopters (domain 1, range 0 units) pick up huts or not.</p>
+
+<h3 id="massthrustparadigm">massThrustParadigm</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.massThrustParadigm --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the mass/thrust paradigm.</p>
+
+<h3 id="numberofunittypes">numberOfUnitTypes</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.numberOfUnitTypes --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of unit types from the @COSMIC2 key of the same name.</p>
+
+<h3 id="paradroprange">paradropRange</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.paradropRange --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the maximum paradrop range.</p>
+
+<h3 id="penaltybetrayal">penaltyBetrayal</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.penaltyBetrayal --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the penalty to the civilization score for each betrayal of another tribe.</p>
+
+<h3 id="prodchangepenalty">prodChangePenalty</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.prodChangePenalty --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the shield penalty percentage for changing production types.</p>
+
+<h3 id="riotfactor">riotFactor</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.riotFactor --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the riot factor based on the number of cities.</p>
+
+<h3 id="roadmultiplier">roadMultiplier</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.roadMultiplier --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the road movement multiplier.</p>
+
+<h3 id="sciencelostfundamentalism">scienceLostFundamentalism</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scienceLostFundamentalism --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the percentage of science lost under Fundamentalism.</p>
+
+<h3 id="scienceratefundamentalism">scienceRateFundamentalism</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scienceRateFundamentalism --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the maximum effective science rate under Fundamentalism.</p>
+
+<h3 id="scorecentauri">scoreCentauri</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scoreCentauri --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each landing on Alpha Centauri first. Multiplied by number of habitats and success probability.</p>
+
+<h3 id="scorecitizen">scoreCitizen</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scoreCitizen --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each citizen.</p>
+
+<h3 id="scorefuturetech">scoreFutureTech</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scoreFutureTech --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each future technology researched.</p>
+
+<h3 id="scorepeace">scorePeace</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scorePeace --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each turn of peace after turn 199.</p>
+
+<h3 id="scorepollution">scorePollution</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scorePollution --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each extant non-AI controlled polluted tile. Normally a negative value, i.e. a penalty.</p>
+
+<h3 id="scoreunitkilled">scoreUnitKilled</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scoreUnitKilled --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each unit killed.</p>
+
+<h3 id="scorewonder">scoreWonder</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.scoreWonder --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the civilization score for each wonder.</p>
+
+<h3 id="settlerseathigh">settlersEatHigh</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.settlersEatHigh --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the amount of food eaten by settlers for governments ≥ Communism.</p>
+
+<h3 id="settlerseatlow">settlersEatLow</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.settlersEatLow --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the amount of food eaten by settlers for governments ≤ Monarchy.</p>
+
+<h3 id="shieldrows">shieldRows</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.shieldRows --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of rows in the shield box.</p>
+
+<h3 id="sizeaquaduct">sizeAquaduct</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.sizeAquaduct --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the city size that cannot be exceeded without an Aquaduct.</p>
+
+<h3 id="sizesewer">sizeSewer</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.sizeSewer --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the city size that cannot be exceeded without a Sewer System.</p>
+
+<h3 id="sizeunhappiness">sizeUnhappiness</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.sizeUnhappiness --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the city size at which the first unhappy citizen appears at Chieftain difficulty.</p>
+
+<h3 id="supportcommunism">supportCommunism</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.supportCommunism --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of units that are free of support under Communism.</p>
+
+<h3 id="supportfundamentalism">supportFundamentalism</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.supportFundamentalism --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of units that are free of support costs under Fundamentalism.</p>
+
+<h3 id="supportmonarchy">supportMonarchy</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.supportMonarchy --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of units that are free of support under Monarchy.</p>
+
+<h3 id="techparadigm">techParadigm</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.techParadigm --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the tech paradigm. Scenarios use civ.scen.params.techParadigm instead of this value.</p>
+
+<h3 id="transformbase">transformBase</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.transformBase --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the base time needed for engineers to transform terrain.</p>
+
+<h3 id="triremelost">triremeLost</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.cosmic.triremeLost --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the 1 in x chance of a trireme getting lost at sea.</p>
+
+<h2 id="civgame">civ.game</h2>
+
+<h3 id="activetribes">activeTribes</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.activeTribes --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the active tribe mask.</p>
+
+<h3 id="barbarianactivity">barbarianActivity</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.barbarianActivity --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the level of barbarian activity.</p>
+
+<h3 id="difficulty">difficulty</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.difficulty --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the difficulty level.</p>
+
+<h3 id="gameyear">gameYear</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.gameYear --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the game year, or for scenarios with monthly increments, the number of months * 12.</p>
+
+<h3 id="humanplayers">humanPlayers</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.humanPlayers --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the human players mask.</p>
+
+<h3 id="humantribe">humanTribe</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.humanTribe --&gt; tribeObject
+</code></pre></div></div>
+<p>(get) Returns the last active human tribe.</p>
+
+<h3 id="peaceturns">peaceTurns</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.peaceTurns --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of turns of peace.</p>
+
+<h3 id="revealmap">revealMap</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.revealMap --&gt; boolean
+</code></pre></div></div>
+<p>(get/set) Returns whether or not the full map is revealed.</p>
+
+<h3 id="turnselapsed">turnsElapsed</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.turnsElapsed --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of turns elapsed.</p>
+
+<h2 id="civgamerules">civ.game.rules</h2>
+
+<h3 id="flatworld">flatWorld</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.game.rules.flatWorld --&gt; boolean
+</code></pre></div></div>
+<p>(get/set) Returns <code class="language-plaintext highlighter-rouge">true</code> if the world map is flat, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<h2 id="civscenparams">civ.scen.params</h2>
+
+<h3 id="decisivedefeat">decisiveDefeat</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.decisiveDefeat --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Number of objectives required for a decisive defeat.</p>
+
+<h3 id="decisivevictory">decisiveVictory</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.decisiveVictory --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Number of objectives required for a decisive victory.</p>
+
+<h3 id="flags">flags</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.flags --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Bitmask representing scenario flags:<br /> <br />00000000 00000001 Total war <br />00000000 00000010 Use objective victory <br />00000000 00000100 Count wonders as objectives <br />00000000 00001000 Reveal cities <br />00000000 00010000 No government change <br />00000000 00100000 No tech conquest <br />00000000 01000000 No pollution <br />00000000 10000000 Terrain animation lockout <br />00000001 00000000 Unit animation lockout <br />00000010 00000000 .SPR file override <br />10000000 00000000 WWII AI</p>
+
+<h3 id="marginaldefeat">marginalDefeat</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.marginalDefeat --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Number of objectives required for a marginal defeat.</p>
+
+<h3 id="marginalvictory">marginalVictory</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.marginalVictory --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Number of objectives required for a marginal victory.</p>
+
+<h3 id="maxturns">maxTurns</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.maxTurns --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Maximum number of turns before the scenario ends.</p>
+
+<h3 id="name">name</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.name --&gt; string
+</code></pre></div></div>
+<p>(get/set) The name of the scenario.</p>
+
+<h3 id="objectivesprotagonist">objectivesProtagonist</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.objectivesProtagonist --&gt; tribeObject
+</code></pre></div></div>
+<p>(get/set) Returns the objectives protagonist.</p>
+
+<h3 id="startingyear">startingYear</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.startingYear --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the starting year of the scenario.</p>
+
+<h3 id="techparadigm-1">techParadigm</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.techParadigm --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tech paradigm used by the scenario. Non-scenario games use civ.cosmic.techParadigm instead of this value.</p>
+
+<h3 id="yearincrement">yearIncrement</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.params.yearIncrement --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the year increment (number of years per turn). Negative for monthly increments.</p>
+
+<h2 id="civscencompatibility">civ.scen.compatibility</h2>
+
+<h3 id="activateuniteverymove">activateUnitEveryMove</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>civ.scen.compatibility.activateUnitEveryMove --&gt; boolean
+</code></pre></div></div>
+<p>If set to true, onActivateUnit will re-trigger for every tile the active unit moves. Defaults to false, in which case onActivateUnit triggers only once.  In the Lua Scenario Template, this is set to true in LuaParameterFiles\parameters.lua.</p>
+
+<h2 id="civscen">civ.scen</h2>
+
+<h3 id="onactivateunit">onActivateUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onActivateUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">repeatMove</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. <code class="language-plaintext highlighter-rouge">source</code> is <code class="language-plaintext highlighter-rouge">true</code> if activated by keyboard or mouse click, <code class="language-plaintext highlighter-rouge">false</code> if activated by the game itself. <code class="language-plaintext highlighter-rouge">repeatMove</code> is <code class="language-plaintext highlighter-rouge">true</code> if it’s a repeat activation caused by moving (see civ.scen.compatibility), <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+
+<h3 id="onbribeunit">onBribeUnit</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onBribeUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousOwner</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a unit is bribed successfully. unit.owner is the new owner at this point, <code class="language-plaintext highlighter-rouge">previousOwner</code> the old owner.</p>
+
+<h3 id="oncalculatecityyield">onCalculateCityYield</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCalculateCityYield</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">food</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">shields</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">trade</span><span class="p">:</span> <span class="n">integer</span><span class="p">):(</span><span class="n">foodChange</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">shieldChangeBeforeWaste</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">shieldChangeAfterWaste</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tradeChangeBeforeCor</span><span class="o">...</span><span class="p">(</span><span class="n">too</span> <span class="n">long</span><span class="p">)</span><span class="o">...</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time a city calculates its total resource yield. Input is the city, and the food, shields and trade of its tiles. Returns a 5-tuple of modifiers, food change, shield change before waste, shield change after waste, trade change before corruption, trade change after corruption. These modifiers are applied at the following points in the calculation:
+<br />Calculate yield from all worked tiles
+<br />Run onCalculateCityYield
+<br />Add foodChange, shieldChangeBeforeWaste and tradeChangeBeforeCorruption
+<br />Add changes from food trade routes
+<br />Add shields from improvements
+<br />Calculate and subtract waste
+<br />Calculate corruption and add changes from commodity trade routes
+<br />Calculate corruption again (now using the value after trade routes) and subtract.
+<br />Add shieldChangeAfterWaste and tradeChangeAfterCorruption
+<br />Calculate Tax/Lux/Sci</p>
+
+<h3 id="oncanbuild">onCanBuild</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCanBuild</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">defaultBuildFunction</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">):(</span><span class="n">cityCanBuildItemByDefault</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="o">...</span><span class="p">(</span><span class="n">too</span> <span class="n">long</span><span class="p">)</span><span class="o">...</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time a check is done whether a city can build something or not. It is called for all unit types, improvements and wonders. The first parameter of the callback is the default build function, as implemented by the game. It takes the city and item as parameters. You can call this to produce a result for cases you don’t need to handle yourself. <code class="language-plaintext highlighter-rouge">item</code> can be a unittype, improvement or wonder.
+Return <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">city</code> is allowed to produce <code class="language-plaintext highlighter-rouge">item</code>, <code class="language-plaintext highlighter-rouge">false</code> if not.</p>
+
+<h3 id="oncanfoundcity">onCanFoundCity</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCanFoundCity</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">advancedTribe</span><span class="p">:</span> <span class="n">boolean</span><span class="p">):</span><span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Registers a function that is called to determine if <code class="language-plaintext highlighter-rouge">unit</code> can found a city at the unit’s location. <code class="language-plaintext highlighter-rouge">advancedTribe</code> is <code class="language-plaintext highlighter-rouge">true</code> when picking up a hut with <code class="language-plaintext highlighter-rouge">unit</code> triggers an advanced tribe. Return <code class="language-plaintext highlighter-rouge">true</code> to allow, <code class="language-plaintext highlighter-rouge">false</code> to disallow.</p>
+
+<h3 id="oncentauriarrival">onCentauriArrival</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCentauriArrival</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a tribe’s spaceship reaches its target. Just registering this function causes the game to not end at this point (“endgame override”).</p>
+
+<h3 id="onchoosedefender">onChooseDefender</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onChooseDefender</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">defaultFunction</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">):(</span><span class="n">chosenUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">),</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">isCombat</span><span class="p">:</span> <span class="n">boolean</span><span class="p">):(</span><span class="n">chosenUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called every time a unit is chosen to defend a tile. The first parameter is the default function as implemented by the game. It takes <code class="language-plaintext highlighter-rouge">tile</code> and <code class="language-plaintext highlighter-rouge">attacker</code> as parameters. You can call this to produce a result for cases you don’t need to handle yourself. The second parameter is the tile that’s being considered, the third is the attacking unit, and the fourth, <code class="language-plaintext highlighter-rouge">isCombat</code>, is a boolean that indicates if this invocation will be followed by combat. This function is also called by the AI to determine its goals, in which case <code class="language-plaintext highlighter-rouge">isCombat</code> is false.</p>
+
+<h3 id="oncitydestroyed">onCityDestroyed</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCityDestroyed</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a city is destroyed.</p>
+
+<h3 id="oncityfounded">onCityFounded</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCityFounded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span><span class="err">\|</span><span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">):</span><span class="n">fun</span><span class="p">())</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time a city is founded. The callback takes the city as a parameter, and can optionally return a function (since 0.18) that is called to perform cleanup when the user cancels founding the city.</p>
+
+<h3 id="oncityprocessingcomplete">onCityProcessingComplete</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCityProcessingComplete</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a tribe’s cities have been processed for that turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
+
+<h3 id="oncityproduction">onCityProduction</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCityProduction</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">prod</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a city completes its production order. The produced item <code class="language-plaintext highlighter-rouge">prod</code> is either a unit, improvement or wonder (this can be checked with the civ.is* functions).</p>
+
+<h3 id="oncitytaken">onCityTaken</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onCityTaken</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a city is captured. <code class="language-plaintext highlighter-rouge">city</code> is the city changing hands, at this point city.owner is the new owner already. <code class="language-plaintext highlighter-rouge">defender</code> is the old owner.</p>
+
+<h3 id="ongameends">onGameEnds</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onGameEnds</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span> <span class="n">gameEndReasons</span><span class="p">):(</span><span class="n">gameIsOver</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when the game ends. <code class="language-plaintext highlighter-rouge">reason</code> is an integer between 1 and 6:
+<br />1 and 2 - Space race victory. This does not trigger if <code class="language-plaintext highlighter-rouge">onCentauriArrival</code> has a callback registered. 1 means victory by active player.
+<br />3 - Conquest victory
+<br />4 - Defeat
+<br />5 - Retirement
+<br />6 - Macro ENDGAME action
+<br />Return <code class="language-plaintext highlighter-rouge">true</code> to end the game, <code class="language-plaintext highlighter-rouge">false</code> to keep playing.</p>
+
+<h3 id="ongetformatteddate">onGetFormattedDate</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onGetFormattedDate</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">defaultDateString</span><span class="p">:</span> <span class="n">string</span><span class="p">):(</span><span class="n">displayedDate</span><span class="p">:</span> <span class="n">string</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when the game needs to get the date string for a given turn (e.g. “4000 B.C.” for turn 1). <code class="language-plaintext highlighter-rouge">turn</code> is the turn for which the date is requested (not always the current turn), and <code class="language-plaintext highlighter-rouge">defaultDateString</code> is the string as formatted by the game</p>
+
+<h3 id="ongetrushbuycost">onGetRushBuyCost</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onGetRushBuyCost</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">defaultCost</span><span class="p">:</span> <span class="n">integer</span><span class="p">):(</span><span class="n">costToComplete</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when calculating the cost to rush-buy a city’s current production. It takes the city and the cost as calculated by the game as parameters. Returns an integer representing the new costs.</p>
+
+<h3 id="oninitiatecombat">onInitiateCombat</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onInitiateCombat</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">attacker</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">attackerDie</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">attackerPower</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">defenderDie</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">defenderPower</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">isSneakAttack</span><span class="p">:</span> <span class="n">boolean</span><span class="p">):</span><span class="n">thread</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time combat is initiated. The callback takes seven parameters, the attacker, the defender, attackerDie (‘die’ as in dice, the attacker’s chance to hit), attackerPower (attacker’s firepower), defenderDie, defenderPower and isSneakAttack. Returns a coroutine that yields every time it wants to process a round, and returns when it wants combat to end. Example:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">civ</span><span class="p">.</span><span class="n">scen</span><span class="p">.</span><span class="n">onInitiateCombat</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="n">attacker</span><span class="p">,</span> <span class="n">defender</span><span class="p">,</span> <span class="n">attackerDie</span><span class="p">,</span> <span class="n">attackerPower</span><span class="p">,</span> <span class="n">defenderDie</span><span class="p">,</span> <span class="n">defenderPower</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Attacker's die: 1d"</span> <span class="o">..</span> <span class="n">attackerDie</span> <span class="o">..</span> <span class="s2">", firepower: "</span> <span class="o">..</span> <span class="n">attackerPower</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Defender's die: 1d"</span> <span class="o">..</span> <span class="n">defenderDie</span> <span class="o">..</span> <span class="s2">", firepower: "</span> <span class="o">..</span> <span class="n">defenderPower</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nb">coroutine.create</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span>
+    <span class="kd">local</span> <span class="n">round</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">round</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">attacker</span><span class="p">.</span><span class="n">hitpoints</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">defender</span><span class="p">.</span><span class="n">hitpoints</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">do</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"Round "</span> <span class="o">..</span> <span class="n">round</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">attacker</span><span class="p">,</span> <span class="n">defender</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">round</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+        <span class="n">attacker</span><span class="p">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">attacker</span><span class="p">.</span><span class="n">damage</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="nb">coroutine.yield</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="n">defender</span><span class="p">)</span> <span class="c1">-- either attacker or defender</span>
+      <span class="k">else</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Attack bonus!"</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">coroutine.yield</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="n">attackerDie</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">attackerPower</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">winner</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">attackerRoll</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">defenderRoll</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">reroll</span><span class="p">)</span>
+      <span class="k">end</span>
+      <span class="n">round</span> <span class="o">=</span> <span class="n">round</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">end</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"End of combat"</span><span class="p">)</span>
+  <span class="k">end</span><span class="p">)</span>
+<span class="k">end</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This example shows how to limit combat to five rounds, damages the attacker on even rounds and doubles the attacker’s values on odd rounds.</p>
+
+<p>If the coroutine yields true as its first value, the game’s default combat resolution is skipped for that round and the designer is responsible for updating damage. The second value yielded is either the attacker or the defender, this is used to render animations etc. In this case the coroutine resumes without any values.</p>
+
+<p>If the coroutine yields false as its first value, the game runs its default combat algorithm. The designer can additionally yield modified values for attackerDie, attackerPower, defenderDie and defenderPower (in this order) which will be used by the game for that round. In this case the coroutine resumes with the result of the round, a table containing four values:</p>
+<ul>
+  <li>winner, this is either attacker or defender.</li>
+  <li>attackerRoll, the result of the attacker’s die roll</li>
+  <li>defenderRoll, the result of the defender’s die roll</li>
+  <li>reroll, true if a reroll happened.</li>
+</ul>
+
+<p>This can happen only if the attacker is tribe 0, the defender is a unit guarding a city, and the city is the capital or the tribe has less than 8 cities in total and the attacker’s die roll is higher than the defender’s. A reroll can happen at most once.</p>
+
+<h3 id="onkeypress">onKeyPress</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onKeyPress</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="k">function</span><span class="err">)</span>
+</code></pre></div></div>
+<p>Registers a function to be called every time a key is pressed.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">code</code> — (keyCode:integer)</p>
+
+<h3 id="onload">onLoad</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onLoad</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">savedData</span><span class="p">:</span> <span class="n">string</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when the game is loaded.</p>
+
+<h3 id="onnegotiation">onNegotiation</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onNegotiation</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">talker</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">canTalk</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when two tribes attempt negotiations. <code class="language-plaintext highlighter-rouge">talker</code> is the tribe initiating the contact, <code class="language-plaintext highlighter-rouge">listener</code> the receiver. Return <code class="language-plaintext highlighter-rouge">true</code> to allow the negotiations to commence, <code class="language-plaintext highlighter-rouge">false</code> to deny.</p>
+
+<h3 id="onresolvecombat">onResolveCombat</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onResolveCombat</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">defaultResolutionFunction</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">defender</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">):(</span><span class="n">combatContinues</span><span class="p">:</span> <span class="n">boolean</span><span class="p">),</span> <span class="n">defender</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">):(</span><span class="n">combatContinues</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function to be called during every combat turn. The first parameter of the callback is the default resolution function, as implemented by the game. It takes the attacker and defender as parameters. You can call this to produce a result for cases you don’t need to handle yourself.
+Return <code class="language-plaintext highlighter-rouge">true</code> to continue combat, <code class="language-plaintext highlighter-rouge">false</code> to stop.</p>
+
+<p>See onInitiateCombat for replacement.</p>
+
+<h3 id="onsave">onSave</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onSave</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">():(</span><span class="n">savedData</span><span class="p">:</span> <span class="n">string</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when the game is saved.</p>
+
+<h3 id="onscenarioloaded">onScenarioLoaded</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onScenarioLoaded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+</code></pre></div></div>
+<p>Registers a function that is called when the scenario is loaded.  (This is whenever a game is loaded, not just when the scenario is started.)</p>
+
+<h3 id="onschism">onSchism</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onSchism</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">allowSchism</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a schism is triggered. This happens when the capital of a AI-controlled tribe with more than four cities is captured, and, if the attacker is human-controlled, it is ranked lower in power than the defender. If the attacker is AI-controlled the best human tribe must be ranked lower than the defender for the schism to trigger.
+If the schism is allowed, a new tribe will be created that takes over about half the cities of the old tribe. If no new tribe can be created, the schism does not occur.
+Return <code class="language-plaintext highlighter-rouge">true</code> to allow the schism to happen, <code class="language-plaintext highlighter-rouge">false</code> to deny.</p>
+
+<h3 id="onselectmusic">onSelectMusic</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onSelectMusic</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">track</span><span class="p">:</span> <span class="n">integer</span><span class="err">\|</span><span class="kc">nil</span><span class="p">):</span><span class="n">integer</span><span class="err">\|</span><span class="kc">nil</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a new music track is to be played. <code class="language-plaintext highlighter-rouge">track</code> is either nil or an integer. If nil, the game wants to play a random track, if not nil it’s either due to the user choosing a track from the menu (first track has id 0), or the game playing one of it’s special tracks (“Funeral March” - track id 0, and “Ode to Joy” - track id 1). To handle special tracks, you can return nil to signal that the game should play the default track associated with that track id. If you want to handle this track id, call civ.playMusic (this will check the Music folder of the scenario first before falling back to the global Music folder) and return an integer, which is used to synchronize the track list in the menu. The track names can be added in @PICKMUSICTOT in Game.txt.</p>
+
+<h3 id="ontribeturnbegin">onTribeTurnBegin</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onTribeTurnBegin</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called at the start of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
+
+<h3 id="ontribeturnend">onTribeTurnEnd</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onTribeTurnEnd</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called at the end of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
+
+<h3 id="onturn">onTurn</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onTurn</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called at the start of a turn. The basic sequence of this and other “turn” triggers is as follows:
+<br /><code class="language-plaintext highlighter-rouge">onTurn</code> fires
+<br />Non-tribe-specific updates take place
+<br /><code class="language-plaintext highlighter-rouge">onTribeTurnBegin</code> fires for tribe 0.
+<br />Tribe 0 cities are processed.
+<br /><code class="language-plaintext highlighter-rouge">onCityProcessingComplete</code> fires for tribe 0 (this fires even when a tribe has no cities).
+<br />Tribe 0 units move
+<br /><code class="language-plaintext highlighter-rouge">onTribeTurnEnd</code> fires for tribe 0.
+<br />All active tribes are processed in order according to the sequence for tribe 0
+<br /><code class="language-plaintext highlighter-rouge">onTribeTurnEnd</code> fires for tribe 7.
+<br /><code class="language-plaintext highlighter-rouge">onTurn</code> fires for the next turn</p>
+
+<h3 id="onunitkilled">onUnitKilled</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onUnitKilled</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called whenever a unit is killed. <code class="language-plaintext highlighter-rouge">loser</code> is the unit that is killed, <code class="language-plaintext highlighter-rouge">winner</code> is the unit responsible for it.</p>
+
+<h3 id="onusenuclearweapon">onUseNuclearWeapon</h3>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">civ</span><span class="p">.</span><span class="nf">scen</span><span class="p">.</span><span class="n">onUseNuclearWeapon</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">):(</span><span class="n">attackProceeds</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Registers a function that is called when a nuclear weapon is used. This is also called when a spy plants a nuclear device in a city. <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or the spy unit, <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack. Return <code class="language-plaintext highlighter-rouge">false</code> to abort the attack, <code class="language-plaintext highlighter-rouge">true</code> to proceed.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+-->
+<!--
+-->
+      </div>
+      <div class="footer-col">
+        <p>Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+  <li><a rel="me" href="https://github.com/ProfGarfield" target="_blank" title="ProfGarfield"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>ProfGarfield</a></li>
+  <li><a rel="me" href="https://www.youtube.com/user/ProfCiv2" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#youtube"></use></svg>ProfCiv2</a></li>
+  <li><a rel="me" href="https://forums.civfanatics.com/members/prof-garfield.43783/" target="_blank" title="Civfanatics Profile"><img src="/assets/civfanatics_icon.png" class="svg-icon grey"></img>Prof. Garfield</a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

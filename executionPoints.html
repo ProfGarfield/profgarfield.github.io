@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <head><title></title>
+</head>
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="lua-execution-points">Lua Execution Points</h1>
+
+<p>Lua Events function by running code at certain predetermined points during the Civilization II: Test of Time game.  The term “Execution Point”
+refers to one of these points where code that has been registered is executed.  Everything that can be achieved with Lua 
+must be done through these execution points.  Sometimes, complicated events will use more than one of these execution
+points to achieve their effect.</p>
+
+<p>In some cases, the execution point expects code which will return a value that influences how the game works.</p>
+
+<p>The Test of Time Patch Project provides many execution points.  However, in order to improve programming convenience, the Lua Scenario Template
+provides even more execution points by running the pre-existing execution points only at certain times.</p>
+
+<h2 id="list-of-execution-points">List of Execution Points</h2>
+<ol>
+  <li><a href="#unit-activation">Unit Activation</a></li>
+  <li><a href="#unit-bribery">Unit Bribery</a></li>
+  <li><a href="#centauri-arrival">Centauri Arrival</a></li>
+  <li><a href="#city-destruction">City Destruction</a></li>
+  <li><a href="#city-founded">City Founded</a></li>
+  <li><a href="#city-production">City Production</a></li>
+  <li><a href="#city-captured">City Captured</a></li>
+  <li><a href="#game-end">Game End</a></li>
+  <li><a href="#key-press">Key Press</a></li>
+  <li><a href="#scenario-loaded">Scenario Loaded</a></li>
+  <li><a href="#negotiation">Negotiation</a></li>
+  <li><a href="#tribe-schism">Tribe Schism</a></li>
+  <li><a href="#between-turns">Between Turns</a></li>
+  <li><a href="#unit-killed-in-combat">Unit Killed In Combat</a></li>
+  <li><a href="#unit-defeated">Unit Defeated</a></li>
+  <li><a href="#unit-death">Unit Death</a></li>
+  <li><a href="#unit-death-outside-combat">Unit Death Outside Combat</a></li>
+  <li><a href="#unit-deleted">Unit Deleted</a></li>
+  <li><a href="#city-processing-complete">City Processing Complete</a></li>
+  <li><a href="#before-city-processing">Before City Processing</a></li>
+  <li><a href="#city-processed">City Processed</a></li>
+  <li><a href="#unit-enters-tile">Unit Enters Tile</a></li>
+  <li><a href="#unit-given-last-order">Unit Given Last Order</a></li>
+  <li><a href="#nuclear-attack">Nuclear Attack</a></li>
+</ol>
+
+<h3 id="unit-activation"><strong>Unit Activation</strong></h3>
+<p>This code is executed whenever a unit is activated or has moved but still has movement points left.
+In <code class="language-plaintext highlighter-rouge">LuaParameterFilesparameters.lua</code>, the field <code class="language-plaintext highlighter-rouge">civ.scen.compatibility.activateUnitEveryMove</code> is
+set to true.  If this is not done (or in old versions of the Test of Time Patch Project), human
+units don’t execute the registered activation code after moving.</p>
+
+<h4 id="usage">Usage</h4>
+<h5 id="consolidatedeventslua"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Unit Activation</span>
+<span class="c1">--Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. `source` is `true` if activated by keyboard or mouse click, `false` if activated by the game itself. `repeatMove` is `true` if it's a repeat activation caused by moving, `false` otherwise.</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onActivateUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="n">repeatMove</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("Unit activation consolidated test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> parameter is the unit that has been activated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">source</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the unit was activated by keyboard or mouse, and
+<code class="language-plaintext highlighter-rouge">false</code> if it was activated by the game itself.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">repeatMove</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the execution point is triggered by a repeated activation.</p>
+
+<h5 id="eventsfilesonactivateunitlua"><strong>EventsFiles/onActivateUnit.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">--Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. `source` is `true` if activated by keyboard or mouse click, `false` if activated by the game itself. `repeatMove` is `true` if it's a repeat activation caused by moving, `false` otherwise.</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onActivateUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="n">repeatMove</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("unit activation separate file")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> parameter is the unit that has been activated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">source</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the unit was activated by keyboard or mouse, and
+<code class="language-plaintext highlighter-rouge">false</code> if it was activated by the game itself.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">repeatMove</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the execution point is triggered by a repeated activation.</p>
+
+<h5 id="discrete-events"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Activation event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">--Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. `source` is `true` if activated by keyboard or mouse click, `false` if activated by the game itself. `repeatMove` is `true` if it's a repeat activation caused by moving, `false` otherwise.</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onActivateUnit</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="n">repeatMove</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Unit activation Discrete Event"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> parameter is the unit that has been activated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">source</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the unit was activated by keyboard or mouse, and
+<code class="language-plaintext highlighter-rouge">false</code> if it was activated by the game itself.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">repeatMove</code> parameter is <code class="language-plaintext highlighter-rouge">true</code> if the execution point is triggered by a repeated activation.</p>
+
+<h4 id="implementation">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onActivateUnit</code>.</p>
+
+<h3 id="unit-bribery"><strong>Unit Bribery</strong></h3>
+<p>Code will be executed whenever a unit is bribed.</p>
+<h4 id="usage-1">Usage</h4>
+<h5 id="consolidatedeventslua-1"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Unit Bribery</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onBribeUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousOwner</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("Bribe unit consolidated test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the unit that was just bribed.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">previous owner</code> is the tribe that owned the unit before.</p>
+
+<h5 id="eventsfilesonbribeunitlua"><strong>EventsFiles/onBribeUnit.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onBribeUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousOwner</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("On bribe unit separate file")</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the unit that was just bribed.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">previous owner</code> is the tribe that owned the unit before.</p>
+
+<h5 id="discrete-events-1"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Bribery event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onBribeUnit</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousOwner</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Bribe unit discrete event test"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the unit that was just bribed.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">previous owner</code> is the tribe that owned the unit before.</p>
+<h4 id="implementation-1">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onBribeUnit</code>.</p>
+
+<h3 id="centauri-arrival"><strong>Centauri Arrival</strong></h3>
+<p>Executes code when a tribe’s spaceship reaches its target.</p>
+<h4 id="usage-2">Usage</h4>
+<h5 id="consolidatedeventslua-2"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Centauri Arrival</span>
+<span class="c1">-- This is available with games started as an extended original game,</span>
+<span class="c1">-- but not with games started as a standard game (I think, this hasn't been looked at too closely)</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCentauriArrival</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(tribe.name.." has reached Alpha Centauri.")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe whose spaceship has reached its destination.</p>
+
+<h5 id="eventsfilesoncentauriarrivallua"><strong>EventsFiles/onCentauriArrival.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCentauriArrival</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("centauri arrival separate file")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe whose spaceship has reached its destination.</p>
+
+<h5 id="discrete-events-2"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Centauri Arrival event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCentauriArrival</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(tribe.name.." arrived at centauri discrete event")</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe whose spaceship has reached its destination.</p>
+<h4 id="implementation-2">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code>.</p>
+
+<h3 id="city-destruction"><strong>City Destruction</strong></h3>
+<p>Executes code when a city is destroyed.</p>
+<h4 id="usage-3">Usage</h4>
+<h5 id="consolidatedeventslua-3"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- City destruction</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityDestroyed</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("City destroyed consolidated test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> it the city that was just destroyed.</p>
+
+<h5 id="eventsfilesoncitydestroyedlua"><strong>EventsFiles/onCityDestroyed.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- This function will be registered for the onCityDestroyed</span>
+<span class="c1">-- execution point</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCityDestroyed</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("on city destroyed separate file")</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> it the city that was just destroyed.</p>
+
+<h5 id="discrete-events-3"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Destruction event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityDestroyed</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"City destroyed discrete event test"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> it the city that was just destroyed.</p>
+<h4 id="implementation-3">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCityDestroyed</code>.</p>
+
+<h3 id="city-founded"><strong>City Founded</strong></h3>
+
+<p>Executes code when a city is founded, just before the “What Shall We
+ Name This City” dialog box.  You can change the suggested name for the city
+at this time by changing the <a href="auto_doc/cityObject.html#name"><code class="language-plaintext highlighter-rouge">city.name</code></a> field.</p>
+
+<p>You can (optionally) return a function to be called if the city is
+not built after all (if the city is cancelled during the naming
+process).  For example, if you change the terrain under or around the city
+when it is founded, you can change it back here.  If you write city founded code in more than one place
+(such as multiple discrete events, or using both the Events Files and
+consolidated events), all returned functions are executed.</p>
+
+<h4 id="usage-4">Usage</h4>
+<h5 id="consolidatedeventslua-4"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On City Founded</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityFounded</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onCityFounded for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="c1">-- the cityCancelled() function is executed if the player</span>
+    <span class="c1">-- decides not to found the city after all</span>
+    <span class="c1">-- (so you can undo terrain changes, etc.</span>
+    <span class="kd">local</span> <span class="k">function</span> <span class="nf">cityCancelled</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+            <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onCityFounded city cancelled for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">cityCancelled</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that is being founded.</p>
+
+<h5 id="eventsfilesoncityfoundedlua"><strong>EventsFiles/onCityFounded.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCityFounded</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"separate file onCityFounded for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="c1">-- the cityCancelled() function is executed if the player</span>
+    <span class="c1">-- decides not to found the city after all</span>
+    <span class="c1">-- (so you can undo terrain changes, etc.</span>
+    <span class="kd">local</span> <span class="k">function</span> <span class="nf">cityCancelled</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+            <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"separate file onCityFounded city cancelled for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">cityCancelled</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that is being founded.</p>
+
+<h5 id="discrete-events-4"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Founded event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityFounded</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onCityFounded for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="c1">-- the cityCancelled() function is executed if the player</span>
+    <span class="c1">-- decides not to found the city after all</span>
+    <span class="c1">-- (so you can undo terrain changes, etc.</span>
+    <span class="kd">local</span> <span class="k">function</span> <span class="nf">cityCancelled</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+            <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onCityFounded city cancelled for "</span><span class="o">..</span><span class="n">city</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">cityCancelled</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that is being founded.</p>
+<h4 id="implementation-4">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCityFounded</code>.</p>
+
+<h3 id="city-production"><strong>City Production</strong></h3>
+<p>Executes code when a city completes production of something.</p>
+<h4 id="usage-5">Usage</h4>
+<h5 id="consolidatedeventslua-5"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On city production (when a city produces a unit/improvement/wonder)</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityProduction</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">prod</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(city.name.." has procuded something.")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city which just completed production.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">prod</code> is the item that was produced.  If a unit was produced,
+it is a unit Object (not a unitType object).  If an improvement or
+wonder was completed, <code class="language-plaintext highlighter-rouge">prod</code> is the corresponding improvement object
+ or wonder object.</p>
+
+<h5 id="eventsfilesoncityproductionlua"><strong>EventsFiles/onCityProduction.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">onCityProduction</span><span class="p">.</span><span class="nf">onCityProduction</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">prod</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("City production separate file")</span>
+
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city which just completed production.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">prod</code> is the item that was produced.  If a unit was produced,
+it is a unit Object (not a unitType object).  If an improvement or
+wonder was completed, <code class="language-plaintext highlighter-rouge">prod</code> is the corresponding improvement object
+ or wonder object.</p>
+
+<h5 id="discrete-events-5"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Production event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityProduction</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">item</span><span class="p">)</span> 
+    <span class="c1">--civ.ui.text("City production discrete event test")</span>
+
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city which just completed production.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">prod</code> is the item that was produced.  If a unit was produced,
+it is a unit Object (not a unitType object).  If an improvement or
+wonder was completed, <code class="language-plaintext highlighter-rouge">prod</code> is the corresponding improvement object
+ or wonder object.</p>
+
+<h4 id="implementation-5">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCityProduction</code>.</p>
+
+<h3 id="city-captured"><strong>City Captured</strong></h3>
+
+<h4 id="usage-6">Usage</h4>
+<h5 id="consolidatedeventslua-6"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On City Taken</span>
+<span class="c1">-- (get conqueror by using city.owner)</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityTaken</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">defender</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(city.name.." captured from the "..defender.name.." by the "..city.owner.name..". Consolidated Events.")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesoncitytakenlua"><strong>EventsFiles/onCityTaken.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCityTaken</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">defender</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("city taken separate file test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-6"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Captured event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityTaken</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">defender</span><span class="p">)</span> 
+    <span class="c1">--civ.ui.text(city.name.." taken from "..defender.name.." discrete event")</span>
+
+
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-6">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCityTaken</code>.</p>
+
+<h3 id="game-end"><strong>Game End</strong></h3>
+
+<h4 id="usage-7">Usage</h4>
+<h4 id="implementation-7">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onGameEnd</code>.</p>
+
+<h3 id="key-press"><strong>Key Press</strong></h3>
+
+<h4 id="usage-8">Usage</h4>
+<h5 id="consolidatedeventslua-7"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On key press</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onKeyPress</span><span class="p">(</span><span class="n">keyCode</span><span class="p">)</span>
+    <span class="c1">--if keyCode == keyboard.backspace then</span>
+    <span class="c1">--    civ.ui.text("backspace pressed")</span>
+    <span class="c1">--end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonkeypresslua"><strong>EventsFiles/onKeyPress.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onKeyPress</span><span class="p">(</span><span class="n">keyCode</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("key press test separate file")</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-8">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onKeyPress</code>.</p>
+
+<h3 id="scenario-loaded"><strong>Scenario Loaded</strong></h3>
+
+<h4 id="usage-9">Usage</h4>
+<h5 id="consolidatedeventslua-8"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Scenario Loaded</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onScenarioLoaded</span><span class="p">()</span>
+    <span class="c1">--civ.ui.text("Scenario Loaded consolidated event")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonscenarioloadedlua"><strong>EventsFiles/onScenarioLoaded.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onScenarioLoaded</span><span class="p">()</span>
+    <span class="c1">--civ.ui.text("on scenario loaded separate event file")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-7"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Scenario Loaded event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onScenarioLoaded</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> 
+    <span class="c1">--civ.ui.text("discrete event on scenario loaded")</span>
+
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-9">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onScenarioLoaded</code>.</p>
+
+<h3 id="negotiation"><strong>Negotiation</strong></h3>
+
+<h4 id="usage-10">Usage</h4>
+<h4 id="implementation-10">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onNegotiate</code>.</p>
+
+<h3 id="tribe-schism"><strong>Tribe Schism</strong></h3>
+
+<h4 id="usage-11">Usage</h4>
+<h5 id="consolidatedeventslua-9"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Schism </span>
+<span class="c1">-- Return true (default) if the tribe can schism,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the discrete events and the</span>
+<span class="c1">-- legacy events, as well as a separate onSchism.lua file</span>
+<span class="c1">-- If any of these return false, then schism is prevented</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onSchism</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonschismlua"><strong>EventsFiles/onSchism.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- discreteEvents.onSchism and</span>
+<span class="c1">-- consolidated.onSchism</span>
+<span class="c1">-- also return booleans.  True means that the tribe can schism</span>
+<span class="c1">-- (default behaviour).</span>
+<span class="c1">-- If any of the events return false, schism is </span>
+<span class="c1">-- prevented, even if other schism events return true</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onSchism</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-8"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Tribe Schism event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Schism </span>
+<span class="c1">-- Return true (default) if the tribe can schism,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the consolidated events and the</span>
+<span class="c1">-- legacy events, as well as a separate onSchism.lua file</span>
+<span class="c1">-- If any of these return false, then schism is prevented</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onSchism</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">tribe</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-11">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onSchism</code>.</p>
+
+<h3 id="between-turns"><strong>Between Turns</strong></h3>
+
+<h4 id="usage-12">Usage</h4>
+<h5 id="consolidatedeventslua-10"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Between Turns</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onTurn</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("The turn is "..tostring(turn)..".")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonturnlua"><strong>EventsFiles/onTurn.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">onTurn</span><span class="p">.</span><span class="nf">onTurn</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"on turn test separate file"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-9"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Between Turns event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onTurn</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span> 
+    <span class="c1">--civ.ui.text("discrete on turn event 1")</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-12">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTurn</code>.</p>
+
+<h3 id="unit-killed-in-combat"><strong>Unit Killed In Combat</strong></h3>
+
+<h4 id="usage-13">Usage</h4>
+<h5 id="consolidatedeventslua-11"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On unit killed in combat</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onUnitKilled</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("A "..loser.type.name.." has been defeated by a "..winner.type.name..".")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonunitkilledlua"><strong>EventsFiles/onUnitKilled.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- This will only run when a unit is killed in combat (i.e. not when an event</span>
+<span class="c1">-- 'kills' a unit)</span>
+<span class="c1">-- note that if the aggressor loses, aggressor.location will not work</span>
+<span class="c1">-- note: use loserLocation instead of loser.location, since loser.location doesn't work if the attacker loses</span>
+<span class="c1">-- (the game returns a 'tile' off the map)</span>
+<span class="k">function</span> <span class="nc">onUnitKilled</span><span class="p">.</span><span class="nf">onUnitKilled</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">loser</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" killed by "</span><span class="o">..</span><span class="n">winner</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" separate file test killed in combat."</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-10"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Killed In Combat event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onUnitKilled</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">loser</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" was killed by "</span><span class="o">..</span><span class="n">winner</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" discrete event 1"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-13">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>.</p>
+
+<h3 id="unit-defeated"><strong>Unit Defeated</strong></h3>
+
+<h4 id="usage-14">Usage</h4>
+<h5 id="consolidatedeventslua-12"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On unit defeated in combat or by some other event</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onUnitDefeated</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("unit defeated consolidated test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonunitdefeatedlua"><strong>EventsFiles/onUnitDefeated.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- This will run any time a unit is killed, either in combat or by events</span>
+<span class="k">function</span> <span class="nc">onUnitDefeated</span><span class="p">.</span><span class="nf">onUnitDefeated</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(loser.type.name.." defeated (possibly in an event rather than combat) by "..winner.type.name.." separate file test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-11"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Defeated event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onUnitDefeated</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">loser</span><span class="p">,</span><span class="n">winner</span><span class="p">,</span><span class="n">aggressor</span><span class="p">,</span><span class="n">victim</span><span class="p">,</span><span class="n">loserLocation</span><span class="p">,</span><span class="n">winnerVetStatus</span><span class="p">,</span><span class="n">loserVetStatus</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+    <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">loser</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" was defeated (possibly by event) by "</span><span class="o">..</span><span class="n">winner</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" discrete event"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-14">Implementation</h4>
+
+<p>Not standard implementation</p>
+
+<h3 id="unit-death"><strong>Unit Death</strong></h3>
+
+<h4 id="usage-15">Usage</h4>
+<h5 id="eventsfilesonunitdeathlua"><strong>EventsFiles/onUnitDeath.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- this happens whenever a unit 'dies', regardless of combat, as long as it is not replaced</span>
+<span class="k">function</span> <span class="nc">onUnitDeath</span><span class="p">.</span><span class="nf">onUnitDeath</span><span class="p">(</span><span class="n">dyingUnit</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(dyingUnit.type.name.." died separate file test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-15">Implementation</h4>
+
+<p>Not standard implementation</p>
+
+<h3 id="unit-death-outside-combat"><strong>Unit Death Outside Combat</strong></h3>
+
+<h4 id="usage-16">Usage</h4>
+<h5 id="eventsfilesonunitdeathlua-1"><strong>EventsFiles/onUnitDeath.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- this happens whenever a unit 'dies', but not through combat (or 'defeat')</span>
+<span class="k">function</span> <span class="nc">onUnitDeath</span><span class="p">.</span><span class="nf">onUnitDeathOutsideCombat</span><span class="p">(</span><span class="n">dyingUnit</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(dyingUnit.type.name.." died outside combat separate file test")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-16">Implementation</h4>
+
+<p>Not standard implementation</p>
+
+<h3 id="unit-deleted"><strong>Unit Deleted</strong></h3>
+
+<h4 id="usage-17">Usage</h4>
+<h5 id="eventsfilesonunitdeathlua-2"><strong>EventsFiles/onUnitDeath.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- this happens if a unit is deleted (either through combat death, or by some other event,</span>
+<span class="c1">-- but not if the unit is disbanded)</span>
+<span class="c1">-- If the unit isn't being replaced, replacingUnit is nil</span>
+<span class="k">function</span> <span class="nc">onUnitDeath</span><span class="p">.</span><span class="nf">onUnitDeleted</span><span class="p">(</span><span class="n">deletedUnit</span><span class="p">,</span><span class="n">replacingUnit</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(deletedUnit.type.name.." deleted and replaced by "..tostring(replacingUnit).." separate file")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-17">Implementation</h4>
+
+<p>Not Standard implementation</p>
+
+<h3 id="city-processing-complete"><strong>City Processing Complete</strong></h3>
+
+<h4 id="usage-18">Usage</h4>
+<h5 id="consolidatedeventslua-13"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- After Production</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityProcessingComplete</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onCityProcessingComplete for turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesoncityprocessingcompletelua"><strong>EventsFiles/onCityProcessingComplete.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCityProcessingComplete</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text('after production separate file')</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onCityProcessingComplete for turn "</span><span class="o">..</span><span class="n">turn</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" separate file"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-12"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Processing Complete event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityProcessingComplete</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onCityProcessingComplete for "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" on turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-18">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onCityProcessingComplete</code>.</p>
+
+<h3 id="before-city-processing"><strong>Before City Processing</strong></h3>
+
+<h4 id="usage-19">Usage</h4>
+<h5 id="consolidatedeventslua-14"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Before Production</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onTribeTurnBegin</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onTribeTurnBegin for turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesontribeturnbeginlua"><strong>EventsFiles/onTribeTurnBegin.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onTribeTurnBegin</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onTribeTurnBegin for turn "</span><span class="o">..</span><span class="n">turn</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" separate file"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-13"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Before City Processing event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onTribeTurnBegin</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onTribeTurnBegin for "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" on turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-19">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTribeTurnBegin</code>.</p>
+
+<h3 id="city-processed"><strong>City Processed</strong></h3>
+
+<h4 id="usage-20">Usage</h4>
+<h5 id="consolidatedeventslua-15"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On City Processed</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onCityProcessed</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text(city.name.." processed")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesoncityprocessedlua"><strong>EventsFiles/onCityProcessed.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onCityProcessed</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+    <span class="c1">--civ.ui.text("city processed separate file")</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-14"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete City Processed event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onCityProcessed</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> 
+    <span class="c1">--civ.ui.text("City processed discrete event test for city "..city.name)</span>
+
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-20">Implementation</h4>
+
+<p>Not standard implementation</p>
+
+<h3 id="unit-enters-tile"><strong>Unit Enters Tile</strong></h3>
+
+<h4 id="usage-21">Usage</h4>
+<h5 id="consolidatedeventslua-16"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onEnterTile(unit,previousTile,previousDomainSpec)</span>
+<span class="c1">-- executes when a unit successfully enters a tile (so not when it attacks</span>
+<span class="c1">-- a unit or fails to enter a tile because it lacks movement points)</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onEnterTile</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">,</span><span class="n">previousDomainSpec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onEnterTile: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has entered tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">location</span><span class="p">)</span><span class="o">..</span><span class="s2">") from tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">previousTile</span><span class="p">)</span><span class="o">..</span><span class="s2">")."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonentertilelua"><strong>EventsFiles/onEnterTile.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onEnterTile(unit,previousTile,previousDomainSpec)</span>
+<span class="c1">-- executes when a unit successfully enters a tile (so not when it attacks</span>
+<span class="c1">-- a unit or fails to enter a tile because it lacks movement points)</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onEnterTile</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">,</span><span class="n">previousDomainSpec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onEnterTile.onEnterTile: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has entered tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">location</span><span class="p">)</span><span class="o">..</span><span class="s2">") from tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">previousTile</span><span class="p">)</span><span class="o">..</span><span class="s2">")."</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="c1">--if gen.isParadrop(unit.type) and not unit.location.city then</span>
+    <span class="c1">--    unit:teleport(previousTile)</span>
+    <span class="c1">--    gen.clearParadropped(unit)</span>
+    <span class="c1">--end</span>
+    <span class="c1">--gen.original.uParatroopers.hold = 1</span>
+    <span class="c1">--gen.original.uParatroopers.domain = 2</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-15"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Enters Tile event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onEnterTile(unit,previousTile)</span>
+<span class="c1">-- executes when a unit successfully enters a tile (so not when it attacks</span>
+<span class="c1">-- a unit or fails to enter a tile because it lacks movement points)</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onEnterTile</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onEnterTile: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has entered tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">location</span><span class="p">)</span><span class="o">..</span><span class="s2">") from tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">previousTile</span><span class="p">)</span><span class="o">..</span><span class="s2">")."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-21">Implementation</h4>
+
+<p>Not Standard Implementation</p>
+
+<h3 id="unit-given-last-order"><strong>Unit Given Last Order</strong></h3>
+
+<h4 id="usage-22">Usage</h4>
+<h5 id="consolidatedeventslua-17"><strong>consolidatedEvents.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onFinalOrderGiven(unit)</span>
+<span class="c1">-- executes when a unit has been given its final order for the turn.</span>
+<span class="c1">-- that is, when a new unit is active and the previous unit has spent</span>
+<span class="c1">-- all its movement points</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onFinalOrderGiven</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onFinalOrderGiven: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has been given its order."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="eventsfilesonfinalordergivenlua"><strong>EventsFiles/onFinalOrderGiven.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onFinalOrderGiven</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onFinalOrderGiven.onFinalOrderGiven: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has been given its order."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h5 id="discrete-events-16"><strong>Discrete Events</strong></h5>
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Unit Given Last Order event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onFinalOrderGiven(unit)</span>
+<span class="c1">-- executes when a unit has been given its final order for the turn.</span>
+<span class="c1">-- that is, when a new unit is active and the previous unit has spent</span>
+<span class="c1">-- all its movement points</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onFinalOrderGiven</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onFinalOrderGiven: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has been given its order."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="implementation-22">Implementation</h4>
+
+<p>Not standard implementation</p>
+
+<h3 id="nuclear-attack"><strong>Nuclear Attack</strong></h3>
+<p>This execution point is triggered when an attack is made by a nuclear 
+weapon (either a unit with 99 attack, or a spy).  A nuclear attack does not trigger <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, so
+events.lua makes sure to execute the related events.
+If the registered function returns <code class="language-plaintext highlighter-rouge">false</code>, the attack is aborted.</p>
+
+<h4 id="usage-23">Usage</h4>
+<h5 id="eventsfilesonusenuclearweaponlua"><strong>EventsFiles/onUseNuclearWeapon.lua</strong></h5>
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">---Add any events to happen with a nuclear strike, or  </span>
+<span class="c1">---return false to abort the strike.  Events.lua already</span>
+<span class="c1">---kills (and performs related events) for units in the</span>
+<span class="c1">---blast radius </span>
+<span class="c1">---@param unit unitObject The weapon (or spy) that is making the nuclear attack.</span>
+<span class="c1">---@param tile tileObject The location of the attack.</span>
+<span class="c1">---@return boolean If true, attack proceeds, if false, it is aborted.</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onUseNuclearWeapon</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">tile</span><span class="p">)</span>
+
+    <span class="kd">local</span> <span class="n">proceedWithAttack</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">return</span> <span class="n">proceedWithAttack</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or spy which is making the nuclear attack.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack.</p>
+
+<h4 id="implementation-23">Implementation</h4>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onUseNuclearWeapon</code>.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+-->
+<!--
+-->
+      </div>
+      <div class="footer-col">
+        <p>Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+  <li><a rel="me" href="https://github.com/ProfGarfield" target="_blank" title="ProfGarfield"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>ProfGarfield</a></li>
+  <li><a rel="me" href="https://www.youtube.com/user/ProfCiv2" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#youtube"></use></svg>ProfCiv2</a></li>
+  <li><a rel="me" href="https://forums.civfanatics.com/members/prof-garfield.43783/" target="_blank" title="Civfanatics Profile"><img src="/assets/civfanatics_icon.png" class="svg-icon grey"></img>Prof. Garfield</a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
