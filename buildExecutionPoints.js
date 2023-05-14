@@ -351,6 +351,7 @@ function buildFile() {
 
     let output =
 `---
+tabTitle: Execution Points for Code
 layout: page
 ---
 # Lua Execution Points
