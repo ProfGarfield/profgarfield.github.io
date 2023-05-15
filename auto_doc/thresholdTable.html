@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,9 +30,18 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="thresholdtable">thresholdTable</h1>
+    <h1 id="thresholdtable">
+  
+  
+    thresholdTable <a href="#thresholdtable"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A threshold table is a table where if a numerical key is indexed, and that
  numerical key doesn’t correspond to an index, the value of the largest
@@ -49,11 +58,34 @@
  myTable[“three”] = nil
  myTable[0.5]=0</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="thresholdtable">
+  
+  
+    <a href="#thresholdtable">&#128279</a> thresholdTable
+  
+  
+</h1>
+    
 
+<p>A threshold table is a table where if a numerical key is indexed, and that
+ numerical key doesn’t correspond to an index, the value of the largest
+ numerical index less than the key is used.
+ If there is no numerical index smaller than the key, false is returned
+ (nil is returned for non-numerical keys not in table)
+ Use an index -math.huge to provide values for arbitrarily small numerical keys
+ example 
+ myTable = gen.makeThresholdTable({[-1]=-1,[0]=0,[1]=1,})
+ myTable[-2] = false
+ myTable[-1] = -1
+ myTable[-0.6] = -1
+ myTable[3.5]=1
+ myTable[“three”] = nil
+ myTable[0.5]=0</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

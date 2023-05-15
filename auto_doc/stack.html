@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,41 +30,132 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="stack">stack</h1>
+    <h1 id="stack">
+  
+  
+    stack <a href="#stack"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A “stack” is a data structure where you can ‘push’ a value onto the top of the stack, or you can ‘pop’ a value off the top of the stack.  The popped value is returned, but is no longer on the stack.  This implementation of the stack also lets you find the ith element in the stack, starting from the top, and lets you see the size of the stack.  See: <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Wikipedia: Stack</a>
 <br /><br /> <code class="language-plaintext highlighter-rouge">stack.push = function(value:any)--&gt;void</code> <br /><br /> When called, adds <code class="language-plaintext highlighter-rouge">value</code> to the top of the stack.<br /><code class="language-plaintext highlighter-rouge">stack.push(5)</code> adds <code class="language-plaintext highlighter-rouge">5</code> to the top of the stack.
 <br /><br /> <code class="language-plaintext highlighter-rouge">stack.pop = function()--&gt;any</code> <br /><br /> When called, removes the top item of the stack, and returns it.<br /><br />If the stack is formed by<br /><code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code>
 <br /><br /> <code class="language-plaintext highlighter-rouge">stack.size = integer</code> <br /><br /> Returns the current size of the stack.
 <br /><br /> <code class="language-plaintext highlighter-rouge">stack[i] = any</code> <br /><br /><code class="language-plaintext highlighter-rouge">stack[i]</code> returns the ith value in the stack, counting from the top, or nil if there aren’t <code class="language-plaintext highlighter-rouge">i</code> values in the stack. The stack remains unchanged.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack[1]</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack[2]</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack[3]</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack[4]</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
-
-<h3 id="integer">[integer]</h3>
+<h3 id="integer">
+  
+  
+    [integer] <a href="#integer"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.[integer] --&gt; any
 </code></pre></div></div>
 <p><br /><code class="language-plaintext highlighter-rouge">stack[i]</code> returns the ith value in the stack, counting from the top, or nil if there aren’t <code class="language-plaintext highlighter-rouge">i</code> values in the stack. The stack remains unchanged.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack[1]</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack[2]</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack[3]</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack[4]</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
-
-<h3 id="pop">pop</h3>
+<h3 id="pop">
+  
+  
+    pop <a href="#pop"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.pop --&gt; fun():any
 </code></pre></div></div>
 <p>When called, removes the top item of the stack, and returns it.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
-
-<h3 id="push">push</h3>
+<h3 id="push">
+  
+  
+    push <a href="#push"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.push --&gt; fun(value: any)
 </code></pre></div></div>
 <p>When called, adds <code class="language-plaintext highlighter-rouge">value</code> to the top of the stack.<br /><code class="language-plaintext highlighter-rouge">stack.push(5)</code> adds <code class="language-plaintext highlighter-rouge">5</code> to the top of the stack.</p>
-
-<h3 id="size">size</h3>
+<h3 id="size">
+  
+  
+    size <a href="#size"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.size --&gt; integer
 </code></pre></div></div>
 <p>Returns the current size of the stack.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="stack">
+  
+  
+    <a href="#stack">&#128279</a> stack
+  
+  
+</h1>
+    
 
+<p>A “stack” is a data structure where you can ‘push’ a value onto the top of the stack, or you can ‘pop’ a value off the top of the stack.  The popped value is returned, but is no longer on the stack.  This implementation of the stack also lets you find the ith element in the stack, starting from the top, and lets you see the size of the stack.  See: <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Wikipedia: Stack</a>
+<br /><br /> <code class="language-plaintext highlighter-rouge">stack.push = function(value:any)--&gt;void</code> <br /><br /> When called, adds <code class="language-plaintext highlighter-rouge">value</code> to the top of the stack.<br /><code class="language-plaintext highlighter-rouge">stack.push(5)</code> adds <code class="language-plaintext highlighter-rouge">5</code> to the top of the stack.
+<br /><br /> <code class="language-plaintext highlighter-rouge">stack.pop = function()--&gt;any</code> <br /><br /> When called, removes the top item of the stack, and returns it.<br /><br />If the stack is formed by<br /><code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code>
+<br /><br /> <code class="language-plaintext highlighter-rouge">stack.size = integer</code> <br /><br /> Returns the current size of the stack.
+<br /><br /> <code class="language-plaintext highlighter-rouge">stack[i] = any</code> <br /><br /><code class="language-plaintext highlighter-rouge">stack[i]</code> returns the ith value in the stack, counting from the top, or nil if there aren’t <code class="language-plaintext highlighter-rouge">i</code> values in the stack. The stack remains unchanged.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack[1]</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack[2]</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack[3]</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack[4]</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
+<h3 id="integer">
+  
+  
+    <a href="#integer">&#128279</a> [integer]
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.[integer] --&gt; any
+</code></pre></div></div>
+<p><br /><code class="language-plaintext highlighter-rouge">stack[i]</code> returns the ith value in the stack, counting from the top, or nil if there aren’t <code class="language-plaintext highlighter-rouge">i</code> values in the stack. The stack remains unchanged.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack[1]</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack[2]</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack[3]</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack[4]</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
+<h3 id="pop">
+  
+  
+    <a href="#pop">&#128279</a> pop
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.pop --&gt; fun():any
+</code></pre></div></div>
+<p>When called, removes the top item of the stack, and returns it.<br /><br />If the stack is formed by <code class="language-plaintext highlighter-rouge">stack.push(1)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(2)</code><br /><code class="language-plaintext highlighter-rouge">stack.push(3)</code><br />then<br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">3</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">2</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">1</code><br /><code class="language-plaintext highlighter-rouge">stack.pop()</code>–&gt;<code class="language-plaintext highlighter-rouge">nil</code></p>
+<h3 id="push">
+  
+  
+    <a href="#push">&#128279</a> push
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.push --&gt; fun(value: any)
+</code></pre></div></div>
+<p>When called, adds <code class="language-plaintext highlighter-rouge">value</code> to the top of the stack.<br /><code class="language-plaintext highlighter-rouge">stack.push(5)</code> adds <code class="language-plaintext highlighter-rouge">5</code> to the top of the stack.</p>
+<h3 id="size">
+  
+  
+    <a href="#size">&#128279</a> size
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack.size --&gt; integer
+</code></pre></div></div>
+<p>Returns the current size of the stack.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

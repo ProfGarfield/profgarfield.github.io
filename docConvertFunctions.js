@@ -33,6 +33,7 @@ const toExport = {}
 
 // entries["moduleName.fieldName"] =  DocumentationEntry
 const entries = {}
+toExport.entries = entries
 
 // writtenEntries[entryName] = fileName
 // a place to record entries that have been written
@@ -160,6 +161,9 @@ function writeEntry(entryName,fileName) {
   let result = "";
   let entry = entries[entryName];
   writtenEntries[entryName] = fileName;
+  if (!entry) {
+    console.log("There is no entry for "+entryName)
+  }
   if (entry.replacementEntry !== "") {
     result += entry.replacementEntry;
   } else {
@@ -338,7 +342,7 @@ function writeFiles() {
     }
     for (const fileName in fileWriteInfo) {
         try {
-          fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+fileName+".md",makeFrontMatter({layout: "page",tabTitle: fileName+".lua Documentation"})+fileWriteInfo[fileName]);
+          fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+fileName+".md",makeFrontMatter({layout: "page_toc22",tabTitle: fileName+".lua Documentation"})+fileWriteInfo[fileName]);
           // file written successfully
         } catch (err) {
           console.error(err);

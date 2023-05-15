@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,103 +30,412 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="tileobject">tileObject</h1>
+    <h1 id="tileobject">
+  
+  
+    tileObject <a href="#tileobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A tile object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a map “square” in the game, and provides a means of interacting with it.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#tile">Lua Function Reference</a></p>
-
-<h3 id="baseterrain">baseTerrain</h3>
+<h3 id="baseterrain">
+  
+  
+    baseTerrain <a href="#baseterrain"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.baseTerrain --&gt; baseTerrainObject
 </code></pre></div></div>
 <p>(get/set) Returns the baseterrain object associated with the tile.</p>
-
-<h3 id="city">city</h3>
+<h3 id="city">
+  
+  
+    city <a href="#city"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.city --&gt; cityObject\|nil
 </code></pre></div></div>
 <p>(get) Returns the city at the tile’s location, or <code class="language-plaintext highlighter-rouge">nil</code> if there’s no city there.</p>
-
-<h3 id="defender">defender</h3>
+<h3 id="defender">
+  
+  
+    defender <a href="#defender"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.defender --&gt; tribeObject\|nil
 </code></pre></div></div>
 <p>(get) Returns the tile’s defender. Returns <code class="language-plaintext highlighter-rouge">nil</code> if the tile has no defender.</p>
-
-<h3 id="fertility">fertility</h3>
+<h3 id="fertility">
+  
+  
+    fertility <a href="#fertility"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.fertility --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tile’s fertility.</p>
-
-<h3 id="grasslandshield">grasslandShield</h3>
+<h3 id="grasslandshield">
+  
+  
+    grasslandShield <a href="#grasslandshield"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.grasslandShield --&gt; boolean
 </code></pre></div></div>
 <p>(get) Returns <code class="language-plaintext highlighter-rouge">true</code> if the tile would have a shield when changed to grassland, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
-
-<h3 id="improvements">improvements</h3>
+<h3 id="improvements">
+  
+  
+    improvements <a href="#improvements"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.improvements --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the tile’s improvements (bitmask).</p>
-
-<h3 id="landmass">landmass</h3>
+<h3 id="landmass">
+  
+  
+    landmass <a href="#landmass"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.landmass --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tile’s landmass index.</p>
-
-<h3 id="owner">owner</h3>
+<h3 id="owner">
+  
+  
+    owner <a href="#owner"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.owner --&gt; tribeObject
 </code></pre></div></div>
 <p>(get/set) Returns the tribe owning the tile.</p>
-
-<h3 id="river">river</h3>
+<h3 id="river">
+  
+  
+    river <a href="#river"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.river --&gt; boolean
 </code></pre></div></div>
 <p>(get/set) Returns <code class="language-plaintext highlighter-rouge">true</code> if the tile has a river, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
-
-<h3 id="terrain">terrain</h3>
+<h3 id="terrain">
+  
+  
+    terrain <a href="#terrain"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.terrain --&gt; terrainObject
 </code></pre></div></div>
 <p>(get/set) Returns the terrain object associated with the tile.</p>
-
-<h3 id="terraintype">terrainType</h3>
+<h3 id="terraintype">
+  
+  
+    terrainType <a href="#terraintype"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.terrainType --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns an integer representing the terrain type of the tile, as well as whether the tile has a river, whether there is an special resource being animated, and whether an ocean resource is suppressed for being too far from land. It is recommended to use the baseTerrain property to check and change terrain types instead of this. If checking a terrain type with this property, use % 16 to only get the terrain index.</p>
-
-<h3 id="units">units</h3>
+<h3 id="units">
+  
+  
+    units <a href="#units"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.units --&gt; iterator
 </code></pre></div></div>
 <p>(get) Returns an iterator yielding all units at the tile’s location.</p>
-
-<h3 id="visibility">visibility</h3>
+<h3 id="visibility">
+  
+  
+    visibility <a href="#visibility"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.visibility --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the tile’s visibility for each tribe (bitmask).</p>
-
-<h3 id="visibleimprovements">visibleImprovements</h3>
+<h3 id="visibleimprovements">
+  
+  
+    visibleImprovements <a href="#visibleimprovements"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.visibleImprovements --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the tile’s improvements as known by the given tribe (bitmask).</p>
-
-<h3 id="x">x</h3>
+<h3 id="x">
+  
+  
+    x <a href="#x"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.x --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the <code class="language-plaintext highlighter-rouge">x</code> coordinate of the tile.</p>
-
-<h3 id="y">y</h3>
+<h3 id="y">
+  
+  
+    y <a href="#y"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.y --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the <code class="language-plaintext highlighter-rouge">y</code> coordinate of the tile.</p>
-
-<h3 id="z">z</h3>
+<h3 id="z">
+  
+  
+    z <a href="#z"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.z --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the <code class="language-plaintext highlighter-rouge">z</code> coordinate of the tile (map number).</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="tileobject">
+  
+  
+    <a href="#tileobject">&#128279</a> tileObject
+  
+  
+</h1>
+    
 
+<p>A tile object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a map “square” in the game, and provides a means of interacting with it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#tile">Lua Function Reference</a></p>
+<h3 id="baseterrain">
+  
+  
+    <a href="#baseterrain">&#128279</a> baseTerrain
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.baseTerrain --&gt; baseTerrainObject
+</code></pre></div></div>
+<p>(get/set) Returns the baseterrain object associated with the tile.</p>
+<h3 id="city">
+  
+  
+    <a href="#city">&#128279</a> city
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.city --&gt; cityObject\|nil
+</code></pre></div></div>
+<p>(get) Returns the city at the tile’s location, or <code class="language-plaintext highlighter-rouge">nil</code> if there’s no city there.</p>
+<h3 id="defender">
+  
+  
+    <a href="#defender">&#128279</a> defender
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.defender --&gt; tribeObject\|nil
+</code></pre></div></div>
+<p>(get) Returns the tile’s defender. Returns <code class="language-plaintext highlighter-rouge">nil</code> if the tile has no defender.</p>
+<h3 id="fertility">
+  
+  
+    <a href="#fertility">&#128279</a> fertility
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.fertility --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tile’s fertility.</p>
+<h3 id="grasslandshield">
+  
+  
+    <a href="#grasslandshield">&#128279</a> grasslandShield
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.grasslandShield --&gt; boolean
+</code></pre></div></div>
+<p>(get) Returns <code class="language-plaintext highlighter-rouge">true</code> if the tile would have a shield when changed to grassland, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+<h3 id="improvements">
+  
+  
+    <a href="#improvements">&#128279</a> improvements
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.improvements --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the tile’s improvements (bitmask).</p>
+<h3 id="landmass">
+  
+  
+    <a href="#landmass">&#128279</a> landmass
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.landmass --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tile’s landmass index.</p>
+<h3 id="owner">
+  
+  
+    <a href="#owner">&#128279</a> owner
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.owner --&gt; tribeObject
+</code></pre></div></div>
+<p>(get/set) Returns the tribe owning the tile.</p>
+<h3 id="river">
+  
+  
+    <a href="#river">&#128279</a> river
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.river --&gt; boolean
+</code></pre></div></div>
+<p>(get/set) Returns <code class="language-plaintext highlighter-rouge">true</code> if the tile has a river, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+<h3 id="terrain">
+  
+  
+    <a href="#terrain">&#128279</a> terrain
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.terrain --&gt; terrainObject
+</code></pre></div></div>
+<p>(get/set) Returns the terrain object associated with the tile.</p>
+<h3 id="terraintype">
+  
+  
+    <a href="#terraintype">&#128279</a> terrainType
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.terrainType --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns an integer representing the terrain type of the tile, as well as whether the tile has a river, whether there is an special resource being animated, and whether an ocean resource is suppressed for being too far from land. It is recommended to use the baseTerrain property to check and change terrain types instead of this. If checking a terrain type with this property, use % 16 to only get the terrain index.</p>
+<h3 id="units">
+  
+  
+    <a href="#units">&#128279</a> units
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.units --&gt; iterator
+</code></pre></div></div>
+<p>(get) Returns an iterator yielding all units at the tile’s location.</p>
+<h3 id="visibility">
+  
+  
+    <a href="#visibility">&#128279</a> visibility
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.visibility --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the tile’s visibility for each tribe (bitmask).</p>
+<h3 id="visibleimprovements">
+  
+  
+    <a href="#visibleimprovements">&#128279</a> visibleImprovements
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.visibleImprovements --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the tile’s improvements as known by the given tribe (bitmask).</p>
+<h3 id="x">
+  
+  
+    <a href="#x">&#128279</a> x
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.x --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the <code class="language-plaintext highlighter-rouge">x</code> coordinate of the tile.</p>
+<h3 id="y">
+  
+  
+    <a href="#y">&#128279</a> y
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.y --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the <code class="language-plaintext highlighter-rouge">y</code> coordinate of the tile.</p>
+<h3 id="z">
+  
+  
+    <a href="#z">&#128279</a> z
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tileObject.z --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the <code class="language-plaintext highlighter-rouge">z</code> coordinate of the tile (map number).</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

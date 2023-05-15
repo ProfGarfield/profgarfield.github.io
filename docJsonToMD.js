@@ -6,6 +6,7 @@ doc.parseDocumentation(documentation)
 
 
 require("./civFileChanges.js")
+require("./genFileChanges.js")
 
 
 

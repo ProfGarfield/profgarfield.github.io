@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,134 +30,546 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="unittypeobject">unitTypeObject</h1>
+    <h1 id="unittypeobject">
+  
+  
+    unitTypeObject <a href="#unittypeobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A unit type object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a unit type entry in the rules.txt, and provides a means of interacting with it. This should not be confused with the unit object.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#unittype">Lua Function Reference</a></p>
-
-<h3 id="advancedflags">advancedFlags</h3>
+<h3 id="advancedflags">
+  
+  
+    advancedFlags <a href="#advancedflags"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.advancedFlags --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the ‘advanced flags’ settings of the unit type (bitmask).</p>
-
-<h3 id="attack">attack</h3>
+<h3 id="attack">
+  
+  
+    attack <a href="#attack"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.attack --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the attack factor of the unit type.</p>
-
-<h3 id="buildtransport">buildTransport</h3>
+<h3 id="buildtransport">
+  
+  
+    buildTransport <a href="#buildtransport"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.buildTransport --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the ‘build transport site’ settings of the unit type (bitmask).</p>
-
-<h3 id="canenter">canEnter</h3>
+<h3 id="canenter">
+  
+  
+    canEnter <a href="#canenter"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">unitTypeObject</span><span class="p">:</span><span class="n">canEnter</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.canEnter(unittype, tile)</code></p>
-
-<h3 id="cost">cost</h3>
+<h3 id="cost">
+  
+  
+    cost <a href="#cost"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.cost --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the cost of the unit type.</p>
-
-<h3 id="defense">defense</h3>
+<h3 id="defense">
+  
+  
+    defense <a href="#defense"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.defense --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the defense factor of the unit type.</p>
-
-<h3 id="domain">domain</h3>
+<h3 id="domain">
+  
+  
+    domain <a href="#domain"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.domain --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the domain of the unit type (0 - Ground, 1 - Air, 2 - Sea).</p>
-
-<h3 id="expires">expires</h3>
+<h3 id="expires">
+  
+  
+    expires <a href="#expires"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.expires --&gt; techObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the tech that renders the unit obsolete, or <code class="language-plaintext highlighter-rouge">nil</code> if there isn’t any.</p>
-
-<h3 id="firepower">firepower</h3>
+<h3 id="firepower">
+  
+  
+    firepower <a href="#firepower"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.firepower --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the firepower of the unit type.</p>
-
-<h3 id="flags">flags</h3>
+<h3 id="flags">
+  
+  
+    flags <a href="#flags"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.flags --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the flags of the unit type (bitmask).</p>
-
-<h3 id="hitpoints">hitpoints</h3>
+<h3 id="hitpoints">
+  
+  
+    hitpoints <a href="#hitpoints"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.hitpoints --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the number of hit points of the unit type.</p>
-
-<h3 id="hold">hold</h3>
+<h3 id="hold">
+  
+  
+    hold <a href="#hold"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.hold --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the number of holds of the unit type.</p>
-
-<h3 id="id">id</h3>
+<h3 id="id">
+  
+  
+    id <a href="#id"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.id --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the id of the unit type.</p>
-
-<h3 id="minimumbribe">minimumBribe</h3>
+<h3 id="minimumbribe">
+  
+  
+    minimumBribe <a href="#minimumbribe"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.minimumBribe --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the minimum amount to bribe the unit type.</p>
-
-<h3 id="move">move</h3>
+<h3 id="move">
+  
+  
+    move <a href="#move"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.move --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the movement rate of the unit type.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.name --&gt; string
 </code></pre></div></div>
 <p>(get) Returns the name of the unit type.</p>
-
-<h3 id="nativetransport">nativeTransport</h3>
+<h3 id="nativetransport">
+  
+  
+    nativeTransport <a href="#nativetransport"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.nativeTransport --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the ‘native transport’ settings of the unit type (bitmask).</p>
-
-<h3 id="notallowedonmap">notAllowedOnMap</h3>
+<h3 id="notallowedonmap">
+  
+  
+    notAllowedOnMap <a href="#notallowedonmap"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.notAllowedOnMap --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the ‘not allowed on map’ settings of the unit type (bitmask).</p>
-
-<h3 id="prereq">prereq</h3>
+<h3 id="prereq">
+  
+  
+    prereq <a href="#prereq"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.prereq --&gt; techObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the prerequisite technology of the unit type, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t have one.</p>
-
-<h3 id="range">range</h3>
+<h3 id="range">
+  
+  
+    range <a href="#range"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.range --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the range of the unit type.</p>
-
-<h3 id="role">role</h3>
+<h3 id="role">
+  
+  
+    role <a href="#role"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.role --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the role of the unit type.</p>
-
-<h3 id="tribemaybuild">tribeMayBuild</h3>
+<h3 id="tribemaybuild">
+  
+  
+    tribeMayBuild <a href="#tribemaybuild"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.tribeMayBuild --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the ‘tribe may build’ settings of the unit type (bitmask).</p>
-
-<h3 id="usetransport">useTransport</h3>
+<h3 id="usetransport">
+  
+  
+    useTransport <a href="#usetransport"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.useTransport --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the ‘use transport site’ settings of the unit type (bitmask).</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="unittypeobject">
+  
+  
+    <a href="#unittypeobject">&#128279</a> unitTypeObject
+  
+  
+</h1>
+    
 
+<p>A unit type object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a unit type entry in the rules.txt, and provides a means of interacting with it. This should not be confused with the unit object.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#unittype">Lua Function Reference</a></p>
+<h3 id="advancedflags">
+  
+  
+    <a href="#advancedflags">&#128279</a> advancedFlags
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.advancedFlags --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the ‘advanced flags’ settings of the unit type (bitmask).</p>
+<h3 id="attack">
+  
+  
+    <a href="#attack">&#128279</a> attack
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.attack --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the attack factor of the unit type.</p>
+<h3 id="buildtransport">
+  
+  
+    <a href="#buildtransport">&#128279</a> buildTransport
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.buildTransport --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the ‘build transport site’ settings of the unit type (bitmask).</p>
+<h3 id="canenter">
+  
+  
+    <a href="#canenter">&#128279</a> canEnter
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">unitTypeObject</span><span class="p">:</span><span class="n">canEnter</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.canEnter(unittype, tile)</code></p>
+<h3 id="cost">
+  
+  
+    <a href="#cost">&#128279</a> cost
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.cost --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the cost of the unit type.</p>
+<h3 id="defense">
+  
+  
+    <a href="#defense">&#128279</a> defense
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.defense --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the defense factor of the unit type.</p>
+<h3 id="domain">
+  
+  
+    <a href="#domain">&#128279</a> domain
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.domain --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the domain of the unit type (0 - Ground, 1 - Air, 2 - Sea).</p>
+<h3 id="expires">
+  
+  
+    <a href="#expires">&#128279</a> expires
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.expires --&gt; techObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the tech that renders the unit obsolete, or <code class="language-plaintext highlighter-rouge">nil</code> if there isn’t any.</p>
+<h3 id="firepower">
+  
+  
+    <a href="#firepower">&#128279</a> firepower
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.firepower --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the firepower of the unit type.</p>
+<h3 id="flags">
+  
+  
+    <a href="#flags">&#128279</a> flags
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.flags --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the flags of the unit type (bitmask).</p>
+<h3 id="hitpoints">
+  
+  
+    <a href="#hitpoints">&#128279</a> hitpoints
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.hitpoints --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of hit points of the unit type.</p>
+<h3 id="hold">
+  
+  
+    <a href="#hold">&#128279</a> hold
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.hold --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the number of holds of the unit type.</p>
+<h3 id="id">
+  
+  
+    <a href="#id">&#128279</a> id
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the id of the unit type.</p>
+<h3 id="minimumbribe">
+  
+  
+    <a href="#minimumbribe">&#128279</a> minimumBribe
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.minimumBribe --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the minimum amount to bribe the unit type.</p>
+<h3 id="move">
+  
+  
+    <a href="#move">&#128279</a> move
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.move --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the movement rate of the unit type.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.name --&gt; string
+</code></pre></div></div>
+<p>(get) Returns the name of the unit type.</p>
+<h3 id="nativetransport">
+  
+  
+    <a href="#nativetransport">&#128279</a> nativeTransport
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.nativeTransport --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the ‘native transport’ settings of the unit type (bitmask).</p>
+<h3 id="notallowedonmap">
+  
+  
+    <a href="#notallowedonmap">&#128279</a> notAllowedOnMap
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.notAllowedOnMap --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the ‘not allowed on map’ settings of the unit type (bitmask).</p>
+<h3 id="prereq">
+  
+  
+    <a href="#prereq">&#128279</a> prereq
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.prereq --&gt; techObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the prerequisite technology of the unit type, or <code class="language-plaintext highlighter-rouge">nil</code> if it doesn’t have one.</p>
+<h3 id="range">
+  
+  
+    <a href="#range">&#128279</a> range
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.range --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the range of the unit type.</p>
+<h3 id="role">
+  
+  
+    <a href="#role">&#128279</a> role
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.role --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the role of the unit type.</p>
+<h3 id="tribemaybuild">
+  
+  
+    <a href="#tribemaybuild">&#128279</a> tribeMayBuild
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.tribeMayBuild --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the ‘tribe may build’ settings of the unit type (bitmask).</p>
+<h3 id="usetransport">
+  
+  
+    <a href="#usetransport">&#128279</a> useTransport
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unitTypeObject.useTransport --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the ‘use transport site’ settings of the unit type (bitmask).</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

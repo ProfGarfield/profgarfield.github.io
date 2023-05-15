@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,417 +30,1988 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    <ul><li><a href="#totppmod">totpp.mod</a></li><li><a href="#totppmovementmultipliers">totpp.movementMultipliers</a></li><li><a href="#totpppatches">totpp.patches</a></li><li><a href="#totppversion">totpp.version</a></li></ul></div>  
   <div class="post-content">
-    <h1 id="totpp">totpp</h1>
+    <h1 id="totpp">
+  
+  
+    totpp <a href="#totpp"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>undefined</p>
-
-<h2 id="totppmod">totpp.mod</h2>
-
-<h3 id="premademap">premadeMap</h3>
+<h2 id="totppmod">
+  
+  
+    totpp.mod <a href="#totppmod"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+<h3 id="premademap">
+  
+  
+    premadeMap <a href="#premademap"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.mod.premadeMap --&gt; boolean
 </code></pre></div></div>
 <p>(get) Returns <code class="language-plaintext highlighter-rouge">true</code> if the game was started on a pre-made map, <code class="language-plaintext highlighter-rouge">false</code> otherwise. Only valid right after starting a new game.</p>
-
-<h2 id="totppmovementmultipliers">totpp.movementMultipliers</h2>
-
-<h3 id="aggregate">aggregate</h3>
+<h2 id="totppmovementmultipliers">
+  
+  
+    totpp.movementMultipliers <a href="#totppmovementmultipliers"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+<h3 id="aggregate">
+  
+  
+    aggregate <a href="#aggregate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.aggregate --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the aggregate movement multiplier (the lcm of the four multipliers above). This value is recalculated when setting any of the individual multipliers. This is an alias for <code class="language-plaintext highlighter-rouge">civ.cosmic.roadMultiplier</code>.</p>
-
-<h3 id="alpine">alpine</h3>
+<h3 id="alpine">
+  
+  
+    alpine <a href="#alpine"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the alpine movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="railroad">railroad</h3>
+<h3 id="railroad">
+  
+  
+    railroad <a href="#railroad"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the railroad movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="river">river</h3>
+<h3 id="river">
+  
+  
+    river <a href="#river"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the river movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="road">road</h3>
+<h3 id="road">
+  
+  
+    road <a href="#road"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the road movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h2 id="totpppatches">totpp.patches</h2>
-
-<h3 id="aitweaks">AITweaks</h3>
+<h2 id="totpppatches">
+  
+  
+    totpp.patches <a href="#totpppatches"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+<h3 id="aitweaks">
+  
+  
+    AITweaks <a href="#aitweaks"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AITweaks --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="acivateunitscrollbar">AcivateUnitScrollbar</h3>
+<h3 id="acivateunitscrollbar">
+  
+  
+    AcivateUnitScrollbar <a href="#acivateunitscrollbar"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AcivateUnitScrollbar --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="attacksperturn">AttacksPerTurn</h3>
+<h3 id="attacksperturn">
+  
+  
+    AttacksPerTurn <a href="#attacksperturn"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AttacksPerTurn --&gt; boolean
 </code></pre></div></div>
 <p>Enables a new section in RULES.TXT, @ATTACKS.<br />The numbers in this section define the number of attacks per turn per unit type. The section itself consist of a list of numbers, 10 per line, corresponding in order to the entries in @UNITS. For the Original game, it would look like this:<br /><br />@ATTACKS<br />1, 2, 1, 1, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 3, 2, 2, 2, 2, 2,<br />2, 2, 3, 1, 1, 1, 2, 10, 8, 6,<br />14, 12, 3, 3, 4, 4, 4, 6, 5, 5,<br />4, 3, 5, 5, 12, 16, 2, 3, 1, 2,<br />1, 1, 4, 8, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 1, 1, 1, 1, 1, 1,<br /><br />The number of attacks is limited by the movement rate, as each attack still costs 1 movement point.<br /><br />The popup shown when a unit is out of attacks can be overridden in GAME.TXT using the key @ATTACKSPERTURN.</p>
-
-<h3 id="buildtransporter">BuildTransporter</h3>
+<h3 id="buildtransporter">
+  
+  
+    BuildTransporter <a href="#buildtransporter"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.BuildTransporter --&gt; boolean
 </code></pre></div></div>
 <p>Makes the build transporter map dialog not select invalid maps as the default option, and also fixes the check for invalid art types.</p>
-
-<h3 id="citypopulationloss">CityPopulationLoss</h3>
+<h3 id="citypopulationloss">
+  
+  
+    CityPopulationLoss <a href="#citypopulationloss"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityPopulationLoss --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="citysprites">CitySprites</h3>
+<h3 id="citysprites">
+  
+  
+    CitySprites <a href="#citysprites"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CitySprites --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="cityunitlimits">CityUnitLimits</h3>
+<h3 id="cityunitlimits">
+  
+  
+    CityUnitLimits <a href="#cityunitlimits"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityUnitLimits --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="cityview">CityView</h3>
+<h3 id="cityview">
+  
+  
+    CityView <a href="#cityview"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityView --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="citywinunitdisband">CityWinUnitDisband</h3>
+<h3 id="citywinunitdisband">
+  
+  
+    CityWinUnitDisband <a href="#citywinunitdisband"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWinUnitDisband --&gt; boolean
 </code></pre></div></div>
 <p>Disables the “Disband” option in the city screen’s “Supported units” box for non-disbandable units.</p>
-
-<h3 id="citywinunitselect">CityWinUnitSelect</h3>
+<h3 id="citywinunitselect">
+  
+  
+    CityWinUnitSelect <a href="#citywinunitselect"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWinUnitSelect --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="cityworkingtiles">CityWorkingTiles</h3>
+<h3 id="cityworkingtiles">
+  
+  
+    CityWorkingTiles <a href="#cityworkingtiles"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWorkingTiles --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="civilopediawondergraphics">CivilopediaWonderGraphics</h3>
+<h3 id="civilopediawondergraphics">
+  
+  
+    CivilopediaWonderGraphics <a href="#civilopediawondergraphics"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CivilopediaWonderGraphics --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="combatanimation">CombatAnimation</h3>
+<h3 id="combatanimation">
+  
+  
+    CombatAnimation <a href="#combatanimation"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CombatAnimation --&gt; boolean
 </code></pre></div></div>
 <p>Enables the 8-frame combat animation from Icons.bmp when animated units are disabled. For an example and placement see the 8 frames in Icons.gif in the ToT root folder, starting from coordinates (1, 356).</p>
-
-<h3 id="cosmic">Cosmic</h3>
+<h3 id="cosmic">
+  
+  
+    Cosmic <a href="#cosmic"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Cosmic --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="custommodresources">CustomModResources</h3>
+<h3 id="custommodresources">
+  
+  
+    CustomModResources <a href="#custommodresources"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CustomModResources --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="customresources">CustomResources</h3>
+<h3 id="customresources">
+  
+  
+    CustomResources <a href="#customresources"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CustomResources --&gt; boolean
 </code></pre></div></div>
 <p>Adds support for maps with custom resource placement. Maps both with and without custom resources can be combined when loading maps in-game.<br />Saved games with custom-resource maps are incompatible with the vanilla game.<br />When loading a custom-resource map, the dialog that asks whether to randomize resources and huts will only randomize huts.<br /><br />In cheat mode, custom resources can be enabled/disabled for a map by pressing Ctrl-F8. Subsequently, they can be placed on tiles with Ctrl-1 (resource #1) and Ctrl-2 (resource #2). Ctrl-0 removes a resource from a tile.</p>
-
-<h3 id="debugscripts">DebugScripts</h3>
+<h3 id="debugscripts">
+  
+  
+    DebugScripts <a href="#debugscripts"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DebugScripts --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="decreasecpuuse">DecreaseCPUUse</h3>
+<h3 id="decreasecpuuse">
+  
+  
+    DecreaseCPUUse <a href="#decreasecpuuse"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DecreaseCPUUse --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="defensebonus">DefenseBonus</h3>
+<h3 id="defensebonus">
+  
+  
+    DefenseBonus <a href="#defensebonus"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DefenseBonus --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="difficulty">Difficulty</h3>
+<h3 id="difficulty">
+  
+  
+    Difficulty <a href="#difficulty"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Difficulty --&gt; boolean
 </code></pre></div></div>
 <p>Fixes the crash for difficulty levels above Deity, and accepts an unlimited number of difficulties in the @DIFFICULTY section of RULES.TXT. In practice though, the limit is around 10, as very high levels will cause AI food / shield rows to go negative.</p>
-
-<h3 id="diplomacyscreencrash">DiplomacyScreenCrash</h3>
+<h3 id="diplomacyscreencrash">
+  
+  
+    DiplomacyScreenCrash <a href="#diplomacyscreencrash"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DiplomacyScreenCrash --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="directshowaudio">DirectShowAudio</h3>
+<h3 id="directshowaudio">
+  
+  
+    DirectShowAudio <a href="#directshowaudio"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowAudio --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="directshowmusic">DirectShowMusic</h3>
+<h3 id="directshowmusic">
+  
+  
+    DirectShowMusic <a href="#directshowmusic"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowMusic --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="directshowvideo">DirectShowVideo</h3>
+<h3 id="directshowvideo">
+  
+  
+    DirectShowVideo <a href="#directshowvideo"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowVideo --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="disabledbutton">DisabledButton</h3>
+<h3 id="disabledbutton">
+  
+  
+    DisabledButton <a href="#disabledbutton"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DisabledButton --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="editterrainkeys">EditTerrainKeys</h3>
+<h3 id="editterrainkeys">
+  
+  
+    EditTerrainKeys <a href="#editterrainkeys"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EditTerrainKeys --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="endplayerturn">EndPlayerTurn</h3>
+<h3 id="endplayerturn">
+  
+  
+    EndPlayerTurn <a href="#endplayerturn"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EndPlayerTurn --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="eventheap">EventHeap</h3>
+<h3 id="eventheap">
+  
+  
+    EventHeap <a href="#eventheap"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EventHeap --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="fertility">Fertility</h3>
+<h3 id="fertility">
+  
+  
+    Fertility <a href="#fertility"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Fertility --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="fixeditcontrol">FixEditControl</h3>
+<h3 id="fixeditcontrol">
+  
+  
+    FixEditControl <a href="#fixeditcontrol"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.FixEditControl --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="fixhostility">FixHostility</h3>
+<h3 id="fixhostility">
+  
+  
+    FixHostility <a href="#fixhostility"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.FixHostility --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="globalwarming">GlobalWarming</h3>
+<h3 id="globalwarming">
+  
+  
+    GlobalWarming <a href="#globalwarming"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.GlobalWarming --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="healthbars">HealthBars</h3>
+<h3 id="healthbars">
+  
+  
+    HealthBars <a href="#healthbars"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.HealthBars --&gt; boolean
 </code></pre></div></div>
 <p>Allows hiding of unit health bars for specific unit types, by setting the 16th bit of the flags in @UNITS (i.e. by adding a 1 on the left).</p>
-
-<h3 id="impassableair">ImpassableAir</h3>
+<h3 id="impassableair">
+  
+  
+    ImpassableAir <a href="#impassableair"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImpassableAir --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="improvementflags">ImprovementFlags</h3>
+<h3 id="improvementflags">
+  
+  
+    ImprovementFlags <a href="#improvementflags"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImprovementFlags --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="improvementicons">ImprovementIcons</h3>
+<h3 id="improvementicons">
+  
+  
+    ImprovementIcons <a href="#improvementicons"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImprovementIcons --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="lwsettings">LWSettings</h3>
+<h3 id="lwsettings">
+  
+  
+    LWSettings <a href="#lwsettings"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LWSettings --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="landmarks">Landmarks</h3>
+<h3 id="landmarks">
+  
+  
+    Landmarks <a href="#landmarks"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Landmarks --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="luascenario">LuaScenario</h3>
+<h3 id="luascenario">
+  
+  
+    LuaScenario <a href="#luascenario"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LuaScenario --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="luascripting">LuaScripting</h3>
+<h3 id="luascripting">
+  
+  
+    LuaScripting <a href="#luascripting"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LuaScripting --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="majorobjective">MajorObjective</h3>
+<h3 id="majorobjective">
+  
+  
+    MajorObjective <a href="#majorobjective"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MajorObjective --&gt; boolean
 </code></pre></div></div>
 <p>Restores the x3 major objective for cities as in Fantastic Worlds.</p>
-
-<h3 id="maplayout">MapLayout</h3>
+<h3 id="maplayout">
+  
+  
+    MapLayout <a href="#maplayout"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MapLayout --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="modifyreputation">ModifyReputation</h3>
+<h3 id="modifyreputation">
+  
+  
+    ModifyReputation <a href="#modifyreputation"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ModifyReputation --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="mods">Mods</h3>
+<h3 id="mods">
+  
+  
+    Mods <a href="#mods"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Mods --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="mousewheel">MouseWheel</h3>
+<h3 id="mousewheel">
+  
+  
+    MouseWheel <a href="#mousewheel"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MouseWheel --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="moveunitevent">MoveUnitEvent</h3>
+<h3 id="moveunitevent">
+  
+  
+    MoveUnitEvent <a href="#moveunitevent"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MoveUnitEvent --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="movedebug">Movedebug</h3>
+<h3 id="movedebug">
+  
+  
+    Movedebug <a href="#movedebug"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Movedebug --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="movementrate">MovementRate</h3>
+<h3 id="movementrate">
+  
+  
+    MovementRate <a href="#movementrate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MovementRate --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="mutex">Mutex</h3>
+<h3 id="mutex">
+  
+  
+    Mutex <a href="#mutex"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Mutex --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="nativetransport">NativeTransport</h3>
+<h3 id="nativetransport">
+  
+  
+    NativeTransport <a href="#nativetransport"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NativeTransport --&gt; boolean
 </code></pre></div></div>
 <p>Makes native transport respect “not allowed on map” settings from @UNITS_ADVANCED.</p>
-
-<h3 id="navigablerivers">NavigableRivers</h3>
+<h3 id="navigablerivers">
+  
+  
+    NavigableRivers <a href="#navigablerivers"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NavigableRivers --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="nocd">NoCD</h3>
+<h3 id="nocd">
+  
+  
+    NoCD <a href="#nocd"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoCD --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="nolimits">NoLimits</h3>
+<h3 id="nolimits">
+  
+  
+    NoLimits <a href="#nolimits"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoLimits --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="nostackkills">NoStackKills</h3>
+<h3 id="nostackkills">
+  
+  
+    NoStackKills <a href="#nostackkills"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoStackKills --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="overview">Overview</h3>
+<h3 id="overview">
+  
+  
+    Overview <a href="#overview"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Overview --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="pikemenflag">PikemenFlag</h3>
+<h3 id="pikemenflag">
+  
+  
+    PikemenFlag <a href="#pikemenflag"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.PikemenFlag --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="playable">Playable</h3>
+<h3 id="playable">
+  
+  
+    Playable <a href="#playable"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Playable --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="productioncarryover">ProductionCarryOver</h3>
+<h3 id="productioncarryover">
+  
+  
+    ProductionCarryOver <a href="#productioncarryover"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ProductionCarryOver --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="rrmultiplier">RRMultiplier</h3>
+<h3 id="rrmultiplier">
+  
+  
+    RRMultiplier <a href="#rrmultiplier"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RRMultiplier --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="reporting">Reporting</h3>
+<h3 id="reporting">
+  
+  
+    Reporting <a href="#reporting"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Reporting --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="resetcityname">ResetCityName</h3>
+<h3 id="resetcityname">
+  
+  
+    ResetCityName <a href="#resetcityname"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ResetCityName --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="resourceanimationloop">ResourceAnimationLoop</h3>
+<h3 id="resourceanimationloop">
+  
+  
+    ResourceAnimationLoop <a href="#resourceanimationloop"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ResourceAnimationLoop --&gt; boolean
 </code></pre></div></div>
 <p>Fixes a bug where the last frame of a looping resource animation would be rendered even when animated resources were disabled.</p>
-
-<h3 id="roadtrade">RoadTrade</h3>
+<h3 id="roadtrade">
+  
+  
+    RoadTrade <a href="#roadtrade"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RoadTrade --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="rushbuy">RushBuy</h3>
+<h3 id="rushbuy">
+  
+  
+    RushBuy <a href="#rushbuy"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RushBuy --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="saveext">SaveExt</h3>
+<h3 id="saveext">
+  
+  
+    SaveExt <a href="#saveext"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.SaveExt --&gt; boolean
 </code></pre></div></div>
 <p>Allows patches to store arbitrary data in the saved game file, by extending the format. Saved games with extensions are stored with version number ‘3’ (ToT 1.1 uses ‘2’), so they cannot be read by the vanilla game.<br /><br />Purely infrastructural, this patch does not modify anything visible in the game by itself, but makes extension data available to other patches.<br /><br />Technical details:<br />Extension information is stored towards the end of the file (right after the ‘Destroyed tribes’ block, but before multiplayer / event data).<br />The first 4 bytes are the number of extensions, followed by that many extension blocks.<br />An extension consists of 3 parts, length (4 bytes), extension name (4 bytes, ASCII), and extension data (‘length’ bytes).</p>
-
-<h3 id="settlerflags">SettlerFlags</h3>
+<h3 id="settlerflags">
+  
+  
+    SettlerFlags <a href="#settlerflags"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.SettlerFlags --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="shieldcolors">ShieldColors</h3>
+<h3 id="shieldcolors">
+  
+  
+    ShieldColors <a href="#shieldcolors"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ShieldColors --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="shipdisband">ShipDisband</h3>
+<h3 id="shipdisband">
+  
+  
+    ShipDisband <a href="#shipdisband"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ShipDisband --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="stealtech">StealTech</h3>
+<h3 id="stealtech">
+  
+  
+    StealTech <a href="#stealtech"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.StealTech --&gt; boolean
 </code></pre></div></div>
 <p>Fixes the rule 2 restrictions in @LEADERS2 so that forbidden technologies cannot be stolen.</p>
-
-<h3 id="totppconfig">TOTPPConfig</h3>
+<h3 id="totppconfig">
+  
+  
+    TOTPPConfig <a href="#totppconfig"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TOTPPConfig --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="taketechnology">TakeTechnology</h3>
+<h3 id="taketechnology">
+  
+  
+    TakeTechnology <a href="#taketechnology"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TakeTechnology --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="techs">Techs</h3>
+<h3 id="techs">
+  
+  
+    Techs <a href="#techs"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Techs --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="teleportermapcheck">TeleporterMapCheck</h3>
+<h3 id="teleportermapcheck">
+  
+  
+    TeleporterMapCheck <a href="#teleportermapcheck"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TeleporterMapCheck --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="terrainoverlays">TerrainOverlays</h3>
+<h3 id="terrainoverlays">
+  
+  
+    TerrainOverlays <a href="#terrainoverlays"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TerrainOverlays --&gt; boolean
 </code></pre></div></div>
 <p>Enables custom overlays from TERRAIN2.bmp for arbitrary terrain types.<br /><br />Overlays are configured with a new section @OVERLAYS in RULES.txt. This section consists of a list of terrain types followed by 3 numbers, e.g.:<br /><br />@OVERLAYS<br />Forest, 16, 32, 133<br />Hills, 16, 32, 297<br />Mountains, 16, 48, 199<br />Boreal Forest, 16, 48, 363<br />Jungle, 3, 48, 461<br /><br />- For the terrain type you can either use its ordinal index (0-15), the abbreviation used in @TERRAIN (Drt, Pln, etc.), or the full name as in this example.<br />- The first number is the number of tiles to read, either 1, 3 or 16. When 16, tiles are read in 2 rows of 8, similar to the original overlays. When 1 or 3, tiles are read from a single row.<br />The use for the 3-tile overlay is to prevent the dithering used between different terrain types to render on top of the tile. These tiles correspond to the three tiles in TERRAIN1.bmp.<br />- The second number is the height of the tiles, 32, 48 or 64.<br />- The third number is the y-coordinate in TERRAIN2.bmp from where to start reading the tiles. The starting x-coordinate is always 1.<br /><br />Notes:<br />- Tiles are expected to be separated from each other by a one-pixel border.<br />- River tiles are always read from their original position of (1, 67). River mouths and coastal tiles shift down, they are read from right below the bottommost overlay.<br />- In the absence of an @OVERLAYS section, overlays are defined to correspond to a default TERRAIN2.bmp file.<br />- This patch replaces the mountain height patch, but respects the “MountainHeight” key in COSMIC2 for compatibility when no overlays are defined.<br />- @OVERLAYS1 .. @OVERLAYS3 can be used for secondary maps, similarly to @TERRAIN1-3.</p>
-
-<h3 id="terraintypes">TerrainTypes</h3>
+<h3 id="terraintypes">
+  
+  
+    TerrainTypes <a href="#terraintypes"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TerrainTypes --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="throneroom">Throneroom</h3>
+<h3 id="throneroom">
+  
+  
+    Throneroom <a href="#throneroom"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Throneroom --&gt; boolean
 </code></pre></div></div>
 <p>Enables building of throne room improvements. This feature was never removed from ToT, just disabled. The patch also adds a new menu item to the game settings. <br />The associated key bindings are Shift-H to view the throne room, and Shift-Q as a unit order to build an improvement (cheat-mode only).<br /><br />The text of the menu item (“Enable throne room.”) can be overridden by adding a line to @GAMEOPTIONS in GAME.TXT.</p>
-
-<h3 id="traderevenue">TradeRevenue</h3>
+<h3 id="traderevenue">
+  
+  
+    TradeRevenue <a href="#traderevenue"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TradeRevenue --&gt; boolean
 </code></pre></div></div>
 <p>Enables the @COSMIC2 keys ‘TradeGoldMultiplier’, ‘TradeScienceMultiplier’ and ‘TradeWonderMultiplier’.<br /><br />For the first two, their value is a percentage applied to the gold/science revenue when a trade route is created. So at 50, revenues are halved. For ‘TradeWonderMultiplier’ it’s a percentage of the cost of the trade unit that will be added to the wonder under construction, if the respective option is selected. Defaults to 100.</p>
-
-<h3 id="transformcheck">TransformCheck</h3>
+<h3 id="transformcheck">
+  
+  
+    TransformCheck <a href="#transformcheck"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TransformCheck --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="transformtech">TransformTech</h3>
+<h3 id="transformtech">
+  
+  
+    TransformTech <a href="#transformtech"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TransformTech --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="unitindicators">UnitIndicators</h3>
+<h3 id="unitindicators">
+  
+  
+    UnitIndicators <a href="#unitindicators"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.UnitIndicators --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="unitorientation">UnitOrientation</h3>
+<h3 id="unitorientation">
+  
+  
+    UnitOrientation <a href="#unitorientation"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.UnitOrientation --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="units">Units</h3>
+<h3 id="units">
+  
+  
+    Units <a href="#units"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Units --&gt; boolean
 </code></pre></div></div>
-
-<h3 id="zoomlevel">ZoomLevel</h3>
+<h3 id="zoomlevel">
+  
+  
+    ZoomLevel <a href="#zoomlevel"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ZoomLevel --&gt; boolean
 </code></pre></div></div>
-
-<h2 id="totppversion">totpp.version</h2>
-
-<h3 id="major">major</h3>
+<h2 id="totppversion">
+  
+  
+    totpp.version <a href="#totppversion"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+<h3 id="major">
+  
+  
+    major <a href="#major"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.major --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the major version of the TOTPP dll.</p>
-
-<h3 id="minor">minor</h3>
+<h3 id="minor">
+  
+  
+    minor <a href="#minor"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.minor --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the minor version of the TOTPP dll.</p>
-
-<h3 id="patch">patch</h3>
+<h3 id="patch">
+  
+  
+    patch <a href="#patch"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.patch --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the patch version of the TOTPP dll.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="totpp">
+  
+  
+    <a href="#totpp">&#128279</a> totpp
+  
+  
+</h1>
+    
 
+<p>undefined</p>
+<h2 id="totppmod">
+  
+  
+    <a href="#totppmod">&#128279</a> totpp.mod
+  
+  
+</h2>
+    
+<h3 id="premademap">
+  
+  
+    <a href="#premademap">&#128279</a> premadeMap
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.mod.premadeMap --&gt; boolean
+</code></pre></div></div>
+<p>(get) Returns <code class="language-plaintext highlighter-rouge">true</code> if the game was started on a pre-made map, <code class="language-plaintext highlighter-rouge">false</code> otherwise. Only valid right after starting a new game.</p>
+<h2 id="totppmovementmultipliers">
+  
+  
+    <a href="#totppmovementmultipliers">&#128279</a> totpp.movementMultipliers
+  
+  
+</h2>
+    
+<h3 id="aggregate">
+  
+  
+    <a href="#aggregate">&#128279</a> aggregate
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.aggregate --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the aggregate movement multiplier (the lcm of the four multipliers above). This value is recalculated when setting any of the individual multipliers. This is an alias for <code class="language-plaintext highlighter-rouge">civ.cosmic.roadMultiplier</code>.</p>
+<h3 id="alpine">
+  
+  
+    <a href="#alpine">&#128279</a> alpine
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the alpine movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="railroad">
+  
+  
+    <a href="#railroad">&#128279</a> railroad
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the railroad movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="river">
+  
+  
+    <a href="#river">&#128279</a> river
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the river movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="road">
+  
+  
+    <a href="#road">&#128279</a> road
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the road movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h2 id="totpppatches">
+  
+  
+    <a href="#totpppatches">&#128279</a> totpp.patches
+  
+  
+</h2>
+    
+<h3 id="aitweaks">
+  
+  
+    <a href="#aitweaks">&#128279</a> AITweaks
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AITweaks --&gt; boolean
+</code></pre></div></div>
+<h3 id="acivateunitscrollbar">
+  
+  
+    <a href="#acivateunitscrollbar">&#128279</a> AcivateUnitScrollbar
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AcivateUnitScrollbar --&gt; boolean
+</code></pre></div></div>
+<h3 id="attacksperturn">
+  
+  
+    <a href="#attacksperturn">&#128279</a> AttacksPerTurn
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.AttacksPerTurn --&gt; boolean
+</code></pre></div></div>
+<p>Enables a new section in RULES.TXT, @ATTACKS.<br />The numbers in this section define the number of attacks per turn per unit type. The section itself consist of a list of numbers, 10 per line, corresponding in order to the entries in @UNITS. For the Original game, it would look like this:<br /><br />@ATTACKS<br />1, 2, 1, 1, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 3, 2, 2, 2, 2, 2,<br />2, 2, 3, 1, 1, 1, 2, 10, 8, 6,<br />14, 12, 3, 3, 4, 4, 4, 6, 5, 5,<br />4, 3, 5, 5, 12, 16, 2, 3, 1, 2,<br />1, 1, 4, 8, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 1, 1, 1, 1, 1, 1,<br />1, 1, 1, 1, 1, 1, 1, 1, 1, 1,<br /><br />The number of attacks is limited by the movement rate, as each attack still costs 1 movement point.<br /><br />The popup shown when a unit is out of attacks can be overridden in GAME.TXT using the key @ATTACKSPERTURN.</p>
+<h3 id="buildtransporter">
+  
+  
+    <a href="#buildtransporter">&#128279</a> BuildTransporter
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.BuildTransporter --&gt; boolean
+</code></pre></div></div>
+<p>Makes the build transporter map dialog not select invalid maps as the default option, and also fixes the check for invalid art types.</p>
+<h3 id="citypopulationloss">
+  
+  
+    <a href="#citypopulationloss">&#128279</a> CityPopulationLoss
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityPopulationLoss --&gt; boolean
+</code></pre></div></div>
+<h3 id="citysprites">
+  
+  
+    <a href="#citysprites">&#128279</a> CitySprites
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CitySprites --&gt; boolean
+</code></pre></div></div>
+<h3 id="cityunitlimits">
+  
+  
+    <a href="#cityunitlimits">&#128279</a> CityUnitLimits
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityUnitLimits --&gt; boolean
+</code></pre></div></div>
+<h3 id="cityview">
+  
+  
+    <a href="#cityview">&#128279</a> CityView
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityView --&gt; boolean
+</code></pre></div></div>
+<h3 id="citywinunitdisband">
+  
+  
+    <a href="#citywinunitdisband">&#128279</a> CityWinUnitDisband
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWinUnitDisband --&gt; boolean
+</code></pre></div></div>
+<p>Disables the “Disband” option in the city screen’s “Supported units” box for non-disbandable units.</p>
+<h3 id="citywinunitselect">
+  
+  
+    <a href="#citywinunitselect">&#128279</a> CityWinUnitSelect
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWinUnitSelect --&gt; boolean
+</code></pre></div></div>
+<h3 id="cityworkingtiles">
+  
+  
+    <a href="#cityworkingtiles">&#128279</a> CityWorkingTiles
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CityWorkingTiles --&gt; boolean
+</code></pre></div></div>
+<h3 id="civilopediawondergraphics">
+  
+  
+    <a href="#civilopediawondergraphics">&#128279</a> CivilopediaWonderGraphics
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CivilopediaWonderGraphics --&gt; boolean
+</code></pre></div></div>
+<h3 id="combatanimation">
+  
+  
+    <a href="#combatanimation">&#128279</a> CombatAnimation
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CombatAnimation --&gt; boolean
+</code></pre></div></div>
+<p>Enables the 8-frame combat animation from Icons.bmp when animated units are disabled. For an example and placement see the 8 frames in Icons.gif in the ToT root folder, starting from coordinates (1, 356).</p>
+<h3 id="cosmic">
+  
+  
+    <a href="#cosmic">&#128279</a> Cosmic
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Cosmic --&gt; boolean
+</code></pre></div></div>
+<h3 id="custommodresources">
+  
+  
+    <a href="#custommodresources">&#128279</a> CustomModResources
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CustomModResources --&gt; boolean
+</code></pre></div></div>
+<h3 id="customresources">
+  
+  
+    <a href="#customresources">&#128279</a> CustomResources
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.CustomResources --&gt; boolean
+</code></pre></div></div>
+<p>Adds support for maps with custom resource placement. Maps both with and without custom resources can be combined when loading maps in-game.<br />Saved games with custom-resource maps are incompatible with the vanilla game.<br />When loading a custom-resource map, the dialog that asks whether to randomize resources and huts will only randomize huts.<br /><br />In cheat mode, custom resources can be enabled/disabled for a map by pressing Ctrl-F8. Subsequently, they can be placed on tiles with Ctrl-1 (resource #1) and Ctrl-2 (resource #2). Ctrl-0 removes a resource from a tile.</p>
+<h3 id="debugscripts">
+  
+  
+    <a href="#debugscripts">&#128279</a> DebugScripts
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DebugScripts --&gt; boolean
+</code></pre></div></div>
+<h3 id="decreasecpuuse">
+  
+  
+    <a href="#decreasecpuuse">&#128279</a> DecreaseCPUUse
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DecreaseCPUUse --&gt; boolean
+</code></pre></div></div>
+<h3 id="defensebonus">
+  
+  
+    <a href="#defensebonus">&#128279</a> DefenseBonus
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DefenseBonus --&gt; boolean
+</code></pre></div></div>
+<h3 id="difficulty">
+  
+  
+    <a href="#difficulty">&#128279</a> Difficulty
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Difficulty --&gt; boolean
+</code></pre></div></div>
+<p>Fixes the crash for difficulty levels above Deity, and accepts an unlimited number of difficulties in the @DIFFICULTY section of RULES.TXT. In practice though, the limit is around 10, as very high levels will cause AI food / shield rows to go negative.</p>
+<h3 id="diplomacyscreencrash">
+  
+  
+    <a href="#diplomacyscreencrash">&#128279</a> DiplomacyScreenCrash
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DiplomacyScreenCrash --&gt; boolean
+</code></pre></div></div>
+<h3 id="directshowaudio">
+  
+  
+    <a href="#directshowaudio">&#128279</a> DirectShowAudio
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowAudio --&gt; boolean
+</code></pre></div></div>
+<h3 id="directshowmusic">
+  
+  
+    <a href="#directshowmusic">&#128279</a> DirectShowMusic
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowMusic --&gt; boolean
+</code></pre></div></div>
+<h3 id="directshowvideo">
+  
+  
+    <a href="#directshowvideo">&#128279</a> DirectShowVideo
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DirectShowVideo --&gt; boolean
+</code></pre></div></div>
+<h3 id="disabledbutton">
+  
+  
+    <a href="#disabledbutton">&#128279</a> DisabledButton
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.DisabledButton --&gt; boolean
+</code></pre></div></div>
+<h3 id="editterrainkeys">
+  
+  
+    <a href="#editterrainkeys">&#128279</a> EditTerrainKeys
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EditTerrainKeys --&gt; boolean
+</code></pre></div></div>
+<h3 id="endplayerturn">
+  
+  
+    <a href="#endplayerturn">&#128279</a> EndPlayerTurn
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EndPlayerTurn --&gt; boolean
+</code></pre></div></div>
+<h3 id="eventheap">
+  
+  
+    <a href="#eventheap">&#128279</a> EventHeap
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.EventHeap --&gt; boolean
+</code></pre></div></div>
+<h3 id="fertility">
+  
+  
+    <a href="#fertility">&#128279</a> Fertility
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Fertility --&gt; boolean
+</code></pre></div></div>
+<h3 id="fixeditcontrol">
+  
+  
+    <a href="#fixeditcontrol">&#128279</a> FixEditControl
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.FixEditControl --&gt; boolean
+</code></pre></div></div>
+<h3 id="fixhostility">
+  
+  
+    <a href="#fixhostility">&#128279</a> FixHostility
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.FixHostility --&gt; boolean
+</code></pre></div></div>
+<h3 id="globalwarming">
+  
+  
+    <a href="#globalwarming">&#128279</a> GlobalWarming
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.GlobalWarming --&gt; boolean
+</code></pre></div></div>
+<h3 id="healthbars">
+  
+  
+    <a href="#healthbars">&#128279</a> HealthBars
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.HealthBars --&gt; boolean
+</code></pre></div></div>
+<p>Allows hiding of unit health bars for specific unit types, by setting the 16th bit of the flags in @UNITS (i.e. by adding a 1 on the left).</p>
+<h3 id="impassableair">
+  
+  
+    <a href="#impassableair">&#128279</a> ImpassableAir
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImpassableAir --&gt; boolean
+</code></pre></div></div>
+<h3 id="improvementflags">
+  
+  
+    <a href="#improvementflags">&#128279</a> ImprovementFlags
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImprovementFlags --&gt; boolean
+</code></pre></div></div>
+<h3 id="improvementicons">
+  
+  
+    <a href="#improvementicons">&#128279</a> ImprovementIcons
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ImprovementIcons --&gt; boolean
+</code></pre></div></div>
+<h3 id="lwsettings">
+  
+  
+    <a href="#lwsettings">&#128279</a> LWSettings
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LWSettings --&gt; boolean
+</code></pre></div></div>
+<h3 id="landmarks">
+  
+  
+    <a href="#landmarks">&#128279</a> Landmarks
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Landmarks --&gt; boolean
+</code></pre></div></div>
+<h3 id="luascenario">
+  
+  
+    <a href="#luascenario">&#128279</a> LuaScenario
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LuaScenario --&gt; boolean
+</code></pre></div></div>
+<h3 id="luascripting">
+  
+  
+    <a href="#luascripting">&#128279</a> LuaScripting
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.LuaScripting --&gt; boolean
+</code></pre></div></div>
+<h3 id="majorobjective">
+  
+  
+    <a href="#majorobjective">&#128279</a> MajorObjective
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MajorObjective --&gt; boolean
+</code></pre></div></div>
+<p>Restores the x3 major objective for cities as in Fantastic Worlds.</p>
+<h3 id="maplayout">
+  
+  
+    <a href="#maplayout">&#128279</a> MapLayout
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MapLayout --&gt; boolean
+</code></pre></div></div>
+<h3 id="modifyreputation">
+  
+  
+    <a href="#modifyreputation">&#128279</a> ModifyReputation
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ModifyReputation --&gt; boolean
+</code></pre></div></div>
+<h3 id="mods">
+  
+  
+    <a href="#mods">&#128279</a> Mods
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Mods --&gt; boolean
+</code></pre></div></div>
+<h3 id="mousewheel">
+  
+  
+    <a href="#mousewheel">&#128279</a> MouseWheel
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MouseWheel --&gt; boolean
+</code></pre></div></div>
+<h3 id="moveunitevent">
+  
+  
+    <a href="#moveunitevent">&#128279</a> MoveUnitEvent
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MoveUnitEvent --&gt; boolean
+</code></pre></div></div>
+<h3 id="movedebug">
+  
+  
+    <a href="#movedebug">&#128279</a> Movedebug
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Movedebug --&gt; boolean
+</code></pre></div></div>
+<h3 id="movementrate">
+  
+  
+    <a href="#movementrate">&#128279</a> MovementRate
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.MovementRate --&gt; boolean
+</code></pre></div></div>
+<h3 id="mutex">
+  
+  
+    <a href="#mutex">&#128279</a> Mutex
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Mutex --&gt; boolean
+</code></pre></div></div>
+<h3 id="nativetransport">
+  
+  
+    <a href="#nativetransport">&#128279</a> NativeTransport
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NativeTransport --&gt; boolean
+</code></pre></div></div>
+<p>Makes native transport respect “not allowed on map” settings from @UNITS_ADVANCED.</p>
+<h3 id="navigablerivers">
+  
+  
+    <a href="#navigablerivers">&#128279</a> NavigableRivers
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NavigableRivers --&gt; boolean
+</code></pre></div></div>
+<h3 id="nocd">
+  
+  
+    <a href="#nocd">&#128279</a> NoCD
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoCD --&gt; boolean
+</code></pre></div></div>
+<h3 id="nolimits">
+  
+  
+    <a href="#nolimits">&#128279</a> NoLimits
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoLimits --&gt; boolean
+</code></pre></div></div>
+<h3 id="nostackkills">
+  
+  
+    <a href="#nostackkills">&#128279</a> NoStackKills
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.NoStackKills --&gt; boolean
+</code></pre></div></div>
+<h3 id="overview">
+  
+  
+    <a href="#overview">&#128279</a> Overview
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Overview --&gt; boolean
+</code></pre></div></div>
+<h3 id="pikemenflag">
+  
+  
+    <a href="#pikemenflag">&#128279</a> PikemenFlag
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.PikemenFlag --&gt; boolean
+</code></pre></div></div>
+<h3 id="playable">
+  
+  
+    <a href="#playable">&#128279</a> Playable
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Playable --&gt; boolean
+</code></pre></div></div>
+<h3 id="productioncarryover">
+  
+  
+    <a href="#productioncarryover">&#128279</a> ProductionCarryOver
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ProductionCarryOver --&gt; boolean
+</code></pre></div></div>
+<h3 id="rrmultiplier">
+  
+  
+    <a href="#rrmultiplier">&#128279</a> RRMultiplier
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RRMultiplier --&gt; boolean
+</code></pre></div></div>
+<h3 id="reporting">
+  
+  
+    <a href="#reporting">&#128279</a> Reporting
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Reporting --&gt; boolean
+</code></pre></div></div>
+<h3 id="resetcityname">
+  
+  
+    <a href="#resetcityname">&#128279</a> ResetCityName
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ResetCityName --&gt; boolean
+</code></pre></div></div>
+<h3 id="resourceanimationloop">
+  
+  
+    <a href="#resourceanimationloop">&#128279</a> ResourceAnimationLoop
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ResourceAnimationLoop --&gt; boolean
+</code></pre></div></div>
+<p>Fixes a bug where the last frame of a looping resource animation would be rendered even when animated resources were disabled.</p>
+<h3 id="roadtrade">
+  
+  
+    <a href="#roadtrade">&#128279</a> RoadTrade
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RoadTrade --&gt; boolean
+</code></pre></div></div>
+<h3 id="rushbuy">
+  
+  
+    <a href="#rushbuy">&#128279</a> RushBuy
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.RushBuy --&gt; boolean
+</code></pre></div></div>
+<h3 id="saveext">
+  
+  
+    <a href="#saveext">&#128279</a> SaveExt
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.SaveExt --&gt; boolean
+</code></pre></div></div>
+<p>Allows patches to store arbitrary data in the saved game file, by extending the format. Saved games with extensions are stored with version number ‘3’ (ToT 1.1 uses ‘2’), so they cannot be read by the vanilla game.<br /><br />Purely infrastructural, this patch does not modify anything visible in the game by itself, but makes extension data available to other patches.<br /><br />Technical details:<br />Extension information is stored towards the end of the file (right after the ‘Destroyed tribes’ block, but before multiplayer / event data).<br />The first 4 bytes are the number of extensions, followed by that many extension blocks.<br />An extension consists of 3 parts, length (4 bytes), extension name (4 bytes, ASCII), and extension data (‘length’ bytes).</p>
+<h3 id="settlerflags">
+  
+  
+    <a href="#settlerflags">&#128279</a> SettlerFlags
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.SettlerFlags --&gt; boolean
+</code></pre></div></div>
+<h3 id="shieldcolors">
+  
+  
+    <a href="#shieldcolors">&#128279</a> ShieldColors
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ShieldColors --&gt; boolean
+</code></pre></div></div>
+<h3 id="shipdisband">
+  
+  
+    <a href="#shipdisband">&#128279</a> ShipDisband
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ShipDisband --&gt; boolean
+</code></pre></div></div>
+<h3 id="stealtech">
+  
+  
+    <a href="#stealtech">&#128279</a> StealTech
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.StealTech --&gt; boolean
+</code></pre></div></div>
+<p>Fixes the rule 2 restrictions in @LEADERS2 so that forbidden technologies cannot be stolen.</p>
+<h3 id="totppconfig">
+  
+  
+    <a href="#totppconfig">&#128279</a> TOTPPConfig
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TOTPPConfig --&gt; boolean
+</code></pre></div></div>
+<h3 id="taketechnology">
+  
+  
+    <a href="#taketechnology">&#128279</a> TakeTechnology
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TakeTechnology --&gt; boolean
+</code></pre></div></div>
+<h3 id="techs">
+  
+  
+    <a href="#techs">&#128279</a> Techs
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Techs --&gt; boolean
+</code></pre></div></div>
+<h3 id="teleportermapcheck">
+  
+  
+    <a href="#teleportermapcheck">&#128279</a> TeleporterMapCheck
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TeleporterMapCheck --&gt; boolean
+</code></pre></div></div>
+<h3 id="terrainoverlays">
+  
+  
+    <a href="#terrainoverlays">&#128279</a> TerrainOverlays
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TerrainOverlays --&gt; boolean
+</code></pre></div></div>
+<p>Enables custom overlays from TERRAIN2.bmp for arbitrary terrain types.<br /><br />Overlays are configured with a new section @OVERLAYS in RULES.txt. This section consists of a list of terrain types followed by 3 numbers, e.g.:<br /><br />@OVERLAYS<br />Forest, 16, 32, 133<br />Hills, 16, 32, 297<br />Mountains, 16, 48, 199<br />Boreal Forest, 16, 48, 363<br />Jungle, 3, 48, 461<br /><br />- For the terrain type you can either use its ordinal index (0-15), the abbreviation used in @TERRAIN (Drt, Pln, etc.), or the full name as in this example.<br />- The first number is the number of tiles to read, either 1, 3 or 16. When 16, tiles are read in 2 rows of 8, similar to the original overlays. When 1 or 3, tiles are read from a single row.<br />The use for the 3-tile overlay is to prevent the dithering used between different terrain types to render on top of the tile. These tiles correspond to the three tiles in TERRAIN1.bmp.<br />- The second number is the height of the tiles, 32, 48 or 64.<br />- The third number is the y-coordinate in TERRAIN2.bmp from where to start reading the tiles. The starting x-coordinate is always 1.<br /><br />Notes:<br />- Tiles are expected to be separated from each other by a one-pixel border.<br />- River tiles are always read from their original position of (1, 67). River mouths and coastal tiles shift down, they are read from right below the bottommost overlay.<br />- In the absence of an @OVERLAYS section, overlays are defined to correspond to a default TERRAIN2.bmp file.<br />- This patch replaces the mountain height patch, but respects the “MountainHeight” key in COSMIC2 for compatibility when no overlays are defined.<br />- @OVERLAYS1 .. @OVERLAYS3 can be used for secondary maps, similarly to @TERRAIN1-3.</p>
+<h3 id="terraintypes">
+  
+  
+    <a href="#terraintypes">&#128279</a> TerrainTypes
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TerrainTypes --&gt; boolean
+</code></pre></div></div>
+<h3 id="throneroom">
+  
+  
+    <a href="#throneroom">&#128279</a> Throneroom
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Throneroom --&gt; boolean
+</code></pre></div></div>
+<p>Enables building of throne room improvements. This feature was never removed from ToT, just disabled. The patch also adds a new menu item to the game settings. <br />The associated key bindings are Shift-H to view the throne room, and Shift-Q as a unit order to build an improvement (cheat-mode only).<br /><br />The text of the menu item (“Enable throne room.”) can be overridden by adding a line to @GAMEOPTIONS in GAME.TXT.</p>
+<h3 id="traderevenue">
+  
+  
+    <a href="#traderevenue">&#128279</a> TradeRevenue
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TradeRevenue --&gt; boolean
+</code></pre></div></div>
+<p>Enables the @COSMIC2 keys ‘TradeGoldMultiplier’, ‘TradeScienceMultiplier’ and ‘TradeWonderMultiplier’.<br /><br />For the first two, their value is a percentage applied to the gold/science revenue when a trade route is created. So at 50, revenues are halved. For ‘TradeWonderMultiplier’ it’s a percentage of the cost of the trade unit that will be added to the wonder under construction, if the respective option is selected. Defaults to 100.</p>
+<h3 id="transformcheck">
+  
+  
+    <a href="#transformcheck">&#128279</a> TransformCheck
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TransformCheck --&gt; boolean
+</code></pre></div></div>
+<h3 id="transformtech">
+  
+  
+    <a href="#transformtech">&#128279</a> TransformTech
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.TransformTech --&gt; boolean
+</code></pre></div></div>
+<h3 id="unitindicators">
+  
+  
+    <a href="#unitindicators">&#128279</a> UnitIndicators
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.UnitIndicators --&gt; boolean
+</code></pre></div></div>
+<h3 id="unitorientation">
+  
+  
+    <a href="#unitorientation">&#128279</a> UnitOrientation
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.UnitOrientation --&gt; boolean
+</code></pre></div></div>
+<h3 id="units">
+  
+  
+    <a href="#units">&#128279</a> Units
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.Units --&gt; boolean
+</code></pre></div></div>
+<h3 id="zoomlevel">
+  
+  
+    <a href="#zoomlevel">&#128279</a> ZoomLevel
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.patches.ZoomLevel --&gt; boolean
+</code></pre></div></div>
+<h2 id="totppversion">
+  
+  
+    <a href="#totppversion">&#128279</a> totpp.version
+  
+  
+</h2>
+    
+<h3 id="major">
+  
+  
+    <a href="#major">&#128279</a> major
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.major --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the major version of the TOTPP dll.</p>
+<h3 id="minor">
+  
+  
+    <a href="#minor">&#128279</a> minor
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.minor --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the minor version of the TOTPP dll.</p>
+<h3 id="patch">
+  
+  
+    <a href="#patch">&#128279</a> patch
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.version.patch --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the patch version of the TOTPP dll.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

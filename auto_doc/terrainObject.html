@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,58 +30,214 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="terrainobject">terrainObject</h1>
+    <h1 id="terrainobject">
+  
+  
+    terrainObject <a href="#terrainobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A terrain object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents the terrain characteristics which change for special resources. The ‘base terrain’ object deals with the characteristics that do not change for special resources.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#terrain">Lua Function Reference</a></p>
-
-<h3 id="baseterrain">baseTerrain</h3>
+<h3 id="baseterrain">
+  
+  
+    baseTerrain <a href="#baseterrain"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.baseTerrain --&gt; baseTerrainObject
 </code></pre></div></div>
 <p>(get) The underlying baseterrain of the terrain object.</p>
-
-<h3 id="food">food</h3>
+<h3 id="food">
+  
+  
+    food <a href="#food"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.food --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The amount of food produced by the terrain.</p>
-
-<h3 id="map">map</h3>
+<h3 id="map">
+  
+  
+    map <a href="#map"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.map --&gt; integer
 </code></pre></div></div>
 <p>(get) The map associated with the terrain object.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.name --&gt; string
 </code></pre></div></div>
 <p>(get) The name of the terrain.</p>
-
-<h3 id="resource">resource</h3>
+<h3 id="resource">
+  
+  
+    resource <a href="#resource"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.resource --&gt; integer
 </code></pre></div></div>
 <p>(get) The resource associated with the terrain object.</p>
-
-<h3 id="shields">shields</h3>
+<h3 id="shields">
+  
+  
+    shields <a href="#shields"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.shields --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The amount of shields produced by the terrain.</p>
-
-<h3 id="trade">trade</h3>
+<h3 id="trade">
+  
+  
+    trade <a href="#trade"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.trade --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The amount of trade produced by the terrain.</p>
-
-<h3 id="type">type</h3>
+<h3 id="type">
+  
+  
+    type <a href="#type"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.type --&gt; integer
 </code></pre></div></div>
 <p>(get) The terrain type associated with the terrain object.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="terrainobject">
+  
+  
+    <a href="#terrainobject">&#128279</a> terrainObject
+  
+  
+</h1>
+    
 
+<p>A terrain object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents the terrain characteristics which change for special resources. The ‘base terrain’ object deals with the characteristics that do not change for special resources.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#terrain">Lua Function Reference</a></p>
+<h3 id="baseterrain">
+  
+  
+    <a href="#baseterrain">&#128279</a> baseTerrain
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.baseTerrain --&gt; baseTerrainObject
+</code></pre></div></div>
+<p>(get) The underlying baseterrain of the terrain object.</p>
+<h3 id="food">
+  
+  
+    <a href="#food">&#128279</a> food
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.food --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The amount of food produced by the terrain.</p>
+<h3 id="map">
+  
+  
+    <a href="#map">&#128279</a> map
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.map --&gt; integer
+</code></pre></div></div>
+<p>(get) The map associated with the terrain object.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.name --&gt; string
+</code></pre></div></div>
+<p>(get) The name of the terrain.</p>
+<h3 id="resource">
+  
+  
+    <a href="#resource">&#128279</a> resource
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.resource --&gt; integer
+</code></pre></div></div>
+<p>(get) The resource associated with the terrain object.</p>
+<h3 id="shields">
+  
+  
+    <a href="#shields">&#128279</a> shields
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.shields --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The amount of shields produced by the terrain.</p>
+<h3 id="trade">
+  
+  
+    <a href="#trade">&#128279</a> trade
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.trade --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The amount of trade produced by the terrain.</p>
+<h3 id="type">
+  
+  
+    <a href="#type">&#128279</a> type
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrainObject.type --&gt; integer
+</code></pre></div></div>
+<p>(get) The terrain type associated with the terrain object.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

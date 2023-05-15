@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,58 +30,214 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="wonderobject">wonderObject</h1>
+    <h1 id="wonderobject">
+  
+  
+    wonderObject <a href="#wonderobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A wonder object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a Wonder of the World, both its entry in the rules.txt and also its characteristics within the game.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#wonder">Lua Function Reference</a></p>
-
-<h3 id="city">city</h3>
+<h3 id="city">
+  
+  
+    city <a href="#city"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.city --&gt; cityObject\|nil
 </code></pre></div></div>
 <p>(get/set) Returns the city that has built the wonder, <code class="language-plaintext highlighter-rouge">nil</code> if not built yet or destroyed.</p>
-
-<h3 id="cost">cost</h3>
+<h3 id="cost">
+  
+  
+    cost <a href="#cost"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.cost --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the cost of the wonder.</p>
-
-<h3 id="destroy">destroy</h3>
+<h3 id="destroy">
+  
+  
+    destroy <a href="#destroy"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">wonderObject</span><span class="p">:</span><span class="n">destroy</span><span class="p">()</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.destroyWonder(wonder)</code>.</p>
-
-<h3 id="destroyed">destroyed</h3>
+<h3 id="destroyed">
+  
+  
+    destroyed <a href="#destroyed"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.destroyed --&gt; boolean
 </code></pre></div></div>
 <p>(get) Returns whether or not the wonder is destroyed. Use wonder:destroy() to set this field.</p>
-
-<h3 id="expires">expires</h3>
+<h3 id="expires">
+  
+  
+    expires <a href="#expires"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.expires --&gt; techObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the tech that renders the wonder obsolete, or <code class="language-plaintext highlighter-rouge">nil</code> if there isn’t any.</p>
-
-<h3 id="id">id</h3>
+<h3 id="id">
+  
+  
+    id <a href="#id"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.id --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the id of the wonder.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.name --&gt; string
 </code></pre></div></div>
 <p>(get) Returns the name of the wonder.</p>
-
-<h3 id="prereq">prereq</h3>
+<h3 id="prereq">
+  
+  
+    prereq <a href="#prereq"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.prereq --&gt; techObject
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the prerequisite technology of the wonder.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="wonderobject">
+  
+  
+    <a href="#wonderobject">&#128279</a> wonderObject
+  
+  
+</h1>
+    
 
+<p>A wonder object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a Wonder of the World, both its entry in the rules.txt and also its characteristics within the game.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#wonder">Lua Function Reference</a></p>
+<h3 id="city">
+  
+  
+    <a href="#city">&#128279</a> city
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.city --&gt; cityObject\|nil
+</code></pre></div></div>
+<p>(get/set) Returns the city that has built the wonder, <code class="language-plaintext highlighter-rouge">nil</code> if not built yet or destroyed.</p>
+<h3 id="cost">
+  
+  
+    <a href="#cost">&#128279</a> cost
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.cost --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the cost of the wonder.</p>
+<h3 id="destroy">
+  
+  
+    <a href="#destroy">&#128279</a> destroy
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">wonderObject</span><span class="p">:</span><span class="n">destroy</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.destroyWonder(wonder)</code>.</p>
+<h3 id="destroyed">
+  
+  
+    <a href="#destroyed">&#128279</a> destroyed
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.destroyed --&gt; boolean
+</code></pre></div></div>
+<p>(get) Returns whether or not the wonder is destroyed. Use wonder:destroy() to set this field.</p>
+<h3 id="expires">
+  
+  
+    <a href="#expires">&#128279</a> expires
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.expires --&gt; techObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the tech that renders the wonder obsolete, or <code class="language-plaintext highlighter-rouge">nil</code> if there isn’t any.</p>
+<h3 id="id">
+  
+  
+    <a href="#id">&#128279</a> id
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the id of the wonder.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.name --&gt; string
+</code></pre></div></div>
+<p>(get) Returns the name of the wonder.</p>
+<h3 id="prereq">
+  
+  
+    <a href="#prereq">&#128279</a> prereq
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wonderObject.prereq --&gt; techObject
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the prerequisite technology of the wonder.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

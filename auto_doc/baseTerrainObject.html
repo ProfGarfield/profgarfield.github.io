@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,34 +30,73 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="baseterrainobject">baseTerrainObject</h1>
+    <h1 id="baseterrainobject">
+  
+  
+    baseTerrainObject <a href="#baseterrainobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A base terrain object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents the ‘basic’ terrain characteristics for a terrain type, which is to say those aspects of terrain which do not change for special resources. The ‘terrain’ object deals with the characteristics that do change for special resources.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#baseterrain">Lua Function Reference</a></p>
-
-<h3 id="abbrev">abbrev</h3>
+<h3 id="abbrev">
+  
+  
+    abbrev <a href="#abbrev"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.abbrev --&gt; string
 </code></pre></div></div>
 <p>(get) The terrain abbreviation for this baseTerrain (e.g. ‘Drt’, ‘Pln’ etc.).</p>
-
-<h3 id="canirrigate">canIrrigate</h3>
+<h3 id="canirrigate">
+  
+  
+    canIrrigate <a href="#canirrigate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.canIrrigate --&gt; boolean
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type allows irrigation, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
-
-<h3 id="canmine">canMine</h3>
+<h3 id="canmine">
+  
+  
+    canMine <a href="#canmine"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.canMine --&gt; boolean
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type allows mining, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
-
-<h3 id="defense">defense</h3>
+<h3 id="defense">
+  
+  
+    defense <a href="#defense"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.defense --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The defense factor of the underlying terrain type.</p>
-
-<h3 id="getterrain">getTerrain</h3>
+<h3 id="getterrain">
+  
+  
+    getTerrain <a href="#getterrain"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">baseTerrainObject</span><span class="p">:</span><span class="n">getTerrain</span><span class="p">(</span><span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
 </code></pre></div></div>
@@ -68,82 +107,393 @@
     <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
     <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
 </code></pre></div></div>
-
-<h3 id="impassable">impassable</h3>
+<h3 id="impassable">
+  
+  
+    impassable <a href="#impassable"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.impassable --&gt; boolean
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type is impassable, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
-
-<h3 id="irrigateai">irrigateAI</h3>
+<h3 id="irrigateai">
+  
+  
+    irrigateAI <a href="#irrigateai"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateAI --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The minimum government level needed for the AI to consider irrigating.</p>
-
-<h3 id="irrigatebonus">irrigateBonus</h3>
+<h3 id="irrigatebonus">
+  
+  
+    irrigateBonus <a href="#irrigatebonus"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateBonus --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The extra amount of food from irrigation.</p>
-
-<h3 id="irrigateto">irrigateTo</h3>
+<h3 id="irrigateto">
+  
+  
+    irrigateTo <a href="#irrigateto"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the irrigation order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="irrigateturns">irrigateTurns</h3>
+<h3 id="irrigateturns">
+  
+  
+    irrigateTurns <a href="#irrigateturns"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTurns --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The number of turns for settlers to irrigate.</p>
-
-<h3 id="map">map</h3>
+<h3 id="map">
+  
+  
+    map <a href="#map"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.map --&gt; integer
 </code></pre></div></div>
 <p>(get) The map associated with the baseTerrain object.</p>
-
-<h3 id="mineai">mineAI</h3>
+<h3 id="mineai">
+  
+  
+    mineAI <a href="#mineai"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineAI --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The minimum government level needed for the AI to consider mining.</p>
-
-<h3 id="minebonus">mineBonus</h3>
+<h3 id="minebonus">
+  
+  
+    mineBonus <a href="#minebonus"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineBonus --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The extra amount of production from mining.</p>
-
-<h3 id="mineto">mineTo</h3>
+<h3 id="mineto">
+  
+  
+    mineTo <a href="#mineto"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the mine order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="mineturns">mineTurns</h3>
+<h3 id="mineturns">
+  
+  
+    mineTurns <a href="#mineturns"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTurns --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The number of turns for settlers to mine.</p>
-
-<h3 id="movecost">moveCost</h3>
+<h3 id="movecost">
+  
+  
+    moveCost <a href="#movecost"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.moveCost --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) The movement cost of the underlying terrain type.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.name --&gt; string
 </code></pre></div></div>
 <p>(get) The name of this baseTerrain.</p>
-
-<h3 id="transformto">transformTo</h3>
+<h3 id="transformto">
+  
+  
+    transformTo <a href="#transformto"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject\|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the underlying terrain type can be transformed return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
-
-<h3 id="type">type</h3>
+<h3 id="type">
+  
+  
+    type <a href="#type"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.type --&gt; integer
 </code></pre></div></div>
 <p>(get) The terrain type associated with the baseTerrain object.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="baseterrainobject">
+  
+  
+    <a href="#baseterrainobject">&#128279</a> baseTerrainObject
+  
+  
+</h1>
+    
 
+<p>A base terrain object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents the ‘basic’ terrain characteristics for a terrain type, which is to say those aspects of terrain which do not change for special resources. The ‘terrain’ object deals with the characteristics that do change for special resources.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#baseterrain">Lua Function Reference</a></p>
+<h3 id="abbrev">
+  
+  
+    <a href="#abbrev">&#128279</a> abbrev
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.abbrev --&gt; string
+</code></pre></div></div>
+<p>(get) The terrain abbreviation for this baseTerrain (e.g. ‘Drt’, ‘Pln’ etc.).</p>
+<h3 id="canirrigate">
+  
+  
+    <a href="#canirrigate">&#128279</a> canIrrigate
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.canIrrigate --&gt; boolean
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type allows irrigation, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+<h3 id="canmine">
+  
+  
+    <a href="#canmine">&#128279</a> canMine
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.canMine --&gt; boolean
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type allows mining, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+<h3 id="defense">
+  
+  
+    <a href="#defense">&#128279</a> defense
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.defense --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The defense factor of the underlying terrain type.</p>
+<h3 id="getterrain">
+  
+  
+    <a href="#getterrain">&#128279</a> getTerrain
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">baseTerrainObject</span><span class="p">:</span><span class="n">getTerrain</span><span class="p">(</span><span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
+</code></pre></div></div>
+<p>Returns the terrain object corresponding to the underlying terrain type and the given resource.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span><span class="p">:</span>
+    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
+    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
+    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
+</code></pre></div></div>
+<h3 id="impassable">
+  
+  
+    <a href="#impassable">&#128279</a> impassable
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.impassable --&gt; boolean
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the underlying terrain type is impassable, <code class="language-plaintext highlighter-rouge">false</code> otherwise.</p>
+<h3 id="irrigateai">
+  
+  
+    <a href="#irrigateai">&#128279</a> irrigateAI
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateAI --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The minimum government level needed for the AI to consider irrigating.</p>
+<h3 id="irrigatebonus">
+  
+  
+    <a href="#irrigatebonus">&#128279</a> irrigateBonus
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateBonus --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The extra amount of food from irrigation.</p>
+<h3 id="irrigateto">
+  
+  
+    <a href="#irrigateto">&#128279</a> irrigateTo
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) If the irrigation order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="irrigateturns">
+  
+  
+    <a href="#irrigateturns">&#128279</a> irrigateTurns
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTurns --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The number of turns for settlers to irrigate.</p>
+<h3 id="map">
+  
+  
+    <a href="#map">&#128279</a> map
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.map --&gt; integer
+</code></pre></div></div>
+<p>(get) The map associated with the baseTerrain object.</p>
+<h3 id="mineai">
+  
+  
+    <a href="#mineai">&#128279</a> mineAI
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineAI --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The minimum government level needed for the AI to consider mining.</p>
+<h3 id="minebonus">
+  
+  
+    <a href="#minebonus">&#128279</a> mineBonus
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineBonus --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The extra amount of production from mining.</p>
+<h3 id="mineto">
+  
+  
+    <a href="#mineto">&#128279</a> mineTo
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) If the mine order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="mineturns">
+  
+  
+    <a href="#mineturns">&#128279</a> mineTurns
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTurns --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The number of turns for settlers to mine.</p>
+<h3 id="movecost">
+  
+  
+    <a href="#movecost">&#128279</a> moveCost
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.moveCost --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) The movement cost of the underlying terrain type.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.name --&gt; string
+</code></pre></div></div>
+<p>(get) The name of this baseTerrain.</p>
+<h3 id="transformto">
+  
+  
+    <a href="#transformto">&#128279</a> transformTo
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject\|nil
+</code></pre></div></div>
+<p>(get/set - ephemeral) If the underlying terrain type can be transformed return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
+<h3 id="type">
+  
+  
+    <a href="#type">&#128279</a> type
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.type --&gt; integer
+</code></pre></div></div>
+<p>(get) The terrain type associated with the baseTerrain object.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

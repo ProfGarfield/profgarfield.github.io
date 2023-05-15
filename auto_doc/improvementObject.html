@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,53 +30,192 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="improvementobject">improvementObject</h1>
+    <h1 id="improvementobject">
+  
+  
+    improvementObject <a href="#improvementobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>An improvement object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents an improvement entry in the rules.txt, and provides a means of interacting with it.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#improvement">Lua Function Reference</a></p>
-
-<h3 id="cantsell">cantSell</h3>
+<h3 id="cantsell">
+  
+  
+    cantSell <a href="#cantsell"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.cantSell --&gt; boolean
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the improvement cannot be sold, <code class="language-plaintext highlighter-rouge">false</code> otherwise. Requires the “Improvement flags” patch.</p>
-
-<h3 id="cost">cost</h3>
+<h3 id="cost">
+  
+  
+    cost <a href="#cost"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.cost --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the cost of the improvement in rows. Multiply by civ.cosmic.shieldRows for the actual production cost.</p>
-
-<h3 id="id">id</h3>
+<h3 id="id">
+  
+  
+    id <a href="#id"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.id --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the id of the improvement.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.name --&gt; string
 </code></pre></div></div>
 <p>(get) Returns the name of the improvement (e.g. “Barracks”).</p>
-
-<h3 id="oncapture">onCapture</h3>
+<h3 id="oncapture">
+  
+  
+    onCapture <a href="#oncapture"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.onCapture --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns what happens to this improvement when a city is captured (0 - Default, 1 - Preserve, 2 - Destroy, 3 - Random). Requires the “Improvement flags” patch.</p>
-
-<h3 id="prereq">prereq</h3>
+<h3 id="prereq">
+  
+  
+    prereq <a href="#prereq"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.prereq --&gt; techObject
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the prerequisite tech of the improvement.</p>
-
-<h3 id="upkeep">upkeep</h3>
+<h3 id="upkeep">
+  
+  
+    upkeep <a href="#upkeep"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.upkeep --&gt; integer
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the upkeep cost of the improvement.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="improvementobject">
+  
+  
+    <a href="#improvementobject">&#128279</a> improvementObject
+  
+  
+</h1>
+    
 
+<p>An improvement object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents an improvement entry in the rules.txt, and provides a means of interacting with it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#improvement">Lua Function Reference</a></p>
+<h3 id="cantsell">
+  
+  
+    <a href="#cantsell">&#128279</a> cantSell
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.cantSell --&gt; boolean
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns <code class="language-plaintext highlighter-rouge">true</code> if the improvement cannot be sold, <code class="language-plaintext highlighter-rouge">false</code> otherwise. Requires the “Improvement flags” patch.</p>
+<h3 id="cost">
+  
+  
+    <a href="#cost">&#128279</a> cost
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.cost --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the cost of the improvement in rows. Multiply by civ.cosmic.shieldRows for the actual production cost.</p>
+<h3 id="id">
+  
+  
+    <a href="#id">&#128279</a> id
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the id of the improvement.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.name --&gt; string
+</code></pre></div></div>
+<p>(get) Returns the name of the improvement (e.g. “Barracks”).</p>
+<h3 id="oncapture">
+  
+  
+    <a href="#oncapture">&#128279</a> onCapture
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.onCapture --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns what happens to this improvement when a city is captured (0 - Default, 1 - Preserve, 2 - Destroy, 3 - Random). Requires the “Improvement flags” patch.</p>
+<h3 id="prereq">
+  
+  
+    <a href="#prereq">&#128279</a> prereq
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.prereq --&gt; techObject
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the prerequisite tech of the improvement.</p>
+<h3 id="upkeep">
+  
+  
+    <a href="#upkeep">&#128279</a> upkeep
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>improvementObject.upkeep --&gt; integer
+</code></pre></div></div>
+<p>(get/set - ephemeral) Returns the upkeep cost of the improvement.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

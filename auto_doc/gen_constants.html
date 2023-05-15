@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,9 +30,18 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="genconstants">gen.constants</h1>
+    <h1 id="genconstants">
+  
+  
+    gen.constants <a href="#genconstants"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
     <span class="n">maxTribes</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
@@ -97,11 +106,82 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="genconstants">
+  
+  
+    <a href="#genconstants">&#128279</a> gen.constants
+  
+  
+</h1>
+    
 
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="n">maxTribes</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">maxTribeID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">maxUnitTypes</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">189</span><span class="p">,</span>
+    <span class="n">maxUnitTypeID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">188</span><span class="p">,</span>
+    <span class="n">domainLand</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">domainAir</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">domainSea</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">maxMoveSpent</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="n">maxImprovements</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">maxImprovementID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="n">maxWonders</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">maxWonderID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">maxBaseTerrains</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">maxBaseTerrainID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">63</span><span class="p">,</span>
+    <span class="n">maxBaseTerrainPerMap</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">maxBaseTerrainType</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">maxTerrains</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">192</span><span class="p">,</span>
+    <span class="n">maxTerrainID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">191</span><span class="p">,</span>
+    <span class="n">maxMaps</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">maxMapID</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">roleAttack</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">roleDefend</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">roleNavalSuperiority</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">roleAirSuperiority</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">roleSeaTransport</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">roleSettle</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">roleDiplomacy</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">roleTrade</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">epochAncient</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">epochRenaissance</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">epochIndustrialRevolution</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">epochModern</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">categoryMilitary</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">categoryEconomic</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">categorySocial</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">categoryAcademic</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">categoryApplied</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">govtAnarchy</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">govtDespotism</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">govtMonarchy</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">govtCommunism</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">govtFundamentalism</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">govtRepublic</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">govtDemocracy</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">resourceNone</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">resourceFish</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">resourceWhale</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">grasslandType</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">leaderAggressive</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderRational</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderExpansionist</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderPerfectionist</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderCivilized</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderMilitaristic</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">leaderNeutral</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">cityStyleBronzeAge</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">cityStyleClassical</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">cityStyleFarEast</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">cityStyleMedieval</span><span class="p">:</span> <span class="n">integer</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

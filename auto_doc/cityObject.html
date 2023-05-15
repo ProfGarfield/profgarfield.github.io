@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,19 +30,40 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="cityobject">cityObject</h1>
+    <h1 id="cityobject">
+  
+  
+    cityObject <a href="#cityobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A city object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a city in the game, and provides a means of interacting with that city.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#city">Lua Function Reference</a></p>
-
-<h3 id="addimprovement">addImprovement</h3>
+<h3 id="addimprovement">
+  
+  
+    addImprovement <a href="#addimprovement"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">addImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.addImprovement(city, improvement)</code>.</p>
-
-<h3 id="addtraderoute">addTradeRoute</h3>
+<h3 id="addtraderoute">
+  
+  
+    addTradeRoute <a href="#addtraderoute"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">addTradeRoute</span><span class="p">(</span><span class="n">destination</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">commodity</span><span class="p">:</span> <span class="n">commodityObject</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Adds a new trade route to city <code class="language-plaintext highlighter-rouge">destination</code>, with commodity <code class="language-plaintext highlighter-rouge">commodity</code>. Returns an error if all 3 trade slots are already in use.</p>
@@ -50,174 +71,759 @@
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">destination</code> — The destination city for the trade route.</p>
 
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">commodity</code> — The trade route commodity.</p>
-
-<h3 id="attributes">attributes</h3>
+<h3 id="attributes">
+  
+  
+    attributes <a href="#attributes"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.attributes --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns the city’s attributes (bitmask).</p>
-
-<h3 id="basetrade">baseTrade</h3>
+<h3 id="basetrade">
+  
+  
+    baseTrade <a href="#basetrade"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.baseTrade --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of trade arrows before trade routes.</p>
-
-<h3 id="canbuild">canBuild</h3>
+<h3 id="canbuild">
+  
+  
+    canBuild <a href="#canbuild"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">canBuild</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Returns whether or not <code class="language-plaintext highlighter-rouge">item</code> can currently be built in the city. <code class="language-plaintext highlighter-rouge">item</code> can be a unitType, improvement or wonder.</p>
-
-<h3 id="coastal">coastal</h3>
+<h3 id="coastal">
+  
+  
+    coastal <a href="#coastal"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.coastal --&gt; boolean
 </code></pre></div></div>
 <p>(get) Returns whether or not the city is on a coast (can build coastal improvements).</p>
-
-<h3 id="currentproduction">currentProduction</h3>
+<h3 id="currentproduction">
+  
+  
+    currentProduction <a href="#currentproduction"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.currentProduction --&gt; improvementObject\|unitTypeObject\|wonderObject
 </code></pre></div></div>
 <p>(get/set) Returns the city’s current production.</p>
-
-<h3 id="food">food</h3>
+<h3 id="food">
+  
+  
+    food <a href="#food"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.food --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the quantity of food in store.</p>
-
-<h3 id="hasimprovement">hasImprovement</h3>
+<h3 id="hasimprovement">
+  
+  
+    hasImprovement <a href="#hasimprovement"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">hasImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasImprovement(city, improvement)</code>.</p>
-
-<h3 id="id">id</h3>
+<h3 id="id">
+  
+  
+    id <a href="#id"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.id --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the city’s id.</p>
-
-<h3 id="knownto">knownTo</h3>
+<h3 id="knownto">
+  
+  
+    knownTo <a href="#knownto"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.knownTo --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns a bitmask indicating the tribes that have knowledge of this city.</p>
-
-<h3 id="location">location</h3>
+<h3 id="location">
+  
+  
+    location <a href="#location"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.location --&gt; tileObject
 </code></pre></div></div>
 <p>(get) Returns the city’s location. See the <code class="language-plaintext highlighter-rouge">relocate</code> method for a way to set this.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.name --&gt; string
 </code></pre></div></div>
 <p>(get/set) Returns the city’s name.</p>
-
-<h3 id="numhappy">numHappy</h3>
+<h3 id="numhappy">
+  
+  
+    numHappy <a href="#numhappy"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numHappy --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of happy citizens.</p>
-
-<h3 id="numtraderoutes">numTradeRoutes</h3>
+<h3 id="numtraderoutes">
+  
+  
+    numTradeRoutes <a href="#numtraderoutes"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numTradeRoutes --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of trade routes of the city.</p>
-
-<h3 id="numunhappy">numUnhappy</h3>
+<h3 id="numunhappy">
+  
+  
+    numUnhappy <a href="#numunhappy"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numUnhappy --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of unhappy citizens.</p>
-
-<h3 id="originalowner">originalOwner</h3>
+<h3 id="originalowner">
+  
+  
+    originalOwner <a href="#originalowner"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.originalOwner --&gt; tribeObject
 </code></pre></div></div>
 <p>(get/set) Returns the city’s original owner. This can be different from <code class="language-plaintext highlighter-rouge">owner</code> if the city was captured in the past.</p>
-
-<h3 id="owner">owner</h3>
+<h3 id="owner">
+  
+  
+    owner <a href="#owner"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.owner --&gt; tribeObject
 </code></pre></div></div>
 <p>(get/set) Returns the city’s owner.</p>
-
-<h3 id="poptraderoute">popTradeRoute</h3>
+<h3 id="poptraderoute">
+  
+  
+    popTradeRoute <a href="#poptraderoute"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">popTradeRoute</span><span class="p">()</span>
 </code></pre></div></div>
 <p>Removes the last trade route, or does nothing if no trade routes are in use.</p>
-
-<h3 id="relocate">relocate</h3>
+<h3 id="relocate">
+  
+  
+    relocate <a href="#relocate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">relocate</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Relocates the city to the location given by <code class="language-plaintext highlighter-rouge">tile</code>. Returns <code class="language-plaintext highlighter-rouge">true</code> if successful, <code class="language-plaintext highlighter-rouge">false</code> otherwise (if a city is already present for example).</p>
-
-<h3 id="removeimprovement">removeImprovement</h3>
+<h3 id="removeimprovement">
+  
+  
+    removeImprovement <a href="#removeimprovement"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">removeImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.removeImprovement(city, improvement)</code>.</p>
-
-<h3 id="removetraderoute">removeTradeRoute</h3>
+<h3 id="removetraderoute">
+  
+  
+    removeTradeRoute <a href="#removetraderoute"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">removeTradeRoute</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Removes the trade route with index <code class="language-plaintext highlighter-rouge">id</code> (0-2). This shifts elements after <code class="language-plaintext highlighter-rouge">id</code> to fill gaps in the array, so references to trade routes may not be valid anymore after calling this.</p>
-
-<h3 id="science">science</h3>
+<h3 id="science">
+  
+  
+    science <a href="#science"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.science --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the amount of science the city produces.</p>
-
-<h3 id="shields">shields</h3>
+<h3 id="shields">
+  
+  
+    shields <a href="#shields"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.shields --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the number of shields towards the current item in production.</p>
-
-<h3 id="size">size</h3>
+<h3 id="size">
+  
+  
+    size <a href="#size"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.size --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the city’s size.</p>
-
-<h3 id="sizefortribe">sizeForTribe</h3>
+<h3 id="sizefortribe">
+  
+  
+    sizeForTribe <a href="#sizefortribe"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.sizeForTribe --&gt; tribeToInt
 </code></pre></div></div>
 <p>(get/set) cityObject.sizeForTribe[tribe] -&gt; integer Returns the city’s size as known by the given tribe.</p>
-
-<h3 id="specialists">specialists</h3>
+<h3 id="specialists">
+  
+  
+    specialists <a href="#specialists"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.specialists --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the city’s specialists as a integer, 16 x 2 bits per specialist (0 - No specialist, 1 - Entertainer, 2 - Taxman, 3 - Scientist)</p>
-
-<h3 id="tax">tax</h3>
+<h3 id="tax">
+  
+  
+    tax <a href="#tax"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.tax --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the amount of tax the city produces.</p>
-
-<h3 id="totalfood">totalFood</h3>
+<h3 id="totalfood">
+  
+  
+    totalFood <a href="#totalfood"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalFood --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the total amount of food the city produces.</p>
-
-<h3 id="totalshield">totalShield</h3>
+<h3 id="totalshield">
+  
+  
+    totalShield <a href="#totalshield"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalShield --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the total amount of shields the city produces.</p>
-
-<h3 id="totaltrade">totalTrade</h3>
+<h3 id="totaltrade">
+  
+  
+    totalTrade <a href="#totaltrade"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalTrade --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the total amount of trade arrows the city produces (including trade routes).</p>
-
-<h3 id="traderoutes">tradeRoutes</h3>
+<h3 id="traderoutes">
+  
+  
+    tradeRoutes <a href="#traderoutes"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.tradeRoutes[id: 0\|1\|2] --&gt; traderouteObject\|nil
 </code></pre></div></div>
 <p>(get) Returns the trade route with id <code class="language-plaintext highlighter-rouge">id</code> (0-2), or <code class="language-plaintext highlighter-rouge">nil</code> if not in use.</p>
-<h3 id="turnssincecapture">turnsSinceCapture</h3>
+<h3 id="turnssincecapture">
+  
+  
+    turnsSinceCapture <a href="#turnssincecapture"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.turnsSinceCapture --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the number of turns since the city was last captured.</p>
-
-<h3 id="workers">workers</h3>
+<h3 id="workers">
+  
+  
+    workers <a href="#workers"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.workers --&gt; bitmask
 </code></pre></div></div>
 <p>(get/set) Returns a bitmask with the workers and specialists of the city.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="cityobject">
+  
+  
+    <a href="#cityobject">&#128279</a> cityObject
+  
+  
+</h1>
+    
 
+<p>A city object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a city in the game, and provides a means of interacting with that city.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#city">Lua Function Reference</a></p>
+<h3 id="addimprovement">
+  
+  
+    <a href="#addimprovement">&#128279</a> addImprovement
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">addImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.addImprovement(city, improvement)</code>.</p>
+<h3 id="addtraderoute">
+  
+  
+    <a href="#addtraderoute">&#128279</a> addTradeRoute
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">addTradeRoute</span><span class="p">(</span><span class="n">destination</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">commodity</span><span class="p">:</span> <span class="n">commodityObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a new trade route to city <code class="language-plaintext highlighter-rouge">destination</code>, with commodity <code class="language-plaintext highlighter-rouge">commodity</code>. Returns an error if all 3 trade slots are already in use.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">destination</code> — The destination city for the trade route.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">commodity</code> — The trade route commodity.</p>
+<h3 id="attributes">
+  
+  
+    <a href="#attributes">&#128279</a> attributes
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.attributes --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns the city’s attributes (bitmask).</p>
+<h3 id="basetrade">
+  
+  
+    <a href="#basetrade">&#128279</a> baseTrade
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.baseTrade --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of trade arrows before trade routes.</p>
+<h3 id="canbuild">
+  
+  
+    <a href="#canbuild">&#128279</a> canBuild
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">canBuild</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns whether or not <code class="language-plaintext highlighter-rouge">item</code> can currently be built in the city. <code class="language-plaintext highlighter-rouge">item</code> can be a unitType, improvement or wonder.</p>
+<h3 id="coastal">
+  
+  
+    <a href="#coastal">&#128279</a> coastal
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.coastal --&gt; boolean
+</code></pre></div></div>
+<p>(get) Returns whether or not the city is on a coast (can build coastal improvements).</p>
+<h3 id="currentproduction">
+  
+  
+    <a href="#currentproduction">&#128279</a> currentProduction
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.currentProduction --&gt; improvementObject\|unitTypeObject\|wonderObject
+</code></pre></div></div>
+<p>(get/set) Returns the city’s current production.</p>
+<h3 id="food">
+  
+  
+    <a href="#food">&#128279</a> food
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.food --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the quantity of food in store.</p>
+<h3 id="hasimprovement">
+  
+  
+    <a href="#hasimprovement">&#128279</a> hasImprovement
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">hasImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasImprovement(city, improvement)</code>.</p>
+<h3 id="id">
+  
+  
+    <a href="#id">&#128279</a> id
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the city’s id.</p>
+<h3 id="knownto">
+  
+  
+    <a href="#knownto">&#128279</a> knownTo
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.knownTo --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns a bitmask indicating the tribes that have knowledge of this city.</p>
+<h3 id="location">
+  
+  
+    <a href="#location">&#128279</a> location
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.location --&gt; tileObject
+</code></pre></div></div>
+<p>(get) Returns the city’s location. See the <code class="language-plaintext highlighter-rouge">relocate</code> method for a way to set this.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.name --&gt; string
+</code></pre></div></div>
+<p>(get/set) Returns the city’s name.</p>
+<h3 id="numhappy">
+  
+  
+    <a href="#numhappy">&#128279</a> numHappy
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numHappy --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of happy citizens.</p>
+<h3 id="numtraderoutes">
+  
+  
+    <a href="#numtraderoutes">&#128279</a> numTradeRoutes
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numTradeRoutes --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of trade routes of the city.</p>
+<h3 id="numunhappy">
+  
+  
+    <a href="#numunhappy">&#128279</a> numUnhappy
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.numUnhappy --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of unhappy citizens.</p>
+<h3 id="originalowner">
+  
+  
+    <a href="#originalowner">&#128279</a> originalOwner
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.originalOwner --&gt; tribeObject
+</code></pre></div></div>
+<p>(get/set) Returns the city’s original owner. This can be different from <code class="language-plaintext highlighter-rouge">owner</code> if the city was captured in the past.</p>
+<h3 id="owner">
+  
+  
+    <a href="#owner">&#128279</a> owner
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.owner --&gt; tribeObject
+</code></pre></div></div>
+<p>(get/set) Returns the city’s owner.</p>
+<h3 id="poptraderoute">
+  
+  
+    <a href="#poptraderoute">&#128279</a> popTradeRoute
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">popTradeRoute</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Removes the last trade route, or does nothing if no trade routes are in use.</p>
+<h3 id="relocate">
+  
+  
+    <a href="#relocate">&#128279</a> relocate
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">relocate</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Relocates the city to the location given by <code class="language-plaintext highlighter-rouge">tile</code>. Returns <code class="language-plaintext highlighter-rouge">true</code> if successful, <code class="language-plaintext highlighter-rouge">false</code> otherwise (if a city is already present for example).</p>
+<h3 id="removeimprovement">
+  
+  
+    <a href="#removeimprovement">&#128279</a> removeImprovement
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">removeImprovement</span><span class="p">(</span><span class="n">improvement</span><span class="p">:</span> <span class="n">improvementObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.removeImprovement(city, improvement)</code>.</p>
+<h3 id="removetraderoute">
+  
+  
+    <a href="#removetraderoute">&#128279</a> removeTradeRoute
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">cityObject</span><span class="p">:</span><span class="n">removeTradeRoute</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Removes the trade route with index <code class="language-plaintext highlighter-rouge">id</code> (0-2). This shifts elements after <code class="language-plaintext highlighter-rouge">id</code> to fill gaps in the array, so references to trade routes may not be valid anymore after calling this.</p>
+<h3 id="science">
+  
+  
+    <a href="#science">&#128279</a> science
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.science --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the amount of science the city produces.</p>
+<h3 id="shields">
+  
+  
+    <a href="#shields">&#128279</a> shields
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.shields --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of shields towards the current item in production.</p>
+<h3 id="size">
+  
+  
+    <a href="#size">&#128279</a> size
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.size --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the city’s size.</p>
+<h3 id="sizefortribe">
+  
+  
+    <a href="#sizefortribe">&#128279</a> sizeForTribe
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.sizeForTribe --&gt; tribeToInt
+</code></pre></div></div>
+<p>(get/set) cityObject.sizeForTribe[tribe] -&gt; integer Returns the city’s size as known by the given tribe.</p>
+<h3 id="specialists">
+  
+  
+    <a href="#specialists">&#128279</a> specialists
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.specialists --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the city’s specialists as a integer, 16 x 2 bits per specialist (0 - No specialist, 1 - Entertainer, 2 - Taxman, 3 - Scientist)</p>
+<h3 id="tax">
+  
+  
+    <a href="#tax">&#128279</a> tax
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.tax --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the amount of tax the city produces.</p>
+<h3 id="totalfood">
+  
+  
+    <a href="#totalfood">&#128279</a> totalFood
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalFood --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the total amount of food the city produces.</p>
+<h3 id="totalshield">
+  
+  
+    <a href="#totalshield">&#128279</a> totalShield
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalShield --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the total amount of shields the city produces.</p>
+<h3 id="totaltrade">
+  
+  
+    <a href="#totaltrade">&#128279</a> totalTrade
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.totalTrade --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the total amount of trade arrows the city produces (including trade routes).</p>
+<h3 id="traderoutes">
+  
+  
+    <a href="#traderoutes">&#128279</a> tradeRoutes
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.tradeRoutes[id: 0\|1\|2] --&gt; traderouteObject\|nil
+</code></pre></div></div>
+<p>(get) Returns the trade route with id <code class="language-plaintext highlighter-rouge">id</code> (0-2), or <code class="language-plaintext highlighter-rouge">nil</code> if not in use.</p>
+<h3 id="turnssincecapture">
+  
+  
+    <a href="#turnssincecapture">&#128279</a> turnsSinceCapture
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.turnsSinceCapture --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of turns since the city was last captured.</p>
+<h3 id="workers">
+  
+  
+    <a href="#workers">&#128279</a> workers
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cityObject.workers --&gt; bitmask
+</code></pre></div></div>
+<p>(get/set) Returns a bitmask with the workers and specialists of the city.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

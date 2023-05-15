@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,34 +30,73 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="tribeobject">tribeObject</h1>
+    <h1 id="tribeobject">
+  
+  
+    tribeObject <a href="#tribeobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A tribe object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a tribe, which is to say the characteristics of the tribe overall, in the game, and provides a means of interacting with it.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#tribe">Lua Function Reference</a></p>
-
-<h3 id="active">active</h3>
+<h3 id="active">
+  
+  
+    active <a href="#active"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.active --&gt; boolean
 </code></pre></div></div>
 <p>(get) Returns whether the tribe is active, i.e. a human or AI player in the current game.</p>
-
-<h3 id="adjective">adjective</h3>
+<h3 id="adjective">
+  
+  
+    adjective <a href="#adjective"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.adjective --&gt; string
 </code></pre></div></div>
 <p>(get/set) Returns the adjectival form of the tribe’s name (e.g. “Roman”).</p>
-
-<h3 id="attitude">attitude</h3>
+<h3 id="attitude">
+  
+  
+    attitude <a href="#attitude"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.attitude --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tribe’s attitude to <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
-
-<h3 id="betrayals">betrayals</h3>
+<h3 id="betrayals">
+  
+  
+    betrayals <a href="#betrayals"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.betrayals --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the number of times the tribe has betrayed another tribe.</p>
-
-<h3 id="enabletechgroup">enableTechGroup</h3>
+<h3 id="enabletechgroup">
+  
+  
+    enableTechGroup <a href="#enabletechgroup"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">enableTechGroup</span><span class="p">(</span><span class="n">techgroup</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.enableTechGroup(tribe, techgroup, value)</code>.
@@ -70,130 +109,599 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
     <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
     <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
 </code></pre></div></div>
-
-<h3 id="futuretechs">futureTechs</h3>
+<h3 id="futuretechs">
+  
+  
+    futureTechs <a href="#futuretechs"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.futureTechs --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the number of future techs the tribe has researched.</p>
-
-<h3 id="givetech">giveTech</h3>
+<h3 id="givetech">
+  
+  
+    giveTech <a href="#givetech"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">giveTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.giveTech(tribe, tech)</code>.</p>
-
-<h3 id="government">government</h3>
+<h3 id="government">
+  
+  
+    government <a href="#government"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.government --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the government (0 - 6) of the tribe.</p>
-
-<h3 id="hastech">hasTech</h3>
+<h3 id="hastech">
+  
+  
+    hasTech <a href="#hastech"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">hasTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasTech(tribe, tech)</code>.</p>
-
-<h3 id="id">id</h3>
+<h3 id="id">
+  
+  
+    id <a href="#id"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.id --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the id of the tribe.</p>
-
-<h3 id="ishuman">isHuman</h3>
+<h3 id="ishuman">
+  
+  
+    isHuman <a href="#ishuman"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.isHuman --&gt; boolean
 </code></pre></div></div>
 <p>(get/set) Returns whether the tribe is a/the human player.</p>
-
-<h3 id="kill">kill</h3>
+<h3 id="kill">
+  
+  
+    kill <a href="#kill"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.killTribe(tribe)</code>.</p>
-
-<h3 id="leader">leader</h3>
+<h3 id="leader">
+  
+  
+    leader <a href="#leader"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.leader --&gt; leaderObject
 </code></pre></div></div>
 <p>(get) Returns the leader of the tribe.</p>
-
-<h3 id="money">money</h3>
+<h3 id="money">
+  
+  
+    money <a href="#money"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.money --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the amount of money/gold in the tribe’s treasury.</p>
-
-<h3 id="name">name</h3>
+<h3 id="name">
+  
+  
+    name <a href="#name"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.name --&gt; string
 </code></pre></div></div>
 <p>(get/set) Returns the name of the tribe (e.g. “Romans”).</p>
-
-<h3 id="numcities">numCities</h3>
+<h3 id="numcities">
+  
+  
+    numCities <a href="#numcities"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numCities --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of cities the tribe has.</p>
-
-<h3 id="numtechs">numTechs</h3>
+<h3 id="numtechs">
+  
+  
+    numTechs <a href="#numtechs"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numTechs --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of techs the tribe has.</p>
-
-<h3 id="numunits">numUnits</h3>
+<h3 id="numunits">
+  
+  
+    numUnits <a href="#numunits"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numUnits --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the number of units the tribe has.</p>
-
-<h3 id="patience">patience</h3>
+<h3 id="patience">
+  
+  
+    patience <a href="#patience"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.patience --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tribe’s patience.</p>
-
-<h3 id="reputation">reputation</h3>
+<h3 id="reputation">
+  
+  
+    reputation <a href="#reputation"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.reputation --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tribe’s reputation with <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
-
-<h3 id="researchcost">researchCost</h3>
+<h3 id="researchcost">
+  
+  
+    researchCost <a href="#researchcost"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researchCost --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the research cost of the tribe.</p>
-
-<h3 id="researchprogress">researchProgress</h3>
+<h3 id="researchprogress">
+  
+  
+    researchProgress <a href="#researchprogress"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researchProgress --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the progress towards the current research (range between 0 and tribe.researchCost).</p>
-
-<h3 id="researching">researching</h3>
+<h3 id="researching">
+  
+  
+    researching <a href="#researching"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject\|nil
 </code></pre></div></div>
 <p>(get/set) Returns the tech the tribe is currently researching, or <code class="language-plaintext highlighter-rouge">nil</code> if not researching anything.</p>
-
-<h3 id="sciencerate">scienceRate</h3>
+<h3 id="sciencerate">
+  
+  
+    scienceRate <a href="#sciencerate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.scienceRate --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the science rate of the tribe.</p>
-
-<h3 id="spaceship">spaceship</h3>
+<h3 id="spaceship">
+  
+  
+    spaceship <a href="#spaceship"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.spaceship --&gt; spaceshipObject
 </code></pre></div></div>
 <p>(get) Returns the space ship object of the tribe.</p>
-
-<h3 id="taketech">takeTech</h3>
+<h3 id="taketech">
+  
+  
+    takeTech <a href="#taketech"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">takeTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">,</span> <span class="n">collapse</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.takeTech(tribe, tech, collapse=false)</code>.</p>
 
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">collapse</code> — Default value is false.</p>
-
-<h3 id="taxrate">taxRate</h3>
+<h3 id="taxrate">
+  
+  
+    taxRate <a href="#taxrate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.taxRate --&gt; integer
 </code></pre></div></div>
 <p>(get) Returns the tax rate of the tribe.</p>
-
-<h3 id="treaties">treaties</h3>
+<h3 id="treaties">
+  
+  
+    treaties <a href="#treaties"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.treaties --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the tribe’s treaties with <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="tribeobject">
+  
+  
+    <a href="#tribeobject">&#128279</a> tribeObject
+  
+  
+</h1>
+    
 
+<p>A tribe object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a tribe, which is to say the characteristics of the tribe overall, in the game, and provides a means of interacting with it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#tribe">Lua Function Reference</a></p>
+<h3 id="active">
+  
+  
+    <a href="#active">&#128279</a> active
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.active --&gt; boolean
+</code></pre></div></div>
+<p>(get) Returns whether the tribe is active, i.e. a human or AI player in the current game.</p>
+<h3 id="adjective">
+  
+  
+    <a href="#adjective">&#128279</a> adjective
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.adjective --&gt; string
+</code></pre></div></div>
+<p>(get/set) Returns the adjectival form of the tribe’s name (e.g. “Roman”).</p>
+<h3 id="attitude">
+  
+  
+    <a href="#attitude">&#128279</a> attitude
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.attitude --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tribe’s attitude to <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
+<h3 id="betrayals">
+  
+  
+    <a href="#betrayals">&#128279</a> betrayals
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.betrayals --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of times the tribe has betrayed another tribe.</p>
+<h3 id="enabletechgroup">
+  
+  
+    <a href="#enabletechgroup">&#128279</a> enableTechGroup
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">enableTechGroup</span><span class="p">(</span><span class="n">techgroup</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.enableTechGroup(tribe, techgroup, value)</code>.
+Sets the value of tech group <code class="language-plaintext highlighter-rouge">techgroup</code> (0-7) to value <code class="language-plaintext highlighter-rouge">value</code> (0-2, 0 = can research, can own, 1 = can’t research, can own, 2 = can’t research, can’t own) for tribe.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">techgroup</code> — integer in [0,7]</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span><span class="p">:</span>
+    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
+    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
+    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
+</code></pre></div></div>
+<h3 id="futuretechs">
+  
+  
+    <a href="#futuretechs">&#128279</a> futureTechs
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.futureTechs --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the number of future techs the tribe has researched.</p>
+<h3 id="givetech">
+  
+  
+    <a href="#givetech">&#128279</a> giveTech
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">giveTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.giveTech(tribe, tech)</code>.</p>
+<h3 id="government">
+  
+  
+    <a href="#government">&#128279</a> government
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.government --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the government (0 - 6) of the tribe.</p>
+<h3 id="hastech">
+  
+  
+    <a href="#hastech">&#128279</a> hasTech
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">hasTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasTech(tribe, tech)</code>.</p>
+<h3 id="id">
+  
+  
+    <a href="#id">&#128279</a> id
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.id --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the id of the tribe.</p>
+<h3 id="ishuman">
+  
+  
+    <a href="#ishuman">&#128279</a> isHuman
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.isHuman --&gt; boolean
+</code></pre></div></div>
+<p>(get/set) Returns whether the tribe is a/the human player.</p>
+<h3 id="kill">
+  
+  
+    <a href="#kill">&#128279</a> kill
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.killTribe(tribe)</code>.</p>
+<h3 id="leader">
+  
+  
+    <a href="#leader">&#128279</a> leader
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.leader --&gt; leaderObject
+</code></pre></div></div>
+<p>(get) Returns the leader of the tribe.</p>
+<h3 id="money">
+  
+  
+    <a href="#money">&#128279</a> money
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.money --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the amount of money/gold in the tribe’s treasury.</p>
+<h3 id="name">
+  
+  
+    <a href="#name">&#128279</a> name
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.name --&gt; string
+</code></pre></div></div>
+<p>(get/set) Returns the name of the tribe (e.g. “Romans”).</p>
+<h3 id="numcities">
+  
+  
+    <a href="#numcities">&#128279</a> numCities
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numCities --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of cities the tribe has.</p>
+<h3 id="numtechs">
+  
+  
+    <a href="#numtechs">&#128279</a> numTechs
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numTechs --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of techs the tribe has.</p>
+<h3 id="numunits">
+  
+  
+    <a href="#numunits">&#128279</a> numUnits
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.numUnits --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the number of units the tribe has.</p>
+<h3 id="patience">
+  
+  
+    <a href="#patience">&#128279</a> patience
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.patience --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tribe’s patience.</p>
+<h3 id="reputation">
+  
+  
+    <a href="#reputation">&#128279</a> reputation
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.reputation --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tribe’s reputation with <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
+<h3 id="researchcost">
+  
+  
+    <a href="#researchcost">&#128279</a> researchCost
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researchCost --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the research cost of the tribe.</p>
+<h3 id="researchprogress">
+  
+  
+    <a href="#researchprogress">&#128279</a> researchProgress
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researchProgress --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the progress towards the current research (range between 0 and tribe.researchCost).</p>
+<h3 id="researching">
+  
+  
+    <a href="#researching">&#128279</a> researching
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject\|nil
+</code></pre></div></div>
+<p>(get/set) Returns the tech the tribe is currently researching, or <code class="language-plaintext highlighter-rouge">nil</code> if not researching anything.</p>
+<h3 id="sciencerate">
+  
+  
+    <a href="#sciencerate">&#128279</a> scienceRate
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.scienceRate --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the science rate of the tribe.</p>
+<h3 id="spaceship">
+  
+  
+    <a href="#spaceship">&#128279</a> spaceship
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.spaceship --&gt; spaceshipObject
+</code></pre></div></div>
+<p>(get) Returns the space ship object of the tribe.</p>
+<h3 id="taketech">
+  
+  
+    <a href="#taketech">&#128279</a> takeTech
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">takeTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">,</span> <span class="n">collapse</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Alias for <code class="language-plaintext highlighter-rouge">civ.takeTech(tribe, tech, collapse=false)</code>.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">collapse</code> — Default value is false.</p>
+<h3 id="taxrate">
+  
+  
+    <a href="#taxrate">&#128279</a> taxRate
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.taxRate --&gt; integer
+</code></pre></div></div>
+<p>(get) Returns the tax rate of the tribe.</p>
+<h3 id="treaties">
+  
+  
+    <a href="#treaties">&#128279</a> treaties
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.treaties --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the tribe’s treaties with <code class="language-plaintext highlighter-rouge">otherTribe</code>.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

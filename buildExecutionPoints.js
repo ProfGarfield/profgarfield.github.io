@@ -352,9 +352,9 @@ function buildFile() {
     let output =
 `---
 tabTitle: Execution Points for Code
-layout: page
+layout: page_toc23
+title: Lua Execution Points
 ---
-# Lua Execution Points
 
 Lua Events function by running code at certain predetermined points during the Civilization II: Test of Time game.  The term "Execution Point"
 refers to one of these points where code that has been registered is executed.  Everything that can be achieved with Lua 
@@ -368,11 +368,13 @@ provides even more execution points by running the pre-existing execution points
 
 `
     completeOutputList()
+    /*
     output += "## List of Execution Points\n"
     for (const fileName of outputList) {
         output += `1. [${fileName}](#${fileName.replace(/\ /g,"-").toLowerCase()})`+"\n"
     }
     output += "\n"
+    */
     for (const fileName in points) {
         output += points[fileName]
     }

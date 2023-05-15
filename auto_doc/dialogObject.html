@@ -18,7 +18,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -30,67 +30,244 @@
   <header class="post-header">
     <h1 class="post-title"></h1>
   </header>
-
+  <div class="toc-div">
+    <h2 class="toc-header">Contents</h2>
+    </div>  
   <div class="post-content">
-    <h1 id="dialogobject">dialogObject</h1>
+    <h1 id="dialogobject">
+  
+  
+    dialogObject <a href="#dialogobject"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
 
 <p>A dialog object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a text box that can be displayed to the player and provides properties and methods to customize it.
 <a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#dialog">Lua Function Reference</a></p>
-
-<h3 id="addcheckbox">addCheckbox</h3>
+<h3 id="addcheckbox">
+  
+  
+    addCheckbox <a href="#addcheckbox"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addCheckbox</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">initial</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Adds a checkbox to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value that can be used in dialog:getCheckboxState to retrieve the state after calling dialog:show. <code class="language-plaintext highlighter-rouge">initial</code> is an optional boolean parameter, if set to <code class="language-plaintext highlighter-rouge">true</code> the checkbox will be checked initially. Can not be used in conjunction with dialog:addOption.</p>
 
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">initial</code> — Default Value is false</p>
-
-<h3 id="addimage">addImage</h3>
+<h3 id="addimage">
+  
+  
+    addImage <a href="#addimage"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">imageObject</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Adds an image to the dialog.</p>
-
-<h3 id="addoption">addOption</h3>
+<h3 id="addoption">
+  
+  
+    addOption <a href="#addoption"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addOption</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Adds a selectable option to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value returned by dialog:show if this option was selected. Can not be used in conjunction with dialog:addCheckbox.</p>
-
-<h3 id="addtext">addText</h3>
+<h3 id="addtext">
+  
+  
+    addText <a href="#addtext"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addText</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Adds a static text string to the dialog.</p>
-
-<h3 id="getcheckboxstate">getCheckboxState</h3>
+<h3 id="getcheckboxstate">
+  
+  
+    getCheckboxState <a href="#getcheckboxstate"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">getCheckboxState</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div>
 <p>Returns the state of the checkbox identified by <code class="language-plaintext highlighter-rouge">id</code> after dialog:show has been called.</p>
-
-<h3 id="height">height</h3>
+<h3 id="height">
+  
+  
+    height <a href="#height"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.height --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the height of the dialog. Normally this does not need to be set, since the height is automatically calculated from the height of the items.</p>
-
-<h3 id="show">show</h3>
+<h3 id="show">
+  
+  
+    show <a href="#show"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">show</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">integer</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div></div>
 <p>Renders the dialog on screen. If this is an option dialog, returns the id of the selected option (see dialog:addOption). If this is a checkbox dialog, returns 0 if OK was pressed, -1 if Exit was pressed. Use dialog:getCheckboxState to query the individual checkboxes. This method can only be called once per dialog. It will return an error if invoked a second time.</p>
-
-<h3 id="title">title</h3>
+<h3 id="title">
+  
+  
+    title <a href="#title"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.title --&gt; string
 </code></pre></div></div>
 <p>(get/set) Returns the title of the dialog.</p>
-
-<h3 id="width">width</h3>
+<h3 id="width">
+  
+  
+    width <a href="#width"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.width --&gt; integer
 </code></pre></div></div>
 <p>(get/set) Returns the width of the dialog.</p>
 
-
   </div>
 
 </article>
+<!--
+    <h1 id="dialogobject">
+  
+  
+    <a href="#dialogobject">&#128279</a> dialogObject
+  
+  
+</h1>
+    
 
+<p>A dialog object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a text box that can be displayed to the player and provides properties and methods to customize it.
+<a href="https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#dialog">Lua Function Reference</a></p>
+<h3 id="addcheckbox">
+  
+  
+    <a href="#addcheckbox">&#128279</a> addCheckbox
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addCheckbox</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">initial</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a checkbox to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value that can be used in dialog:getCheckboxState to retrieve the state after calling dialog:show. <code class="language-plaintext highlighter-rouge">initial</code> is an optional boolean parameter, if set to <code class="language-plaintext highlighter-rouge">true</code> the checkbox will be checked initially. Can not be used in conjunction with dialog:addOption.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">initial</code> — Default Value is false</p>
+<h3 id="addimage">
+  
+  
+    <a href="#addimage">&#128279</a> addImage
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">imageObject</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds an image to the dialog.</p>
+<h3 id="addoption">
+  
+  
+    <a href="#addoption">&#128279</a> addOption
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addOption</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a selectable option to the dialog, with label given by <code class="language-plaintext highlighter-rouge">string</code>. <code class="language-plaintext highlighter-rouge">id</code> is an integer value returned by dialog:show if this option was selected. Can not be used in conjunction with dialog:addCheckbox.</p>
+<h3 id="addtext">
+  
+  
+    <a href="#addtext">&#128279</a> addText
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">addText</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Adds a static text string to the dialog.</p>
+<h3 id="getcheckboxstate">
+  
+  
+    <a href="#getcheckboxstate">&#128279</a> getCheckboxState
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">getCheckboxState</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+</code></pre></div></div>
+<p>Returns the state of the checkbox identified by <code class="language-plaintext highlighter-rouge">id</code> after dialog:show has been called.</p>
+<h3 id="height">
+  
+  
+    <a href="#height">&#128279</a> height
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.height --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the height of the dialog. Normally this does not need to be set, since the height is automatically calculated from the height of the items.</p>
+<h3 id="show">
+  
+  
+    <a href="#show">&#128279</a> show
+  
+  
+</h3>
+    
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">dialogObject</span><span class="p">:</span><span class="n">show</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div>
+<p>Renders the dialog on screen. If this is an option dialog, returns the id of the selected option (see dialog:addOption). If this is a checkbox dialog, returns 0 if OK was pressed, -1 if Exit was pressed. Use dialog:getCheckboxState to query the individual checkboxes. This method can only be called once per dialog. It will return an error if invoked a second time.</p>
+<h3 id="title">
+  
+  
+    <a href="#title">&#128279</a> title
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.title --&gt; string
+</code></pre></div></div>
+<p>(get/set) Returns the title of the dialog.</p>
+<h3 id="width">
+  
+  
+    <a href="#width">&#128279</a> width
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dialogObject.width --&gt; integer
+</code></pre></div></div>
+<p>(get/set) Returns the width of the dialog.</p>
+ -->
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

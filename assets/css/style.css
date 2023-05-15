@@ -990,5 +990,13 @@ pre {
 }
 
 /* End of Vim colour settings */
+.self-link {
+  opacity: 5%;
+}
+
+.self-link:hover {
+  opacity: 100%;
+  transition: opacity 0.1s;
+}
 
 /*# sourceMappingURL=style.css.map */
