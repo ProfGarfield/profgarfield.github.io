@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,21 +19,24 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <head><title>totpp.lua Documentation</title>
+        <head><title>totpp library Documentation</title>
 </head>
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">TOTPP Library</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#totppmod">totpp.mod</a></li><li><a href="#totppmovementmultipliers">totpp.movementMultipliers</a></li><li><a href="#totpppatches">totpp.patches</a></li><li><a href="#totppversion">totpp.version</a></li></ul></div>  
+    <ul><li><a href="#totppmod">totpp.mod</a><ul><li><a href="#premademap">premadeMap</a></li></ul></li><li><a href="#totppmovementmultipliers">totpp.movementMultipliers</a><ul><li><a href="#aggregate">aggregate</a></li><li><a href="#alpine">alpine</a></li><li><a href="#railroad">railroad</a></li><li><a href="#river">river</a></li><li><a href="#road">road</a></li></ul></li><li><a href="#totpppatches">totpp.patches</a><ul><li><a href="#aitweaks">AITweaks</a></li><li><a href="#acivateunitscrollbar">AcivateUnitScrollbar</a></li><li><a href="#attacksperturn">AttacksPerTurn</a></li><li><a href="#buildtransporter">BuildTransporter</a></li><li><a href="#citypopulationloss">CityPopulationLoss</a></li><li><a href="#citysprites">CitySprites</a></li><li><a href="#cityunitlimits">CityUnitLimits</a></li><li><a href="#cityview">CityView</a></li><li><a href="#citywinunitdisband">CityWinUnitDisband</a></li><li><a href="#citywinunitselect">CityWinUnitSelect</a></li><li><a href="#cityworkingtiles">CityWorkingTiles</a></li><li><a href="#civilopediawondergraphics">CivilopediaWonderGraphics</a></li><li><a href="#combatanimation">CombatAnimation</a></li><li><a href="#cosmic">Cosmic</a></li><li><a href="#custommodresources">CustomModResources</a></li><li><a href="#customresources">CustomResources</a></li><li><a href="#debugscripts">DebugScripts</a></li><li><a href="#decreasecpuuse">DecreaseCPUUse</a></li><li><a href="#defensebonus">DefenseBonus</a></li><li><a href="#difficulty">Difficulty</a></li><li><a href="#diplomacyscreencrash">DiplomacyScreenCrash</a></li><li><a href="#directshowaudio">DirectShowAudio</a></li><li><a href="#directshowmusic">DirectShowMusic</a></li><li><a href="#directshowvideo">DirectShowVideo</a></li><li><a href="#disabledbutton">DisabledButton</a></li><li><a href="#editterrainkeys">EditTerrainKeys</a></li><li><a href="#endplayerturn">EndPlayerTurn</a></li><li><a href="#eventheap">EventHeap</a></li><li><a href="#fertility">Fertility</a></li><li><a href="#fixeditcontrol">FixEditControl</a></li><li><a href="#fixhostility">FixHostility</a></li><li><a href="#globalwarming">GlobalWarming</a></li><li><a href="#healthbars">HealthBars</a></li><li><a href="#impassableair">ImpassableAir</a></li><li><a href="#improvementflags">ImprovementFlags</a></li><li><a href="#improvementicons">ImprovementIcons</a></li><li><a href="#lwsettings">LWSettings</a></li><li><a href="#landmarks">Landmarks</a></li><li><a href="#luascenario">LuaScenario</a></li><li><a href="#luascripting">LuaScripting</a></li><li><a href="#majorobjective">MajorObjective</a></li><li><a href="#maplayout">MapLayout</a></li><li><a href="#modifyreputation">ModifyReputation</a></li><li><a href="#mods">Mods</a></li><li><a href="#mousewheel">MouseWheel</a></li><li><a href="#moveunitevent">MoveUnitEvent</a></li><li><a href="#movedebug">Movedebug</a></li><li><a href="#movementrate">MovementRate</a></li><li><a href="#mutex">Mutex</a></li><li><a href="#nativetransport">NativeTransport</a></li><li><a href="#navigablerivers">NavigableRivers</a></li><li><a href="#nocd">NoCD</a></li><li><a href="#nolimits">NoLimits</a></li><li><a href="#nostackkills">NoStackKills</a></li><li><a href="#overview">Overview</a></li><li><a href="#pikemenflag">PikemenFlag</a></li><li><a href="#playable">Playable</a></li><li><a href="#productioncarryover">ProductionCarryOver</a></li><li><a href="#rrmultiplier">RRMultiplier</a></li><li><a href="#reporting">Reporting</a></li><li><a href="#resetcityname">ResetCityName</a></li><li><a href="#resourceanimationloop">ResourceAnimationLoop</a></li><li><a href="#roadtrade">RoadTrade</a></li><li><a href="#rushbuy">RushBuy</a></li><li><a href="#saveext">SaveExt</a></li><li><a href="#settlerflags">SettlerFlags</a></li><li><a href="#shieldcolors">ShieldColors</a></li><li><a href="#shipdisband">ShipDisband</a></li><li><a href="#stealtech">StealTech</a></li><li><a href="#totppconfig">TOTPPConfig</a></li><li><a href="#taketechnology">TakeTechnology</a></li><li><a href="#techs">Techs</a></li><li><a href="#teleportermapcheck">TeleporterMapCheck</a></li><li><a href="#terrainoverlays">TerrainOverlays</a></li><li><a href="#terraintypes">TerrainTypes</a></li><li><a href="#throneroom">Throneroom</a></li><li><a href="#traderevenue">TradeRevenue</a></li><li><a href="#transformcheck">TransformCheck</a></li><li><a href="#transformtech">TransformTech</a></li><li><a href="#unitindicators">UnitIndicators</a></li><li><a href="#unitorientation">UnitOrientation</a></li><li><a href="#units">Units</a></li><li><a href="#zoomlevel">ZoomLevel</a></li></ul></li><li><a href="#totppversion">totpp.version</a><ul><li><a href="#major">major</a></li><li><a href="#minor">minor</a></li><li><a href="#patch">patch</a></li></ul></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="totpp">
   
@@ -90,7 +94,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the alpine movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="railroad">
@@ -101,7 +105,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the railroad movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="river">
@@ -112,7 +116,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the river movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="road">
@@ -123,7 +127,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the road movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h2 id="totpppatches">
@@ -1081,7 +1085,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.alpine --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the alpine movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="railroad">
@@ -1092,7 +1096,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.railroad --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the railroad movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="river">
@@ -1103,7 +1107,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.river --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the river movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="road">
@@ -1114,7 +1118,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>totpp.movementMultipliers.road --&gt; integer|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) Returns the road movement multiplier if it is set, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h2 id="totpppatches">

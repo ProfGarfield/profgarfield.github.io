@@ -20,9 +20,14 @@ function makeFrontMatter(frontMatter) {
   let output = "---\n"
   frontMatter = frontMatter || defaultFrontMatter
   for (const key in frontMatter) {
-    output += `${key}: ${frontMatter[key]}\n`
+    if (key !== "introduction") {
+      output += `${key}: ${frontMatter[key]}\n`
+    }
   }
-  output +="---\n"
+  output +="---\n\n"
+  if (frontMatter["introduction"]) {
+    output +=frontMatter["introduction"]+"\n\n";
+  }
   return output
 }
 
@@ -47,6 +52,15 @@ const fileWriteInfo = {}
 // so it is ignored by automaticFileHandling
 const customisedStructure = {}
 
+// frontMatter[fileName] = object of front matter
+const frontMatter = {}
+
+function setFrontMatter(fileName,key,value) {
+  frontMatter[fileName] = frontMatter[fileName] || {layout: "page"}
+  frontMatter[fileName][key] = value
+}
+toExport.setFrontMatter = setFrontMatter
+
 
 function markFileCustomised(fileName) {
     customisedStructure[fileName] = true
@@ -67,17 +81,17 @@ function makeEntry(entryData,aboveName,defaultFileName) {
   if (entryData.extends.type === "function") {
     if (!entryData.extends.args[0]) {
       // function with no arguments
-      result += "```lua\n"+entryData.extends.view+"\n```\n";
+      result += "```\n"+entryData.extends.view+"\n```\n";
     } else if (entryData.extends.args[0].type === "self") {
       // method
       let baseView = entryData.extends.view;
       baseView = baseView.replace(aboveName+"."+entryData.name, 
         aboveName+":"+entryData.name);
       baseView = baseView.replace(/self:.*?,\ /g,"");
-      result +="```lua\n"+baseView+"\n```\n";
+      result +="```\n"+baseView+"\n```\n";
     } else {
       // standard function
-      result += "```lua\n"+entryData.extends.view+"\n```\n";
+      result += "```\n"+entryData.extends.view+"\n```\n";
     }
   } else {
     result += "```\n"+aboveName+"."+entryData.name+" --> "+entryData.extends.view+"\n```\n";
@@ -120,6 +134,16 @@ function addReference(entryName,referenceString) {
 }
 toExport.addReference = addReference
 
+function excludeFromLeftovers(entryNameOrArray) {
+  if (!Array.isArray(entryNameOrArray)) {
+    entryNameOrArray = [entryNameOrArray];
+  }
+  for (const entryName of entryNameOrArray) {
+    entries[entryName].excludeFromLeftovers = true;
+  }
+}
+toExport.excludeFromLeftovers = excludeFromLeftovers
+
 function makeCustomFile(fileName,title,introduction) {
     let startText = `# ${title}\n\n`;
     startText += introduction+"\n\n";
@@ -131,13 +155,21 @@ function getLeftoverEntries(fileName) {
   const leftoverList = [];
   for (const name in entries) {
     const entry = entries[name];
-    if (entry.defaultFile === fileName && !writtenEntries[name]) {
+    if (entry.defaultFile === fileName && !writtenEntries[name] 
+      && !entry.excludeFromLeftovers) {
       leftoverList.push(name)
     }
   }
   leftoverList.sort()
   return leftoverList
 }
+
+function markAsAlternateName(entryName,prefix,name,arrayToAddToList) {
+  const entry = entries[entryName]
+  entry.supplementalEntry = `Alternate name for [${prefix}.${name}](#${name.toLowerCase()}).`
+  arrayToAddToList.push(entryName)
+}
+toExport.markAsAlternateName = markAsAlternateName
 
 function getEntries(defaultFileName) {
     const entryList = [];
@@ -165,12 +197,12 @@ function writeEntry(entryName,fileName) {
     console.log("There is no entry for "+entryName)
   }
   if (entry.replacementEntry !== "") {
-    result += entry.replacementEntry;
+    result += entry.replacementEntry+"\n\n";
   } else {
-    result += entry.mainEntry;
+    result += entry.mainEntry+"\n\n";
   }
   if (entry.supplementalEntry !== "") {
-    result += "\n\n"+entry.supplementalEntry;
+    result += "\n\n"+entry.supplementalEntry+"\n\n";
   }
   if (entry.examples.length == 1) {
     result += "\n\n#### Example";
@@ -195,6 +227,13 @@ function writeEntry(entryName,fileName) {
     })
   }
   result = result.replace(/\|/g,"\\|")
+  let capturedCode = result.match(/```(.|\n)*```/g)
+  if (capturedCode) {
+    for (const codeSection of capturedCode) {
+      const betterCodeSection = codeSection.replace(/\\\|/g,"|")
+      result = result.replace(codeSection,betterCodeSection)
+    }
+  }
   return result
 }
 
@@ -342,7 +381,7 @@ function writeFiles() {
     }
     for (const fileName in fileWriteInfo) {
         try {
-          fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+fileName+".md",makeFrontMatter({layout: "page_toc22",tabTitle: fileName+".lua Documentation"})+fileWriteInfo[fileName]);
+          fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+fileName+".md",makeFrontMatter(frontMatter[fileName])+fileWriteInfo[fileName]);
           // file written successfully
         } catch (err) {
           console.error(err);
@@ -356,6 +395,10 @@ function automaticFileHandling(fileName) {
     if (customisedStructure[fileName]) {
         return;
     }
+    setFrontMatter(fileName,"title",fileName)
+    setFrontMatter(fileName,"tabTitle",fileName+".lua Documentation")
+    setFrontMatter(fileName,"minTOC","2")
+    setFrontMatter(fileName,"maxTOC", "3")
     writeSection("","","leftovers",fileName)
 }
 

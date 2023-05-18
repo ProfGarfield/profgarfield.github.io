@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,8 +19,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -28,11 +30,13 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">customCosmic</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#transport23"><code class="language-plaintext highlighter-rouge">transport23</code></a></li></ul></div>  
+    <ul><li><a href="#changeephemeralforcity">changeEphemeralForCity</a></li><li><a href="#changeephemeralfortribe">changeEphemeralForTribe</a></li><li><a href="#changeephemeralforunit">changeEphemeralForUnit</a></li><li><a href="#computemovementallowance">computeMovementAllowance</a></li><li><a href="#defaultmovementmultipliers">defaultMovementMultipliers</a></li><li><a href="#enablecustomcosmic">enableCustomCosmic</a></li><li><a href="#enableephemeralmaptransportsettings">enableEphemeralMapTransportSettings</a></li><li><a href="#fullhealthmovementallowance">fullHealthMovementAllowance</a></li><li><a href="#getcitycustomisation">getCityCustomisation</a></li><li><a href="#getcustomisedterraininfo">getCustomisedTerrainInfo</a></li><li><a href="#getemptyunittypecustomisation">getEmptyUnitTypeCustomisation</a></li><li><a href="#getfreesupport">getFreeSupport</a></li><li><a href="#getmovementmultipliers">getMovementMultipliers</a></li><li><a href="#gettribecustomisation">getTribeCustomisation</a></li><li><a href="#gettribeupkeep">getTribeUpkeep</a></li><li><a href="#getunittypecustomisation">getUnitTypeCustomisation</a></li><li><a href="#isenabled">isEnabled</a></li><li><a href="#isimpassablefor">isImpassableFor</a></li><li><a href="#isunittypecustomisation">isUnitTypeCustomisation</a></li><li><a href="#makecitycustomisation">makeCityCustomisation</a></li><li><a href="#maketribecustomisation">makeTribeCustomisation</a></li><li><a href="#makeunittypecustomisation">makeUnitTypeCustomisation</a></li><li><a href="#registercitycustomisation">registerCityCustomisation</a></li><li><a href="#registergetcitycustomisation">registerGetCityCustomisation</a></li><li><a href="#registergettribecustomisation">registerGetTribeCustomisation</a></li><li><a href="#registergetunittypecustomisation">registerGetUnitTypeCustomisation</a></li><li><a href="#registertribecustomisation">registerTribeCustomisation</a></li><li><a href="#registerunittypecustomisation">registerUnitTypeCustomisation</a></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="customcosmic">
   
@@ -52,7 +56,7 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForCity</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForCity(city: any)
 </code></pre></div></div>
 <h3 id="changeephemeralfortribe">
   
@@ -62,7 +66,7 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForTribe</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForTribe(tribe: any)
 </code></pre></div></div>
 <h3 id="changeephemeralforunit">
   
@@ -72,7 +76,7 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForUnit(unit: unitObject)
 </code></pre></div></div>
 <p>Changes the ephemeral rules so that the unit customisations
 will work</p>
@@ -84,8 +88,8 @@ will work</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">computeMovementAllowance</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.computeMovementAllowance(unit: unitObject, customisation?: table)
+  -&gt; integer
 </code></pre></div></div>
 <p>Computes the value that <code class="language-plaintext highlighter-rouge">unit.type.move</code> should have so that <code class="language-plaintext highlighter-rouge">unit</code> satisfies
 all its customisations.</p>
@@ -109,7 +113,7 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">enableCustomCosmic</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.enableCustomCosmic()
 </code></pre></div></div>
 <h3 id="enableephemeralmaptransportsettings">
   
@@ -119,7 +123,7 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">enableEphemeralMapTransportSettings</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.enableEphemeralMapTransportSettings()
 </code></pre></div></div>
 <p>Enables the nativeTransport, buildTransport, useTransport fields
  to be altered by the customCosmic module.  Usually, these
@@ -134,8 +138,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">fullHealthMovementAllowance</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.fullHealthMovementAllowance(unit: unitObject, customisation?: table)
+  -&gt; integer
 </code></pre></div></div>
 <p>Computes the movement allowance for the unit if it is at full health.</p>
 
@@ -148,8 +152,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getCityCustomisation</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getCityCustomisation(city: cityObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the cityCustomisation for <code class="language-plaintext highlighter-rouge">city</code></p>
 <h3 id="getcustomisedterraininfo">
@@ -160,10 +164,10 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getCustomisedTerrainInfo</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
-  <span class="mi">2</span><span class="p">.</span> <span class="n">table</span>
-  <span class="mi">3</span><span class="p">.</span> <span class="n">table</span><span class="o">&lt;</span><span class="n">integer</span><span class="err">\|</span><span class="n">mapObject</span><span class="p">,</span> <span class="n">bitmask</span><span class="o">&gt;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getCustomisedTerrainInfo(tile: any, city: any)
+  -&gt; table
+  2. table
+  3. table&lt;integer|mapObject, bitmask&gt;
 </code></pre></div></div>
 <h3 id="getemptyunittypecustomisation">
   
@@ -173,8 +177,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getEmptyUnitTypeCustomisation</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getEmptyUnitTypeCustomisation()
+  -&gt; table
 </code></pre></div></div>
 <p>Returns an ‘empty’ unitTypeCustomisation, with priority set to -1</p>
 <h3 id="getfreesupport">
@@ -185,8 +189,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getFreeSupport</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getFreeSupport(tribe: any)
+  -&gt; table
 </code></pre></div></div>
 <h3 id="getmovementmultipliers">
   
@@ -196,8 +200,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getMovementMultipliers</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">alpine</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">road</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">railroad</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">river</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getMovementMultipliers(unit: unitObject, customisation?: table)
+  -&gt; { alpine: integer, road: integer, railroad: integer, river: integer, aggregate: integer }
 </code></pre></div></div>
 <p>Returns the movementMultipliers for <code class="language-plaintext highlighter-rouge">unit</code> in a table.</p>
 <h3 id="gettribecustomisation">
@@ -208,8 +212,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getTribeCustomisation</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getTribeCustomisation(tribe: tribeObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the tribeCustomisation for <code class="language-plaintext highlighter-rouge">tribe</code></p>
 <h3 id="gettribeupkeep">
@@ -220,8 +224,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getTribeUpkeep</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">recalculate</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getTribeUpkeep(tribe: tribeObject, recalculate?: boolean)
+  -&gt; integer
 </code></pre></div></div>
 <p>Returns the total improvement maintenance cost a tribe must pay each turn.
 If <code class="language-plaintext highlighter-rouge">recalculate</code> is false or absent, the value is from the most recent
@@ -235,8 +239,8 @@ are calculated to get the current version of upkeep.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getUnitTypeCustomisation</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getUnitTypeCustomisation(unit: unitObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the unitTypeCustomisation for <code class="language-plaintext highlighter-rouge">unit</code>.</p>
 <h3 id="isenabled">
@@ -247,8 +251,8 @@ are calculated to get the current version of upkeep.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">isEnabled</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.isEnabled()
+  -&gt; boolean
 </code></pre></div></div>
 <p>Returns true if the customCosmic module has been enabled 
 using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCustomCosmic()</code>, and false otherwise.</p>
@@ -260,8 +264,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">isImpassableFor</span><span class="p">(</span><span class="n">baseTerrain</span><span class="p">:</span> <span class="n">baseTerrainObject</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="err">\|</span><span class="kc">nil</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.isImpassableFor(baseTerrain: baseTerrainObject, unit: unitObject, customisation: table|nil)
+  -&gt; boolean
 </code></pre></div></div>
 <p>Determines if a base terrain type is impassable for the specified unit.</p>
 
@@ -284,8 +288,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeCityCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeCityCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="maketribecustomisation">
   
@@ -295,8 +299,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeTribeCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeTribeCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="makeunittypecustomisation">
   
@@ -306,8 +310,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeUnitTypeCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeUnitTypeCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="registercitycustomisation">
   
@@ -317,7 +321,7 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerCityCustomisation</span><span class="p">(</span><span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerCityCustomisation(customisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for cities.<br />
 Keys and descriptions for city customisation tables:</p>
@@ -638,7 +642,7 @@ change them.
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetCityCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetCityCustomisation(fun: fun(city: cityObject):table)
 </code></pre></div></div>
 <p>Allows the scenario designer to register a function(city)–&gt;cityCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerCityCustomisation</code> system.
@@ -652,7 +656,7 @@ city under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetTribeCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetTribeCustomisation(fun: fun(tribe: tribeObject):table)
 </code></pre></div></div>
 <p>Allows the scenario designer to register a function(tribe)–&gt;tribeCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerTribeCustomisation</code> system.
@@ -666,7 +670,7 @@ tribe under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetUnitTypeCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetUnitTypeCustomisation(fun: fun(unit: unitObject):table)
 </code></pre></div></div>
 <p>Allows a scenario designer to register a function(unit)–&gt;unitTypeCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerUnitTypeCustomisation</code> system.
@@ -680,7 +684,7 @@ under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerTribeCustomisation</span><span class="p">(</span><span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerTribeCustomisation(customisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for tribes.<br />
 Keys and descriptions for tribe customisation tables:</p>
@@ -889,7 +893,7 @@ characteristics of the item.
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerUnitTypeCustomisation</span><span class="p">(</span><span class="n">unitTypeOrTrait</span><span class="p">:</span> <span class="n">string</span><span class="err">\|</span><span class="n">table</span><span class="o">&lt;</span><span class="n">any</span><span class="p">,</span> <span class="n">string</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="o">&gt;</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="p">,</span> <span class="n">unitTypeCustomisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerUnitTypeCustomisation(unitTypeOrTrait: string|table&lt;any, string|unitTypeObject&gt;|unitTypeObject, unitTypeCustomisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for a unitType, a trait for unitTypes, or a table of unitTypes and traits for unitTypes.<br />
 Keys and descriptions for unitType customisation tables:
@@ -1165,7 +1169,7 @@ Keys and descriptions for unitType customisation tables:
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForCity</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForCity(city: any)
 </code></pre></div></div>
 <h3 id="changeephemeralfortribe">
   
@@ -1175,7 +1179,7 @@ Keys and descriptions for unitType customisation tables:
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForTribe</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForTribe(tribe: any)
 </code></pre></div></div>
 <h3 id="changeephemeralforunit">
   
@@ -1185,7 +1189,7 @@ Keys and descriptions for unitType customisation tables:
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">changeEphemeralForUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.changeEphemeralForUnit(unit: unitObject)
 </code></pre></div></div>
 <p>Changes the ephemeral rules so that the unit customisations
 will work</p>
@@ -1197,8 +1201,8 @@ will work</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">computeMovementAllowance</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.computeMovementAllowance(unit: unitObject, customisation?: table)
+  -&gt; integer
 </code></pre></div></div>
 <p>Computes the value that <code class="language-plaintext highlighter-rouge">unit.type.move</code> should have so that <code class="language-plaintext highlighter-rouge">unit</code> satisfies
 all its customisations.</p>
@@ -1222,7 +1226,7 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">enableCustomCosmic</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.enableCustomCosmic()
 </code></pre></div></div>
 <h3 id="enableephemeralmaptransportsettings">
   
@@ -1232,7 +1236,7 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">enableEphemeralMapTransportSettings</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.enableEphemeralMapTransportSettings()
 </code></pre></div></div>
 <p>Enables the nativeTransport, buildTransport, useTransport fields
  to be altered by the customCosmic module.  Usually, these
@@ -1247,8 +1251,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">fullHealthMovementAllowance</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.fullHealthMovementAllowance(unit: unitObject, customisation?: table)
+  -&gt; integer
 </code></pre></div></div>
 <p>Computes the movement allowance for the unit if it is at full health.</p>
 
@@ -1261,8 +1265,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getCityCustomisation</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getCityCustomisation(city: cityObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the cityCustomisation for <code class="language-plaintext highlighter-rouge">city</code></p>
 <h3 id="getcustomisedterraininfo">
@@ -1273,10 +1277,10 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getCustomisedTerrainInfo</span><span class="p">(</span><span class="n">tile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
-  <span class="mi">2</span><span class="p">.</span> <span class="n">table</span>
-  <span class="mi">3</span><span class="p">.</span> <span class="n">table</span><span class="o">&lt;</span><span class="n">integer</span><span class="err">\|</span><span class="n">mapObject</span><span class="p">,</span> <span class="n">bitmask</span><span class="o">&gt;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getCustomisedTerrainInfo(tile: any, city: any)
+  -&gt; table
+  2. table
+  3. table&lt;integer|mapObject, bitmask&gt;
 </code></pre></div></div>
 <h3 id="getemptyunittypecustomisation">
   
@@ -1286,8 +1290,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getEmptyUnitTypeCustomisation</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getEmptyUnitTypeCustomisation()
+  -&gt; table
 </code></pre></div></div>
 <p>Returns an ‘empty’ unitTypeCustomisation, with priority set to -1</p>
 <h3 id="getfreesupport">
@@ -1298,8 +1302,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getFreeSupport</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getFreeSupport(tribe: any)
+  -&gt; table
 </code></pre></div></div>
 <h3 id="getmovementmultipliers">
   
@@ -1309,8 +1313,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getMovementMultipliers</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="err">?</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">alpine</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">road</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">railroad</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">river</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getMovementMultipliers(unit: unitObject, customisation?: table)
+  -&gt; { alpine: integer, road: integer, railroad: integer, river: integer, aggregate: integer }
 </code></pre></div></div>
 <p>Returns the movementMultipliers for <code class="language-plaintext highlighter-rouge">unit</code> in a table.</p>
 <h3 id="gettribecustomisation">
@@ -1321,8 +1325,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getTribeCustomisation</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getTribeCustomisation(tribe: tribeObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the tribeCustomisation for <code class="language-plaintext highlighter-rouge">tribe</code></p>
 <h3 id="gettribeupkeep">
@@ -1333,8 +1337,8 @@ all its customisations.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getTribeUpkeep</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">recalculate</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getTribeUpkeep(tribe: tribeObject, recalculate?: boolean)
+  -&gt; integer
 </code></pre></div></div>
 <p>Returns the total improvement maintenance cost a tribe must pay each turn.
 If <code class="language-plaintext highlighter-rouge">recalculate</code> is false or absent, the value is from the most recent
@@ -1348,8 +1352,8 @@ are calculated to get the current version of upkeep.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">getUnitTypeCustomisation</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">table</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.getUnitTypeCustomisation(unit: unitObject)
+  -&gt; table
 </code></pre></div></div>
 <p>Returns the unitTypeCustomisation for <code class="language-plaintext highlighter-rouge">unit</code>.</p>
 <h3 id="isenabled">
@@ -1360,8 +1364,8 @@ are calculated to get the current version of upkeep.</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">isEnabled</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.isEnabled()
+  -&gt; boolean
 </code></pre></div></div>
 <p>Returns true if the customCosmic module has been enabled 
 using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCustomCosmic()</code>, and false otherwise.</p>
@@ -1373,8 +1377,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">isImpassableFor</span><span class="p">(</span><span class="n">baseTerrain</span><span class="p">:</span> <span class="n">baseTerrainObject</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="err">\|</span><span class="kc">nil</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.isImpassableFor(baseTerrain: baseTerrainObject, unit: unitObject, customisation: table|nil)
+  -&gt; boolean
 </code></pre></div></div>
 <p>Determines if a base terrain type is impassable for the specified unit.</p>
 
@@ -1397,8 +1401,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeCityCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeCityCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="maketribecustomisation">
   
@@ -1408,8 +1412,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeTribeCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeTribeCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="makeunittypecustomisation">
   
@@ -1419,8 +1423,8 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">makeUnitTypeCustomisation</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.makeUnitTypeCustomisation(table: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="registercitycustomisation">
   
@@ -1430,7 +1434,7 @@ using <code class="language-plaintext highlighter-rouge">cusomCosmic.enableCusto
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerCityCustomisation</span><span class="p">(</span><span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerCityCustomisation(customisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for cities.<br />
 Keys and descriptions for city customisation tables:</p>
@@ -1751,7 +1755,7 @@ change them.
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetCityCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetCityCustomisation(fun: fun(city: cityObject):table)
 </code></pre></div></div>
 <p>Allows the scenario designer to register a function(city)–&gt;cityCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerCityCustomisation</code> system.
@@ -1765,7 +1769,7 @@ city under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetTribeCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetTribeCustomisation(fun: fun(tribe: tribeObject):table)
 </code></pre></div></div>
 <p>Allows the scenario designer to register a function(tribe)–&gt;tribeCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerTribeCustomisation</code> system.
@@ -1779,7 +1783,7 @@ tribe under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerGetUnitTypeCustomisation</span><span class="p">(</span><span class="n">fun</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">):</span><span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerGetUnitTypeCustomisation(fun: fun(unit: unitObject):table)
 </code></pre></div></div>
 <p>Allows a scenario designer to register a function(unit)–&gt;unitTypeCustomisation
 to be used instead of the <code class="language-plaintext highlighter-rouge">customCosmic.registerUnitTypeCustomisation</code> system.
@@ -1793,7 +1797,7 @@ under all circumstances</p>
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerTribeCustomisation</span><span class="p">(</span><span class="n">customisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerTribeCustomisation(customisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for tribes.<br />
 Keys and descriptions for tribe customisation tables:</p>
@@ -2002,7 +2006,7 @@ characteristics of the item.
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">customCosmic</span><span class="p">.</span><span class="nf">registerUnitTypeCustomisation</span><span class="p">(</span><span class="n">unitTypeOrTrait</span><span class="p">:</span> <span class="n">string</span><span class="err">\|</span><span class="n">table</span><span class="o">&lt;</span><span class="n">any</span><span class="p">,</span> <span class="n">string</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="o">&gt;</span><span class="err">\|</span><span class="n">unitTypeObject</span><span class="p">,</span> <span class="n">unitTypeCustomisation</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function customCosmic.registerUnitTypeCustomisation(unitTypeOrTrait: string|table&lt;any, string|unitTypeObject&gt;|unitTypeObject, unitTypeCustomisation: table)
 </code></pre></div></div>
 <p>Registers a customisation for a unitType, a trait for unitTypes, or a table of unitTypes and traits for unitTypes.<br />
 Keys and descriptions for unitType customisation tables:

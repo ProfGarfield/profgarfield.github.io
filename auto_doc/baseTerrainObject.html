@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,8 +19,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -28,11 +30,13 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">baseTerrainObject</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    </div>  
+    <ul><li><a href="#abbrev">abbrev</a></li><li><a href="#canirrigate">canIrrigate</a></li><li><a href="#canmine">canMine</a></li><li><a href="#defense">defense</a></li><li><a href="#getterrain">getTerrain</a></li><li><a href="#impassable">impassable</a></li><li><a href="#irrigateai">irrigateAI</a></li><li><a href="#irrigatebonus">irrigateBonus</a></li><li><a href="#irrigateto">irrigateTo</a></li><li><a href="#irrigateturns">irrigateTurns</a></li><li><a href="#map">map</a></li><li><a href="#mineai">mineAI</a></li><li><a href="#minebonus">mineBonus</a></li><li><a href="#mineto">mineTo</a></li><li><a href="#mineturns">mineTurns</a></li><li><a href="#movecost">moveCost</a></li><li><a href="#name">name</a></li><li><a href="#transformto">transformTo</a></li><li><a href="#type">type</a></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="baseterrainobject">
   
@@ -97,15 +101,15 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">baseTerrainObject</span><span class="p">:</span><span class="n">getTerrain</span><span class="p">(</span><span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) baseTerrainObject:getTerrain(resource: 0|1|2)
+  -&gt; terrain: terrainObject
 </code></pre></div></div>
 <p>Returns the terrain object corresponding to the underlying terrain type and the given resource.</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span><span class="p">:</span>
-    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
-    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
-    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
+    <span class="err">|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
+    <span class="err">|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
+    <span class="err">|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
 </code></pre></div></div>
 <h3 id="impassable">
   
@@ -148,7 +152,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the irrigation order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="irrigateturns">
@@ -203,7 +207,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the mine order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="mineturns">
@@ -247,7 +251,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the underlying terrain type can be transformed return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="type">
@@ -329,15 +333,15 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">baseTerrainObject</span><span class="p">:</span><span class="n">getTerrain</span><span class="p">(</span><span class="n">resource</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">terrain</span><span class="p">:</span> <span class="n">terrainObject</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) baseTerrainObject:getTerrain(resource: 0|1|2)
+  -&gt; terrain: terrainObject
 </code></pre></div></div>
 <p>Returns the terrain object corresponding to the underlying terrain type and the given resource.</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span><span class="p">:</span>
-    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
-    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
-    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
+    <span class="err">|</span> <span class="mi">0</span> <span class="c1">-- no resource</span>
+    <span class="err">|</span> <span class="mi">1</span> <span class="c1">-- fish resource</span>
+    <span class="err">|</span> <span class="mi">2</span> <span class="c1">-- whales resource</span>
 </code></pre></div></div>
 <h3 id="impassable">
   
@@ -380,7 +384,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.irrigateTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the irrigation order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="irrigateturns">
@@ -435,7 +439,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.mineTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the mine order changes the underlying terrain type return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="mineturns">
@@ -479,7 +483,7 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseTerrainObject.transformTo --&gt; baseTerrainObject|nil
 </code></pre></div></div>
 <p>(get/set - ephemeral) If the underlying terrain type can be transformed return the baseTerrain of the new terrain type, <code class="language-plaintext highlighter-rouge">nil</code> otherwise.</p>
 <h3 id="type">

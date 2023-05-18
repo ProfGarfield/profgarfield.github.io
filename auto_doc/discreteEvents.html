@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,8 +19,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -28,11 +30,13 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">discreteEvents</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    </div>  
+    <ul><li><a href="#getversion">getVersion</a></li><li><a href="#linkstatetomodules">linkStateToModules</a></li><li><a href="#minversion">minVersion</a></li><li><a href="#onactivateunit">onActivateUnit</a></li><li><a href="#onbeforeproduction">onBeforeProduction</a></li><li><a href="#onbribeunit">onBribeUnit</a></li><li><a href="#oncanfoundcity">onCanFoundCity</a></li><li><a href="#oncentauriarrival">onCentauriArrival</a></li><li><a href="#onchooseseason">onChooseSeason</a></li><li><a href="#oncitydestroyed">onCityDestroyed</a></li><li><a href="#oncityfounded">onCityFounded</a></li><li><a href="#oncityprocessed">onCityProcessed</a></li><li><a href="#oncityprocessingcomplete">onCityProcessingComplete</a></li><li><a href="#oncityproduction">onCityProduction</a></li><li><a href="#oncitytaken">onCityTaken</a></li><li><a href="#onentertile">onEnterTile</a></li><li><a href="#onentertilepriority">onEnterTilePriority</a></li><li><a href="#onfinalordergiven">onFinalOrderGiven</a></li><li><a href="#ongameends">onGameEnds</a></li><li><a href="#onkeypress">onKeyPress</a></li><li><a href="#onnegotiation">onNegotiation</a></li><li><a href="#onsave">onSave</a></li><li><a href="#onscenarioloaded">onScenarioLoaded</a></li><li><a href="#onschism">onSchism</a></li><li><a href="#ontribeturnbegin">onTribeTurnBegin</a></li><li><a href="#ontribeturnend">onTribeTurnEnd</a></li><li><a href="#onturn">onTurn</a></li><li><a href="#onunitdefeated">onUnitDefeated</a></li><li><a href="#onunitdeleted">onUnitDeleted</a></li><li><a href="#onunitkilled">onUnitKilled</a></li><li><a href="#performlinkstatetomodules">performLinkStateToModules</a></li><li><a href="#performonactivateunit">performOnActivateUnit</a></li><li><a href="#performonafterproduction">performOnAfterProduction</a></li><li><a href="#performonbeforeproduction">performOnBeforeProduction</a></li><li><a href="#performonbribeunit">performOnBribeUnit</a></li><li><a href="#performoncanfoundcity">performOnCanFoundCity</a></li><li><a href="#performoncentauriarrival">performOnCentauriArrival</a></li><li><a href="#performonchooseseason">performOnChooseSeason</a></li><li><a href="#performoncitydestroyed">performOnCityDestroyed</a></li><li><a href="#performoncityfounded">performOnCityFounded</a></li><li><a href="#performoncityprocessed">performOnCityProcessed</a></li><li><a href="#performoncityprocessingcomplete">performOnCityProcessingComplete</a></li><li><a href="#performoncityproduction">performOnCityProduction</a></li><li><a href="#performoncitytaken">performOnCityTaken</a></li><li><a href="#performonentertile">performOnEnterTile</a></li><li><a href="#performonentertilepriority">performOnEnterTilePriority</a></li><li><a href="#performonfinalordergiven">performOnFinalOrderGiven</a></li><li><a href="#performongameends">performOnGameEnds</a></li><li><a href="#performonkeypress">performOnKeyPress</a></li><li><a href="#performonnegotiation">performOnNegotiation</a></li><li><a href="#performonsave">performOnSave</a></li><li><a href="#performonscenarioloaded">performOnScenarioLoaded</a></li><li><a href="#performonschism">performOnSchism</a></li><li><a href="#performontribeturnbegin">performOnTribeTurnBegin</a></li><li><a href="#performontribeturnend">performOnTribeTurnEnd</a></li><li><a href="#performonturn">performOnTurn</a></li><li><a href="#performonunitdefeated">performOnUnitDefeated</a></li><li><a href="#performonunitdeleted">performOnUnitDeleted</a></li><li><a href="#performonunitkilled">performOnUnitKilled</a></li><li><a href="#recommendedversion">recommendedVersion</a></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="discreteevents">
   
@@ -70,7 +74,7 @@ discrete event, or use either <code class="language-plaintext highlighter-rouge"
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">linkStateToModules</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">stateTable</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">stateTableKeys</span><span class="p">:</span> <span class="n">table</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kc">true</span><span class="o">&gt;</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.linkStateToModules(code: fun(stateTable: table, stateTableKeys: table&lt;string, true&gt;))
 </code></pre></div></div>
 <p>Registers a function that will be called during civ.scen.onLoad, with which you can link state tables from inside individual modules.  <code class="language-plaintext highlighter-rouge">stateTable</code> is the table which is added to the saved game, <code class="language-plaintext highlighter-rouge">stateTableKeys</code> is a record of keys already used in the stateTable, and by adding keys, you can avoid accidental collision. Example:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">delayedActionState</span> <span class="o">=</span> <span class="s2">"state not linked"</span>
@@ -115,7 +119,7 @@ discrete event, or use either <code class="language-plaintext highlighter-rouge"
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onActivateUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">repeatMove</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onActivateUnit(code: fun(unit: unitObject, source: boolean, repeatMove: boolean))
 </code></pre></div></div>
 <p>Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. <code class="language-plaintext highlighter-rouge">source</code> is <code class="language-plaintext highlighter-rouge">true</code> if activated by keyboard or mouse click, <code class="language-plaintext highlighter-rouge">false</code> if activated by the game itself. <code class="language-plaintext highlighter-rouge">repeatMove</code> is <code class="language-plaintext highlighter-rouge">true</code> if it’s a repeat activation caused by moving (see civ.scen.compatibility), <code class="language-plaintext highlighter-rouge">false</code> otherwise.
 As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
@@ -127,7 +131,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onBeforeProduction</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onBeforeProduction(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Use discreteEvents.onTribeTurnBegin instead</p>
 <h3 id="onbribeunit">
@@ -138,7 +142,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onBribeUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousOwner</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onBribeUnit(code: fun(unit: unitObject, previousOwner: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a unit is bribed successfully. unit.owner is the new owner at this point, <code class="language-plaintext highlighter-rouge">previousOwner</code> the old owner.
 As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
@@ -150,7 +154,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCanFoundCity</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">advancedTribe</span><span class="p">:</span> <span class="n">boolean</span><span class="p">):</span><span class="n">boolean</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCanFoundCity(code: fun(unit: unitObject, advancedTribe: boolean):boolean)
 </code></pre></div></div>
 <p>Registers a function that is called to determine if <code class="language-plaintext highlighter-rouge">unit</code> can found a city at the unit’s location. <code class="language-plaintext highlighter-rouge">advancedTribe</code> is <code class="language-plaintext highlighter-rouge">true</code> when picking up a hut with <code class="language-plaintext highlighter-rouge">unit</code> triggers an advanced tribe. Return <code class="language-plaintext highlighter-rouge">true</code> to allow, <code class="language-plaintext highlighter-rouge">false</code> to disallow.</p>
 
@@ -164,7 +168,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCentauriArrival</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCentauriArrival(code: fun(tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a tribe’s spaceship reaches its target. Just registering this function causes the game to not end at this point (“endgame override”).</p>
 
@@ -177,7 +181,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onChooseSeason</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onChooseSeason(code: fun())
 </code></pre></div></div>
 <p>Registers code to be executed during civ.scen.onTurn and civ.scen.onScenarioLoaded.  This way, the correct “season” can be chosen when the scenario is loaded, and can be updated for each new turn.</p>
 
@@ -190,7 +194,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityDestroyed</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityDestroyed(code: fun(city: cityObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city is destroyed.</p>
 
@@ -203,7 +207,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityFounded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span><span class="err">\|</span><span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">):</span><span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityFounded(code: fun(city: cityObject)|fun(city: cityObject):fun())
 </code></pre></div></div>
 <p>Registers a function to be called every time a city is founded. The callback takes the city as a parameter, and can optionally return a function (since 0.18) that is called to perform cleanup when the user cancels founding the city.</p>
 
@@ -216,7 +220,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProcessed</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProcessed(code: fun(city: cityObject))
 </code></pre></div></div>
 <p>Registers a function that is called immediately before each city is processed (which happens at the start of a tribe’s turn).  (This is achieved through use of civ.scen.onCalculateCityYield.)</p>
 
@@ -229,7 +233,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProcessingComplete</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProcessingComplete(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a tribe’s cities have been processed for that turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -242,7 +246,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProduction</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">prod</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProduction(code: fun(city: cityObject, prod: improvementObject|unitObject|wonderObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city completes its production order. The produced item <code class="language-plaintext highlighter-rouge">prod</code> is either a unit, improvement or wonder (this can be checked with the civ.is* functions).</p>
 
@@ -255,7 +259,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityTaken</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityTaken(code: fun(city: cityObject, defender: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city is captured. <code class="language-plaintext highlighter-rouge">city</code> is the city changing hands, at this point city.owner is the new owner already. <code class="language-plaintext highlighter-rouge">defender</code> is the old owner.</p>
 
@@ -268,7 +272,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onEnterTile</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
 </code></pre></div></div>
 <p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).</p>
 
@@ -281,7 +285,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onEnterTilePriority</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
 </code></pre></div></div>
 <p>Registers an onEnterTile event before all other onEnterTile events.  It is used for “transport” events, so that units can “drag” other units into the tile before the regular onEnterTile event.</p>
 <h3 id="onfinalordergiven">
@@ -292,7 +296,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onFinalOrderGiven</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onFinalOrderGiven(code: fun(unit: unitObject))
 </code></pre></div></div>
 <p>Registers code to be executed when a unit has been given its last order for the turn.  That is, when a new unit is active, and the previous unit has spent all its movement points (or, at the end of the turn)</p>
 <h3 id="ongameends">
@@ -303,7 +307,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span> <span class="n">gameEndReasons</span><span class="p">):(</span><span class="n">gameIsOver</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onGameEnds(code: fun(reason: gameEndReasons):(gameIsOver: boolean))
 </code></pre></div></div>
 <p><br />Registers a function that is called when the game ends. <code class="language-plaintext highlighter-rouge">reason</code> is an integer between 1 and 6:
 <br />1 and 2 - Space race victory. This does not trigger if <code class="language-plaintext highlighter-rouge">onCentauriArrival</code> has a callback registered. 1 means victory by active player.
@@ -323,7 +327,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onKeyPress</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="k">function</span><span class="err">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onKeyPress(code: function)
 </code></pre></div></div>
 <p>Registers a function to be called every time a key is pressed.</p>
 
@@ -338,7 +342,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">talker</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">canTalk</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onNegotiation(code: fun(talker: tribeObject, listener: tribeObject):(canTalk: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called when two tribes attempt negotiations. <code class="language-plaintext highlighter-rouge">talker</code> is the tribe initiating the contact, <code class="language-plaintext highlighter-rouge">listener</code> the receiver. Return <code class="language-plaintext highlighter-rouge">true</code> to allow the negotiations to commence, <code class="language-plaintext highlighter-rouge">false</code> to deny.</p>
 
@@ -352,7 +356,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onSave</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onSave(code: fun())
 </code></pre></div></div>
 <p>Registers a function that is called when the game is saved.</p>
 
@@ -365,7 +369,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onScenarioLoaded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onScenarioLoaded(code: fun())
 </code></pre></div></div>
 <p>Registers a function that is called when the scenario is loaded.  (This is whenever a game is loaded, not just when the scenario is started.)</p>
 
@@ -378,7 +382,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onSchism</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">allowSchism</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onSchism(code: fun(tribe: tribeObject):(allowSchism: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called when a schism is triggered. This happens when the capital of a AI-controlled tribe with more than four cities is captured, and, if the attacker is human-controlled, it is ranked lower in power than the defender. If the attacker is AI-controlled the best human tribe must be ranked lower than the defender for the schism to trigger.
 If the schism is allowed, a new tribe will be created that takes over about half the cities of the old tribe. If no new tribe can be created, the schism does not occur.
@@ -394,7 +398,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTribeTurnBegin</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTribeTurnBegin(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called at the start of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -407,7 +411,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTribeTurnEnd(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called at the end of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -420,7 +424,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTurn</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTurn(code: fun(turn: integer))
 </code></pre></div></div>
 <p>Registers a function that is called at the start of a turn. The basic sequence of this and other “turn” triggers is as follows:
 <br /><code class="language-plaintext highlighter-rouge">onTurn</code> fires
@@ -443,7 +447,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitDefeated</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitDefeated(code: fun(loser: unitObject, winner: unitObject, aggressor: unitObject, victim: unitObject, loserLocation: tileObject, winnerVetStatus: boolean, loserVetStatus: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called whenever a unit is killed, either in standard Civ II combat or by events. <code class="language-plaintext highlighter-rouge">loser</code> is the unit that is killed, <code class="language-plaintext highlighter-rouge">winner</code> is the unit responsible for it.  <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit that initiated the attack, and <code class="language-plaintext highlighter-rouge">victim</code> is the unit that was attacked.  <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the unit that lost combat stood (if the loser is the aggressor, loser.location and aggressor.location return a tile off the map).  <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> and <code class="language-plaintext highlighter-rouge">loserVetStatus</code> are true if the corresponding unit was a veteran before combat took place.  (winner.veteran is checked after the unit is promoted)</p>
 
@@ -456,7 +460,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitDeleted</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">deletedUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">replacingUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="err">\|</span><span class="kc">nil</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitDeleted(code: fun(deletedUnit: unitObject, replacingUnit: unitObject|nil))
 </code></pre></div></div>
 <p>Registers a function that is called when a unit is deleted (either through combat death, or by some other even, but not if the unit is disbanded).  <code class="language-plaintext highlighter-rouge">deletedUnit</code> is the unit being deleted, while <code class="language-plaintext highlighter-rouge">replacing unit</code> is the unit replacing it (e.g. from promotion/demotion), or <em>nil</em> if there is no such unit.</p>
 
@@ -469,7 +473,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitKilled</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitKilled(code: fun(loser: unitObject, winner: unitObject, aggressor: unitObject, victim: unitObject, loserLocation: tileObject, winnerVetStatus: boolean, loserVetStatus: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called whenever a unit is killed in standard Civ II combat. <code class="language-plaintext highlighter-rouge">loser</code> is the unit that is killed, <code class="language-plaintext highlighter-rouge">winner</code> is the unit responsible for it.  <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit that initiated the attack, and <code class="language-plaintext highlighter-rouge">victim</code> is the unit that was attacked.  <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the unit that lost combat stood (if the loser is the aggressor, loser.location and aggressor.location return a tile off the map).  <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> and <code class="language-plaintext highlighter-rouge">loserVetStatus</code> are true if the corresponding unit was a veteran before combat took place.  (winner.veteran is checked after the unit is promoted)</p>
 
@@ -482,7 +486,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performLinkStateToModules</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">stateTableKeys</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performLinkStateToModules(state: any, stateTableKeys: any)
 </code></pre></div></div>
 <p>state is the state table (after the buffer has been extracted)
  stateTableKeys are keys for the state table that have
@@ -495,7 +499,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnActivateUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">rep</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnActivateUnit(unit: any, source: any, rep: any)
 </code></pre></div></div>
 <h3 id="performonafterproduction">
   
@@ -505,7 +509,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnAfterProduction</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnAfterProduction(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonbeforeproduction">
   
@@ -515,7 +519,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnBeforeProduction</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnBeforeProduction(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonbribeunit">
   
@@ -525,7 +529,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnBribeUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousOwner</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnBribeUnit(unit: any, previousOwner: any)
 </code></pre></div></div>
 <h3 id="performoncanfoundcity">
   
@@ -535,8 +539,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCanFoundCity</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCanFoundCity(unit: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performoncentauriarrival">
   
@@ -546,7 +550,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCentauriArrival</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCentauriArrival(tribe: any)
 </code></pre></div></div>
 <h3 id="performonchooseseason">
   
@@ -556,7 +560,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnChooseSeason</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnChooseSeason()
 </code></pre></div></div>
 <h3 id="performoncitydestroyed">
   
@@ -566,7 +570,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityDestroyed</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityDestroyed(city: any)
 </code></pre></div></div>
 <h3 id="performoncityfounded">
   
@@ -576,8 +580,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityFounded</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="k">function</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityFounded(city: any)
+  -&gt; function
 </code></pre></div></div>
 <h3 id="performoncityprocessed">
   
@@ -587,7 +591,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProcessed</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProcessed(city: any)
 </code></pre></div></div>
 <h3 id="performoncityprocessingcomplete">
   
@@ -597,7 +601,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProcessingComplete</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProcessingComplete(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performoncityproduction">
   
@@ -607,7 +611,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProduction</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProduction(city: any, item: any)
 </code></pre></div></div>
 <h3 id="performoncitytaken">
   
@@ -617,7 +621,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityTaken</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityTaken(city: any, defender: any)
 </code></pre></div></div>
 <h3 id="performonentertile">
   
@@ -627,7 +631,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnEnterTile</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTile(unit: any, previousTile: any, previousDomainSpec: any)
 </code></pre></div></div>
 <h3 id="performonentertilepriority">
   
@@ -637,7 +641,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnEnterTilePriority</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTilePriority(unit: any, previousTile: any, previousDomainSpec: any)
 </code></pre></div></div>
 <h3 id="performonfinalordergiven">
   
@@ -647,7 +651,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnFinalOrderGiven</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnFinalOrderGiven(unit: any)
 </code></pre></div></div>
 <h3 id="performongameends">
   
@@ -657,8 +661,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnGameEnds(reason: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonkeypress">
   
@@ -668,7 +672,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnKeyPress</span><span class="p">(</span><span class="n">keyId</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnKeyPress(keyId: any)
 </code></pre></div></div>
 <h3 id="performonnegotiation">
   
@@ -678,8 +682,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnNegotiation(talker: any, listener: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonsave">
   
@@ -689,7 +693,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnSave</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnSave()
 </code></pre></div></div>
 <h3 id="performonscenarioloaded">
   
@@ -699,7 +703,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnScenarioLoaded</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnScenarioLoaded()
 </code></pre></div></div>
 <h3 id="performonschism">
   
@@ -709,8 +713,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnSchism</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnSchism(tribe: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performontribeturnbegin">
   
@@ -720,7 +724,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTribeTurnBegin</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTribeTurnBegin(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performontribeturnend">
   
@@ -730,7 +734,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTribeTurnEnd(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonturn">
   
@@ -740,7 +744,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTurn</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTurn(turn: any)
 </code></pre></div></div>
 <h3 id="performonunitdefeated">
   
@@ -750,7 +754,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitDefeated</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitDefeated(loser: any, winner: any, aggressor: any, victim: any, loserLocation: any, winnerVetStatus: any, loserVetStatus: any)
 </code></pre></div></div>
 <h3 id="performonunitdeleted">
   
@@ -760,7 +764,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitDeleted</span><span class="p">(</span><span class="n">deletedUnit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">replacingUnit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitDeleted(deletedUnit: any, replacingUnit: any)
 </code></pre></div></div>
 <h3 id="performonunitkilled">
   
@@ -770,7 +774,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitKilled</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitKilled(loser: any, winner: any, aggressor: any, victim: any, loserLocation: any, winnerVetStatus: any, loserVetStatus: any)
 </code></pre></div></div>
 <h3 id="recommendedversion">
   
@@ -823,7 +827,7 @@ discrete event, or use either <code class="language-plaintext highlighter-rouge"
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">linkStateToModules</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">stateTable</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">stateTableKeys</span><span class="p">:</span> <span class="n">table</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kc">true</span><span class="o">&gt;</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.linkStateToModules(code: fun(stateTable: table, stateTableKeys: table&lt;string, true&gt;))
 </code></pre></div></div>
 <p>Registers a function that will be called during civ.scen.onLoad, with which you can link state tables from inside individual modules.  <code class="language-plaintext highlighter-rouge">stateTable</code> is the table which is added to the saved game, <code class="language-plaintext highlighter-rouge">stateTableKeys</code> is a record of keys already used in the stateTable, and by adding keys, you can avoid accidental collision. Example:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">delayedActionState</span> <span class="o">=</span> <span class="s2">"state not linked"</span>
@@ -868,7 +872,7 @@ discrete event, or use either <code class="language-plaintext highlighter-rouge"
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onActivateUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">repeatMove</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onActivateUnit(code: fun(unit: unitObject, source: boolean, repeatMove: boolean))
 </code></pre></div></div>
 <p>Registers a function to be called every time a unit is activated. The callback takes the unit activated as a parameter, and the source of unit activation. <code class="language-plaintext highlighter-rouge">source</code> is <code class="language-plaintext highlighter-rouge">true</code> if activated by keyboard or mouse click, <code class="language-plaintext highlighter-rouge">false</code> if activated by the game itself. <code class="language-plaintext highlighter-rouge">repeatMove</code> is <code class="language-plaintext highlighter-rouge">true</code> if it’s a repeat activation caused by moving (see civ.scen.compatibility), <code class="language-plaintext highlighter-rouge">false</code> otherwise.
 As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
@@ -880,7 +884,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onBeforeProduction</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onBeforeProduction(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Use discreteEvents.onTribeTurnBegin instead</p>
 <h3 id="onbribeunit">
@@ -891,7 +895,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onBribeUnit</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousOwner</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onBribeUnit(code: fun(unit: unitObject, previousOwner: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a unit is bribed successfully. unit.owner is the new owner at this point, <code class="language-plaintext highlighter-rouge">previousOwner</code> the old owner.
 As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
@@ -903,7 +907,7 @@ As a Discrete Event, this function can be called multiple times, and all code wi
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCanFoundCity</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">advancedTribe</span><span class="p">:</span> <span class="n">boolean</span><span class="p">):</span><span class="n">boolean</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCanFoundCity(code: fun(unit: unitObject, advancedTribe: boolean):boolean)
 </code></pre></div></div>
 <p>Registers a function that is called to determine if <code class="language-plaintext highlighter-rouge">unit</code> can found a city at the unit’s location. <code class="language-plaintext highlighter-rouge">advancedTribe</code> is <code class="language-plaintext highlighter-rouge">true</code> when picking up a hut with <code class="language-plaintext highlighter-rouge">unit</code> triggers an advanced tribe. Return <code class="language-plaintext highlighter-rouge">true</code> to allow, <code class="language-plaintext highlighter-rouge">false</code> to disallow.</p>
 
@@ -917,7 +921,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCentauriArrival</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCentauriArrival(code: fun(tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a tribe’s spaceship reaches its target. Just registering this function causes the game to not end at this point (“endgame override”).</p>
 
@@ -930,7 +934,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onChooseSeason</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onChooseSeason(code: fun())
 </code></pre></div></div>
 <p>Registers code to be executed during civ.scen.onTurn and civ.scen.onScenarioLoaded.  This way, the correct “season” can be chosen when the scenario is loaded, and can be updated for each new turn.</p>
 
@@ -943,7 +947,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityDestroyed</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityDestroyed(code: fun(city: cityObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city is destroyed.</p>
 
@@ -956,7 +960,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityFounded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">)</span><span class="err">\|</span><span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">):</span><span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityFounded(code: fun(city: cityObject)|fun(city: cityObject):fun())
 </code></pre></div></div>
 <p>Registers a function to be called every time a city is founded. The callback takes the city as a parameter, and can optionally return a function (since 0.18) that is called to perform cleanup when the user cancels founding the city.</p>
 
@@ -969,7 +973,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProcessed</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProcessed(code: fun(city: cityObject))
 </code></pre></div></div>
 <p>Registers a function that is called immediately before each city is processed (which happens at the start of a tribe’s turn).  (This is achieved through use of civ.scen.onCalculateCityYield.)</p>
 
@@ -982,7 +986,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProcessingComplete</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProcessingComplete(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a tribe’s cities have been processed for that turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -995,7 +999,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityProduction</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">prod</span><span class="p">:</span> <span class="n">improvementObject</span><span class="err">\|</span><span class="n">unitObject</span><span class="err">\|</span><span class="n">wonderObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityProduction(code: fun(city: cityObject, prod: improvementObject|unitObject|wonderObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city completes its production order. The produced item <code class="language-plaintext highlighter-rouge">prod</code> is either a unit, improvement or wonder (this can be checked with the civ.is* functions).</p>
 
@@ -1008,7 +1012,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onCityTaken</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">cityObject</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onCityTaken(code: fun(city: cityObject, defender: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called when a city is captured. <code class="language-plaintext highlighter-rouge">city</code> is the city changing hands, at this point city.owner is the new owner already. <code class="language-plaintext highlighter-rouge">defender</code> is the old owner.</p>
 
@@ -1021,7 +1025,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onEnterTile</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
 </code></pre></div></div>
 <p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).</p>
 
@@ -1034,7 +1038,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onEnterTilePriority</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
 </code></pre></div></div>
 <p>Registers an onEnterTile event before all other onEnterTile events.  It is used for “transport” events, so that units can “drag” other units into the tile before the regular onEnterTile event.</p>
 <h3 id="onfinalordergiven">
@@ -1045,7 +1049,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onFinalOrderGiven</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onFinalOrderGiven(code: fun(unit: unitObject))
 </code></pre></div></div>
 <p>Registers code to be executed when a unit has been given its last order for the turn.  That is, when a new unit is active, and the previous unit has spent all its movement points (or, at the end of the turn)</p>
 <h3 id="ongameends">
@@ -1056,7 +1060,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span> <span class="n">gameEndReasons</span><span class="p">):(</span><span class="n">gameIsOver</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onGameEnds(code: fun(reason: gameEndReasons):(gameIsOver: boolean))
 </code></pre></div></div>
 <p><br />Registers a function that is called when the game ends. <code class="language-plaintext highlighter-rouge">reason</code> is an integer between 1 and 6:
 <br />1 and 2 - Space race victory. This does not trigger if <code class="language-plaintext highlighter-rouge">onCentauriArrival</code> has a callback registered. 1 means victory by active player.
@@ -1076,7 +1080,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onKeyPress</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="k">function</span><span class="err">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onKeyPress(code: function)
 </code></pre></div></div>
 <p>Registers a function to be called every time a key is pressed.</p>
 
@@ -1091,7 +1095,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">talker</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">canTalk</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onNegotiation(code: fun(talker: tribeObject, listener: tribeObject):(canTalk: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called when two tribes attempt negotiations. <code class="language-plaintext highlighter-rouge">talker</code> is the tribe initiating the contact, <code class="language-plaintext highlighter-rouge">listener</code> the receiver. Return <code class="language-plaintext highlighter-rouge">true</code> to allow the negotiations to commence, <code class="language-plaintext highlighter-rouge">false</code> to deny.</p>
 
@@ -1105,7 +1109,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onSave</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onSave(code: fun())
 </code></pre></div></div>
 <p>Registers a function that is called when the game is saved.</p>
 
@@ -1118,7 +1122,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onScenarioLoaded</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onScenarioLoaded(code: fun())
 </code></pre></div></div>
 <p>Registers a function that is called when the scenario is loaded.  (This is whenever a game is loaded, not just when the scenario is started.)</p>
 
@@ -1131,7 +1135,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onSchism</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">):(</span><span class="n">allowSchism</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onSchism(code: fun(tribe: tribeObject):(allowSchism: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called when a schism is triggered. This happens when the capital of a AI-controlled tribe with more than four cities is captured, and, if the attacker is human-controlled, it is ranked lower in power than the defender. If the attacker is AI-controlled the best human tribe must be ranked lower than the defender for the schism to trigger.
 If the schism is allowed, a new tribe will be created that takes over about half the cities of the old tribe. If no new tribe can be created, the schism does not occur.
@@ -1147,7 +1151,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTribeTurnBegin</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTribeTurnBegin(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called at the start of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -1160,7 +1164,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">tribeObject</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTribeTurnEnd(code: fun(turn: integer, tribe: tribeObject))
 </code></pre></div></div>
 <p>Registers a function that is called at the end of a tribe’s turn. See <code class="language-plaintext highlighter-rouge">onTurn</code> for interaction with other “turn” triggers.</p>
 
@@ -1173,7 +1177,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onTurn</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">integer</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onTurn(code: fun(turn: integer))
 </code></pre></div></div>
 <p>Registers a function that is called at the start of a turn. The basic sequence of this and other “turn” triggers is as follows:
 <br /><code class="language-plaintext highlighter-rouge">onTurn</code> fires
@@ -1196,7 +1200,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitDefeated</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitDefeated(code: fun(loser: unitObject, winner: unitObject, aggressor: unitObject, victim: unitObject, loserLocation: tileObject, winnerVetStatus: boolean, loserVetStatus: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called whenever a unit is killed, either in standard Civ II combat or by events. <code class="language-plaintext highlighter-rouge">loser</code> is the unit that is killed, <code class="language-plaintext highlighter-rouge">winner</code> is the unit responsible for it.  <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit that initiated the attack, and <code class="language-plaintext highlighter-rouge">victim</code> is the unit that was attacked.  <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the unit that lost combat stood (if the loser is the aggressor, loser.location and aggressor.location return a tile off the map).  <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> and <code class="language-plaintext highlighter-rouge">loserVetStatus</code> are true if the corresponding unit was a veteran before combat took place.  (winner.veteran is checked after the unit is promoted)</p>
 
@@ -1209,7 +1213,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitDeleted</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">deletedUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">replacingUnit</span><span class="p">:</span> <span class="n">unitObject</span><span class="err">\|</span><span class="kc">nil</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitDeleted(code: fun(deletedUnit: unitObject, replacingUnit: unitObject|nil))
 </code></pre></div></div>
 <p>Registers a function that is called when a unit is deleted (either through combat death, or by some other even, but not if the unit is disbanded).  <code class="language-plaintext highlighter-rouge">deletedUnit</code> is the unit being deleted, while <code class="language-plaintext highlighter-rouge">replacing unit</code> is the unit replacing it (e.g. from promotion/demotion), or <em>nil</em> if there is no such unit.</p>
 
@@ -1222,7 +1226,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">onUnitKilled</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">unitObject</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">tileObject</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">boolean</span><span class="p">))</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onUnitKilled(code: fun(loser: unitObject, winner: unitObject, aggressor: unitObject, victim: unitObject, loserLocation: tileObject, winnerVetStatus: boolean, loserVetStatus: boolean))
 </code></pre></div></div>
 <p>Registers a function that is called whenever a unit is killed in standard Civ II combat. <code class="language-plaintext highlighter-rouge">loser</code> is the unit that is killed, <code class="language-plaintext highlighter-rouge">winner</code> is the unit responsible for it.  <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit that initiated the attack, and <code class="language-plaintext highlighter-rouge">victim</code> is the unit that was attacked.  <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the unit that lost combat stood (if the loser is the aggressor, loser.location and aggressor.location return a tile off the map).  <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> and <code class="language-plaintext highlighter-rouge">loserVetStatus</code> are true if the corresponding unit was a veteran before combat took place.  (winner.veteran is checked after the unit is promoted)</p>
 
@@ -1235,7 +1239,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performLinkStateToModules</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">stateTableKeys</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performLinkStateToModules(state: any, stateTableKeys: any)
 </code></pre></div></div>
 <p>state is the state table (after the buffer has been extracted)
  stateTableKeys are keys for the state table that have
@@ -1248,7 +1252,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnActivateUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">rep</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnActivateUnit(unit: any, source: any, rep: any)
 </code></pre></div></div>
 <h3 id="performonafterproduction">
   
@@ -1258,7 +1262,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnAfterProduction</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnAfterProduction(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonbeforeproduction">
   
@@ -1268,7 +1272,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnBeforeProduction</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnBeforeProduction(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonbribeunit">
   
@@ -1278,7 +1282,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnBribeUnit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousOwner</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnBribeUnit(unit: any, previousOwner: any)
 </code></pre></div></div>
 <h3 id="performoncanfoundcity">
   
@@ -1288,8 +1292,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCanFoundCity</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCanFoundCity(unit: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performoncentauriarrival">
   
@@ -1299,7 +1303,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCentauriArrival</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCentauriArrival(tribe: any)
 </code></pre></div></div>
 <h3 id="performonchooseseason">
   
@@ -1309,7 +1313,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnChooseSeason</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnChooseSeason()
 </code></pre></div></div>
 <h3 id="performoncitydestroyed">
   
@@ -1319,7 +1323,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityDestroyed</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityDestroyed(city: any)
 </code></pre></div></div>
 <h3 id="performoncityfounded">
   
@@ -1329,8 +1333,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityFounded</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="k">function</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityFounded(city: any)
+  -&gt; function
 </code></pre></div></div>
 <h3 id="performoncityprocessed">
   
@@ -1340,7 +1344,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProcessed</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProcessed(city: any)
 </code></pre></div></div>
 <h3 id="performoncityprocessingcomplete">
   
@@ -1350,7 +1354,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProcessingComplete</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProcessingComplete(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performoncityproduction">
   
@@ -1360,7 +1364,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityProduction</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityProduction(city: any, item: any)
 </code></pre></div></div>
 <h3 id="performoncitytaken">
   
@@ -1370,7 +1374,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnCityTaken</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">defender</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnCityTaken(city: any, defender: any)
 </code></pre></div></div>
 <h3 id="performonentertile">
   
@@ -1380,7 +1384,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnEnterTile</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTile(unit: any, previousTile: any, previousDomainSpec: any)
 </code></pre></div></div>
 <h3 id="performonentertilepriority">
   
@@ -1390,7 +1394,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnEnterTilePriority</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousTile</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">previousDomainSpec</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTilePriority(unit: any, previousTile: any, previousDomainSpec: any)
 </code></pre></div></div>
 <h3 id="performonfinalordergiven">
   
@@ -1400,7 +1404,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnFinalOrderGiven</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnFinalOrderGiven(unit: any)
 </code></pre></div></div>
 <h3 id="performongameends">
   
@@ -1410,8 +1414,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnGameEnds(reason: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonkeypress">
   
@@ -1421,7 +1425,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnKeyPress</span><span class="p">(</span><span class="n">keyId</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnKeyPress(keyId: any)
 </code></pre></div></div>
 <h3 id="performonnegotiation">
   
@@ -1431,8 +1435,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnNegotiation(talker: any, listener: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonsave">
   
@@ -1442,7 +1446,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnSave</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnSave()
 </code></pre></div></div>
 <h3 id="performonscenarioloaded">
   
@@ -1452,7 +1456,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnScenarioLoaded</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnScenarioLoaded()
 </code></pre></div></div>
 <h3 id="performonschism">
   
@@ -1462,8 +1466,8 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnSchism</span><span class="p">(</span><span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">unknown</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnSchism(tribe: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performontribeturnbegin">
   
@@ -1473,7 +1477,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTribeTurnBegin</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTribeTurnBegin(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performontribeturnend">
   
@@ -1483,7 +1487,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">tribe</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTribeTurnEnd(turn: any, tribe: any)
 </code></pre></div></div>
 <h3 id="performonturn">
   
@@ -1493,7 +1497,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnTurn</span><span class="p">(</span><span class="n">turn</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnTurn(turn: any)
 </code></pre></div></div>
 <h3 id="performonunitdefeated">
   
@@ -1503,7 +1507,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitDefeated</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitDefeated(loser: any, winner: any, aggressor: any, victim: any, loserLocation: any, winnerVetStatus: any, loserVetStatus: any)
 </code></pre></div></div>
 <h3 id="performonunitdeleted">
   
@@ -1513,7 +1517,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitDeleted</span><span class="p">(</span><span class="n">deletedUnit</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">replacingUnit</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitDeleted(deletedUnit: any, replacingUnit: any)
 </code></pre></div></div>
 <h3 id="performonunitkilled">
   
@@ -1523,7 +1527,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">discreteEvents</span><span class="p">.</span><span class="nf">performOnUnitKilled</span><span class="p">(</span><span class="n">loser</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winner</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">aggressor</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">victim</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserLocation</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">winnerVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">loserVetStatus</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnUnitKilled(loser: any, winner: any, aggressor: any, victim: any, loserLocation: any, winnerVetStatus: any, loserVetStatus: any)
 </code></pre></div></div>
 <h3 id="recommendedversion">
   

@@ -352,8 +352,10 @@ function buildFile() {
     let output =
 `---
 tabTitle: Execution Points for Code
-layout: page_toc23
+layout: page
 title: Lua Execution Points
+minTOC: 2
+maxTOC: 3
 ---
 
 Lua Events function by running code at certain predetermined points during the Civilization II: Test of Time game.  The term "Execution Point"

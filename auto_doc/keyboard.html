@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,8 +19,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -28,11 +30,13 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">keyboard</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    </div>  
+    <ul><li><a href="#f1">F1</a></li><li><a href="#f11">F11</a></li><li><a href="#f12">F12</a></li><li><a href="#f2">F2</a></li><li><a href="#f3">F3</a></li><li><a href="#f4">F4</a></li><li><a href="#f5">F5</a></li><li><a href="#f6">F6</a></li><li><a href="#f7">F7</a></li><li><a href="#f8">F8</a></li><li><a href="#f9">F9</a></li><li><a href="#a">a</a></li><li><a href="#b">b</a></li><li><a href="#backspace">backspace</a></li><li><a href="#c">c</a></li><li><a href="#ctrl">ctrl</a></li><li><a href="#ctrloffset">ctrlOffset</a></li><li><a href="#d">d</a></li><li><a href="#delete">delete</a></li><li><a href="#down">down</a></li><li><a href="#e">e</a></li><li><a href="#east">east</a></li><li><a href="#eight">eight</a></li><li><a href="#endkey">endKey</a></li><li><a href="#enter">enter</a></li><li><a href="#esc">esc</a></li><li><a href="#escape">escape</a></li><li><a href="#f">f</a></li><li><a href="#five">five</a></li><li><a href="#four">four</a></li><li><a href="#g">g</a></li><li><a href="#h">h</a></li><li><a href="#home">home</a></li><li><a href="#i">i</a></li><li><a href="#j">j</a></li><li><a href="#k">k</a></li><li><a href="#l">l</a></li><li><a href="#left">left</a></li><li><a href="#m">m</a></li><li><a href="#n">n</a></li><li><a href="#nine">nine</a></li><li><a href="#north">north</a></li><li><a href="#northeast">northEast</a></li><li><a href="#northwest">northWest</a></li><li><a href="#numlock0">numlock0</a></li><li><a href="#numlock1">numlock1</a></li><li><a href="#numlock2">numlock2</a></li><li><a href="#numlock3">numlock3</a></li><li><a href="#numlock4">numlock4</a></li><li><a href="#numlock5">numlock5</a></li><li><a href="#numlock6">numlock6</a></li><li><a href="#numlock7">numlock7</a></li><li><a href="#numlock8">numlock8</a></li><li><a href="#numlock9">numlock9</a></li><li><a href="#numlockasterisk">numlockAsterisk</a></li><li><a href="#numlockminus">numlockMinus</a></li><li><a href="#numlockplus">numlockPlus</a></li><li><a href="#numlockslash">numlockSlash</a></li><li><a href="#numlockstar">numlockStar</a></li><li><a href="#o">o</a></li><li><a href="#one">one</a></li><li><a href="#p">p</a></li><li><a href="#pagedown">pageDown</a></li><li><a href="#pageup">pageUp</a></li><li><a href="#q">q</a></li><li><a href="#r">r</a></li><li><a href="#right">right</a></li><li><a href="#s">s</a></li><li><a href="#seven">seven</a></li><li><a href="#shift">shift</a></li><li><a href="#shiftoffset">shiftOffset</a></li><li><a href="#six">six</a></li><li><a href="#south">south</a></li><li><a href="#southeast">southEast</a></li><li><a href="#southwest">southWest</a></li><li><a href="#t">t</a></li><li><a href="#tab">tab</a></li><li><a href="#three">three</a></li><li><a href="#two">two</a></li><li><a href="#u">u</a></li><li><a href="#up">up</a></li><li><a href="#v">v</a></li><li><a href="#w">w</a></li><li><a href="#west">west</a></li><li><a href="#x">x</a></li><li><a href="#y">y</a></li><li><a href="#z">z</a></li><li><a href="#zero">zero</a></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="keyboard">
   

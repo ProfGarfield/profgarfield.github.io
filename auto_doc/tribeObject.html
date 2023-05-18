@@ -8,7 +8,8 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
+<!--<nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -18,8 +19,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a></div>
-      </nav></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
+      </nav>-->
+  </div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -28,11 +30,13 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">tribeObject</h1>
   </header>
+  
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    </div>  
+    <ul><li><a href="#active">active</a></li><li><a href="#adjective">adjective</a></li><li><a href="#attitude">attitude</a></li><li><a href="#betrayals">betrayals</a></li><li><a href="#enabletechgroup">enableTechGroup</a></li><li><a href="#futuretechs">futureTechs</a></li><li><a href="#givetech">giveTech</a></li><li><a href="#government">government</a></li><li><a href="#hastech">hasTech</a></li><li><a href="#id">id</a></li><li><a href="#ishuman">isHuman</a></li><li><a href="#kill">kill</a></li><li><a href="#leader">leader</a></li><li><a href="#money">money</a></li><li><a href="#name">name</a></li><li><a href="#numcities">numCities</a></li><li><a href="#numtechs">numTechs</a></li><li><a href="#numunits">numUnits</a></li><li><a href="#patience">patience</a></li><li><a href="#reputation">reputation</a></li><li><a href="#researchcost">researchCost</a></li><li><a href="#researchprogress">researchProgress</a></li><li><a href="#researching">researching</a></li><li><a href="#sciencerate">scienceRate</a></li><li><a href="#spaceship">spaceship</a></li><li><a href="#taketech">takeTech</a></li><li><a href="#taxrate">taxRate</a></li><li><a href="#treaties">treaties</a></li></ul></div>  
+  
   <div class="post-content">
     <h1 id="tribeobject">
   
@@ -97,7 +101,7 @@
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">enableTechGroup</span><span class="p">(</span><span class="n">techgroup</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:enableTechGroup(techgroup: integer, value: 0|1|2)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.enableTechGroup(tribe, techgroup, value)</code>.
 Sets the value of tech group <code class="language-plaintext highlighter-rouge">techgroup</code> (0-7) to value <code class="language-plaintext highlighter-rouge">value</code> (0-2, 0 = can research, can own, 1 = can’t research, can own, 2 = can’t research, can’t own) for tribe.</p>
@@ -105,9 +109,9 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">techgroup</code> — integer in [0,7]</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span><span class="p">:</span>
-    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
-    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
-    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
+    <span class="err">|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
+    <span class="err">|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
+    <span class="err">|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
 </code></pre></div></div>
 <h3 id="futuretechs">
   
@@ -128,7 +132,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">giveTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:giveTech(tech: techObject)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.giveTech(tribe, tech)</code>.</p>
 <h3 id="government">
@@ -150,8 +154,8 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">hasTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:hasTech(tech: techObject)
+  -&gt; boolean: boolean
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasTech(tribe, tech)</code>.</p>
 <h3 id="id">
@@ -184,7 +188,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:kill()
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.killTribe(tribe)</code>.</p>
 <h3 id="leader">
@@ -305,7 +309,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject|nil
 </code></pre></div></div>
 <p>(get/set) Returns the tech the tribe is currently researching, or <code class="language-plaintext highlighter-rouge">nil</code> if not researching anything.</p>
 <h3 id="sciencerate">
@@ -338,7 +342,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">takeTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">,</span> <span class="n">collapse</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:takeTech(tech: techObject, collapse: boolean)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.takeTech(tribe, tech, collapse=false)</code>.</p>
 
@@ -433,7 +437,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">enableTechGroup</span><span class="p">(</span><span class="n">techgroup</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mi">0</span><span class="err">\|</span><span class="mi">1</span><span class="err">\|</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:enableTechGroup(techgroup: integer, value: 0|1|2)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.enableTechGroup(tribe, techgroup, value)</code>.
 Sets the value of tech group <code class="language-plaintext highlighter-rouge">techgroup</code> (0-7) to value <code class="language-plaintext highlighter-rouge">value</code> (0-2, 0 = can research, can own, 1 = can’t research, can own, 2 = can’t research, can’t own) for tribe.</p>
@@ -441,9 +445,9 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
 <p>@<em>param</em> <code class="language-plaintext highlighter-rouge">techgroup</code> — integer in [0,7]</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span><span class="p">:</span>
-    <span class="err">\|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
-    <span class="err">\|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
-    <span class="err">\|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
+    <span class="err">|</span> <span class="mi">0</span> <span class="c1">-- can research, can own</span>
+    <span class="err">|</span> <span class="mi">1</span> <span class="c1">-- can't research, can own</span>
+    <span class="err">|</span> <span class="mi">2</span> <span class="c1">-- can't research, can't own</span>
 </code></pre></div></div>
 <h3 id="futuretechs">
   
@@ -464,7 +468,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">giveTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:giveTech(tech: techObject)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.giveTech(tribe, tech)</code>.</p>
 <h3 id="government">
@@ -486,8 +490,8 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">hasTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">boolean</span><span class="p">:</span> <span class="n">boolean</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:hasTech(tech: techObject)
+  -&gt; boolean: boolean
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.hasTech(tribe, tech)</code>.</p>
 <h3 id="id">
@@ -520,7 +524,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:kill()
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.killTribe(tribe)</code>.</p>
 <h3 id="leader">
@@ -641,7 +645,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject\|nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tribeObject.researching --&gt; techObject|nil
 </code></pre></div></div>
 <p>(get/set) Returns the tech the tribe is currently researching, or <code class="language-plaintext highlighter-rouge">nil</code> if not researching anything.</p>
 <h3 id="sciencerate">
@@ -674,7 +678,7 @@ Sets the value of tech group <code class="language-plaintext highlighter-rouge">
   
 </h3>
     
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="n">tribeObject</span><span class="p">:</span><span class="n">takeTech</span><span class="p">(</span><span class="n">tech</span><span class="p">:</span> <span class="n">techObject</span><span class="p">,</span> <span class="n">collapse</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(method) tribeObject:takeTech(tech: techObject, collapse: boolean)
 </code></pre></div></div>
 <p>Alias for <code class="language-plaintext highlighter-rouge">civ.takeTech(tribe, tech, collapse=false)</code>.</p>
 

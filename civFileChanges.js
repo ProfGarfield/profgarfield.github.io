@@ -22,10 +22,18 @@ doc.removeFromWriteFileInfo("totpp_movementMultipliers")
 doc.mergeAllInto("totpp.patches","",totppFileName)
 doc.mergeAllInto("totpp.version","",totppFileName)
 doc.markFileCustomised(totppFileName)
+doc.setFrontMatter(totppFileName,"tabTitle","totpp library Documentation")
+doc.setFrontMatter(totppFileName,"title","TOTPP Library")
+doc.setFrontMatter(totppFileName,"minTOC","2")
+doc.setFrontMatter(totppFileName,"maxTOC","3")
 
 
 const civFileName = "civ"
 const civEntries = doc.getEntries("civ")
+doc.setFrontMatter(civFileName,"minTOC","2")
+doc.setFrontMatter(civFileName,"maxTOC","3")
+doc.setFrontMatter(civFileName,"tabTitle","civ Library Documentation")
+doc.setFrontMatter(civFileName,"title","Civ Library")
 
 function removeItemAll(arr, value) {
   var i = 0;
