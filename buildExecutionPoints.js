@@ -266,11 +266,83 @@ saveQuick("Key Press","onKeyPress","","","")
 // on load
 // on save
 saveQuick("Scenario Loaded","onScenarioLoaded","","","")
-saveQuick("Negotiation","onNegotiate","","","")
-saveQuick("Tribe Schism","onSchism","","","")
-saveQuick("Between Turns","onTurn","","","")
-saveQuick("Unit Killed In Combat","onUnitKilled","","","")
-saveQuick("Unit Defeated","onUnitDefeated","","","Not standard implementation")
+saveQuick("Negotiation","onNegotiation",`
+This execution point is triggered when a tribe (the \`talker\`) attempts
+to negotiate with a different tribe (the \`listener\`).  If the registered
+function returns \`true\`, the tribes can talk.  If \`false\`,
+they can't (and won't appear in the foreign minister menu).
+
+The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then negotiation
+between the two parties is disabled.
+`,"","")
+saveQuick("Tribe Schism","onSchism",`
+The code from this execution point is executed when a \`tribe\` could be split
+because its capital is taken.  The event will trigger even if there is no
+free civ slot for the rebel tribe to occupy, but will not occur
+if a schism is not possible because of other schism mechanics.
+
+If the registered function returns \`true\`, then the schism is allowed
+(as long as there is an empty tribe slot).  If \`false\` is returned, 
+then schism is prevented.
+
+The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then schism
+is prevented in this instance.
+
+I think (but don't know for sure) that the requirements for a schism
+are that:
+1. The tribe capturing the capital must have a weaker power rating than the defending tribe.
+2. The defending tribe must be controlled by an AI.
+
+`,`
+The \`tribe\` is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).
+`,"")
+saveQuick("Between Turns","onTurn","This execution point occurs at the very beginning of a game turn, before the Barbarian tribe begins its movement.","","")
+saveQuick("Unit Killed In Combat","onUnitKilled","This execution point is triggered when a unit is killed as a result of standard Civ II combat.  It is not triggered if a unit is killed by the [gen.defeatUnit](/auto_doc/gen.html#defeatunit) function.  The [Unit Defeated](#unit-defeated) execution point triggers for both standard combat defeat and event driven defeat.",`
+The \`loser\` is the unit which was defeated in combat.
+
+The \`winner\` is the unit which won the combat.
+
+The \`aggressor\` is the unit which initiated the combat.
+
+The \`victim\` is the unit which was attacked.
+
+The \`loserLocation\` is the tile where the \`loser\` was standing.  If the \`aggressor\` is the \`loser\`, the code \`loser.location\` will point to a "tile" off the map.
+
+The \`winnerVetStatus\` is the veteran status of the \`winner\` before the battle took place (this event triggers after the game assigns veteran status for victory in combat).
+
+The \`loserVetStatus\` is the veteran status of the \`loser\` before the battle
+took place.
+`,`
+This event is based primarily on the function \`civ.scen.onUnitKilled\`
+function provided by the standard Test of Time Patch Project.  However,
+information is also gathered by the function registered to 
+\`civ.scen.onInitiateCombat\` in order to populate these variables 
+(which are defined outside of either registered function):
+- \`aggressor\`
+- \`aggressorLocation\`
+- \`aggressorVetStatus\`
+- \`victim\`
+- \`victimVetStatus\`
+
+These variables are used to populate the following \`onUnitKilled\` function
+parameters, which are not provided by the game itself:
+- \`aggressor\`
+- \`victim\`
+- \`loserLocation\`
+- \`winnerVetStatus\`
+- \`loserVetStatus\`
+`)
+saveQuick("Unit Defeated","onUnitDefeated",`
+This execution point is triggered when a unit is killed as a result of 
+standard Civ II combat, or when it is killed by events through
+the use of the [gen.defeatUnit](/auto_doc/gen.html#defeatunit) function.
+`,`
+`,`
+Not standard implementation
+`)
 saveQuick("Unit Death","onUnitDeath","","","Not standard implementation")
 saveQuick("Unit Death Outside Combat","onUnitDeathOutsideCombat","","","Not standard implementation")
 saveQuick("Unit Deleted","onUnitDeleted","","","Not Standard implementation")
@@ -354,6 +426,7 @@ function buildFile() {
 tabTitle: Execution Points for Code
 layout: page
 title: Lua Execution Points
+navTitle: Execution Points
 minTOC: 2
 maxTOC: 3
 ---

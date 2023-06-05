@@ -55,6 +55,7 @@ const customisedStructure = {}
 // frontMatter[fileName] = object of front matter
 const frontMatter = {}
 
+
 function setFrontMatter(fileName,key,value) {
   frontMatter[fileName] = frontMatter[fileName] || {layout: "page"}
   frontMatter[fileName][key] = value
@@ -150,6 +151,39 @@ function makeCustomFile(fileName,title,introduction) {
     fileWriteInfo[fileName] = startText;
 }
 toExport.makeCustomFile = makeCustomFile
+
+function addFileAsSectionIn(sectionFile,metaFile,extraHashes) {
+    let newText = fileWriteInfo[sectionFile]
+    newText = newText.replace(/#\ /g,extraHashes+"# ")
+    newText = newText.replace(/_doc/g,"")
+    fileWriteInfo[metaFile] = fileWriteInfo[metaFile] +"\n\n" + newText +"\n\n"
+    delete fileWriteInfo[sectionFile]
+}
+toExport.addFileAsSectionIn = addFileAsSectionIn
+
+function overrideFile(fileName,indexName,fileText) {
+  // extract front matter
+  const frontMatter = fileText.match(/^---(.|\n)*---/)[0]
+  if (!frontMatter) {
+    console.log(fineName+" does not have front matter")
+  }
+  const frontMatterLines = frontMatter.matchAll(/^\w+:\ .*$/gm)
+  const frontMatterObject = {}
+  for (const frontLine of frontMatterLines) {
+    let key = frontLine[0].match(/^\w+:\ /)[0]
+    key = key.replace(": ","")
+    let value = frontLine[0].match(/:\ .*$/)[0]
+    value = value.replace(": ","")
+    frontMatterObject[key] = value
+  }
+  fileWriteInfo[fileName] = fileText.replace(frontMatter,"");
+  customisedStructure[fileName] = true;
+  registerIndexSubstitution(fileName,indexName)
+  for (const key in frontMatterObject) {
+    setFrontMatter(fileName,key,frontMatterObject[key])
+  }
+}
+toExport.overrideFile = overrideFile
 
 function getLeftoverEntries(fileName) {
   const leftoverList = [];
@@ -293,6 +327,7 @@ function parseDocumentation(documentation) {
         let fileName = documentation[i].name;
         //console.log(fileName,makeNoFile(documentation[i]))
         fileName = fileName.replace(/\./g,"_");
+        //console.log(fileName)
         parseToEntries(documentation[i],fileName);
         if (!makeNoFile(documentation[i])) {
             let topOfFile = "";
@@ -450,7 +485,7 @@ toExport.prepareAutodocumentationIndexFile = prepareAutodocumentationIndexFile
 
 function writeAutoDocIndexFile(preamble,orderedFiles) {
   const text = prepareAutodocumentationIndexFile(preamble,orderedFiles)
-  fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+"autoIndex.md",makeFrontMatter({layout: "page",tabTitle: "Template Documentation"})+text)
+  fs.writeFileSync(__dirname+'/'+autoDocFolder+'/'+"autoIndex.md",makeFrontMatter({layout: "page",tabTitle: "Template Documentation",navTitle: "Function Docs"})+text)
 }
 toExport.writeAutoDocIndexFile = writeAutoDocIndexFile
 

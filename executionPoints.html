@@ -7,9 +7,8 @@
   <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
 </head>
 <body><header class="site-header">
-
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Lua for Civilization II</a>
-<!--<nav class="site-nav">
+  <div class="wrapper">
+    <!--img src="/assets/logo-cfc.png" class="center"--><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -19,9 +18,8 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/baseTerrainObject.html">baseTerrainObject</a><a class="page-link" href="/auto_doc/bitmask.html">bitmask</a><a class="page-link" href="/auto_doc/calendar.html">calendar</a><a class="page-link" href="/auto_doc/cityObject.html">cityObject</a><a class="page-link" href="/auto_doc/civ.html">Civ Library</a><a class="page-link" href="/auto_doc/commodityObject.html">commodityObject</a><a class="page-link" href="/auto_doc/coroutine.html">coroutine</a><a class="page-link" href="/auto_doc/counter.html">counter</a><a class="page-link" href="/auto_doc/customCosmic.html">customCosmic</a><a class="page-link" href="/auto_doc/dataTable.html">dataTable</a><a class="page-link" href="/auto_doc/dialogObject.html">dialogObject</a><a class="page-link" href="/auto_doc/discreteEvents.html">discreteEvents</a><a class="page-link" href="/executionPoints.html">Lua Execution Points</a><a class="page-link" href="/auto_doc/flag.html">flag</a><a class="page-link" href="/auto_doc/gen.html">General Library</a><a class="page-link" href="/auto_doc/gen_constants.html">The gen.constants Table</a><a class="page-link" href="/auto_doc/gen_original.html">The gen.original Table</a><a class="page-link" href="/auto_doc/id.html">id</a><a class="page-link" href="/auto_doc/imageObject.html">imageObject</a><a class="page-link" href="/auto_doc/improvementObject.html">improvementObject</a><a class="page-link" href="/auto_doc/iterator.html">iterator</a><a class="page-link" href="/auto_doc/keyboard.html">keyboard</a><a class="page-link" href="/auto_doc/leaderObject.html">leaderObject</a><a class="page-link" href="/auto_doc/mapObject.html">mapObject</a><a class="page-link" href="/auto_doc/spaceshipObject.html">spaceshipObject</a><a class="page-link" href="/auto_doc/stack.html">stack</a><a class="page-link" href="/auto_doc/stateSavableTable.html">stateSavableTable</a><a class="page-link" href="/auto_doc/techObject.html">techObject</a><a class="page-link" href="/auto_doc/terrainObject.html">terrainObject</a><a class="page-link" href="/auto_doc/thresholdTable.html">thresholdTable</a><a class="page-link" href="/auto_doc/tileAnalog.html">tileAnalog</a><a class="page-link" href="/auto_doc/tileObject.html">tileObject</a><a class="page-link" href="/auto_doc/totpp.html">TOTPP Library</a><a class="page-link" href="/auto_doc/traderouteObject.html">traderouteObject</a><a class="page-link" href="/auto_doc/tribeObject.html">tribeObject</a><a class="page-link" href="/auto_doc/unitObject.html">unitObject</a><a class="page-link" href="/auto_doc/unitTypeObject.html">unitTypeObject</a><a class="page-link" href="/auto_doc/wonderObject.html">wonderObject</a></div>
-      </nav>-->
-  </div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/autoIndex.html">Function Docs</a><a class="page-link" href="/executionPoints.html">Execution Points</a></div>
+      </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -848,6 +846,15 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a tribe (the <code class="language-plaintext highlighter-rouge">talker</code>) attempts
+to negotiate with a different tribe (the <code class="language-plaintext highlighter-rouge">listener</code>).  If the registered
+function returns <code class="language-plaintext highlighter-rouge">true</code>, the tribes can talk.  If <code class="language-plaintext highlighter-rouge">false</code>,
+they can’t (and won’t appear in the foreign minister menu).</p>
+
+<p>The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then negotiation
+between the two parties is disabled.</p>
 <h4 id="usage-10">
   
   
@@ -856,6 +863,72 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
+<h5 id="consolidatedeventslua-9">
+  
+  
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-9"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Negotiation </span>
+<span class="c1">-- Return true if the talker can contact the listener,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the discrete events and the</span>
+<span class="c1">-- legacy events, as well as a separate onNegotiation.lua file</span>
+<span class="c1">-- If any of these return false, then negotiation is prevented</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<h5 id="eventsfilesonnegotiationlua">
+  
+  
+    <strong>EventsFiles/onNegotiation.lua</strong> <a href="#eventsfilesonnegotiationlua"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- discreteEvents.onNegotiation and</span>
+<span class="c1">-- consolidated.onNegotiation</span>
+<span class="c1">-- also return booleans.  True means that the talker</span>
+<span class="c1">-- can begin negotiations with the listener.</span>
+<span class="c1">-- If any of the events return false, negotiations are</span>
+<span class="c1">-- prevented, even if other negotiation events return true</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<h5 id="discrete-events-8">
+  
+  
+    <strong>Discrete Events</strong> <a href="#discrete-events-8"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Negotiation event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Negotiation </span>
+<span class="c1">-- Return true if the talker can contact the listener,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the consolidated events and the</span>
+<span class="c1">-- legacy events, as well as a separate onNegotiation.lua file</span>
+<span class="c1">-- If any of these return false, then negotiation is prevented</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onNegotiation</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
 <h4 id="implementation-10">
   
   
@@ -864,7 +937,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onNegotiate</code>.</p>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onNegotiation</code>.</p>
 <h3 id="tribe-schism">
   
   
@@ -873,6 +946,26 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>The code from this execution point is executed when a <code class="language-plaintext highlighter-rouge">tribe</code> could be split
+because its capital is taken.  The event will trigger even if there is no
+free civ slot for the rebel tribe to occupy, but will not occur
+if a schism is not possible because of other schism mechanics.</p>
+
+<p>If the registered function returns <code class="language-plaintext highlighter-rouge">true</code>, then the schism is allowed
+(as long as there is an empty tribe slot).  If <code class="language-plaintext highlighter-rouge">false</code> is returned, 
+then schism is prevented.</p>
+
+<p>The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then schism
+is prevented in this instance.</p>
+
+<p>I think (but don’t know for sure) that the requirements for a schism
+are that:</p>
+<ol>
+  <li>The tribe capturing the capital must have a weaker power rating than the defending tribe.</li>
+  <li>The defending tribe must be controlled by an AI.</li>
+</ol>
 <h4 id="usage-11">
   
   
@@ -881,10 +974,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-9">
+<h5 id="consolidatedeventslua-10">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-9"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-10"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -902,6 +995,9 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
 <h5 id="eventsfilesonschismlua">
   
   
@@ -923,10 +1019,13 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-8">
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
+<h5 id="discrete-events-9">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-8"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-9"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -947,6 +1046,9 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
 <h4 id="implementation-11">
   
   
@@ -964,6 +1066,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+<p>This execution point occurs at the very beginning of a game turn, before the Barbarian tribe begins its movement.</p>
 <h4 id="usage-12">
   
   
@@ -972,10 +1075,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-10">
+<h5 id="consolidatedeventslua-11">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-10"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-11"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1004,10 +1107,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-9">
+<h5 id="discrete-events-10">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-9"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-10"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1038,6 +1141,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+<p>This execution point is triggered when a unit is killed as a result of standard Civ II combat.  It is not triggered if a unit is killed by the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> function.  The <a href="#unit-defeated">Unit Defeated</a> execution point triggers for both standard combat defeat and event driven defeat.</p>
 <h4 id="usage-13">
   
   
@@ -1046,10 +1150,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-11">
+<h5 id="consolidatedeventslua-12">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-11"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-12"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1062,6 +1166,21 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h5 id="eventsfilesonunitkilledlua">
   
   
@@ -1084,10 +1203,25 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-10">
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
+<h5 id="discrete-events-11">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-10"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-11"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1103,6 +1237,21 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h4 id="implementation-13">
   
   
@@ -1111,7 +1260,29 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>.</p>
+
+<p>This event is based primarily on the function <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>
+function provided by the standard Test of Time Patch Project.  However,
+information is also gathered by the function registered to 
+<code class="language-plaintext highlighter-rouge">civ.scen.onInitiateCombat</code> in order to populate these variables 
+(which are defined outside of either registered function):</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">aggressor</code></li>
+  <li><code class="language-plaintext highlighter-rouge">aggressorLocation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">aggressorVetStatus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victim</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victimVetStatus</code></li>
+</ul>
+
+<p>These variables are used to populate the following <code class="language-plaintext highlighter-rouge">onUnitKilled</code> function
+parameters, which are not provided by the game itself:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">aggressor</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victim</code></li>
+  <li><code class="language-plaintext highlighter-rouge">loserLocation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">winnerVetStatus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">loserVetStatus</code></li>
+</ul>
 <h3 id="unit-defeated">
   
   
@@ -1120,6 +1291,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is killed as a result of 
+standard Civ II combat, or when it is killed by events through
+the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> function.</p>
 <h4 id="usage-14">
   
   
@@ -1128,10 +1303,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-12">
+<h5 id="consolidatedeventslua-13">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-12"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-13"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1160,10 +1335,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-11">
+<h5 id="discrete-events-12">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-11"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-12"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1333,10 +1508,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-13">
+<h5 id="consolidatedeventslua-14">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-13"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-14"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1369,10 +1544,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-12">
+<h5 id="discrete-events-13">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-12"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-13"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1413,10 +1588,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-14">
+<h5 id="consolidatedeventslua-15">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-14"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-15"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1447,10 +1622,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-13">
+<h5 id="discrete-events-14">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-13"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-14"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1491,10 +1666,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-15">
+<h5 id="consolidatedeventslua-16">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-15"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-16"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1522,10 +1697,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-14">
+<h5 id="discrete-events-15">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-14"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-15"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1566,10 +1741,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-16">
+<h5 id="consolidatedeventslua-17">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-16"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-17"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1611,10 +1786,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-15">
+<h5 id="discrete-events-16">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-15"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-16"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1659,10 +1834,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-17">
+<h5 id="consolidatedeventslua-18">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-17"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-18"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1695,10 +1870,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-16">
+<h5 id="discrete-events-17">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-16"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-17"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2598,6 +2773,15 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a tribe (the <code class="language-plaintext highlighter-rouge">talker</code>) attempts
+to negotiate with a different tribe (the <code class="language-plaintext highlighter-rouge">listener</code>).  If the registered
+function returns <code class="language-plaintext highlighter-rouge">true</code>, the tribes can talk.  If <code class="language-plaintext highlighter-rouge">false</code>,
+they can’t (and won’t appear in the foreign minister menu).</p>
+
+<p>The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then negotiation
+between the two parties is disabled.</p>
 <h4 id="usage-10">
   
   
@@ -2606,6 +2790,72 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
+<h5 id="consolidatedeventslua-9">
+  
+  
+    <a href="#consolidatedeventslua-9">&#128279</a> <strong>consolidatedEvents.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Negotiation </span>
+<span class="c1">-- Return true if the talker can contact the listener,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the discrete events and the</span>
+<span class="c1">-- legacy events, as well as a separate onNegotiation.lua file</span>
+<span class="c1">-- If any of these return false, then negotiation is prevented</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<h5 id="eventsfilesonnegotiationlua">
+  
+  
+    <a href="#eventsfilesonnegotiationlua">&#128279</a> <strong>EventsFiles/onNegotiation.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- discreteEvents.onNegotiation and</span>
+<span class="c1">-- consolidated.onNegotiation</span>
+<span class="c1">-- also return booleans.  True means that the talker</span>
+<span class="c1">-- can begin negotiations with the listener.</span>
+<span class="c1">-- If any of the events return false, negotiations are</span>
+<span class="c1">-- prevented, even if other negotiation events return true</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+<h5 id="discrete-events-8">
+  
+  
+    <a href="#discrete-events-8">&#128279</a> <strong>Discrete Events</strong>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Negotiation event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Negotiation </span>
+<span class="c1">-- Return true if the talker can contact the listener,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the consolidated events and the</span>
+<span class="c1">-- legacy events, as well as a separate onNegotiation.lua file</span>
+<span class="c1">-- If any of these return false, then negotiation is prevented</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onNegotiation</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
 <h4 id="implementation-10">
   
   
@@ -2614,7 +2864,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onNegotiate</code>.</p>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onNegotiation</code>.</p>
 <h3 id="tribe-schism">
   
   
@@ -2623,6 +2873,26 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>The code from this execution point is executed when a <code class="language-plaintext highlighter-rouge">tribe</code> could be split
+because its capital is taken.  The event will trigger even if there is no
+free civ slot for the rebel tribe to occupy, but will not occur
+if a schism is not possible because of other schism mechanics.</p>
+
+<p>If the registered function returns <code class="language-plaintext highlighter-rouge">true</code>, then the schism is allowed
+(as long as there is an empty tribe slot).  If <code class="language-plaintext highlighter-rouge">false</code> is returned, 
+then schism is prevented.</p>
+
+<p>The Lua Scenario Template offers multiple ways to register functions
+for this execution point.  If any of them return false, then schism
+is prevented in this instance.</p>
+
+<p>I think (but don’t know for sure) that the requirements for a schism
+are that:</p>
+<ol>
+  <li>The tribe capturing the capital must have a weaker power rating than the defending tribe.</li>
+  <li>The defending tribe must be controlled by an AI.</li>
+</ol>
 <h4 id="usage-11">
   
   
@@ -2631,10 +2901,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-9">
+<h5 id="consolidatedeventslua-10">
   
   
-    <a href="#consolidatedeventslua-9">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-10">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -2652,6 +2922,9 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
 <h5 id="eventsfilesonschismlua">
   
   
@@ -2673,10 +2946,13 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-8">
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
+<h5 id="discrete-events-9">
   
   
-    <a href="#discrete-events-8">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-9">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -2697,6 +2973,9 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
+event prevents it).</p>
 <h4 id="implementation-11">
   
   
@@ -2714,6 +2993,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+<p>This execution point occurs at the very beginning of a game turn, before the Barbarian tribe begins its movement.</p>
 <h4 id="usage-12">
   
   
@@ -2722,10 +3002,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-10">
+<h5 id="consolidatedeventslua-11">
   
   
-    <a href="#consolidatedeventslua-10">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-11">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -2754,10 +3034,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-9">
+<h5 id="discrete-events-10">
   
   
-    <a href="#discrete-events-9">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-10">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -2788,6 +3068,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+<p>This execution point is triggered when a unit is killed as a result of standard Civ II combat.  It is not triggered if a unit is killed by the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> function.  The <a href="#unit-defeated">Unit Defeated</a> execution point triggers for both standard combat defeat and event driven defeat.</p>
 <h4 id="usage-13">
   
   
@@ -2796,10 +3077,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-11">
+<h5 id="consolidatedeventslua-12">
   
   
-    <a href="#consolidatedeventslua-11">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-12">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -2812,6 +3093,21 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h5 id="eventsfilesonunitkilledlua">
   
   
@@ -2834,10 +3130,25 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-10">
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
+<h5 id="discrete-events-11">
   
   
-    <a href="#discrete-events-10">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-11">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -2853,6 +3164,21 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated in combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h4 id="implementation-13">
   
   
@@ -2861,7 +3187,29 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>.</p>
+
+<p>This event is based primarily on the function <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>
+function provided by the standard Test of Time Patch Project.  However,
+information is also gathered by the function registered to 
+<code class="language-plaintext highlighter-rouge">civ.scen.onInitiateCombat</code> in order to populate these variables 
+(which are defined outside of either registered function):</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">aggressor</code></li>
+  <li><code class="language-plaintext highlighter-rouge">aggressorLocation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">aggressorVetStatus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victim</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victimVetStatus</code></li>
+</ul>
+
+<p>These variables are used to populate the following <code class="language-plaintext highlighter-rouge">onUnitKilled</code> function
+parameters, which are not provided by the game itself:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">aggressor</code></li>
+  <li><code class="language-plaintext highlighter-rouge">victim</code></li>
+  <li><code class="language-plaintext highlighter-rouge">loserLocation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">winnerVetStatus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">loserVetStatus</code></li>
+</ul>
 <h3 id="unit-defeated">
   
   
@@ -2870,6 +3218,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is killed as a result of 
+standard Civ II combat, or when it is killed by events through
+the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> function.</p>
 <h4 id="usage-14">
   
   
@@ -2878,10 +3230,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-12">
+<h5 id="consolidatedeventslua-13">
   
   
-    <a href="#consolidatedeventslua-12">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-13">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -2910,10 +3262,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-11">
+<h5 id="discrete-events-12">
   
   
-    <a href="#discrete-events-11">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-12">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -3083,10 +3435,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-13">
+<h5 id="consolidatedeventslua-14">
   
   
-    <a href="#consolidatedeventslua-13">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-14">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -3119,10 +3471,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-12">
+<h5 id="discrete-events-13">
   
   
-    <a href="#discrete-events-12">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-13">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -3163,10 +3515,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-14">
+<h5 id="consolidatedeventslua-15">
   
   
-    <a href="#consolidatedeventslua-14">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-15">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -3197,10 +3549,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-13">
+<h5 id="discrete-events-14">
   
   
-    <a href="#discrete-events-13">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-14">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -3241,10 +3593,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-15">
+<h5 id="consolidatedeventslua-16">
   
   
-    <a href="#consolidatedeventslua-15">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-16">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -3272,10 +3624,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-14">
+<h5 id="discrete-events-15">
   
   
-    <a href="#discrete-events-14">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-15">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -3316,10 +3668,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-16">
+<h5 id="consolidatedeventslua-17">
   
   
-    <a href="#consolidatedeventslua-16">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-17">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -3361,10 +3713,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-15">
+<h5 id="discrete-events-16">
   
   
-    <a href="#discrete-events-15">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-16">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -3409,10 +3761,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<h5 id="consolidatedeventslua-17">
+<h5 id="consolidatedeventslua-18">
   
   
-    <a href="#consolidatedeventslua-17">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-18">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -3445,10 +3797,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-16">
+<h5 id="discrete-events-17">
   
   
-    <a href="#discrete-events-16">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-17">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>

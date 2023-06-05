@@ -5,9 +5,11 @@ const doc = require("./docConvertFunctions")
 doc.parseDocumentation(documentation)
 
 
+
 require("./civFileChanges.js")
 require("./genFileChanges.js")
-
+require("./nativeLuaDataChanges.js")
+require("./customOverrides.js")
 
 
 
