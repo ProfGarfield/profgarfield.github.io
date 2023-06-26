@@ -45,7 +45,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#unit-activation"><strong>Unit Activation</strong></a></li><li><a href="#unit-bribery"><strong>Unit Bribery</strong></a></li><li><a href="#city-yield-calculation"><strong>City Yield Calculation</strong></a></li><li><a href="#centauri-arrival"><strong>Centauri Arrival</strong></a></li><li><a href="#city-destruction"><strong>City Destruction</strong></a></li><li><a href="#city-founded"><strong>City Founded</strong></a></li><li><a href="#city-production"><strong>City Production</strong></a></li><li><a href="#city-captured"><strong>City Captured</strong></a></li><li><a href="#game-end"><strong>Game End</strong></a></li><li><a href="#combat-declared"><strong>Combat Declared</strong></a></li><li><a href="#key-press"><strong>Key Press</strong></a></li><li><a href="#game-loaded"><strong>Game Loaded</strong></a></li><li><a href="#game-saved"><strong>Game Saved</strong></a></li><li><a href="#scenario-loaded"><strong>Scenario Loaded</strong></a></li><li><a href="#negotiation"><strong>Negotiation</strong></a></li><li><a href="#tribe-schism"><strong>Tribe Schism</strong></a></li><li><a href="#between-turns"><strong>Between Turns</strong></a></li><li><a href="#unit-killed-in-combat"><strong>Unit Killed In Combat</strong></a></li><li><a href="#unit-defeated"><strong>Unit Defeated</strong></a></li><li><a href="#unit-death"><strong>Unit Death</strong></a></li><li><a href="#unit-death-outside-combat"><strong>Unit Death Outside Combat</strong></a></li><li><a href="#unit-deleted"><strong>Unit Deleted</strong></a></li><li><a href="#city-processing-complete"><strong>City Processing Complete</strong></a></li><li><a href="#before-city-processing"><strong>Before City Processing</strong></a></li><li><a href="#city-processed"><strong>City Processed</strong></a></li><li><a href="#unit-enters-tile"><strong>Unit Enters Tile</strong></a></li><li><a href="#unit-given-last-order"><strong>Unit Given Last Order</strong></a></li><li><a href="#nuclear-attack"><strong>Nuclear Attack</strong></a></li><li><a href="#get-rush-buy-cost"><strong>Get Rush Buy Cost</strong></a></li><li><a href="#get-formatted-date"><strong>Get Formatted Date</strong></a></li><li><a href="#select-music"><strong>Select Music</strong></a></li><li><a href="#combat-resolution"><strong>Combat Resolution</strong></a></li><li><a href="#choose-tile-defender"><strong>Choose Tile Defender</strong></a></li><li><a href="#check-if-city-can-build-item"><strong>Check If City Can Build Item</strong></a></li></ul></div>  
+    <ul><li><a href="#unit-activation"><strong>Unit Activation</strong></a></li><li><a href="#unit-bribery"><strong>Unit Bribery</strong></a></li><li><a href="#city-yield-calculation"><strong>City Yield Calculation</strong></a></li><li><a href="#centauri-arrival"><strong>Centauri Arrival</strong></a></li><li><a href="#city-destruction"><strong>City Destruction</strong></a></li><li><a href="#city-founded"><strong>City Founded</strong></a></li><li><a href="#city-production"><strong>City Production</strong></a></li><li><a href="#city-captured"><strong>City Captured</strong></a></li><li><a href="#game-end"><strong>Game End</strong></a></li><li><a href="#combat-declared"><strong>Combat Declared</strong></a></li><li><a href="#key-press"><strong>Key Press</strong></a></li><li><a href="#game-loaded"><strong>Game Loaded</strong></a></li><li><a href="#game-saved"><strong>Game Saved</strong></a></li><li><a href="#scenario-loaded"><strong>Scenario Loaded</strong></a></li><li><a href="#negotiation"><strong>Negotiation</strong></a></li><li><a href="#tribe-schism"><strong>Tribe Schism</strong></a></li><li><a href="#between-turns"><strong>Between Turns</strong></a></li><li><a href="#unit-killed-in-combat"><strong>Unit Killed In Combat</strong></a></li><li><a href="#unit-defeated"><strong>Unit Defeated</strong></a></li><li><a href="#unit-death"><strong>Unit Death</strong></a></li><li><a href="#unit-death-outside-combat"><strong>Unit Death Outside Combat</strong></a></li><li><a href="#unit-deleted"><strong>Unit Deleted</strong></a></li><li><a href="#city-processing-complete"><strong>City Processing Complete</strong></a></li><li><a href="#before-city-processing"><strong>Before City Processing</strong></a></li><li><a href="#tribe-turn-finished"><strong>Tribe Turn Finished</strong></a></li><li><a href="#city-processed"><strong>City Processed</strong></a></li><li><a href="#unit-enters-tile"><strong>Unit Enters Tile</strong></a></li><li><a href="#unit-given-final-order"><strong>Unit Given Final Order</strong></a></li><li><a href="#nuclear-attack"><strong>Nuclear Attack</strong></a></li><li><a href="#get-rush-buy-cost"><strong>Get Rush Buy Cost</strong></a></li><li><a href="#get-formatted-date"><strong>Get Formatted Date</strong></a></li><li><a href="#select-music"><strong>Select Music</strong></a></li><li><a href="#combat-resolution"><strong>Combat Resolution</strong></a></li><li><a href="#choose-tile-defender"><strong>Choose Tile Defender</strong></a></li><li><a href="#check-if-city-can-build-item"><strong>Check If City Can Build Item</strong></a></li></ul></div>  
   
   <div class="post-content">
     <p>Lua Events function by running code at certain predetermined points during the Civilization II: Test of Time game.  The term “Execution Point”
@@ -770,6 +770,8 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a city is captured by another tribe.  The execution point takes place after the city has been captured, but before the units supported by the city are disbanded.</p>
 <h4 id="usage-7">
   
   
@@ -795,6 +797,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h5 id="eventsfilesoncitytakenlua">
   
   
@@ -810,6 +816,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h5 id="discrete-events-6">
   
   
@@ -829,6 +839,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h4 id="implementation-8">
   
   
@@ -846,6 +860,8 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when the game ends.  If the registered function returns true, then the game actually ends (default behavior).  If the registered function returns false, then the game does not end.  Since there are multiple ways to register a function for this execution point, if any of the registered functions returns false, then the game does not end.</p>
 <h4 id="usage-8">
   
   
@@ -854,6 +870,116 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
+<h5 id="consolidatedeventslua-7">
+  
+  
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-7"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Game Ends</span>
+<span class="c1">-- Return true if the game ends as normal,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the discrete events and the</span>
+<span class="c1">-- legacy events, as well as a separate onGameEnds.lua file</span>
+<span class="c1">-- If any of these return false, then game end is prevented</span>
+<span class="c1">-- Lua Function Reference Info:</span>
+<span class="c1">--onGameEnds</span>
+<span class="c1">--civ.scen.onGameEnds(function (reason) -&gt; boolean) -&gt; void</span>
+<span class="c1">--</span>
+<span class="c1">--Registers a function that is called when the game ends. `reason` is an integer between 1 and 6:</span>
+<span class="c1">--1 and 2 - Space race victory. This does not trigger if `onCentauriArrival` has a callback registered.</span>
+<span class="c1">--3 - Conquest victory</span>
+<span class="c1">--4 - Defeat</span>
+<span class="c1">--5 - Retirement</span>
+<span class="c1">--6 - Macro ENDGAME action</span>
+<span class="c1">--Return `true` to end the game, `false` to keep playing.</span>
+<span class="c1">--</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
+<h5 id="eventsfilesongameendslua">
+  
+  
+    <strong>EventsFiles\onGameEnds.lua</strong> <a href="#eventsfilesongameendslua"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- discreteEvents.onGameEnds and</span>
+<span class="c1">-- consolidated.onGameEnds</span>
+<span class="c1">-- also return booleans.  True means that the </span>
+<span class="c1">-- game ends as normal, which is the default behaviour.</span>
+<span class="c1">-- If any of the registered functions return false, then</span>
+<span class="c1">-- the game doesn't end</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
+<h5 id="discrete-events-7">
+  
+  
+    <strong>Discrete Events</strong> <a href="#discrete-events-7"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Game End event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Game Ends</span>
+<span class="c1">-- Return true if the game ends as normal,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the consolidated events and the</span>
+<span class="c1">-- legacy events, as well as a separate onGameEnds.lua file</span>
+<span class="c1">-- If any of these return false, then game end is prevented</span>
+<span class="c1">-- Not documented or experimented with much</span>
+<span class="c1">-- based on legacy event engine code, reason is an integer</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onGameEnds</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+    <span class="c1">-- return false to stop the game from ending</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
 <h4 id="implementation-9">
   
   
@@ -862,7 +988,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onGameEnd</code>.</p>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onGameEnds</code>.</p>
 <h3 id="combat-declared">
   
   
@@ -1108,6 +1234,11 @@ you want to change combat effectiveness based on events that happen during comba
   
 </h3>
     
+
+<p>The Key Press execution point is triggered every time a key is pressed.  A code for the key that
+was pressed is passed to the registered function.  The <a href="auto_doc/keyboard.html">keyboard module</a> provides a table of codes with human readable index values.</p>
+
+<p>Many key press events are registered in the file <code class="language-plaintext highlighter-rouge">MechanicsFiles\keyPressSettings.lua</code>.</p>
 <h4 id="usage-10">
   
   
@@ -1116,10 +1247,10 @@ you want to change combat effectiveness based on events that happen during comba
   
 </h4>
     
-<h5 id="consolidatedeventslua-7">
+<h5 id="consolidatedeventslua-8">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-7"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-8"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1134,6 +1265,8 @@ you want to change combat effectiveness based on events that happen during comba
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
 <h5 id="eventsfilesonkeypresslua">
   
   
@@ -1148,6 +1281,31 @@ you want to change combat effectiveness based on events that happen during comba
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
+<h5 id="discrete-events-8">
+  
+  
+    <strong>Discrete Events</strong> <a href="#discrete-events-8"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Key Press event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- The keyCode is an integer that corresponds to a particular key on the keyboard.</span>
+<span class="c1">-- The keyboard module provides names for these codes.</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onKeyPress</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">keyCode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="ow">and</span> <span class="n">keyboard</span><span class="p">.</span><span class="n">backspace</span> <span class="o">==</span> <span class="n">keyCode</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onKeyPress: The backspace key has been pressed."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
 <h4 id="implementation-11">
   
   
@@ -1202,10 +1360,10 @@ code within that file:</p>
 table using <code class="language-plaintext highlighter-rouge">civlua.unserialize</code>.  This template uses the lualzw module
 to compress the data, so it is decompressed here as well.  (If the data isn’t
 compressed, <code class="language-plaintext highlighter-rouge">lualzw.decompress</code> returns <code class="language-plaintext highlighter-rouge">nil</code>, so the raw string is used instead.)</p>
-<h5 id="discrete-events-7">
+<h5 id="discrete-events-9">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-7"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-9"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1342,10 +1500,10 @@ change this code within the <code class="language-plaintext highlighter-rouge">e
 extra information as an entry in the state table.  Accessing this
 execution point through using the Discrete Events module does not
 let you change the string that is saved to the file.</p>
-<h5 id="discrete-events-8">
+<h5 id="discrete-events-10">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-8"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-10"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1380,6 +1538,10 @@ registered function receives no arguments.</p>
   
 </h3>
     
+
+<p>The Scenario Loaded execution point is triggered when the game is loaded, but before anything else happens.  Despite its name, it is not triggered solely by starting a new scenario.  It is also triggered when a save file is loaded.</p>
+
+<p>The Scenario Loaded execution point is triggered after the Game Loaded execution point.</p>
 <h4 id="usage-13">
   
   
@@ -1388,10 +1550,10 @@ registered function receives no arguments.</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-8">
+<h5 id="consolidatedeventslua-9">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-8"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-9"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1419,10 +1581,10 @@ registered function receives no arguments.</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-9">
+<h5 id="discrete-events-11">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-9"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-11"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1471,10 +1633,10 @@ between the two parties is disabled.</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-9">
+<h5 id="consolidatedeventslua-10">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-9"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-10"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1513,10 +1675,10 @@ between the two parties is disabled.</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-10">
+<h5 id="discrete-events-12">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-10"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-12"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1582,10 +1744,10 @@ are that:</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-10">
+<h5 id="consolidatedeventslua-11">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-10"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-11"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1630,10 +1792,10 @@ event prevents it).</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
 event prevents it).</p>
-<h5 id="discrete-events-11">
+<h5 id="discrete-events-13">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-11"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-13"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1683,10 +1845,10 @@ event prevents it).</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-11">
+<h5 id="consolidatedeventslua-12">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-11"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-12"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1715,10 +1877,10 @@ event prevents it).</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-12">
+<h5 id="discrete-events-14">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-12"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-14"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1758,10 +1920,10 @@ event prevents it).</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-12">
+<h5 id="consolidatedeventslua-13">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-12"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-13"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1826,10 +1988,10 @@ took place.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
 took place.</p>
-<h5 id="discrete-events-13">
+<h5 id="discrete-events-15">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-13"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-15"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1911,10 +2073,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-13">
+<h5 id="consolidatedeventslua-14">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-13"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-14"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1927,6 +2089,21 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h5 id="eventsfilesonunitdefeatedlua">
   
   
@@ -1943,10 +2120,25 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-14">
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
+<h5 id="discrete-events-16">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-14"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-16"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -1962,6 +2154,21 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h4 id="implementation-19">
   
   
@@ -1971,7 +2178,9 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Defeated execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the function <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code>
+call the registered functions for this execution point.  The function is registered for <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> by the function <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="unit-death">
   
   
@@ -1980,6 +2189,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit “dies.”  This includes when it is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> (as long as it isn’t demoted into another unit by events), and also when the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a> is called.</p>
 <h4 id="usage-19">
   
   
@@ -2004,6 +2215,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">dyingUnit</code> is the unit which has just been killed.</p>
 <h4 id="implementation-20">
   
   
@@ -2013,7 +2226,9 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Death execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the functions <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> and <code class="language-plaintext highlighter-rouge">gen.killUnit</code>
+call the registered function for this execution point.</p>
 <h3 id="unit-death-outside-combat">
   
   
@@ -2022,6 +2237,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is “killed” using the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a>.  It is not triggered when a unit is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a>.</p>
 <h4 id="usage-20">
   
   
@@ -2046,6 +2263,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">dyingUnit</code> is the unit which has just been killed.</p>
 <h4 id="implementation-21">
   
   
@@ -2055,7 +2274,7 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Death Outside Combat execution point is implemented by making the function <code class="language-plaintext highlighter-rouge">gen.killUnit</code> call the registered function for this execution point.  That function is registered using <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="unit-deleted">
   
   
@@ -2064,6 +2283,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is deleted from the game.  This includes when it is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> (even if the unit is “demoted” into another unit), when the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a> is called, and when the function <a href="/auto_doc/gen.html#deleteunit">gen.deleteUnit</a> is called.  It is not triggered when a unit is disbanded by the player (as of TOTPPv0.18.4), and is not triggered by the use of <a href="/auto_doc/civ.html#deleteunit">civ.deleteUnit</a>.</p>
 <h4 id="usage-21">
   
   
@@ -2090,6 +2311,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">deletedUnit</code> is the unit which has just been deleted.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">replacementUnit</code> is the unit which has replaced the <code class="language-plaintext highlighter-rouge">deletedUnit</code> (if any).  If the <code class="language-plaintext highlighter-rouge">deletedUnit</code> was not replaced, this parameter is <code class="language-plaintext highlighter-rouge">nil</code>.</p>
 <h4 id="implementation-22">
   
   
@@ -2099,7 +2324,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not Standard implementation</p>
+<p>The Unit Deleted execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the functions <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code>, <code class="language-plaintext highlighter-rouge">gen.killUnit</code>, and <code class="language-plaintext highlighter-rouge">gen.deleteUnit</code> call the registered function for this execution point.  The function is registered for <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> by the function <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="city-processing-complete">
   
   
@@ -2108,6 +2334,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when the game has finished processing city production for a tribe, and before it has a chance to move units.</p>
 <h4 id="usage-22">
   
   
@@ -2116,10 +2344,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-14">
+<h5 id="consolidatedeventslua-15">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-14"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-15"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2134,6 +2362,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
 <h5 id="eventsfilesoncityprocessingcompletelua">
   
   
@@ -2152,10 +2384,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-15">
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
+<h5 id="discrete-events-17">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-15"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-17"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2171,6 +2407,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
 <h4 id="implementation-23">
   
   
@@ -2188,6 +2428,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered at the start of a tribe’s turn, before the game processes its cities.</p>
 <h4 id="usage-23">
   
   
@@ -2196,10 +2438,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-15">
+<h5 id="consolidatedeventslua-16">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-15"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-16"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2214,6 +2456,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
 <h5 id="eventsfilesontribeturnbeginlua">
   
   
@@ -2230,10 +2476,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-16">
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
+<h5 id="discrete-events-18">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-16"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-18"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2249,6 +2499,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
 <h4 id="implementation-24">
   
   
@@ -2258,14 +2512,16 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 <p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTribeTurnBegin</code>.</p>
-<h3 id="city-processed">
+<h3 id="tribe-turn-finished">
   
   
-    <strong>City Processed</strong> <a href="#city-processed"><span class="self-link">&#128279</span></a>
+    <strong>Tribe Turn Finished</strong> <a href="#tribe-turn-finished"><span class="self-link">&#128279</span></a>
   
   
 </h3>
     
+
+<p>This execution point is triggered at the end of a tribe’s turn.</p>
 <h4 id="usage-24">
   
   
@@ -2274,10 +2530,101 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-16">
+<h5 id="consolidatedeventslua-17">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-16"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-17"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onTribeTurnEnd for turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h5 id="eventsfilesontribeturnendlua">
+  
+  
+    <strong>EventsFiles\onTribeTurnEnd.lua</strong> <a href="#eventsfilesontribeturnendlua"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onTribeTurnEnd for turn "</span><span class="o">..</span><span class="n">turn</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" separate file"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h5 id="discrete-events-19">
+  
+  
+    <strong>Discrete Events</strong> <a href="#discrete-events-19"><span class="self-link">&#128279</span></a>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Tribe Turn Finished event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onTribeTurnEnd</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onTribeTurnEnd for "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" on turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h4 id="implementation-25">
+  
+  
+    Implementation <a href="#implementation-25"><span class="self-link">&#128279</span></a>
+  
+  
+</h4>
+    
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTribeTurnEnd</code>.</p>
+<h3 id="city-processed">
+  
+  
+    <strong>City Processed</strong> <a href="#city-processed"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+
+<p>This execution point is triggered during the processing of a city’s production, at the start of its owner’s turn.  This execution point is implemented during the City Yield Calculation execution point, so anything that can’t be effectively changed during that execution point can’t be changed here either.  For example, changing the cosmic parameter <code class="language-plaintext highlighter-rouge">sizeAquaduct</code> will not change the size a city can grow without an aquaduct, because the size is in place before this execution point is triggered.</p>
+<h4 id="usage-25">
+  
+  
+    Usage <a href="#usage-25"><span class="self-link">&#128279</span></a>
+  
+  
+</h4>
+    
+<h5 id="consolidatedeventslua-18">
+  
+  
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-18"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2305,10 +2652,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-17">
+<h5 id="discrete-events-20">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-17"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-20"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2323,16 +2670,18 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-25">
+<h4 id="implementation-26">
   
   
-    Implementation <a href="#implementation-25"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-26"><span class="self-link">&#128279</span></a>
   
   
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The City Processed execution point is implemented using the TOTPP function <code class="language-plaintext highlighter-rouge">civ.scen.onCalcCityYield</code>, checking that the city is owned by the tribe whose turn it is and that the city
+hasn’t been processed yet this turn.  After the city is processed, the information is recorded
+in the state table, so this execution point will only be run once per city per turn.</p>
 <h3 id="unit-enters-tile">
   
   
@@ -2341,18 +2690,22 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
-<h4 id="usage-25">
+
+<p>This execution point is triggered when a unit enters a tile from another tile.</p>
+
+<p>This execution point will not work properly if <code class="language-plaintext highlighter-rouge">civ.scen.compatibility.activeUnitEveryMove</code> is set to <code class="language-plaintext highlighter-rouge">false</code>.  (In the Lua Scenario Template, it is set to <code class="language-plaintext highlighter-rouge">true</code> in the file <code class="language-plaintext highlighter-rouge">LuaParameterFiles\parameters.lua</code>.)</p>
+<h4 id="usage-26">
   
   
-    Usage <a href="#usage-25"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-26"><span class="self-link">&#128279</span></a>
   
   
 </h4>
     
-<h5 id="consolidatedeventslua-17">
+<h5 id="consolidatedeventslua-19">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-17"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-19"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2394,10 +2747,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-18">
+<h5 id="discrete-events-21">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-18"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-21"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2409,43 +2762,49 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onEnterTile(unit,previousTile)</span>
 <span class="c1">-- executes when a unit successfully enters a tile (so not when it attacks</span>
 <span class="c1">-- a unit or fails to enter a tile because it lacks movement points)</span>
-<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onEnterTile</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">)</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onEnterTile</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">,</span><span class="n">previousDomainSpec</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
         <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onEnterTile: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has entered tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">location</span><span class="p">)</span><span class="o">..</span><span class="s2">") from tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">previousTile</span><span class="p">)</span><span class="o">..</span><span class="s2">")."</span><span class="p">)</span>
     <span class="k">end</span>
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-26">
+<h4 id="implementation-27">
   
   
-    Implementation <a href="#implementation-26"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-27"><span class="self-link">&#128279</span></a>
   
   
 </h4>
     
 
-<p>Not Standard Implementation</p>
-<h3 id="unit-given-last-order">
+<p>This execution point is mostly implemented using the Unit Activation execution point.  Since the execution point is executed when the unit is ready to move again, code can check whether a unit has moved.</p>
+
+<p>When a unit is activated, some information about it is recorded by Lua, including its location.  The next time the a Unit Activation execution point is triggered, the location is compared to the recorded location.  If the unit is now in a different location, the Unit Enters Tile execution point is triggered.</p>
+
+<p>The Get Formatted Date execution point will also check to see if a unit has been moved, in case there is no new active unit to trigger the Unit Activation execution point.  Since the status window is recalculated almost every time a click is made, a human player shouldn’t be able to do much without having this execution point trigger if it is appropriate.  The Tribe Turn Finished execution point also checks to see if a unit has been moved without having this execution point trigger, and if so, triggers this execution point.</p>
+<h3 id="unit-given-final-order">
   
   
-    <strong>Unit Given Last Order</strong> <a href="#unit-given-last-order"><span class="self-link">&#128279</span></a>
+    <strong>Unit Given Final Order</strong> <a href="#unit-given-final-order"><span class="self-link">&#128279</span></a>
   
   
 </h3>
     
-<h4 id="usage-26">
+
+<p>This execution point is triggered when a unit is given its final order for the turn.  This can happen because the unit has been detected to have spent all its movement points, or because the tribe’s turn has ended.</p>
+<h4 id="usage-27">
   
   
-    Usage <a href="#usage-26"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-27"><span class="self-link">&#128279</span></a>
   
   
 </h4>
     
-<h5 id="consolidatedeventslua-18">
+<h5 id="consolidatedeventslua-20">
   
   
-    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-18"><span class="self-link">&#128279</span></a>
+    <strong>consolidatedEvents.lua</strong> <a href="#consolidatedeventslua-20"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2475,13 +2834,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
     <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
         <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onFinalOrderGiven.onFinalOrderGiven: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has been given its order."</span><span class="p">)</span>
     <span class="k">end</span>
+    <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" ("</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="o">..</span><span class="s2">") has received its last order"</span><span class="p">)</span>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-19">
+<h5 id="discrete-events-22">
   
   
-    <strong>Discrete Events</strong> <a href="#discrete-events-19"><span class="self-link">&#128279</span></a>
+    <strong>Discrete Events</strong> <a href="#discrete-events-22"><span class="self-link">&#128279</span></a>
   
   
 </h5>
@@ -2489,7 +2849,7 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
 </code></pre></div></div>
-<p>This is the example of a discrete Unit Given Last Order event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<p>This is the example of a discrete Unit Given Final Order event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onFinalOrderGiven(unit)</span>
 <span class="c1">-- executes when a unit has been given its final order for the turn.</span>
 <span class="c1">-- that is, when a new unit is active and the previous unit has spent</span>
@@ -2501,16 +2861,16 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-27">
+<h4 id="implementation-28">
   
   
-    Implementation <a href="#implementation-27"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-28"><span class="self-link">&#128279</span></a>
   
   
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>This execution point is implemented using the Unit Activation execution point and the Tribe Turn Finished execution point.  When a unit is activated, some information about it is recorded by Lua.  The code checks the previously activated unit, and, if it no longer has any movement points remaining, triggers this execution point.  At the end of the tribe’s turn, the Tribe Turn Finished execution point checks to see if the unit has any movement points left.  If it does, the Unit Given Final Order execution point is triggered for that unit.</p>
 <h3 id="nuclear-attack">
   
   
@@ -2523,10 +2883,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 weapon (either a unit with 99 attack, or a spy).  A nuclear attack does not trigger <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, so
 events.lua makes sure to execute the related events.
 If the registered function returns <code class="language-plaintext highlighter-rouge">false</code>, the attack is aborted.</p>
-<h4 id="usage-27">
+<h4 id="usage-28">
   
   
-    Usage <a href="#usage-27"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-28"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2557,10 +2917,10 @@ If the registered function returns <code class="language-plaintext highlighter-r
 <p>The <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or spy which is making the nuclear attack.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack.</p>
-<h4 id="implementation-28">
+<h4 id="implementation-29">
   
   
-    Implementation <a href="#implementation-28"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-29"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2578,10 +2938,10 @@ If the registered function returns <code class="language-plaintext highlighter-r
 <p>This execution point is called when a player checks what the cost is to rush 
 buy the city’s current production item.  The registered function must return
 an integer with the cost.</p>
-<h4 id="usage-28">
+<h4 id="usage-29">
   
   
-    Usage <a href="#usage-28"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-29"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2607,10 +2967,10 @@ ushBuySettings.lua, change the following code:</p>
 <p>The <code class="language-plaintext highlighter-rouge">city</code> parameter is the city where rush-buying is being considered.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">cost</code> parameter is the game’s default cost to rush buy the current production item.</p>
-<h4 id="implementation-29">
+<h4 id="implementation-30">
   
   
-    Implementation <a href="#implementation-29"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-30"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2642,10 +3002,10 @@ Final Order Given and Unit Enters Tile execution points leverage this
 ability so that they function properly even when another unit isn’t activated
 immediately.  (This is handled in events.lua, so you don’t have to worry about
 it when changing the code in onGetFormattedDate.lua.)</p>
-<h4 id="usage-29">
+<h4 id="usage-30">
   
   
-    Usage <a href="#usage-29"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-30"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2705,10 +3065,10 @@ date is displayed.</p>
     <span class="k">return</span> <span class="n">defaultDateString</span>
 <span class="k">end</span>
 </code></pre></div></div>
-<h4 id="implementation-30">
+<h4 id="implementation-31">
   
   
-    Implementation <a href="#implementation-30"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-31"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2730,10 +3090,10 @@ customised music with his or her scenario.</p>
 
 <p>This execution point is also used by my <a href="https://github.com/ProfGarfield/ExtendedMusicForTOTPP">Extended Music For TOTPP</a> program.  If your scenario ships customised
 music, that overrides the Extended Music Patch.</p>
-<h4 id="usage-30">
+<h4 id="usage-31">
   
   
-    Usage <a href="#usage-30"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-31"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2816,10 +3176,10 @@ by adding or removing lines as necessary.</p>
 civilizations are destroyed and cities celebrate We Love The King Day,
 respectively.  Choose appropriate tracks, or leave them with their default
 names, and let them be found in the player’s main music directory.</p>
-<h4 id="implementation-31">
+<h4 id="implementation-32">
   
   
-    Implementation <a href="#implementation-31"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-32"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2841,10 +3201,10 @@ function is not called in <code class="language-plaintext highlighter-rouge">eve
 <p>The registered function is called before every round of combat.  If it returns
 true, the combat continues for another round.  If false, the combat ends, and
 one of the combatants is destroyed.  (If one has 0 hp, it will be that one.)</p>
-<h4 id="usage-31">
+<h4 id="usage-32">
   
   
-    Usage <a href="#usage-31"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-32"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2873,10 +3233,10 @@ when you wish to do something different.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">defender</code> and <code class="language-plaintext highlighter-rouge">attacker</code> parameters are the units which are engaged
 in combat.</p>
-<h4 id="implementation-32">
+<h4 id="implementation-33">
   
   
-    Implementation <a href="#implementation-32"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-33"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2892,10 +3252,10 @@ in combat.</p>
 </h3>
     
 <p>The code registered tot he Choose Tile Defender execution point is called when the game checks what unit will defend a tile.  This happens both when a tile is actually attacked, and when the AI is determining its goals.  A unit must be returned by the registered function, and that unit will defend the tile if combat actually takes place.  The defending unit can be chosen from a different tile.</p>
-<h4 id="usage-32">
+<h4 id="usage-33">
   
   
-    Usage <a href="#usage-32"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-33"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -2950,12 +3310,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_KB$@bz8JnlyTaX3W6YeL2u.xml"></include>
+<include src="/_qybLMTnt$PBF0mguAlhd8K.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_NLp598BRhK0zTF@stxiJCE.xml"></include> 
+<include src="/_L93kwdcygO4GCqifNE7UFv.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
@@ -2994,10 +3354,10 @@ is used instead (without integer division).  This is because the base Civilizati
 units when a fighter unit attacks.  This ensures that air units will always be chosen as defenders when a fighter attacks, even if they are not the best defenders.  Similarly, ground units on ocean tiles subtract 100 million, so they’ll never defend if a ship can defend them.</p>
 
 <p>With a finalized defender value, <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> determines if the candidate defender is the best found so far, and, if so, updates the <code class="language-plaintext highlighter-rouge">bestDefender</code> variable.  After checking all units, <code class="language-plaintext highlighter-rouge">bestDefender</code> is returned.</p>
-<h4 id="implementation-33">
+<h4 id="implementation-34">
   
   
-    Implementation <a href="#implementation-33"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-34"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -3014,10 +3374,10 @@ units when a fighter unit attacks.  This ensures that air units will always be c
     
 
 <p>The code for this execution point is executed whenever a city needs to determine if it can build an item.  If the called function returns <code class="language-plaintext highlighter-rouge">true</code>, then the item can be built by the city; if <code class="language-plaintext highlighter-rouge">false</code> it can’t.  This usually (possibly always, but I don’t know for sure) means that this execution point is run in batches of 256, for all the possible units, improvements, and wonders, that a city could build.</p>
-<h4 id="usage-33">
+<h4 id="usage-34">
   
   
-    Usage <a href="#usage-33"><span class="self-link">&#128279</span></a>
+    Usage <a href="#usage-34"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -3051,10 +3411,10 @@ units when a fighter unit attacks.  This ensures that air units will always be c
 <p>Once you’ve written your <code class="language-plaintext highlighter-rouge">canCityBuild</code> function, you would register it using the function call</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">civ</span><span class="p">.</span><span class="n">scen</span><span class="p">.</span><span class="n">onCanBuild</span><span class="p">(</span><span class="n">canCityBuild</span><span class="p">)</span>
 </code></pre></div></div>
-<h4 id="implementation-34">
+<h4 id="implementation-35">
   
   
-    Implementation <a href="#implementation-34"><span class="self-link">&#128279</span></a>
+    Implementation <a href="#implementation-35"><span class="self-link">&#128279</span></a>
   
   
 </h4>
@@ -3787,6 +4147,8 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when a city is captured by another tribe.  The execution point takes place after the city has been captured, but before the units supported by the city are disbanded.</p>
 <h4 id="usage-7">
   
   
@@ -3812,6 +4174,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h5 id="eventsfilesoncitytakenlua">
   
   
@@ -3827,6 +4193,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h5 id="discrete-events-6">
   
   
@@ -3846,6 +4216,10 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">city</code> is the city that was captured.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">defender</code> is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use <code class="language-plaintext highlighter-rouge">city.owner</code>.</p>
 <h4 id="implementation-8">
   
   
@@ -3863,6 +4237,8 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h3>
     
+
+<p>This execution point is triggered when the game ends.  If the registered function returns true, then the game actually ends (default behavior).  If the registered function returns false, then the game does not end.  Since there are multiple ways to register a function for this execution point, if any of the registered functions returns false, then the game does not end.</p>
 <h4 id="usage-8">
   
   
@@ -3871,6 +4247,116 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
+<h5 id="consolidatedeventslua-7">
+  
+  
+    <a href="#consolidatedeventslua-7">&#128279</a> <strong>consolidatedEvents.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Game Ends</span>
+<span class="c1">-- Return true if the game ends as normal,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the discrete events and the</span>
+<span class="c1">-- legacy events, as well as a separate onGameEnds.lua file</span>
+<span class="c1">-- If any of these return false, then game end is prevented</span>
+<span class="c1">-- Lua Function Reference Info:</span>
+<span class="c1">--onGameEnds</span>
+<span class="c1">--civ.scen.onGameEnds(function (reason) -&gt; boolean) -&gt; void</span>
+<span class="c1">--</span>
+<span class="c1">--Registers a function that is called when the game ends. `reason` is an integer between 1 and 6:</span>
+<span class="c1">--1 and 2 - Space race victory. This does not trigger if `onCentauriArrival` has a callback registered.</span>
+<span class="c1">--3 - Conquest victory</span>
+<span class="c1">--4 - Defeat</span>
+<span class="c1">--5 - Retirement</span>
+<span class="c1">--6 - Macro ENDGAME action</span>
+<span class="c1">--Return `true` to end the game, `false` to keep playing.</span>
+<span class="c1">--</span>
+<span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
+<h5 id="eventsfilesongameendslua">
+  
+  
+    <a href="#eventsfilesongameendslua">&#128279</a> <strong>EventsFiles\onGameEnds.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- discreteEvents.onGameEnds and</span>
+<span class="c1">-- consolidated.onGameEnds</span>
+<span class="c1">-- also return booleans.  True means that the </span>
+<span class="c1">-- game ends as normal, which is the default behaviour.</span>
+<span class="c1">-- If any of the registered functions return false, then</span>
+<span class="c1">-- the game doesn't end</span>
+<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onGameEnds</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
+<h5 id="discrete-events-7">
+  
+  
+    <a href="#discrete-events-7">&#128279</a> <strong>Discrete Events</strong>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Game End event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- On Game Ends</span>
+<span class="c1">-- Return true if the game ends as normal,</span>
+<span class="c1">-- and false otherwise.</span>
+<span class="c1">-- This is combined with the consolidated events and the</span>
+<span class="c1">-- legacy events, as well as a separate onGameEnds.lua file</span>
+<span class="c1">-- If any of these return false, then game end is prevented</span>
+<span class="c1">-- Not documented or experimented with much</span>
+<span class="c1">-- based on legacy event engine code, reason is an integer</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onGameEnds</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+    <span class="c1">-- return false to stop the game from ending</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code> is an integer with 6 possible values:</p>
+<ol>
+  <li>Space race victory achieved by the active player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Space race victory achieved by another player.  (Can’t happen if <code class="language-plaintext highlighter-rouge">civ.scen.onCentauriArrival</code> is registered.)</li>
+  <li>Conquest Victory</li>
+  <li>Defeat</li>
+  <li>Retirement</li>
+  <li><a href="auto_doc/civ.html#endGame">civ.endGame</a> was called.  (Or the Macro Language equivalent.)</li>
+</ol>
 <h4 id="implementation-9">
   
   
@@ -3879,7 +4365,7 @@ wonder was completed, <code class="language-plaintext highlighter-rouge">prod</c
   
 </h4>
     
-<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onGameEnd</code>.</p>
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onGameEnds</code>.</p>
 <h3 id="combat-declared">
   
   
@@ -4125,6 +4611,11 @@ you want to change combat effectiveness based on events that happen during comba
   
 </h3>
     
+
+<p>The Key Press execution point is triggered every time a key is pressed.  A code for the key that
+was pressed is passed to the registered function.  The <a href="auto_doc/keyboard.html">keyboard module</a> provides a table of codes with human readable index values.</p>
+
+<p>Many key press events are registered in the file <code class="language-plaintext highlighter-rouge">MechanicsFiles\keyPressSettings.lua</code>.</p>
 <h4 id="usage-10">
   
   
@@ -4133,10 +4624,10 @@ you want to change combat effectiveness based on events that happen during comba
   
 </h4>
     
-<h5 id="consolidatedeventslua-7">
+<h5 id="consolidatedeventslua-8">
   
   
-    <a href="#consolidatedeventslua-7">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-8">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4151,6 +4642,8 @@ you want to change combat effectiveness based on events that happen during comba
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
 <h5 id="eventsfilesonkeypresslua">
   
   
@@ -4165,6 +4658,31 @@ you want to change combat effectiveness based on events that happen during comba
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
+<h5 id="discrete-events-8">
+  
+  
+    <a href="#discrete-events-8">&#128279</a> <strong>Discrete Events</strong>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Key Press event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- The keyCode is an integer that corresponds to a particular key on the keyboard.</span>
+<span class="c1">-- The keyboard module provides names for these codes.</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onKeyPress</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">keyCode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="ow">and</span> <span class="n">keyboard</span><span class="p">.</span><span class="n">backspace</span> <span class="o">==</span> <span class="n">keyCode</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onKeyPress: The backspace key has been pressed."</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">keyCode</code> parameter is an integer corresponding to a keyboard key.</p>
 <h4 id="implementation-11">
   
   
@@ -4219,10 +4737,10 @@ code within that file:</p>
 table using <code class="language-plaintext highlighter-rouge">civlua.unserialize</code>.  This template uses the lualzw module
 to compress the data, so it is decompressed here as well.  (If the data isn’t
 compressed, <code class="language-plaintext highlighter-rouge">lualzw.decompress</code> returns <code class="language-plaintext highlighter-rouge">nil</code>, so the raw string is used instead.)</p>
-<h5 id="discrete-events-7">
+<h5 id="discrete-events-9">
   
   
-    <a href="#discrete-events-7">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-9">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4359,10 +4877,10 @@ change this code within the <code class="language-plaintext highlighter-rouge">e
 extra information as an entry in the state table.  Accessing this
 execution point through using the Discrete Events module does not
 let you change the string that is saved to the file.</p>
-<h5 id="discrete-events-8">
+<h5 id="discrete-events-10">
   
   
-    <a href="#discrete-events-8">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-10">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4397,6 +4915,10 @@ registered function receives no arguments.</p>
   
 </h3>
     
+
+<p>The Scenario Loaded execution point is triggered when the game is loaded, but before anything else happens.  Despite its name, it is not triggered solely by starting a new scenario.  It is also triggered when a save file is loaded.</p>
+
+<p>The Scenario Loaded execution point is triggered after the Game Loaded execution point.</p>
 <h4 id="usage-13">
   
   
@@ -4405,10 +4927,10 @@ registered function receives no arguments.</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-8">
+<h5 id="consolidatedeventslua-9">
   
   
-    <a href="#consolidatedeventslua-8">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-9">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4436,10 +4958,10 @@ registered function receives no arguments.</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-9">
+<h5 id="discrete-events-11">
   
   
-    <a href="#discrete-events-9">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-11">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4488,10 +5010,10 @@ between the two parties is disabled.</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-9">
+<h5 id="consolidatedeventslua-10">
   
   
-    <a href="#consolidatedeventslua-9">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-10">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4530,10 +5052,10 @@ between the two parties is disabled.</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-10">
+<h5 id="discrete-events-12">
   
   
-    <a href="#discrete-events-10">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-12">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4599,10 +5121,10 @@ are that:</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-10">
+<h5 id="consolidatedeventslua-11">
   
   
-    <a href="#consolidatedeventslua-10">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-11">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4647,10 +5169,10 @@ event prevents it).</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe that just lost its capital and will undergo schism if there is an available tribe slot (unless this
 event prevents it).</p>
-<h5 id="discrete-events-11">
+<h5 id="discrete-events-13">
   
   
-    <a href="#discrete-events-11">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-13">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4700,10 +5222,10 @@ event prevents it).</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-11">
+<h5 id="consolidatedeventslua-12">
   
   
-    <a href="#consolidatedeventslua-11">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-12">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4732,10 +5254,10 @@ event prevents it).</p>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-12">
+<h5 id="discrete-events-14">
   
   
-    <a href="#discrete-events-12">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-14">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4775,10 +5297,10 @@ event prevents it).</p>
   
 </h4>
     
-<h5 id="consolidatedeventslua-12">
+<h5 id="consolidatedeventslua-13">
   
   
-    <a href="#consolidatedeventslua-12">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-13">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4843,10 +5365,10 @@ took place.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
 took place.</p>
-<h5 id="discrete-events-13">
+<h5 id="discrete-events-15">
   
   
-    <a href="#discrete-events-13">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-15">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4928,10 +5450,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-13">
+<h5 id="consolidatedeventslua-14">
   
   
-    <a href="#consolidatedeventslua-13">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-14">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -4944,6 +5466,21 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h5 id="eventsfilesonunitdefeatedlua">
   
   
@@ -4960,10 +5497,25 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-14">
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
+<h5 id="discrete-events-16">
   
   
-    <a href="#discrete-events-14">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-16">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -4979,6 +5531,21 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">loser</code> is the unit which was defeated.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winner</code> is the unit which won the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">aggressor</code> is the unit which initiated the combat.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">victim</code> is the unit which was attacked.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserLocation</code> is the tile where the <code class="language-plaintext highlighter-rouge">loser</code> was standing.  If the <code class="language-plaintext highlighter-rouge">aggressor</code> is the <code class="language-plaintext highlighter-rouge">loser</code>, the code <code class="language-plaintext highlighter-rouge">loser.location</code> will point to a “tile” off the map.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">winnerVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">winner</code> before the battle took place (this event triggers after the game assigns veteran status for victory in combat).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">loserVetStatus</code> is the veteran status of the <code class="language-plaintext highlighter-rouge">loser</code> before the battle
+took place.</p>
 <h4 id="implementation-19">
   
   
@@ -4988,7 +5555,9 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Defeated execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the function <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code>
+call the registered functions for this execution point.  The function is registered for <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> by the function <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="unit-death">
   
   
@@ -4997,6 +5566,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit “dies.”  This includes when it is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> (as long as it isn’t demoted into another unit by events), and also when the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a> is called.</p>
 <h4 id="usage-19">
   
   
@@ -5021,6 +5592,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">dyingUnit</code> is the unit which has just been killed.</p>
 <h4 id="implementation-20">
   
   
@@ -5030,7 +5603,9 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Death execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the functions <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> and <code class="language-plaintext highlighter-rouge">gen.killUnit</code>
+call the registered function for this execution point.</p>
 <h3 id="unit-death-outside-combat">
   
   
@@ -5039,6 +5614,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is “killed” using the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a>.  It is not triggered when a unit is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a>.</p>
 <h4 id="usage-20">
   
   
@@ -5063,6 +5640,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">dyingUnit</code> is the unit which has just been killed.</p>
 <h4 id="implementation-21">
   
   
@@ -5072,7 +5651,7 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The Unit Death Outside Combat execution point is implemented by making the function <code class="language-plaintext highlighter-rouge">gen.killUnit</code> call the registered function for this execution point.  That function is registered using <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="unit-deleted">
   
   
@@ -5081,6 +5660,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when a unit is deleted from the game.  This includes when it is defeated in combat or by the use of <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> (even if the unit is “demoted” into another unit), when the function <a href="/auto_doc/gen.html#killunit">gen.killUnit</a> is called, and when the function <a href="/auto_doc/gen.html#deleteunit">gen.deleteUnit</a> is called.  It is not triggered when a unit is disbanded by the player (as of TOTPPv0.18.4), and is not triggered by the use of <a href="/auto_doc/civ.html#deleteunit">civ.deleteUnit</a>.</p>
 <h4 id="usage-21">
   
   
@@ -5107,6 +5688,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">deletedUnit</code> is the unit which has just been deleted.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">replacementUnit</code> is the unit which has replaced the <code class="language-plaintext highlighter-rouge">deletedUnit</code> (if any).  If the <code class="language-plaintext highlighter-rouge">deletedUnit</code> was not replaced, this parameter is <code class="language-plaintext highlighter-rouge">nil</code>.</p>
 <h4 id="implementation-22">
   
   
@@ -5116,7 +5701,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 
-<p>Not Standard implementation</p>
+<p>The Unit Deleted execution point is implemented using the TOTPP function
+<code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, as well as making the functions <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code>, <code class="language-plaintext highlighter-rouge">gen.killUnit</code>, and <code class="language-plaintext highlighter-rouge">gen.deleteUnit</code> call the registered function for this execution point.  The function is registered for <code class="language-plaintext highlighter-rouge">gen.defeatUnit</code> by the function <a href="/auto_doc/gen.html#setdeathfunctions">gen.setDeathFunctions</a>.</p>
 <h3 id="city-processing-complete">
   
   
@@ -5125,6 +5711,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered when the game has finished processing city production for a tribe, and before it has a chance to move units.</p>
 <h4 id="usage-22">
   
   
@@ -5133,10 +5721,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-14">
+<h5 id="consolidatedeventslua-15">
   
   
-    <a href="#consolidatedeventslua-14">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-15">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -5151,6 +5739,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
 <h5 id="eventsfilesoncityprocessingcompletelua">
   
   
@@ -5169,10 +5761,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-15">
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
+<h5 id="discrete-events-17">
   
   
-    <a href="#discrete-events-15">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-17">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -5188,6 +5784,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished processing cities.</p>
 <h4 id="implementation-23">
   
   
@@ -5205,6 +5805,8 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
+
+<p>This execution point is triggered at the start of a tribe’s turn, before the game processes its cities.</p>
 <h4 id="usage-23">
   
   
@@ -5213,10 +5815,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-15">
+<h5 id="consolidatedeventslua-16">
   
   
-    <a href="#consolidatedeventslua-15">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-16">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -5231,6 +5833,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
 <h5 id="eventsfilesontribeturnbeginlua">
   
   
@@ -5247,10 +5853,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-16">
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
+<h5 id="discrete-events-18">
   
   
-    <a href="#discrete-events-16">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-18">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -5266,6 +5876,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which is about to process cities.</p>
 <h4 id="implementation-24">
   
   
@@ -5275,14 +5889,16 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 </h4>
     
 <p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTribeTurnBegin</code>.</p>
-<h3 id="city-processed">
+<h3 id="tribe-turn-finished">
   
   
-    <a href="#city-processed">&#128279</a> <strong>City Processed</strong>
+    <a href="#tribe-turn-finished">&#128279</a> <strong>Tribe Turn Finished</strong>
   
   
 </h3>
     
+
+<p>This execution point is triggered at the end of a tribe’s turn.</p>
 <h4 id="usage-24">
   
   
@@ -5291,10 +5907,101 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h4>
     
-<h5 id="consolidatedeventslua-16">
+<h5 id="consolidatedeventslua-17">
   
   
-    <a href="#consolidatedeventslua-16">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-17">&#128279</a> <strong>consolidatedEvents.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">events</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"consolidated.onTribeTurnEnd for turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">)</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h5 id="eventsfilesontribeturnendlua">
+  
+  
+    <a href="#eventsfilesontribeturnendlua">&#128279</a> <strong>EventsFiles\onTribeTurnEnd.lua</strong>
+  
+  
+</h5>
+    
+<p>Change this function:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onTribeTurnEnd</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onTribeTurnEnd for turn "</span><span class="o">..</span><span class="n">turn</span><span class="o">..</span><span class="s2">" and tribe "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" separate file"</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h5 id="discrete-events-19">
+  
+  
+    <a href="#discrete-events-19">&#128279</a> <strong>Discrete Events</strong>
+  
+  
+</h5>
+    
+<p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is the example of a discrete Tribe Turn Finished event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discreteEvents</span><span class="p">.</span><span class="n">onTribeTurnEnd</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">turn</span><span class="p">,</span><span class="n">tribe</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
+        <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onTribeTurnEnd for "</span><span class="o">..</span><span class="n">tribe</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" on turn "</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">turn</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">turn</code> is the turn number (an integer).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tribe</code> is the tribe which has just finished its turn.</p>
+<h4 id="implementation-25">
+  
+  
+    <a href="#implementation-25">&#128279</a> Implementation
+  
+  
+</h4>
+    
+<p>This execution point is provided by the Test of Time Patch Project function <code class="language-plaintext highlighter-rouge">civ.scen.onTribeTurnEnd</code>.</p>
+<h3 id="city-processed">
+  
+  
+    <a href="#city-processed">&#128279</a> <strong>City Processed</strong>
+  
+  
+</h3>
+    
+
+<p>This execution point is triggered during the processing of a city’s production, at the start of its owner’s turn.  This execution point is implemented during the City Yield Calculation execution point, so anything that can’t be effectively changed during that execution point can’t be changed here either.  For example, changing the cosmic parameter <code class="language-plaintext highlighter-rouge">sizeAquaduct</code> will not change the size a city can grow without an aquaduct, because the size is in place before this execution point is triggered.</p>
+<h4 id="usage-25">
+  
+  
+    <a href="#usage-25">&#128279</a> Usage
+  
+  
+</h4>
+    
+<h5 id="consolidatedeventslua-18">
+  
+  
+    <a href="#consolidatedeventslua-18">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -5322,10 +6029,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-17">
+<h5 id="discrete-events-20">
   
   
-    <a href="#discrete-events-17">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-20">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -5340,16 +6047,18 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-25">
+<h4 id="implementation-26">
   
   
-    <a href="#implementation-25">&#128279</a> Implementation
+    <a href="#implementation-26">&#128279</a> Implementation
   
   
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>The City Processed execution point is implemented using the TOTPP function <code class="language-plaintext highlighter-rouge">civ.scen.onCalcCityYield</code>, checking that the city is owned by the tribe whose turn it is and that the city
+hasn’t been processed yet this turn.  After the city is processed, the information is recorded
+in the state table, so this execution point will only be run once per city per turn.</p>
 <h3 id="unit-enters-tile">
   
   
@@ -5358,18 +6067,22 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
   
 </h3>
     
-<h4 id="usage-25">
+
+<p>This execution point is triggered when a unit enters a tile from another tile.</p>
+
+<p>This execution point will not work properly if <code class="language-plaintext highlighter-rouge">civ.scen.compatibility.activeUnitEveryMove</code> is set to <code class="language-plaintext highlighter-rouge">false</code>.  (In the Lua Scenario Template, it is set to <code class="language-plaintext highlighter-rouge">true</code> in the file <code class="language-plaintext highlighter-rouge">LuaParameterFiles\parameters.lua</code>.)</p>
+<h4 id="usage-26">
   
   
-    <a href="#usage-25">&#128279</a> Usage
+    <a href="#usage-26">&#128279</a> Usage
   
   
 </h4>
     
-<h5 id="consolidatedeventslua-17">
+<h5 id="consolidatedeventslua-19">
   
   
-    <a href="#consolidatedeventslua-17">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-19">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -5411,10 +6124,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-18">
+<h5 id="discrete-events-21">
   
   
-    <a href="#discrete-events-18">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-21">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -5426,43 +6139,49 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onEnterTile(unit,previousTile)</span>
 <span class="c1">-- executes when a unit successfully enters a tile (so not when it attacks</span>
 <span class="c1">-- a unit or fails to enter a tile because it lacks movement points)</span>
-<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onEnterTile</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">)</span>
+<span class="n">discreteEvents</span><span class="p">.</span><span class="n">onEnterTile</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">previousTile</span><span class="p">,</span><span class="n">previousDomainSpec</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
         <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"discreteEvents.onEnterTile: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has entered tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">location</span><span class="p">)</span><span class="o">..</span><span class="s2">") from tile ("</span><span class="o">..</span><span class="n">text</span><span class="p">.</span><span class="n">coordinates</span><span class="p">(</span><span class="n">previousTile</span><span class="p">)</span><span class="o">..</span><span class="s2">")."</span><span class="p">)</span>
     <span class="k">end</span>
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-26">
+<h4 id="implementation-27">
   
   
-    <a href="#implementation-26">&#128279</a> Implementation
+    <a href="#implementation-27">&#128279</a> Implementation
   
   
 </h4>
     
 
-<p>Not Standard Implementation</p>
-<h3 id="unit-given-last-order">
+<p>This execution point is mostly implemented using the Unit Activation execution point.  Since the execution point is executed when the unit is ready to move again, code can check whether a unit has moved.</p>
+
+<p>When a unit is activated, some information about it is recorded by Lua, including its location.  The next time the a Unit Activation execution point is triggered, the location is compared to the recorded location.  If the unit is now in a different location, the Unit Enters Tile execution point is triggered.</p>
+
+<p>The Get Formatted Date execution point will also check to see if a unit has been moved, in case there is no new active unit to trigger the Unit Activation execution point.  Since the status window is recalculated almost every time a click is made, a human player shouldn’t be able to do much without having this execution point trigger if it is appropriate.  The Tribe Turn Finished execution point also checks to see if a unit has been moved without having this execution point trigger, and if so, triggers this execution point.</p>
+<h3 id="unit-given-final-order">
   
   
-    <a href="#unit-given-last-order">&#128279</a> <strong>Unit Given Last Order</strong>
+    <a href="#unit-given-final-order">&#128279</a> <strong>Unit Given Final Order</strong>
   
   
 </h3>
     
-<h4 id="usage-26">
+
+<p>This execution point is triggered when a unit is given its final order for the turn.  This can happen because the unit has been detected to have spent all its movement points, or because the tribe’s turn has ended.</p>
+<h4 id="usage-27">
   
   
-    <a href="#usage-26">&#128279</a> Usage
+    <a href="#usage-27">&#128279</a> Usage
   
   
 </h4>
     
-<h5 id="consolidatedeventslua-18">
+<h5 id="consolidatedeventslua-20">
   
   
-    <a href="#consolidatedeventslua-18">&#128279</a> <strong>consolidatedEvents.lua</strong>
+    <a href="#consolidatedeventslua-20">&#128279</a> <strong>consolidatedEvents.lua</strong>
   
   
 </h5>
@@ -5492,13 +6211,14 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
     <span class="k">if</span> <span class="n">_global</span><span class="p">.</span><span class="n">eventTesting</span> <span class="k">then</span>
         <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"onFinalOrderGiven.onFinalOrderGiven: "</span><span class="o">..</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" has been given its order."</span><span class="p">)</span>
     <span class="k">end</span>
+    <span class="n">civ</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">type</span><span class="p">.</span><span class="n">name</span><span class="o">..</span><span class="s2">" ("</span><span class="o">..</span><span class="nb">tostring</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="o">..</span><span class="s2">") has received its last order"</span><span class="p">)</span>
 <span class="k">end</span>
 
 </code></pre></div></div>
-<h5 id="discrete-events-19">
+<h5 id="discrete-events-22">
   
   
-    <a href="#discrete-events-19">&#128279</a> <strong>Discrete Events</strong>
+    <a href="#discrete-events-22">&#128279</a> <strong>Discrete Events</strong>
   
   
 </h5>
@@ -5506,7 +6226,7 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <p>In any file in which you wish to register discrete events, you must require the Discrete Events Module:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">discreteEvents</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"discreteEventsRegistrar"</span><span class="p">)</span>
 </code></pre></div></div>
-<p>This is the example of a discrete Unit Given Last Order event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
+<p>This is the example of a discrete Unit Given Final Order event within <code class="language-plaintext highlighter-rouge">discreteEvents.lua</code>:</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- onFinalOrderGiven(unit)</span>
 <span class="c1">-- executes when a unit has been given its final order for the turn.</span>
 <span class="c1">-- that is, when a new unit is active and the previous unit has spent</span>
@@ -5518,16 +6238,16 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 <span class="k">end</span><span class="p">)</span>
 
 </code></pre></div></div>
-<h4 id="implementation-27">
+<h4 id="implementation-28">
   
   
-    <a href="#implementation-27">&#128279</a> Implementation
+    <a href="#implementation-28">&#128279</a> Implementation
   
   
 </h4>
     
 
-<p>Not standard implementation</p>
+<p>This execution point is implemented using the Unit Activation execution point and the Tribe Turn Finished execution point.  When a unit is activated, some information about it is recorded by Lua.  The code checks the previously activated unit, and, if it no longer has any movement points remaining, triggers this execution point.  At the end of the tribe’s turn, the Tribe Turn Finished execution point checks to see if the unit has any movement points left.  If it does, the Unit Given Final Order execution point is triggered for that unit.</p>
 <h3 id="nuclear-attack">
   
   
@@ -5540,10 +6260,10 @@ the use of the <a href="/auto_doc/gen.html#defeatunit">gen.defeatUnit</a> functi
 weapon (either a unit with 99 attack, or a spy).  A nuclear attack does not trigger <code class="language-plaintext highlighter-rouge">civ.scen.onUnitKilled</code>, so
 events.lua makes sure to execute the related events.
 If the registered function returns <code class="language-plaintext highlighter-rouge">false</code>, the attack is aborted.</p>
-<h4 id="usage-27">
+<h4 id="usage-28">
   
   
-    <a href="#usage-27">&#128279</a> Usage
+    <a href="#usage-28">&#128279</a> Usage
   
   
 </h4>
@@ -5574,10 +6294,10 @@ If the registered function returns <code class="language-plaintext highlighter-r
 <p>The <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or spy which is making the nuclear attack.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack.</p>
-<h4 id="implementation-28">
+<h4 id="implementation-29">
   
   
-    <a href="#implementation-28">&#128279</a> Implementation
+    <a href="#implementation-29">&#128279</a> Implementation
   
   
 </h4>
@@ -5595,10 +6315,10 @@ If the registered function returns <code class="language-plaintext highlighter-r
 <p>This execution point is called when a player checks what the cost is to rush 
 buy the city’s current production item.  The registered function must return
 an integer with the cost.</p>
-<h4 id="usage-28">
+<h4 id="usage-29">
   
   
-    <a href="#usage-28">&#128279</a> Usage
+    <a href="#usage-29">&#128279</a> Usage
   
   
 </h4>
@@ -5624,10 +6344,10 @@ ushBuySettings.lua, change the following code:</p>
 <p>The <code class="language-plaintext highlighter-rouge">city</code> parameter is the city where rush-buying is being considered.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">cost</code> parameter is the game’s default cost to rush buy the current production item.</p>
-<h4 id="implementation-29">
+<h4 id="implementation-30">
   
   
-    <a href="#implementation-29">&#128279</a> Implementation
+    <a href="#implementation-30">&#128279</a> Implementation
   
   
 </h4>
@@ -5659,10 +6379,10 @@ Final Order Given and Unit Enters Tile execution points leverage this
 ability so that they function properly even when another unit isn’t activated
 immediately.  (This is handled in events.lua, so you don’t have to worry about
 it when changing the code in onGetFormattedDate.lua.)</p>
-<h4 id="usage-29">
+<h4 id="usage-30">
   
   
-    <a href="#usage-29">&#128279</a> Usage
+    <a href="#usage-30">&#128279</a> Usage
   
   
 </h4>
@@ -5722,10 +6442,10 @@ date is displayed.</p>
     <span class="k">return</span> <span class="n">defaultDateString</span>
 <span class="k">end</span>
 </code></pre></div></div>
-<h4 id="implementation-30">
+<h4 id="implementation-31">
   
   
-    <a href="#implementation-30">&#128279</a> Implementation
+    <a href="#implementation-31">&#128279</a> Implementation
   
   
 </h4>
@@ -5747,10 +6467,10 @@ customised music with his or her scenario.</p>
 
 <p>This execution point is also used by my <a href="https://github.com/ProfGarfield/ExtendedMusicForTOTPP">Extended Music For TOTPP</a> program.  If your scenario ships customised
 music, that overrides the Extended Music Patch.</p>
-<h4 id="usage-30">
+<h4 id="usage-31">
   
   
-    <a href="#usage-30">&#128279</a> Usage
+    <a href="#usage-31">&#128279</a> Usage
   
   
 </h4>
@@ -5833,10 +6553,10 @@ by adding or removing lines as necessary.</p>
 civilizations are destroyed and cities celebrate We Love The King Day,
 respectively.  Choose appropriate tracks, or leave them with their default
 names, and let them be found in the player’s main music directory.</p>
-<h4 id="implementation-31">
+<h4 id="implementation-32">
   
   
-    <a href="#implementation-31">&#128279</a> Implementation
+    <a href="#implementation-32">&#128279</a> Implementation
   
   
 </h4>
@@ -5858,10 +6578,10 @@ function is not called in <code class="language-plaintext highlighter-rouge">eve
 <p>The registered function is called before every round of combat.  If it returns
 true, the combat continues for another round.  If false, the combat ends, and
 one of the combatants is destroyed.  (If one has 0 hp, it will be that one.)</p>
-<h4 id="usage-31">
+<h4 id="usage-32">
   
   
-    <a href="#usage-31">&#128279</a> Usage
+    <a href="#usage-32">&#128279</a> Usage
   
   
 </h4>
@@ -5890,10 +6610,10 @@ when you wish to do something different.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">defender</code> and <code class="language-plaintext highlighter-rouge">attacker</code> parameters are the units which are engaged
 in combat.</p>
-<h4 id="implementation-32">
+<h4 id="implementation-33">
   
   
-    <a href="#implementation-32">&#128279</a> Implementation
+    <a href="#implementation-33">&#128279</a> Implementation
   
   
 </h4>
@@ -5909,10 +6629,10 @@ in combat.</p>
 </h3>
     
 <p>The code registered tot he Choose Tile Defender execution point is called when the game checks what unit will defend a tile.  This happens both when a tile is actually attacked, and when the AI is determining its goals.  A unit must be returned by the registered function, and that unit will defend the tile if combat actually takes place.  The defending unit can be chosen from a different tile.</p>
-<h4 id="usage-32">
+<h4 id="usage-33">
   
   
-    <a href="#usage-32">&#128279</a> Usage
+    <a href="#usage-33">&#128279</a> Usage
   
   
 </h4>
@@ -5967,12 +6687,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_KB$@bz8JnlyTaX3W6YeL2u.xml"></include>
+<include src="/_qybLMTnt$PBF0mguAlhd8K.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_NLp598BRhK0zTF@stxiJCE.xml"></include> 
+<include src="/_L93kwdcygO4GCqifNE7UFv.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
@@ -6011,10 +6731,10 @@ is used instead (without integer division).  This is because the base Civilizati
 units when a fighter unit attacks.  This ensures that air units will always be chosen as defenders when a fighter attacks, even if they are not the best defenders.  Similarly, ground units on ocean tiles subtract 100 million, so they’ll never defend if a ship can defend them.</p>
 
 <p>With a finalized defender value, <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> determines if the candidate defender is the best found so far, and, if so, updates the <code class="language-plaintext highlighter-rouge">bestDefender</code> variable.  After checking all units, <code class="language-plaintext highlighter-rouge">bestDefender</code> is returned.</p>
-<h4 id="implementation-33">
+<h4 id="implementation-34">
   
   
-    <a href="#implementation-33">&#128279</a> Implementation
+    <a href="#implementation-34">&#128279</a> Implementation
   
   
 </h4>
@@ -6031,10 +6751,10 @@ units when a fighter unit attacks.  This ensures that air units will always be c
     
 
 <p>The code for this execution point is executed whenever a city needs to determine if it can build an item.  If the called function returns <code class="language-plaintext highlighter-rouge">true</code>, then the item can be built by the city; if <code class="language-plaintext highlighter-rouge">false</code> it can’t.  This usually (possibly always, but I don’t know for sure) means that this execution point is run in batches of 256, for all the possible units, improvements, and wonders, that a city could build.</p>
-<h4 id="usage-33">
+<h4 id="usage-34">
   
   
-    <a href="#usage-33">&#128279</a> Usage
+    <a href="#usage-34">&#128279</a> Usage
   
   
 </h4>
@@ -6068,10 +6788,10 @@ units when a fighter unit attacks.  This ensures that air units will always be c
 <p>Once you’ve written your <code class="language-plaintext highlighter-rouge">canCityBuild</code> function, you would register it using the function call</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">civ</span><span class="p">.</span><span class="n">scen</span><span class="p">.</span><span class="n">onCanBuild</span><span class="p">(</span><span class="n">canCityBuild</span><span class="p">)</span>
 </code></pre></div></div>
-<h4 id="implementation-34">
+<h4 id="implementation-35">
   
   
-    <a href="#implementation-34">&#128279</a> Implementation
+    <a href="#implementation-35">&#128279</a> Implementation
   
   
 </h4>

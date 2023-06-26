@@ -349,8 +349,24 @@ it is a unit Object (not a unitType object).  If an improvement or
 wonder was completed, \`prod\` is the corresponding improvement object
  or wonder object.
 `,"")
-saveQuick("City Captured","onCityTaken","","","")
-saveQuick("Game End","onGameEnd","","","")
+saveQuick("City Captured","onCityTaken",`
+This execution point is triggered when a city is captured by another tribe.  The execution point takes place after the city has been captured, but before the units supported by the city are disbanded.
+`,`
+The \`city\` is the city that was captured.
+
+The \`defender\` is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use \`city.owner\`.
+`,"")
+saveQuick("Game End","onGameEnds",`
+This execution point is triggered when the game ends.  If the registered function returns true, then the game actually ends (default behavior).  If the registered function returns false, then the game does not end.  Since there are multiple ways to register a function for this execution point, if any of the registered functions returns false, then the game does not end.
+`,`
+The \`reason\` is an integer with 6 possible values:
+1. Space race victory achieved by the active player.  (Can't happen if \`civ.scen.onCentauriArrival\` is registered.)
+2. Space race victory achieved by another player.  (Can't happen if \`civ.scen.onCentauriArrival\` is registered.)
+3. Conquest Victory
+4. Defeat
+5. Retirement
+6. [civ.endGame](auto_doc/civ.html#endGame) was called.  (Or the Macro Language equivalent.)
+`,"")
 
 // Initiate Combat
 saveCustom("Combat Declared", "MechanicsFiles/combatSettings.lua",
@@ -497,7 +513,13 @@ This execution point is implemented using the TOTPP function \`civ.scen.onInitia
 `)
 
 
-saveQuick("Key Press","onKeyPress","","","")
+saveQuick("Key Press","onKeyPress",`
+The Key Press execution point is triggered every time a key is pressed.  A code for the key that
+was pressed is passed to the registered function.  The [keyboard module](auto_doc/keyboard.html) provides a table of codes with human readable index values.
+
+Many key press events are registered in the file \`MechanicsFiles\\keyPressSettings.lua\`.
+`,`
+The \`keyCode\` parameter is an integer corresponding to a keyboard key.`,"")
 
 // on load
 saveCustom("Game Loaded", "events.lua",`
@@ -637,7 +659,11 @@ end)
 `,
 `This execution point is implemented using the TOTPP function \`civ.scen.onSave\`.`)
 
-saveQuick("Scenario Loaded","onScenarioLoaded","","","")
+saveQuick("Scenario Loaded","onScenarioLoaded",`
+The Scenario Loaded execution point is triggered when the game is loaded, but before anything else happens.  Despite its name, it is not triggered solely by starting a new scenario.  It is also triggered when a save file is loaded.
+
+The Scenario Loaded execution point is triggered after the Game Loaded execution point.
+`,"","")
 saveQuick("Negotiation","onNegotiation",`
 This execution point is triggered when a tribe (the \`talker\`) attempts
 to negotiate with a different tribe (the \`listener\`).  If the registered
@@ -712,25 +738,100 @@ This execution point is triggered when a unit is killed as a result of
 standard Civ II combat, or when it is killed by events through
 the use of the [gen.defeatUnit](/auto_doc/gen.html#defeatunit) function.
 `,`
+
+The \`loser\` is the unit which was defeated.
+
+The \`winner\` is the unit which won the combat.
+
+The \`aggressor\` is the unit which initiated the combat.
+
+The \`victim\` is the unit which was attacked.
+
+The \`loserLocation\` is the tile where the \`loser\` was standing.  If the \`aggressor\` is the \`loser\`, the code \`loser.location\` will point to a "tile" off the map.
+
+The \`winnerVetStatus\` is the veteran status of the \`winner\` before the battle took place (this event triggers after the game assigns veteran status for victory in combat).
+
+The \`loserVetStatus\` is the veteran status of the \`loser\` before the battle
+took place.
+
 `,`
 The Unit Defeated execution point is implemented using the TOTPP function
 \`civ.scen.onUnitKilled\`, as well as making the function \`gen.defeatUnit\`
-call the registered functions for this execution point.
+call the registered functions for this execution point.  The function is registered for \`gen.defeatUnit\` by the function [gen.setDeathFunctions](/auto_doc/gen.html#setdeathfunctions).
 `)
 saveQuick("Unit Death","onUnitDeath",`
 This execution point is triggered when a unit "dies."  This includes when it is defeated in combat or by the use of [gen.defeatUnit](/auto_doc/gen.html#defeatunit) (as long as it isn't demoted into another unit by events), and also when the function [gen.killUnit](/auto_doc/gen.html#killunit) is called.
-`,"",`
+`,`
+The \`dyingUnit\` is the unit which has just been killed.
+`,`
 The Unit Death execution point is implemented using the TOTPP function
 \`civ.scen.onUnitKilled\`, as well as making the functions \`gen.defeatUnit\` and \`gen.killUnit\`
 call the registered function for this execution point.
 `)
-saveQuick("Unit Death Outside Combat","onUnitDeathOutsideCombat","","","Not standard implementation")
-saveQuick("Unit Deleted","onUnitDeleted","","","Not Standard implementation")
-saveQuick("City Processing Complete","onCityProcessingComplete","","","")
-saveQuick("Before City Processing","onTribeTurnBegin","","","")
-saveQuick("City Processed","onCityProcessed","","","Not standard implementation")
-saveQuick("Unit Enters Tile","onEnterTile","","","Not Standard Implementation")
-saveQuick("Unit Given Last Order","onFinalOrderGiven","","","Not standard implementation")
+saveQuick("Unit Death Outside Combat","onUnitDeathOutsideCombat",`
+This execution point is triggered when a unit is "killed" using the function [gen.killUnit](/auto_doc/gen.html#killunit).  It is not triggered when a unit is defeated in combat or by the use of [gen.defeatUnit](/auto_doc/gen.html#defeatunit).
+`,`
+The \`dyingUnit\` is the unit which has just been killed.
+`,`
+The Unit Death Outside Combat execution point is implemented by making the function \`gen.killUnit\` call the registered function for this execution point.  That function is registered using [gen.setDeathFunctions](/auto_doc/gen.html#setdeathfunctions).`)
+
+saveQuick("Unit Deleted","onUnitDeleted",`
+This execution point is triggered when a unit is deleted from the game.  This includes when it is defeated in combat or by the use of [gen.defeatUnit](/auto_doc/gen.html#defeatunit) (even if the unit is "demoted" into another unit), when the function [gen.killUnit](/auto_doc/gen.html#killunit) is called, and when the function [gen.deleteUnit](/auto_doc/gen.html#deleteunit) is called.  It is not triggered when a unit is disbanded by the player (as of TOTPPv0.18.4), and is not triggered by the use of [civ.deleteUnit](/auto_doc/civ.html#deleteunit).
+
+
+`,`
+The \`deletedUnit\` is the unit which has just been deleted.
+
+The \`replacementUnit\` is the unit which has replaced the \`deletedUnit\` (if any).  If the \`deletedUnit\` was not replaced, this parameter is \`nil\`.
+`,`
+The Unit Deleted execution point is implemented using the TOTPP function
+\`civ.scen.onUnitKilled\`, as well as making the functions \`gen.defeatUnit\`, \`gen.killUnit\`, and \`gen.deleteUnit\` call the registered function for this execution point.  The function is registered for \`gen.defeatUnit\` by the function [gen.setDeathFunctions](/auto_doc/gen.html#setdeathfunctions).
+`)
+saveQuick("City Processing Complete","onCityProcessingComplete",`
+This execution point is triggered when the game has finished processing city production for a tribe, and before it has a chance to move units.
+`,`
+The \`turn\` is the turn number (an integer).
+
+The \`tribe\` is the tribe which has just finished processing cities.
+`,"")
+saveQuick("Before City Processing","onTribeTurnBegin",`
+This execution point is triggered at the start of a tribe's turn, before the game processes its cities.
+`,`
+The \`turn\` is the turn number (an integer).
+
+The \`tribe\` is the tribe which is about to process cities.
+`,"")
+
+saveQuick("Tribe Turn Finished","onTribeTurnEnd",`
+This execution point is triggered at the end of a tribe's turn.
+`,`
+The \`turn\` is the turn number (an integer).
+
+The \`tribe\` is the tribe which has just finished its turn.
+`,"")
+saveQuick("City Processed","onCityProcessed",`
+This execution point is triggered during the processing of a city's production, at the start of its owner's turn.  This execution point is implemented during the City Yield Calculation execution point, so anything that can't be effectively changed during that execution point can't be changed here either.  For example, changing the cosmic parameter \`sizeAquaduct\` will not change the size a city can grow without an aquaduct, because the size is in place before this execution point is triggered.
+`,"",`
+The City Processed execution point is implemented using the TOTPP function \`civ.scen.onCalcCityYield\`, checking that the city is owned by the tribe whose turn it is and that the city
+hasn't been processed yet this turn.  After the city is processed, the information is recorded
+in the state table, so this execution point will only be run once per city per turn.
+`)
+saveQuick("Unit Enters Tile","onEnterTile",`
+This execution point is triggered when a unit enters a tile from another tile.
+
+This execution point will not work properly if \`civ.scen.compatibility.activeUnitEveryMove\` is set to \`false\`.  (In the Lua Scenario Template, it is set to \`true\` in the file \`LuaParameterFiles\\parameters.lua\`.)
+`,"",`
+This execution point is mostly implemented using the Unit Activation execution point.  Since the execution point is executed when the unit is ready to move again, code can check whether a unit has moved.
+
+When a unit is activated, some information about it is recorded by Lua, including its location.  The next time the a Unit Activation execution point is triggered, the location is compared to the recorded location.  If the unit is now in a different location, the Unit Enters Tile execution point is triggered. 
+
+The Get Formatted Date execution point will also check to see if a unit has been moved, in case there is no new active unit to trigger the Unit Activation execution point.  Since the status window is recalculated almost every time a click is made, a human player shouldn't be able to do much without having this execution point trigger if it is appropriate.  The Tribe Turn Finished execution point also checks to see if a unit has been moved without having this execution point trigger, and if so, triggers this execution point. 
+`)
+saveQuick("Unit Given Final Order","onFinalOrderGiven",`
+This execution point is triggered when a unit is given its final order for the turn.  This can happen because the unit has been detected to have spent all its movement points, or because the tribe's turn has ended.
+`,"",`
+This execution point is implemented using the Unit Activation execution point and the Tribe Turn Finished execution point.  When a unit is activated, some information about it is recorded by Lua.  The code checks the previously activated unit, and, if it no longer has any movement points remaining, triggers this execution point.  At the end of the tribe's turn, the Tribe Turn Finished execution point checks to see if the unit has any movement points left.  If it does, the Unit Given Final Order execution point is triggered for that unit.
+`)
 saveQuick("Nuclear Attack","onUseNuclearWeapon",
 `This execution point is triggered when an attack is made by a nuclear 
 weapon (either a unit with 99 attack, or a spy).  A nuclear attack does not trigger \`civ.scen.onUnitKilled\`, so
