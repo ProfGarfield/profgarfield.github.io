@@ -247,6 +247,15 @@ saveQuick("Unit Activation","onActivateUnit",
 In \`LuaParameterFiles\parameters.lua\`, the field \`civ.scen.compatibility.activateUnitEveryMove\` is
 set to true.  If this is not done (or in old versions of the Test of Time Patch Project), human
 units don't execute the registered activation code after moving.
+
+This event can optionally return \`true\` or a function.  In either case, the activation of the unit is cancelled.  The movement allowance of the unit's type will
+temporarily be set to 0, and all further code for this event will be cancelled.
+
+If the event returns a function, that function will be called just before the next unit
+is activated.  (You may wish to put the unit to sleep, for example.)
+
+Failure to return a value here is equivalent to returning nil, which will make 
+the activation code execute as normal.
 `,
 `
 The \`unit\` parameter is the unit that has been activated.
@@ -356,6 +365,11 @@ The \`city\` is the city that was captured.
 
 The \`defender\` is the tribe that owned the city before it was captured.  To get the tribe that captured the city, use \`city.owner\`.
 `,"")
+
+saveQuick("City Window Opened","onCityWindowOpened",`
+This execution point is triggered when a city window is opened by the player.  (Note that the AI doesn't open city windows.)
+`,`The \`city\` is the city whose window was opened.`,"This is implemented using `civ.scen.onGetFormattedDate` along with a call of `civ.getOpenCity`, to see if a city window is open.")
+
 saveQuick("Game End","onGameEnds",`
 This execution point is triggered when the game ends.  If the registered function returns true, then the game actually ends (default behavior).  If the registered function returns false, then the game does not end.  Since there are multiple ways to register a function for this execution point, if any of the registered functions returns false, then the game does not end.
 `,`
@@ -843,6 +857,12 @@ If the registered function returns \`false\`, the attack is aborted.
 
 The \`tile\` is the location of the attack.`
 ,"")
+
+saveQuick("City Window Opened","onCityWindowOpened",`
+This execution point is triggered when a city window is opened.  Note that the AI does not open city windows.
+`,`The \`city\` is the city whose window is being opened.`,`
+This execution point is implemented using the TOTPP function \`civ.scen.onGetFormattedDate\` and checking if there is currently a city window open by using \`civ.getOpenCity\`.  The most recently opened city is kept track of, to make sure that the execution point is only triggered once per city window, particularly so that a window hidden behind the map doesn't continuously trigger the execution point.  Closing and opening the same city window will trigger the execution point again.
+`)
 
 // Rush Buy Cost
 saveCustom("Get Rush Buy Cost","MechanicsFiles\\rushBuySettings.lua",`

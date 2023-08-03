@@ -330,98 +330,98 @@ production.  Some cosmic parameters relating to city production are in the tribe
 customisations, because they are used before code in onCalculateCityYield can
 change them.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistance</code> = nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistance</code> = nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.communismPalaceDistance</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistanceModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistanceModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.communismPalaceDistance</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodEaten</code> = nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">foodEaten</code> = nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.foodEaten</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodEatenModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">foodEatenModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.foodEaten</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">prodChangePenalty</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">prodChangePenalty</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.prodChangePenalty</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">prodChangePenaltyModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">prodChangePenaltyModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.prodChangePenalty</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">riotFactor</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">riotFactor</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.riotFactor</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">riotFactorModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">riotFactorModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.riotFactor</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalism</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalism</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.scienceLostFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalismModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalismModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.scienceLostFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalism</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalism</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.scienceRateFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalismModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalismModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.scienceRateFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeUnhappiness</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeUnhappiness</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeUnhappiness</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeUnhappinessModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeUnhappinessModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeUnhappiness</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -432,18 +432,18 @@ change them.
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular city.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed City Customisation”</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(city)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(city)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this customisation applies to all cities (unless a higher  priority customisation also applies)</li>
           <li>if tribeObject, this customisation applies to cities owned by the tribe</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(city) –&gt; boolean, then this customisation applies to cities which make this function return true</li>
           <li>only one customisation can apply to any city.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
@@ -458,16 +458,16 @@ change them.
   </li>
   <li>The following types of objects can also be keys in a city customisation table: <code class="language-plaintext highlighter-rouge">unitTypeObject</code>, <code class="language-plaintext highlighter-rouge">improvementObject</code>, <code class="language-plaintext highlighter-rouge">wonderObject</code>, <code class="language-plaintext highlighter-rouge">baseTerrainObject</code>, and <code class="language-plaintext highlighter-rouge">terrainObject</code>.  (These are associated with integer values behind the scenes, but don’t worry about that.  Just use the object (NOT the ID) as the key.)  Each key takes a table value (or nil), to govern some aspects of the item.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -476,29 +476,29 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[improvementObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[improvementObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">cantSell</code> = nil|boolean or function(city)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">cantSell</code> = nil\|boolean or function(city)–&gt;nil\|boolean
             <ul>
               <li>If true, the city can’t sell the improvement, if false, it can.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">upkeep</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">upkeep</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base upkeep (gold per turn) this improvement in this city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
@@ -507,7 +507,7 @@ change them.
               <li><code class="language-plaintext highlighter-rouge">customCosmic.getTribeUpkeep</code> will calculate the actual upkeep per turn for the tribe.</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">upkeepModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">upkeepModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base upkeep, but upkeep won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -516,16 +516,16 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[wonderObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[wonderObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -534,37 +534,37 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[baseTerrainObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[baseTerrainObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">irrigateBonus</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">irrigateBonus</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value of the irrigation bonus for the city and baseTerrain.</li>
               <li>If nil, refer to the authoritativeDefaultRules,</li>
               <li>If function, use the result of function(city),</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">irrigateBonusModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">irrigateBonusModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base irrigation bonus, but results less than 0 will be set to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">mineBonus</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">mineBonus</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value of the mining bonus for the city and baseTerrain.</li>
               <li>If nil, refer to the authoritativeDefaultRules,</li>
               <li>If function, use the result of function(city),</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">mineBonusModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">mineBonusModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base mining bonus, but results less than 0 will be set to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">roadTrade</code> = nil|boolean or function(city)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">roadTrade</code> = nil\|boolean or function(city)–&gt;nil\|boolean
             <ul>
               <li>If true, for this city and baseTerrain, the road trade bonus is applied.  If false, it is not.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
@@ -575,42 +575,42 @@ change them.
       </li>
       <li><code class="language-plaintext highlighter-rouge">[terrainObject]</code> = {
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">food</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">food</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the food produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">foodModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">foodModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base food production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">shields</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">shields</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the shields produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">shieldsModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">shieldsModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base shield production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">trade</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">trade</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the trade produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">tradeModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">tradeModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base trade production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
@@ -692,63 +692,63 @@ Keys and descriptions for tribe customisation tables:</p>
 production.  These are customised by tribe because the game uses them
 before onCalculateCityYield can change them. Other customisations can be made on a per city basis.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">foodRows</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">foodRows</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.foodRows</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodRowsModifier</code> = nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">foodRowsModifier</code> = nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.foodRows</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatHigh</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">settlersEatHigh</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.settlersEatHigh</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatHighModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">settlersEatHighModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.settlersEatHigh</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatLow</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">settlersEatLow</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.settlersEatLow</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatLowModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">settlersEatLowModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.settlersEatLow</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">shieldRows</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">shieldRows</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.shieldRows</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">shieldRowsModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">shieldRowsModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.shieldRows</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeAquaduct</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeAquaduct</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeAquaduct</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
@@ -756,7 +756,7 @@ before onCalculateCityYield can change them. Other customisations can be made on
           <li>NOTE: sizeAqueduct can be used instead to refer to this value.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeAquaductModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeAquaductModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeAquaduct</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -764,56 +764,56 @@ before onCalculateCityYield can change them. Other customisations can be made on
           <li>NOTE: sizeAqueductModifier can be used instead to refer to this value.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeSewer</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeSewer</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeSewer</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeSewerModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeSewerModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeSewer</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportCommunism</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportCommunism</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportCommunism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportCommunismModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportCommunismModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportCommunism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportFundamentalism</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportFundamentalism</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportFundamentalismModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportFundamentalismModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportMonarchy</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportMonarchy</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportMonarchy</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportMonarchyModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportMonarchyModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportMonarchy</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -824,23 +824,23 @@ before onCalculateCityYield can change them. Other customisations can be made on
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular tribe.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed Tribe Customisation”</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(tribe)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(tribe)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this customisation applies to all tribes (unless a higher  priority customisation also applies)</li>
           <li>if tribeObject, this customisation applies to that tribe</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(tribe) –&gt; boolean, then this customisation applies to tribes which make this function return true</li>
           <li>only one customisation can apply to any tribe.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">priority</code> = nil|number&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">priority</code> = nil\|number&gt;=0
         <ul>
           <li>If multiple customisations can apply to a tribe, this value chooses among them, with higher priority taking precedence.</li>
           <li>If the tribe is eligible for two customisations of the same priority, an error may be generated, and will certainly be generated if they are of the highest priority.</li>
@@ -854,15 +854,15 @@ before onCalculateCityYield can change them. Other customisations can be made on
 Each key takes a table (or nil) as a value, to govern the support
 characteristics of the item.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">freeSupportUnderFundamentalism</code> = nil|boolean or function(tribe)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">freeSupportUnderFundamentalism</code> = nil\|boolean or function(tribe)–&gt;nil\|boolean
             <ul>
               <li>If true, unitType has the freeSupportUnderFundamentalism flag for this tribe.  If false, it does not.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">requiresFoodSupport</code> = nil|boolean or function(tribe)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">requiresFoodSupport</code> = nil\|boolean or function(tribe)–&gt;nil\|boolean
             <ul>
               <li>If true, the tribe must pay food support for this unitType.</li>
               <li>If false, it does not. (Setting this to true makes both settler and non-settler unit types require food.)</li>
@@ -899,7 +899,7 @@ Keys and descriptions for unitType customisation tables:
 <ul>
   <li>If both <code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> and <code class="language-plaintext highlighter-rouge">movementBonus</code> are used, both modify movement.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> = nil|int or function(unit)–&gt;nil|Int
+      <li><code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> = nil\|int or function(unit)–&gt;nil\|Int
         <ul>
           <li>Bonus movement points (compared to authoritativeDefaultRules)</li>
           <li>Positive means add, negative means subtract</li>
@@ -907,7 +907,7 @@ Keys and descriptions for unitType customisation tables:
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">movementBonus</code> = nil|num or function(unit)–&gt;nil|num
+      <li><code class="language-plaintext highlighter-rouge">movementBonus</code> = nil\|num or function(unit)–&gt;nil\|num
         <ul>
           <li>Bonus movement points (compared to authoritativeDefaultRules)</li>
           <li>whole movement points, positive means add, negative means subtract</li>
@@ -919,13 +919,13 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>Only one of <code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> and <code class="language-plaintext highlighter-rouge">customMovement</code> is permissible.  If both exist, <code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> is used.  If this and the <code class="language-plaintext highlighter-rouge">movementBonus</code> both exist, the <code class="language-plaintext highlighter-rouge">movementBonus</code> is added to this instead of the authoritativeDefaultRules.  If both are nil, refer to the authoritativeDefaultRules.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> = nil|int&gt;=0 or function(unit)–&gt;nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> = nil\|int&gt;=0 or function(unit)–&gt;nil\|int&gt;=0
         <ul>
           <li>Unit type will have this amount of atomic movement points, regardless of the authoritativeDefaultRules</li>
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">customMovement</code> = nil|num&gt;=0 or function(unit)–&gt; nil|num&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">customMovement</code> = nil\|num&gt;=0 or function(unit)–&gt; nil\|num&gt;=0
         <ul>
           <li>Unit type will have this amount of movement points, regardless of the authoritativeDefaultRules.</li>
           <li>if function, the returned value of function(unit) is used.</li>
@@ -935,7 +935,7 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>If both of <code class="language-plaintext highlighter-rouge">atomicMinMove</code> and <code class="language-plaintext highlighter-rouge">minMove</code> are specified, the one yielding a larger bonus is used.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicMinMove</code> = nil|int or function(unit)–&gt;nil|int
+      <li><code class="language-plaintext highlighter-rouge">atomicMinMove</code> = nil\|int or function(unit)–&gt;nil\|int
         <ul>
           <li>Ensures a damaged land or sea unit will still be able to move this many atomic movement points (unless that would require setting it’s unit type’s atomic movement beyond 255, which can’t be overcome.  If this is a problem,
   consider changing movement multipliers for the unit to have
@@ -947,7 +947,7 @@ Keys and descriptions for unitType customisation tables:
   movement point.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">minMove</code> = nil|num or function(unit)–&gt;nil|num
+      <li><code class="language-plaintext highlighter-rouge">minMove</code> = nil\|num or function(unit)–&gt;nil\|num
         <ul>
           <li>Ensures a damaged land or sea unit will still be able to move this many movement points (unless that would require setting it’s unit type’s atomic movement beyond 255, which can’t be overcome.  If this is a problem,
   consider changing movement multipliers for the unit to have
@@ -1000,7 +1000,7 @@ Keys and descriptions for unitType customisation tables:
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">moveCost[baseTerrainObject/ID]</code> = nil|int&gt;=0 or function(unit)–&gt;nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">moveCost[baseTerrainObject/ID]</code> = nil\|int&gt;=0 or function(unit)–&gt;nil\|int&gt;=0
         <ul>
           <li>if integer, this is the (full movement point) movement cost of the base terrain</li>
           <li>if nil, refer to the authoritativeDefaultRules</li>
@@ -1011,7 +1011,7 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">cosmic</code> and <code class="language-plaintext highlighter-rouge">flag</code> keys have tables as values.  The <code class="language-plaintext highlighter-rouge">cosmic</code> table keys change the <code class="language-plaintext highlighter-rouge">civ.cosmic</code> fields with the same key.  The <code class="language-plaintext highlighter-rouge">flags</code> table keys are derived from General Library function names.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">cosmic[cosmicKey]</code> = int&gt;=0|nil or function(unit)–&gt;int&gt;=0|nil
+      <li><code class="language-plaintext highlighter-rouge">cosmic[cosmicKey]</code> = int&gt;=0\|nil or function(unit)–&gt;int&gt;=0\|nil
         <ul>
           <li>if nil, use the value in the authoritativeDefaultRules instead</li>
           <li>possible values for cosmicKey:
@@ -1053,12 +1053,12 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular unit.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(unit)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(unit)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this unit type customisation applies to all units of the relevant type(s).</li>
           <li>if tribeObject, this customisation can only apply to units owned by that tribe (as long as the unit is also of the relevant type)</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(unit) –&gt; boolean, then this customisation applies to units of the relevant type(s) which also make this function return true</li>
           <li>Only one customisation can apply to any unit.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
@@ -1069,7 +1069,7 @@ Keys and descriptions for unitType customisation tables:
           <li>If the unit is eligible for two customisations of the same priority, an error may be generated, and will certainly be generated if they are of the highest priority.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string,
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string,
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed UnitType Customisation”</li>
@@ -1082,7 +1082,7 @@ Keys and descriptions for unitType customisation tables:
 <br />2. Apply the <something>Transport strings to the result of step 1
 <br />3. Apply transportXY data to the result of step 2
 </something>    <ul>
-      <li><code class="language-plaintext highlighter-rouge">nativeTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">nativeTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType nativeTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -1091,7 +1091,7 @@ Keys and descriptions for unitType customisation tables:
           <li>evaluate function(unit) and use the result</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">buildTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">buildTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType buildTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -1100,7 +1100,7 @@ Keys and descriptions for unitType customisation tables:
           <li>evaluate function(unit) and use the result</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">useTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">useTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType useTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -1110,9 +1110,9 @@ Keys and descriptions for unitType customisation tables:
         </ul>
       </li>
       <li><code class="language-plaintext highlighter-rouge">transportXY</code> = {
-  <br /> nativeTransport = nil|boolean or function(unit) –&gt; nil|boolean
-  <br /> buildTransport = nil|boolean or function(unit) –&gt; nil|boolean
-  <br /> useTransport = nil|boolean or function(unit) –&gt; nil|boolean
+  <br /> nativeTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
+  <br /> buildTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
+  <br /> useTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
   <br />}
         <ul>
           <li>transportXY governs the transport relationship between maps X and Y</li>
@@ -1442,98 +1442,98 @@ production.  Some cosmic parameters relating to city production are in the tribe
 customisations, because they are used before code in onCalculateCityYield can
 change them.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistance</code> = nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistance</code> = nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.communismPalaceDistance</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistanceModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">communismPalaceDistanceModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.communismPalaceDistance</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodEaten</code> = nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">foodEaten</code> = nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.foodEaten</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodEatenModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">foodEatenModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.foodEaten</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">prodChangePenalty</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">prodChangePenalty</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.prodChangePenalty</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">prodChangePenaltyModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">prodChangePenaltyModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.prodChangePenalty</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">riotFactor</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">riotFactor</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.riotFactor</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">riotFactorModifier</code> = nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">riotFactorModifier</code> = nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.riotFactor</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalism</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalism</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.scienceLostFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalismModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">scienceLostFundamentalismModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.scienceLostFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalism</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalism</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.scienceRateFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalismModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">scienceRateFundamentalismModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for civ.cosmic.scienceRateFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeUnhappiness</code>= nil|int&gt;=0 or function(city) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeUnhappiness</code>= nil\|int&gt;=0 or function(city) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeUnhappiness</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the city as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeUnhappinessModifier</code>= nil|int or function(city) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeUnhappinessModifier</code>= nil\|int or function(city) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeUnhappiness</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -1544,18 +1544,18 @@ change them.
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular city.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed City Customisation”</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(city)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(city)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this customisation applies to all cities (unless a higher  priority customisation also applies)</li>
           <li>if tribeObject, this customisation applies to cities owned by the tribe</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(city) –&gt; boolean, then this customisation applies to cities which make this function return true</li>
           <li>only one customisation can apply to any city.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
@@ -1570,16 +1570,16 @@ change them.
   </li>
   <li>The following types of objects can also be keys in a city customisation table: <code class="language-plaintext highlighter-rouge">unitTypeObject</code>, <code class="language-plaintext highlighter-rouge">improvementObject</code>, <code class="language-plaintext highlighter-rouge">wonderObject</code>, <code class="language-plaintext highlighter-rouge">baseTerrainObject</code>, and <code class="language-plaintext highlighter-rouge">terrainObject</code>.  (These are associated with integer values behind the scenes, but don’t worry about that.  Just use the object (NOT the ID) as the key.)  Each key takes a table value (or nil), to govern some aspects of the item.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -1588,29 +1588,29 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[improvementObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[improvementObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">cantSell</code> = nil|boolean or function(city)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">cantSell</code> = nil\|boolean or function(city)–&gt;nil\|boolean
             <ul>
               <li>If true, the city can’t sell the improvement, if false, it can.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">upkeep</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">upkeep</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base upkeep (gold per turn) this improvement in this city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
@@ -1619,7 +1619,7 @@ change them.
               <li><code class="language-plaintext highlighter-rouge">customCosmic.getTribeUpkeep</code> will calculate the actual upkeep per turn for the tribe.</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">upkeepModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">upkeepModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base upkeep, but upkeep won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -1628,16 +1628,16 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[wonderObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[wonderObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">cost</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base cost (in shield rows) for the city</li>
               <li>If nil, refer to authoritativeDefaultRules</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">costModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base cost, but cost won’t be less than 0</li>
               <li>If nil, use 0</li>
@@ -1646,37 +1646,37 @@ change them.
           </li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">[baseTerrainObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[baseTerrainObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">irrigateBonus</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">irrigateBonus</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value of the irrigation bonus for the city and baseTerrain.</li>
               <li>If nil, refer to the authoritativeDefaultRules,</li>
               <li>If function, use the result of function(city),</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">irrigateBonusModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">irrigateBonusModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base irrigation bonus, but results less than 0 will be set to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">mineBonus</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">mineBonus</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value of the mining bonus for the city and baseTerrain.</li>
               <li>If nil, refer to the authoritativeDefaultRules,</li>
               <li>If function, use the result of function(city),</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">mineBonusModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">mineBonusModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base mining bonus, but results less than 0 will be set to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use result after evaluating function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">roadTrade</code> = nil|boolean or function(city)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">roadTrade</code> = nil\|boolean or function(city)–&gt;nil\|boolean
             <ul>
               <li>If true, for this city and baseTerrain, the road trade bonus is applied.  If false, it is not.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
@@ -1687,42 +1687,42 @@ change them.
       </li>
       <li><code class="language-plaintext highlighter-rouge">[terrainObject]</code> = {
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">food</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">food</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the food produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">foodModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">foodModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base food production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">shields</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">shields</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the shields produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">shieldsModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">shieldsModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base shield production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">trade</code> = nil|int&gt;=0 or function(city)–&gt;nil|int&gt;=0
+          <li><code class="language-plaintext highlighter-rouge">trade</code> = nil\|int&gt;=0 or function(city)–&gt;nil\|int&gt;=0
             <ul>
               <li>Sets the base value for the trade produced for this city by this terrain type.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
               <li>If function, use the result of function(city)</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">tradeModifier</code> = nil|int or function(city)–&gt;nil|int
+          <li><code class="language-plaintext highlighter-rouge">tradeModifier</code> = nil\|int or function(city)–&gt;nil\|int
             <ul>
               <li>Add this to the base trade production value, but if the result is less than 0, it will be raised to 0.</li>
               <li>If nil, use 0.</li>
@@ -1804,63 +1804,63 @@ Keys and descriptions for tribe customisation tables:</p>
 production.  These are customised by tribe because the game uses them
 before onCalculateCityYield can change them. Other customisations can be made on a per city basis.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">foodRows</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">foodRows</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.foodRows</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">foodRowsModifier</code> = nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">foodRowsModifier</code> = nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.foodRows</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatHigh</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">settlersEatHigh</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.settlersEatHigh</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatHighModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">settlersEatHighModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.settlersEatHigh</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatLow</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">settlersEatLow</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.settlersEatLow</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">settlersEatLowModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">settlersEatLowModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.settlersEatLow</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">shieldRows</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">shieldRows</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.shieldRows</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">shieldRowsModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">shieldRowsModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.shieldRows</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeAquaduct</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeAquaduct</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeAquaduct</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
@@ -1868,7 +1868,7 @@ before onCalculateCityYield can change them. Other customisations can be made on
           <li>NOTE: sizeAqueduct can be used instead to refer to this value.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeAquaductModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeAquaductModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeAquaduct</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -1876,56 +1876,56 @@ before onCalculateCityYield can change them. Other customisations can be made on
           <li>NOTE: sizeAqueductModifier can be used instead to refer to this value.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeSewer</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">sizeSewer</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.sizeSewer</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">sizeSewerModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">sizeSewerModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.sizeSewer</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportCommunism</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportCommunism</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportCommunism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportCommunismModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportCommunismModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportCommunism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportFundamentalism</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportFundamentalism</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportFundamentalism</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportFundamentalismModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportFundamentalismModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportFundamentalism</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportMonarchy</code>= nil|int&gt;=0 or function(tribe) –&gt; nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">supportMonarchy</code>= nil\|int&gt;=0 or function(tribe) –&gt; nil\|int&gt;=0
         <ul>
           <li>Specifies the base value to be used for civ.cosmic.supportMonarchy</li>
           <li>If nil, the value from the authoritativeDefaultRules is used.</li>
           <li>If function, use the returned value when given the tribe as the argument.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">supportMonarchyModifier</code>= nil|int or function(tribe) –&gt; nil|int
+      <li><code class="language-plaintext highlighter-rouge">supportMonarchyModifier</code>= nil\|int or function(tribe) –&gt; nil\|int
         <ul>
           <li>Add this to the base value to be used for  civ.cosmic.supportMonarchy</li>
           <li>If nil, add 0.  Note, a negative number here will not reduce the base value below 0.</li>
@@ -1936,23 +1936,23 @@ before onCalculateCityYield can change them. Other customisations can be made on
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular tribe.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed Tribe Customisation”</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(tribe)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(tribe)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this customisation applies to all tribes (unless a higher  priority customisation also applies)</li>
           <li>if tribeObject, this customisation applies to that tribe</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(tribe) –&gt; boolean, then this customisation applies to tribes which make this function return true</li>
           <li>only one customisation can apply to any tribe.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">priority</code> = nil|number&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">priority</code> = nil\|number&gt;=0
         <ul>
           <li>If multiple customisations can apply to a tribe, this value chooses among them, with higher priority taking precedence.</li>
           <li>If the tribe is eligible for two customisations of the same priority, an error may be generated, and will certainly be generated if they are of the highest priority.</li>
@@ -1966,15 +1966,15 @@ before onCalculateCityYield can change them. Other customisations can be made on
 Each key takes a table (or nil) as a value, to govern the support
 characteristics of the item.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil|table
+      <li><code class="language-plaintext highlighter-rouge">[unitTypeObject]</code> = nil\|table
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">freeSupportUnderFundamentalism</code> = nil|boolean or function(tribe)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">freeSupportUnderFundamentalism</code> = nil\|boolean or function(tribe)–&gt;nil\|boolean
             <ul>
               <li>If true, unitType has the freeSupportUnderFundamentalism flag for this tribe.  If false, it does not.</li>
               <li>If nil, refer to the authoritativeDefaultRules</li>
             </ul>
           </li>
-          <li><code class="language-plaintext highlighter-rouge">requiresFoodSupport</code> = nil|boolean or function(tribe)–&gt;nil|boolean
+          <li><code class="language-plaintext highlighter-rouge">requiresFoodSupport</code> = nil\|boolean or function(tribe)–&gt;nil\|boolean
             <ul>
               <li>If true, the tribe must pay food support for this unitType.</li>
               <li>If false, it does not. (Setting this to true makes both settler and non-settler unit types require food.)</li>
@@ -2011,7 +2011,7 @@ Keys and descriptions for unitType customisation tables:
 <ul>
   <li>If both <code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> and <code class="language-plaintext highlighter-rouge">movementBonus</code> are used, both modify movement.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> = nil|int or function(unit)–&gt;nil|Int
+      <li><code class="language-plaintext highlighter-rouge">atomicMovementBonus</code> = nil\|int or function(unit)–&gt;nil\|Int
         <ul>
           <li>Bonus movement points (compared to authoritativeDefaultRules)</li>
           <li>Positive means add, negative means subtract</li>
@@ -2019,7 +2019,7 @@ Keys and descriptions for unitType customisation tables:
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">movementBonus</code> = nil|num or function(unit)–&gt;nil|num
+      <li><code class="language-plaintext highlighter-rouge">movementBonus</code> = nil\|num or function(unit)–&gt;nil\|num
         <ul>
           <li>Bonus movement points (compared to authoritativeDefaultRules)</li>
           <li>whole movement points, positive means add, negative means subtract</li>
@@ -2031,13 +2031,13 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>Only one of <code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> and <code class="language-plaintext highlighter-rouge">customMovement</code> is permissible.  If both exist, <code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> is used.  If this and the <code class="language-plaintext highlighter-rouge">movementBonus</code> both exist, the <code class="language-plaintext highlighter-rouge">movementBonus</code> is added to this instead of the authoritativeDefaultRules.  If both are nil, refer to the authoritativeDefaultRules.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> = nil|int&gt;=0 or function(unit)–&gt;nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">atomicCustomMovement</code> = nil\|int&gt;=0 or function(unit)–&gt;nil\|int&gt;=0
         <ul>
           <li>Unit type will have this amount of atomic movement points, regardless of the authoritativeDefaultRules</li>
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">customMovement</code> = nil|num&gt;=0 or function(unit)–&gt; nil|num&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">customMovement</code> = nil\|num&gt;=0 or function(unit)–&gt; nil\|num&gt;=0
         <ul>
           <li>Unit type will have this amount of movement points, regardless of the authoritativeDefaultRules.</li>
           <li>if function, the returned value of function(unit) is used.</li>
@@ -2047,7 +2047,7 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>If both of <code class="language-plaintext highlighter-rouge">atomicMinMove</code> and <code class="language-plaintext highlighter-rouge">minMove</code> are specified, the one yielding a larger bonus is used.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">atomicMinMove</code> = nil|int or function(unit)–&gt;nil|int
+      <li><code class="language-plaintext highlighter-rouge">atomicMinMove</code> = nil\|int or function(unit)–&gt;nil\|int
         <ul>
           <li>Ensures a damaged land or sea unit will still be able to move this many atomic movement points (unless that would require setting it’s unit type’s atomic movement beyond 255, which can’t be overcome.  If this is a problem,
   consider changing movement multipliers for the unit to have
@@ -2059,7 +2059,7 @@ Keys and descriptions for unitType customisation tables:
   movement point.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">minMove</code> = nil|num or function(unit)–&gt;nil|num
+      <li><code class="language-plaintext highlighter-rouge">minMove</code> = nil\|num or function(unit)–&gt;nil\|num
         <ul>
           <li>Ensures a damaged land or sea unit will still be able to move this many movement points (unless that would require setting it’s unit type’s atomic movement beyond 255, which can’t be overcome.  If this is a problem,
   consider changing movement multipliers for the unit to have
@@ -2112,7 +2112,7 @@ Keys and descriptions for unitType customisation tables:
           <li>if function, the returned value of function(unit) is used.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">moveCost[baseTerrainObject/ID]</code> = nil|int&gt;=0 or function(unit)–&gt;nil|int&gt;=0
+      <li><code class="language-plaintext highlighter-rouge">moveCost[baseTerrainObject/ID]</code> = nil\|int&gt;=0 or function(unit)–&gt;nil\|int&gt;=0
         <ul>
           <li>if integer, this is the (full movement point) movement cost of the base terrain</li>
           <li>if nil, refer to the authoritativeDefaultRules</li>
@@ -2123,7 +2123,7 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">cosmic</code> and <code class="language-plaintext highlighter-rouge">flag</code> keys have tables as values.  The <code class="language-plaintext highlighter-rouge">cosmic</code> table keys change the <code class="language-plaintext highlighter-rouge">civ.cosmic</code> fields with the same key.  The <code class="language-plaintext highlighter-rouge">flags</code> table keys are derived from General Library function names.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">cosmic[cosmicKey]</code> = int&gt;=0|nil or function(unit)–&gt;int&gt;=0|nil
+      <li><code class="language-plaintext highlighter-rouge">cosmic[cosmicKey]</code> = int&gt;=0\|nil or function(unit)–&gt;int&gt;=0\|nil
         <ul>
           <li>if nil, use the value in the authoritativeDefaultRules instead</li>
           <li>possible values for cosmicKey:
@@ -2165,12 +2165,12 @@ Keys and descriptions for unitType customisation tables:
   </li>
   <li>The <code class="language-plaintext highlighter-rouge">condition</code> and <code class="language-plaintext highlighter-rouge">priority</code> keys determine which customisation table is chosen for a particular unit.  The <code class="language-plaintext highlighter-rouge">customisationName</code> key is used to give the customisation a name which is used in some error messages.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil|tribeObject|traitString|function(unit)–&gt;boolean or table of tribeObject|traitString
+      <li><code class="language-plaintext highlighter-rouge">condition</code> = nil\|tribeObject\|traitString\|function(unit)–&gt;boolean or table of tribeObject\|traitString
         <ul>
           <li>if nil, this unit type customisation applies to all units of the relevant type(s).</li>
           <li>if tribeObject, this customisation can only apply to units owned by that tribe (as long as the unit is also of the relevant type)</li>
           <li>if traitString, this customisation applies to tribes which have the trait</li>
-          <li>if table of tribeObject|traitString, this applies to any tribe or traitString in the table</li>
+          <li>if table of tribeObject\|traitString, this applies to any tribe or traitString in the table</li>
           <li>if function(unit) –&gt; boolean, then this customisation applies to units of the relevant type(s) which also make this function return true</li>
           <li>Only one customisation can apply to any unit.  The <code class="language-plaintext highlighter-rouge">priority</code> key is used to tie break.</li>
         </ul>
@@ -2181,7 +2181,7 @@ Keys and descriptions for unitType customisation tables:
           <li>If the unit is eligible for two customisations of the same priority, an error may be generated, and will certainly be generated if they are of the highest priority.</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil|string,
+      <li><code class="language-plaintext highlighter-rouge">customisationName</code> = nil\|string,
         <ul>
           <li>A name to be used during certain kinds of error and debugging messages</li>
           <li>nil will give “Unnamed UnitType Customisation”</li>
@@ -2194,7 +2194,7 @@ Keys and descriptions for unitType customisation tables:
 <br />2. Apply the <something>Transport strings to the result of step 1
 <br />3. Apply transportXY data to the result of step 2
 </something>    <ul>
-      <li><code class="language-plaintext highlighter-rouge">nativeTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">nativeTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType nativeTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -2203,7 +2203,7 @@ Keys and descriptions for unitType customisation tables:
           <li>evaluate function(unit) and use the result</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">buildTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">buildTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType buildTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -2212,7 +2212,7 @@ Keys and descriptions for unitType customisation tables:
           <li>evaluate function(unit) and use the result</li>
         </ul>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">useTransport</code> = string|nil or function(unit) –&gt; string|nil
+      <li><code class="language-plaintext highlighter-rouge">useTransport</code> = string\|nil or function(unit) –&gt; string\|nil
         <ul>
           <li>Governs the unitType useTransport field</li>
           <li>String should be 16 characters, 0,1, or x</li>
@@ -2222,9 +2222,9 @@ Keys and descriptions for unitType customisation tables:
         </ul>
       </li>
       <li><code class="language-plaintext highlighter-rouge">transportXY</code> = {
-  <br /> nativeTransport = nil|boolean or function(unit) –&gt; nil|boolean
-  <br /> buildTransport = nil|boolean or function(unit) –&gt; nil|boolean
-  <br /> useTransport = nil|boolean or function(unit) –&gt; nil|boolean
+  <br /> nativeTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
+  <br /> buildTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
+  <br /> useTransport = nil\|boolean or function(unit) –&gt; nil\|boolean
   <br />}
         <ul>
           <li>transportXY governs the transport relationship between maps X and Y</li>

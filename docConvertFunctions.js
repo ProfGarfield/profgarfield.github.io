@@ -97,6 +97,7 @@ function makeEntry(entryData,aboveName,defaultFileName) {
   } else {
     result += "```\n"+aboveName+"."+entryData.name+" --> "+entryData.extends.view+"\n```\n";
   }
+  description = description.replace(/\|/g,"\\|");
   result += description+"\n\n";
   entries[entryName]["mainEntry"] = result;
   entries[entryName]["defaultFile"] = defaultFileName;
@@ -373,6 +374,8 @@ const topLevelIgnore = {
     "resourceNumber" : true,
     "tribeToInt" : true,
     "void" : true,
+    "_item_Data" : true,
+    "_item_Object" : true,
 }
 
 function makeNoEntries(docI) {

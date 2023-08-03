@@ -10,7 +10,7 @@ require("./civFileChanges.js")
 require("./genFileChanges.js")
 require("./nativeLuaDataChanges.js")
 require("./customOverrides.js")
-
+require("./supplementalDataChanges.js")
 
 
 doc.writeFiles()

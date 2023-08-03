@@ -33,7 +33,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#definesetting">defineSetting</a></li><li><a href="#getsettingvalue">getSettingValue</a></li><li><a href="#getsettingvaluename">getSettingValueName</a></li><li><a href="#openconfigurationmenu">openConfigurationMenu</a></li></ul></div>  
+    <ul><li><a href="#definesetting">defineSetting</a></li><li><a href="#getsettingvalue">getSettingValue</a></li><li><a href="#getsettingvaluename">getSettingValueName</a></li><li><a href="#openconfigurationmenu">openConfigurationMenu</a></li><li><a href="#setsettingindex">setSettingIndex</a></li><li><a href="#setsettingvalue">setSettingValue</a></li></ul></div>  
   
   <div class="post-content">
     <h1 id="configuration">
@@ -68,7 +68,11 @@
           index in the values table.  Any omitted valueNames will 
           be replaced with the value from the values table after 
           applying the tostring function.
-      defaultIndex: the index of the default value for the setting</p>
+      defaultIndex: the index of the default value for the setting
+      changeFunction: a function that is called when the setting 
+          is changed.  If absent, no function is called.
+          The function will be called with the following parameters:
+          function(newValue, oldValue,tribeID,settingSpec)</p>
 <h3 id="getsettingvalue">
   
   
@@ -112,6 +116,30 @@ An optional parameter tribeID can be used to get the value for a different tribe
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.openConfigurationMenu()
 </code></pre></div></div>
 <p>Opens the configuration menu, so that the player can change settings.</p>
+<h3 id="setsettingindex">
+  
+  
+    setSettingIndex <a href="#setsettingindex"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.setSettingIndex(settingName: string, tribeID: integer, valueIndex: integer, suppressChangeFunction?: boolean)
+</code></pre></div></div>
+<p>Sets the index of the value for the setting <code class="language-plaintext highlighter-rouge">settingName</code> for the tribe with <code class="language-plaintext highlighter-rouge">tribeID</code> to <code class="language-plaintext highlighter-rouge">valueIndex</code>
+If <code class="language-plaintext highlighter-rouge">suppressChangeFunction</code> is true, the changeFunction for the setting will not be called.</p>
+<h3 id="setsettingvalue">
+  
+  
+    setSettingValue <a href="#setsettingvalue"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.setSettingValue(settingName: string, tribeID: integer, value: any, suppressChangeFunction?: boolean)
+</code></pre></div></div>
+<p>Sets the value of <code class="language-plaintext highlighter-rouge">settingName</code> for the tribe with <code class="language-plaintext highlighter-rouge">tribeID</code> to <code class="language-plaintext highlighter-rouge">value</code>
+If <code class="language-plaintext highlighter-rouge">suppressChangeFunction</code> is true, the changeFunction for the setting will not be called.</p>
 
   </div>
 </article>
@@ -148,7 +176,11 @@ An optional parameter tribeID can be used to get the value for a different tribe
           index in the values table.  Any omitted valueNames will 
           be replaced with the value from the values table after 
           applying the tostring function.
-      defaultIndex: the index of the default value for the setting</p>
+      defaultIndex: the index of the default value for the setting
+      changeFunction: a function that is called when the setting 
+          is changed.  If absent, no function is called.
+          The function will be called with the following parameters:
+          function(newValue, oldValue,tribeID,settingSpec)</p>
 <h3 id="getsettingvalue">
   
   
@@ -192,6 +224,30 @@ An optional parameter tribeID can be used to get the value for a different tribe
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.openConfigurationMenu()
 </code></pre></div></div>
 <p>Opens the configuration menu, so that the player can change settings.</p>
+<h3 id="setsettingindex">
+  
+  
+    <a href="#setsettingindex">&#128279</a> setSettingIndex
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.setSettingIndex(settingName: string, tribeID: integer, valueIndex: integer, suppressChangeFunction?: boolean)
+</code></pre></div></div>
+<p>Sets the index of the value for the setting <code class="language-plaintext highlighter-rouge">settingName</code> for the tribe with <code class="language-plaintext highlighter-rouge">tribeID</code> to <code class="language-plaintext highlighter-rouge">valueIndex</code>
+If <code class="language-plaintext highlighter-rouge">suppressChangeFunction</code> is true, the changeFunction for the setting will not be called.</p>
+<h3 id="setsettingvalue">
+  
+  
+    <a href="#setsettingvalue">&#128279</a> setSettingValue
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function configuration.setSettingValue(settingName: string, tribeID: integer, value: any, suppressChangeFunction?: boolean)
+</code></pre></div></div>
+<p>Sets the value of <code class="language-plaintext highlighter-rouge">settingName</code> for the tribe with <code class="language-plaintext highlighter-rouge">tribeID</code> to <code class="language-plaintext highlighter-rouge">value</code>
+If <code class="language-plaintext highlighter-rouge">suppressChangeFunction</code> is true, the changeFunction for the setting will not be called.</p>
  -->
       </div>
     </main><footer class="site-footer h-card">
