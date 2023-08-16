@@ -1027,19 +1027,33 @@ newunit can’t be nil.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function unitData.update(unit: unitObject, time?: "custom"|"onTribeTurnBegin"|"onTribeTurnEnd"|"onTurn", tribe?: tribeObject, key?: string, moduleName?: string)
 </code></pre></div></div>
 <p>Updates all of unit’s data keys that have an updateTime of time, unless
-key is specified, in which case, update that key only.
-    * time = “onTurn”|“onTribeTurnBegin”|“onTribeTurnEnd”|“custom”
-        - Update the unit’s data keys that have this updateTime.
-        - Default is “custom”.
-    * tribe = nil|tribeObject
-        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.
-        - Default is nil.
-    * key = nil|string
-        - The key to update.
-        - Default is nil, in which case all keys with the updateTime specified by time are updated.
-    * moduleName = nil|string
-        - The name of the module using this name, if applicable.
-        - Default is nil.</p><hr />
+key is specified, in which case, update that key only.</p>
+<ul>
+  <li>time = “onTurn”|“onTribeTurnBegin”|“onTribeTurnEnd”|“custom”
+    <ul>
+      <li>Update the unit’s data keys that have this updateTime.</li>
+      <li>Default is “custom”.</li>
+    </ul>
+  </li>
+  <li>tribe = nil|tribeObject
+    <ul>
+      <li>The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.</li>
+      <li>Default is nil.</li>
+    </ul>
+  </li>
+  <li>key = nil|string
+    <ul>
+      <li>The key to update.</li>
+      <li>Default is nil, in which case all keys with the updateTime specified by time are updated.</li>
+    </ul>
+  </li>
+  <li>moduleName = nil|string
+    <ul>
+      <li>The name of the module using this name, if applicable.</li>
+      <li>Default is nil.</li>
+    </ul>
+  </li>
+</ul><hr />
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">time</span><span class="p">:</span>
     <span class="err">\|</span> <span class="s2">"onTurn"</span>
@@ -2104,19 +2118,33 @@ newunit can’t be nil.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function unitData.update(unit: unitObject, time?: "custom"|"onTribeTurnBegin"|"onTribeTurnEnd"|"onTurn", tribe?: tribeObject, key?: string, moduleName?: string)
 </code></pre></div></div>
 <p>Updates all of unit’s data keys that have an updateTime of time, unless
-key is specified, in which case, update that key only.
-    * time = “onTurn”|“onTribeTurnBegin”|“onTribeTurnEnd”|“custom”
-        - Update the unit’s data keys that have this updateTime.
-        - Default is “custom”.
-    * tribe = nil|tribeObject
-        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.
-        - Default is nil.
-    * key = nil|string
-        - The key to update.
-        - Default is nil, in which case all keys with the updateTime specified by time are updated.
-    * moduleName = nil|string
-        - The name of the module using this name, if applicable.
-        - Default is nil.</p><hr />
+key is specified, in which case, update that key only.</p>
+<ul>
+  <li>time = “onTurn”|“onTribeTurnBegin”|“onTribeTurnEnd”|“custom”
+    <ul>
+      <li>Update the unit’s data keys that have this updateTime.</li>
+      <li>Default is “custom”.</li>
+    </ul>
+  </li>
+  <li>tribe = nil|tribeObject
+    <ul>
+      <li>The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.</li>
+      <li>Default is nil.</li>
+    </ul>
+  </li>
+  <li>key = nil|string
+    <ul>
+      <li>The key to update.</li>
+      <li>Default is nil, in which case all keys with the updateTime specified by time are updated.</li>
+    </ul>
+  </li>
+  <li>moduleName = nil|string
+    <ul>
+      <li>The name of the module using this name, if applicable.</li>
+      <li>Default is nil.</li>
+    </ul>
+  </li>
+</ul><hr />
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">time</span><span class="p">:</span>
     <span class="err">\|</span> <span class="s2">"onTurn"</span>

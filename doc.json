@@ -5135,6 +5135,25 @@
     {
         "defines": [
             {
+                "extends": {
+                    "finish": 5570008,
+                    "start": 5570006,
+                    "type": "table",
+                    "view": "civ"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 5570003,
+                "start": 5570000,
+                "type": "setglobal"
+            }
+        ],
+        "desc": " The civ module provides functions which can interact directly with the game.  It is always in scope, so you never need to use a `require` call in order to access it.",
+        "name": "civ",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
                 "finish": 5520013,
                 "start": 5520010,
@@ -7184,25 +7203,6 @@
         "defines": [
             {
                 "extends": {
-                    "finish": 5570008,
-                    "start": 5570006,
-                    "type": "table",
-                    "view": "civ"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 5570003,
-                "start": 5570000,
-                "type": "setglobal"
-            }
-        ],
-        "desc": " The civ module provides functions which can interact directly with the game.  It is always in scope, so you never need to use a `require` call in order to access it.",
-        "name": "civ",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
                     "args": [
                         {
                             "desc": "A city object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a city in the game, and provides a means of interacting with that city.\n<br>\n[Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#city)",
@@ -7318,25 +7318,6 @@
         ],
         "desc": "Captures city `city` for tribe `tribe`.",
         "name": "civ.captureCity",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "finish": 9560015,
-                    "start": 9560013,
-                    "type": "table",
-                    "view": "civ.cosmic"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 9560010,
-                "start": 9560000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "civ.cosmic",
         "type": "variable"
     },
     {
@@ -8084,6 +8065,25 @@
         "defines": [
             {
                 "extends": {
+                    "finish": 9560015,
+                    "start": 9560013,
+                    "type": "table",
+                    "view": "civ.cosmic"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 9560010,
+                "start": 9560000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "civ.cosmic",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
                     "args": [
                         {
                             "desc": "A tribe object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a tribe, which is to say the characteristics of the tribe overall, in the game, and provides a means of interacting with it.\n[Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#tribe)",
@@ -8346,6 +8346,25 @@
     {
         "defines": [
             {
+                "extends": {
+                    "finish": 9700013,
+                    "start": 9700011,
+                    "type": "table",
+                    "view": "civ.game"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 9700008,
+                "start": 9700000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "civ.game",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
                 "finish": 9590018,
                 "start": 9590010,
@@ -8591,25 +8610,6 @@
         ],
         "name": "civ.game",
         "type": "type"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "finish": 9700013,
-                    "start": 9700011,
-                    "type": "table",
-                    "view": "civ.game"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 9700008,
-                "start": 9700000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "civ.game",
-        "type": "variable"
     },
     {
         "defines": [
@@ -10366,25 +10366,6 @@
     {
         "defines": [
             {
-                "extends": {
-                    "finish": 9810013,
-                    "start": 9810011,
-                    "type": "table",
-                    "view": "civ.scen"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 9810008,
-                "start": 9810000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "civ.scen",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
                 "finish": 9780018,
                 "start": 9780010,
@@ -11136,6 +11117,25 @@
         ],
         "name": "civ.scen",
         "type": "type"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "finish": 9810013,
+                    "start": 9810011,
+                    "type": "table",
+                    "view": "civ.scen"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 9810008,
+                "start": 9810000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "civ.scen",
+        "type": "variable"
     },
     {
         "defines": [
@@ -12055,6 +12055,25 @@
     {
         "defines": [
             {
+                "extends": {
+                    "finish": 12870020,
+                    "start": 12870018,
+                    "type": "table",
+                    "view": "civ.scen.params"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 12870015,
+                "start": 12870000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "civ.scen.params",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
                 "finish": 12750025,
                 "start": 12750010,
@@ -12313,25 +12332,6 @@
         "defines": [
             {
                 "extends": {
-                    "finish": 12870020,
-                    "start": 12870018,
-                    "type": "table",
-                    "view": "civ.scen.params"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 12870015,
-                "start": 12870000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "civ.scen.params",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
                     "args": [
                         {
                             "desc": "An integer is a number without a fractional part. Unlike other programming Languages, Lua does not distinguish between integers and 'floating point' numbers. You can convert a number to an integer by using commands like <code>math.floor</code> and <code>math.ceil</code>.\n<br>\n[Programming in Lua, 2.3 -- Numbers](https://www.lua.org/pil/2.3.html)",
@@ -12440,25 +12440,6 @@
         ],
         "desc": "Teleports (i.e. moves at no cost) unit `unit` to tile `tile`. The unit is moved regardless of whether it is a valid location for the unit. To check this, see `civ.canEnter` and `civlua.isValidUnitLocation`.",
         "name": "civ.teleportUnit",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "finish": 8720011,
-                    "start": 8720009,
-                    "type": "table",
-                    "view": "civ.ui"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
-                "finish": 8720006,
-                "start": 8720000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "civ.ui",
         "type": "variable"
     },
     {
@@ -12758,6 +12739,25 @@
         ],
         "name": "civ.ui",
         "type": "type"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "finish": 8720011,
+                    "start": 8720009,
+                    "type": "table",
+                    "view": "civ.ui"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
+                "finish": 8720006,
+                "start": 8720000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "civ.ui",
+        "type": "variable"
     },
     {
         "defines": [
@@ -13774,14 +13774,14 @@
             {
                 "extends": {
                     "args": [],
-                    "finish": 32060003,
-                    "start": 32040000,
+                    "finish": 33730003,
+                    "start": 33710000,
                     "type": "function",
                     "view": "function console.hireMercTest()"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
-                "finish": 32040029,
-                "start": 32040009,
+                "finish": 33710029,
+                "start": 33710009,
                 "type": "setfield"
             }
         ],
@@ -13848,21 +13848,21 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 29980037,
+                            "finish": 31650037,
                             "name": "tribeID",
-                            "start": 29980030,
+                            "start": 31650030,
                             "type": "local",
                             "view": "any"
                         }
                     ],
-                    "finish": 30380003,
-                    "start": 29980000,
+                    "finish": 32050003,
+                    "start": 31650000,
                     "type": "function",
                     "view": "function console.menuAutoTest(tribeID: any)"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
-                "finish": 29980029,
-                "start": 29980009,
+                "finish": 31650029,
+                "start": 31650009,
                 "type": "setfield"
             }
         ],
@@ -13975,21 +13975,21 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 29820035,
+                            "finish": 31490035,
                             "name": "tribeID",
-                            "start": 29820028,
+                            "start": 31490028,
                             "type": "local",
                             "view": "any"
                         }
                     ],
-                    "finish": 29880003,
-                    "start": 29820000,
+                    "finish": 31550003,
+                    "start": 31490000,
                     "type": "function",
                     "view": "function console.sampleMenu(tribeID: any)"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
-                "finish": 29820027,
-                "start": 29820009,
+                "finish": 31490027,
+                "start": 31490009,
                 "type": "setfield"
             }
         ],
@@ -14074,14 +14074,14 @@
             {
                 "extends": {
                     "args": [],
-                    "finish": 12380003,
-                    "start": 11990000,
+                    "finish": 14050003,
+                    "start": 13660000,
                     "type": "function",
                     "view": "function console.testSubstitution()"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
-                "finish": 11990033,
-                "start": 11990009,
+                "finish": 13660033,
+                "start": 13660009,
                 "type": "setfield"
             }
         ],
@@ -14092,17 +14092,18 @@
         "defines": [
             {
                 "extends": {
-                    "finish": 29780019,
-                    "start": 29780015,
+                    "finish": 31450019,
+                    "start": 31450015,
                     "type": "getlocal",
-                    "view": "table"
+                    "view": "text"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
-                "finish": 29780012,
-                "start": 29780000,
+                "finish": 31450012,
+                "start": 31450000,
                 "type": "setfield"
             }
         ],
+        "desc": "The text module provides functions for displaying text boxes and menus.  It also provides code for manipulating strings, though\nthese are primarily useful to make messages that other functions\nin the module will display.\n\nThe Civfanatics users [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/) and [Pablostuka](https://forums.civfanatics.com/members/pablostuka.14725/) have contributed functionality to this module.\n",
         "name": "console.text",
         "type": "variable"
     },
@@ -37600,6 +37601,46 @@
     {
         "defines": [
             {
+                "extends": {
+                    "finish": 3010044,
+                    "start": 3010020,
+                    "type": "doc.type",
+                    "types": [
+                        {
+                            "finish": 3010026,
+                            "start": 3010020,
+                            "type": "doc.type.name",
+                            "view": "string"
+                        },
+                        {
+                            "finish": 3010038,
+                            "start": 3010027,
+                            "type": "doc.type.name",
+                            "view": "imageObject"
+                        },
+                        {
+                            "finish": 3010044,
+                            "start": 3010039,
+                            "type": "doc.type.name",
+                            "view": "table"
+                        }
+                    ],
+                    "view": "string|table|imageObject"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 3010044,
+                "start": 3010010,
+                "type": "doc.alias"
+            }
+        ],
+        "desc": "An `imageInfo` is one of the following:<br><br>\nAn `imageObject`. <br><br>\nA `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.  That is, `civ.ui.loadImage(imageObject[1],imageObject[2],imageObject[3],imageObject[4],imageObject[5])` returns a valid imageObject.<br><br>\nA `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.\n",
+        "fields": [],
+        "name": "imageInfo",
+        "type": "type"
+    },
+    {
+        "defines": [
+            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/civ.lua",
                 "finish": 5210021,
                 "start": 5210010,
@@ -41378,6 +41419,34 @@
         "defines": [
             {
                 "extends": {
+                    "finish": 7800041,
+                    "start": 7800020,
+                    "type": "doc.type",
+                    "types": [
+                        {
+                            "finish": 7800041,
+                            "start": 7800020,
+                            "type": "doc.type.sign",
+                            "view": "table<integer, string>"
+                        }
+                    ],
+                    "view": "table<integer, string>"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 7800041,
+                "start": 7800010,
+                "type": "doc.alias"
+            }
+        ],
+        "desc": "A menuTable represents the options that will appear in a menu.\n\nThe options will appear in order based on the keys of the table.\n\nWhen an option is chosen in the menu, the key of the option will be returned.\n\nThe keys of the table must be integers, and the lowest allowable key is 1.\n(0 represents the \"cancel\" option, which is not part of the menuTable.)  The menuTable does not have to have an option associated with every integer.  (It is even permissible to not have the key 1 associated with an option.)\n",
+        "fields": [],
+        "name": "menuTable",
+        "type": "type"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
                     "args": [
                         {
                             "desc": "A string is a data type native to Lua which consists of a sequence of characters. These often represent text to be displayed, but are also useful in other contexts. Strings are commonly used as keys in tables, since they make code more readable.\n<br>\n[Programming in Lua, 2.4 -- Strings](https://www.lua.org/pil/2.4.html)",
@@ -44969,6 +45038,1178 @@
     {
         "defines": [
             {
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 1290014,
+                "start": 1290010,
+                "type": "doc.class"
+            }
+        ],
+        "desc": "The text module provides functions for displaying text boxes and menus.  It also provides code for manipulating strings, though\nthese are primarily useful to make messages that other functions\nin the module will display.\n\nThe Civfanatics users [Knighttime](https://forums.civfanatics.com/members/knighttime.21777/) and [Pablostuka](https://forums.civfanatics.com/members/pablostuka.14725/) have contributed functionality to this module.\n",
+        "fields": [
+            {
+                "desc": "Adds some text to the dialog object, in such a way that the\ncharacter sequence \\\\n^ will cause a line break when the\ndialog is displayed.\n",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A string is a data type native to Lua which consists of a sequence of characters. These often represent text to be displayed, but are also useful in other contexts. Strings are commonly used as keys in tables, since they make code more readable.\n<br>\n[Programming in Lua, 2.4 -- Strings](https://www.lua.org/pil/2.4.html)",
+                            "finish": 5200045,
+                            "name": "string",
+                            "start": 5200039,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "A dialog object is a data type provided by the Test of Time Patch Project Lua Interpreter. It represents a text box that can be displayed to the player and provides properties and methods to customize it.\n[Lua Function Reference](https://forums.civfanatics.com/threads/totpp-lua-function-reference.557527/#dialog)",
+                            "finish": 5200052,
+                            "name": "dialog",
+                            "start": 5200046,
+                            "type": "local",
+                            "view": "dialogObject"
+                        }
+                    ],
+                    "desc": "Adds some text to the dialog object, in such a way that the\ncharacter sequence \\\\n^ will cause a line break when the\ndialog is displayed.\n",
+                    "finish": 5250003,
+                    "start": 5200000,
+                    "type": "function",
+                    "view": "function text.addMultiLineTextToDialog(string: string, dialog: dialogObject)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 5200038,
+                "name": "addMultiLineTextToDialog",
+                "start": 5200009,
+                "type": "setfield"
+            },
+            {
+                "desc": " Adds a message to a tribe's archive\n\n@*param* `tribeID` — The tribe for whom the message should be added to the archive.\n\n@*param* `messageBody` — The message to be displayed in the archive.\n\n@*param* `messageTitle` — The title of the text box of the message.\n\n@*param* `archiveTitle` — The title of the message in the archive menu.\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "The tribe for whom the message should be added to the archive.",
+                            "finish": 6360034,
+                            "name": "tribeID",
+                            "start": 6360027,
+                            "type": "local",
+                            "view": "integer|tribeObject"
+                        },
+                        {
+                            "desc": "The message to be displayed in the archive.",
+                            "finish": 6360046,
+                            "name": "messageBody",
+                            "start": 6360035,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The title of the text box of the message.",
+                            "finish": 6360059,
+                            "name": "messageTitle",
+                            "start": 6360047,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The title of the message in the archive menu.",
+                            "finish": 6360072,
+                            "name": "archiveTitle",
+                            "start": 6360060,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                            "finish": 6360082,
+                            "name": "imageInfo",
+                            "start": 6360073,
+                            "type": "local",
+                            "view": "(string|table|imageObject)?"
+                        }
+                    ],
+                    "desc": " Adds a message to a tribe's archive\n\n@*param* `tribeID` — The tribe for whom the message should be added to the archive.\n\n@*param* `messageBody` — The message to be displayed in the archive.\n\n@*param* `messageTitle` — The title of the text box of the message.\n\n@*param* `archiveTitle` — The title of the message in the archive menu.\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                    "finish": 6490003,
+                    "start": 6360000,
+                    "type": "function",
+                    "view": "function text.addToArchive(tribeID: integer|tribeObject, messageBody: string, messageTitle: string, archiveTitle: string, imageInfo?: string|table|imageObject)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 6360026,
+                "name": "addToArchive",
+                "start": 6360009,
+                "type": "setfield"
+            },
+            {
+                "desc": " text.anglicise(string) --> string\n  replaces international characters with English equivalents\n  Intended for constructing object.lua file, but might have\n  other uses",
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 23740027,
+                            "name": "str",
+                            "start": 23740024,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "desc": " text.anglicise(string) --> string\n  replaces international characters with English equivalents\n  Intended for constructing object.lua file, but might have\n  other uses",
+                    "finish": 23790003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "string"
+                        }
+                    ],
+                    "start": 23740000,
+                    "type": "function",
+                    "view": "function text.anglicise(str: any)\n  -> string"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 23740023,
+                "name": "anglicise",
+                "start": 23740009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 18520032,
+                    "start": 18520020,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 18520017,
+                "name": "checkboxMenu",
+                "start": 18520000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 14830056,
+                    "start": 14830032,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 14830029,
+                "name": "convertTableToColumnText",
+                "start": 14830000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 20400030,
+                    "start": 20400019,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 20400016,
+                "name": "coordinates",
+                "start": 20400000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 15140038,
+                    "start": 15140023,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 15140020,
+                "name": "copyTableAsText",
+                "start": 15140000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Deletes all messages saved in archives owned by AI Tribes",
+                "extends": {
+                    "args": [],
+                    "desc": "Deletes all messages saved in archives owned by AI Tribes",
+                    "finish": 11150003,
+                    "start": 11060000,
+                    "type": "function",
+                    "view": "function text.deleteAIArchives()"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 11060030,
+                "name": "deleteAIArchives",
+                "start": 11060009,
+                "type": "setfield"
+            },
+            {
+                "desc": "Displays to the current player all messages that were to be displayed\nat the next opportunity, then either archives or deletes the messages.\n\nIf the player is an AI, the messages will not be displayed, unless the broadcast parameter was true.\n\nIn the Lua Scenario Template, this is in the onCityProcessingComplete \nexecution point, and the scenario designer should not need to call it.\n",
+                "extends": {
+                    "args": [],
+                    "desc": "Displays to the current player all messages that were to be displayed\nat the next opportunity, then either archives or deletes the messages.\n\nIf the player is an AI, the messages will not be displayed, unless the broadcast parameter was true.\n\nIn the Lua Scenario Template, this is in the onCityProcessingComplete \nexecution point, and the scenario designer should not need to call it.\n",
+                    "finish": 7600003,
+                    "start": 7440000,
+                    "type": "function",
+                    "view": "function text.displayAccumulatedMessages()"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 7440040,
+                "name": "displayAccumulatedMessages",
+                "start": 7440009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 10080052,
+                    "start": 10080030,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 10080027,
+                "name": "displayArchivedMessage",
+                "start": 10080000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Displays a message to a tribe or tribes at the next possible opportunity,\neither immediately (if the tribe is active), or during the onCityProcessingComplete execution point.\n\nIf an archive title is specified, the message will be added to the tribe's archive after it is shown.\n\nNote: For backwards compatibility, the order of the last two arguments can be reversed.  The function will figure it out.\n\n\n@*param* `tribes` — The tribe or tribes to whom the message should be displayed.  Integers reference the tribe's ID.\n\n@*param* `messageBody` — The message to be displayed.\n\n@*param* `messageTitle` — The title of the text box of the message.\n\n@*param* `archiveTitle` — The title of the message in the archive menu.  If nil, the message will not be added to the archive.\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.\n\n@*param* `broadcast` — If true, the text box with the message will be displayed even if the tribe is controlled by an AI.  If false or absent, it will only be displayed if the tribe is controlled by a human.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "The tribe or tribes to whom the message should be displayed.  Integers reference the tribe's ID.",
+                            "finish": 7280043,
+                            "name": "tribes",
+                            "start": 7280037,
+                            "type": "local",
+                            "view": "integer|table<any, integer|tribeObject>|tribeObject"
+                        },
+                        {
+                            "desc": "The message to be displayed.",
+                            "finish": 7280055,
+                            "name": "messageBody",
+                            "start": 7280044,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The title of the text box of the message.",
+                            "finish": 7280068,
+                            "name": "messageTitle",
+                            "start": 7280056,
+                            "type": "local",
+                            "view": "string?"
+                        },
+                        {
+                            "desc": "The title of the message in the archive menu.  If nil, the message will not be added to the archive.",
+                            "finish": 7280081,
+                            "name": "archiveTitle",
+                            "start": 7280069,
+                            "type": "local",
+                            "view": "string?"
+                        },
+                        {
+                            "desc": "The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                            "finish": 7280091,
+                            "name": "imageInfo",
+                            "start": 7280082,
+                            "type": "local",
+                            "view": "(string|table|imageObject)?"
+                        },
+                        {
+                            "desc": "If true, the text box with the message will be displayed even if the tribe is controlled by an AI.  If false or absent, it will only be displayed if the tribe is controlled by a human.",
+                            "finish": 7280101,
+                            "name": "broadcast",
+                            "start": 7280092,
+                            "type": "local",
+                            "view": "boolean?"
+                        }
+                    ],
+                    "desc": "Displays a message to a tribe or tribes at the next possible opportunity,\neither immediately (if the tribe is active), or during the onCityProcessingComplete execution point.\n\nIf an archive title is specified, the message will be added to the tribe's archive after it is shown.\n\nNote: For backwards compatibility, the order of the last two arguments can be reversed.  The function will figure it out.\n\n\n@*param* `tribes` — The tribe or tribes to whom the message should be displayed.  Integers reference the tribe's ID.\n\n@*param* `messageBody` — The message to be displayed.\n\n@*param* `messageTitle` — The title of the text box of the message.\n\n@*param* `archiveTitle` — The title of the message in the archive menu.  If nil, the message will not be added to the archive.\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.\n\n@*param* `broadcast` — If true, the text box with the message will be displayed even if the tribe is controlled by an AI.  If false or absent, it will only be displayed if the tribe is controlled by a human.",
+                    "finish": 7300003,
+                    "start": 7280000,
+                    "type": "function",
+                    "view": "function text.displayNextOpportunity(tribes: integer|table<any, integer|tribeObject>|tribeObject, messageBody: string, messageTitle?: string, archiveTitle?: string, imageInfo?: string|table|imageObject, broadcast?: boolean)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 7280036,
+                "name": "displayNextOpportunity",
+                "start": 7280009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 23800042,
+                    "start": 23800025,
+                    "type": "getlocal",
+                    "view": "table"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 23800022,
+                "name": "englishEquivalent",
+                "start": 23800000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Returns the current setting for the number of lines per text box,\nwhich functions in this module use to determine when to break a\nmessage or menu into multiple text boxes.",
+                "extends": {
+                    "args": [],
+                    "desc": "Returns the current setting for the number of lines per text box,\nwhich functions in this module use to determine when to break a\nmessage or menu into multiple text boxes.",
+                    "finish": 2350003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "integer"
+                        }
+                    ],
+                    "start": 2330000,
+                    "type": "function",
+                    "view": "function text.getLinesPerWindow()\n  -> integer"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 2330031,
+                "name": "getLinesPerWindow",
+                "start": 2330009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19590048,
+                    "start": 19590028,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19590025,
+                "name": "getShortVeteranTitle",
+                "start": 19590000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19420038,
+                    "start": 19420023,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19420020,
+                "name": "getVeteranTitle",
+                "start": 19420000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 18790030,
+                    "start": 18790019,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 18790016,
+                "name": "groupDigits",
+                "start": 18790000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22180022,
+                    "start": 22180009,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22180006,
+                "name": "i",
+                "start": 22180000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22740020,
+                    "start": 22740014,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22740011,
+                "name": "iLower",
+                "start": 22740000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22650020,
+                    "start": 22650014,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22650011,
+                "name": "iUpper",
+                "start": 22650000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22900022,
+                    "start": 22900015,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22900012,
+                "name": "initCap",
+                "start": 22900000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22170034,
+                    "start": 22170021,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22170018,
+                "name": "international",
+                "start": 22170000,
+                "type": "setfield"
+            },
+            {
+                "desc": " text.isMenuRecord(item) --> bool\n      returns true if item is a menuRecord, and false otherwise",
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 26140031,
+                            "name": "item",
+                            "start": 26140027,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "desc": " text.isMenuRecord(item) --> bool\n      returns true if item is a menuRecord, and false otherwise",
+                    "finish": 26160003,
+                    "start": 26140000,
+                    "type": "function",
+                    "view": "function text.isMenuRecord(item: any)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 26140026,
+                "name": "isMenuRecord",
+                "start": 26140009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 1760026,
+                    "start": 1760017,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 1760014,
+                "name": "linkState",
+                "start": 1760000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22560018,
+                    "start": 22560013,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22560010,
+                "name": "lower",
+                "start": 22560000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 20490016,
+                    "start": 20490012,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 20490009,
+                "name": "lpad",
+                "start": 20490000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 32420045,
+                            "name": "increments",
+                            "start": 32420035,
+                            "type": "local",
+                            "view": "any"
+                        },
+                        {
+                            "finish": 32420054,
+                            "name": "extremes",
+                            "start": 32420046,
+                            "type": "local",
+                            "view": "any"
+                        },
+                        {
+                            "finish": 32420067,
+                            "name": "selectionKey",
+                            "start": 32420055,
+                            "type": "local",
+                            "view": "any"
+                        },
+                        {
+                            "finish": 32420076,
+                            "name": "nextMenu",
+                            "start": 32420068,
+                            "type": "local",
+                            "view": "any"
+                        },
+                        {
+                            "finish": 32420090,
+                            "name": "goBackOptions",
+                            "start": 32420077,
+                            "type": "local",
+                            "view": "any"
+                        },
+                        {
+                            "finish": 32420099,
+                            "name": "menuName",
+                            "start": 32420091,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "finish": 33070003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "unknown"
+                        }
+                    ],
+                    "start": 32420000,
+                    "type": "function",
+                    "view": "function text.makeChooseNumberMenu(increments: any, extremes: any, selectionKey: any, nextMenu: any, goBackOptions: any, menuName: any)\n  -> unknown"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 32420034,
+                "name": "makeChooseNumberMenu",
+                "start": 32420009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19940050,
+                    "start": 19940029,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19940026,
+                "name": "makeReverseListNoGaps",
+                "start": 19940000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 14970034,
+                    "start": 14970021,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 14970018,
+                "name": "makeTableText",
+                "start": 14970000,
+                "type": "setfield"
+            },
+            {
+                "desc": "This function displays a menu of options to the user, as defined by the menuTable.  The user can choose one of the options, and may or may not be given the option to \"cancel\" as a choice.  The function returns the index of the menuTable entry that was chosen, or 0 if the user cancels the menu.  If the menu has multiple pages, the function returns the page where the choice was made.\n    \n\n@*param* `menuTable` — A table of menu options.  The keys are the numbers that will be returned when the option is chosen.  The values are the text to display for each option.\n\n@*param* `menuText` — The text to display above the menu options.\n\n@*param* `menuTitle` — The title of the menu's text box.  Defaults to \"\".\n\n@*param* `canCancel` — Whether or not the menu should have a \"Cancel\" option, which returns 0.  Defaults to false.\n\n@*param* `dimensions` — The dimensions of the menu text box.  If not specified, the game will choose.\n\n@*param* `menuPage` — The page of the menu to start on.  Defaults to 1.\n\n@*return* `choice` — The index of the menuTable entry that was chosen.\n\n@*return* `menuPage` — The page of the menu where the choice was made.  This could be useful if you want to be able to re-open the menu on the same page.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A table of menu options.  The keys are the numbers that will be returned when the option is chosen.  The values are the text to display for each option.",
+                            "finish": 9280028,
+                            "name": "menuTable",
+                            "start": 9280019,
+                            "type": "local",
+                            "view": "table<integer, string>"
+                        },
+                        {
+                            "desc": "The text to display above the menu options.",
+                            "finish": 9280037,
+                            "name": "menuText",
+                            "start": 9280029,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The title of the menu's text box.  Defaults to \"\".",
+                            "finish": 9280047,
+                            "name": "menuTitle",
+                            "start": 9280038,
+                            "type": "local",
+                            "view": "string?"
+                        },
+                        {
+                            "desc": "Whether or not the menu should have a \"Cancel\" option, which returns 0.  Defaults to false.",
+                            "finish": 9280057,
+                            "name": "canCancel",
+                            "start": 9280048,
+                            "type": "local",
+                            "view": "boolean?"
+                        },
+                        {
+                            "desc": "An `imageInfo` is one of the following:<br><br>\nAn `imageObject`. <br><br>\nA `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.  That is, `civ.ui.loadImage(imageObject[1],imageObject[2],imageObject[3],imageObject[4],imageObject[5])` returns a valid imageObject.<br><br>\nA `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.\n",
+                            "finish": 9280067,
+                            "name": "imageInfo",
+                            "start": 9280058,
+                            "type": "local",
+                            "view": "(string|table|imageObject)?"
+                        },
+                        {
+                            "desc": "The dimensions of the menu text box.  If not specified, the game will choose.",
+                            "finish": 9280078,
+                            "name": "dimensions",
+                            "start": 9280068,
+                            "type": "local",
+                            "view": "{ width: integer|nil, height: integer|nil }?"
+                        },
+                        {
+                            "desc": "The page of the menu to start on.  Defaults to 1.",
+                            "finish": 9280088,
+                            "name": "menuPage",
+                            "start": 9280080,
+                            "type": "local",
+                            "view": "integer?"
+                        }
+                    ],
+                    "desc": "This function displays a menu of options to the user, as defined by the menuTable.  The user can choose one of the options, and may or may not be given the option to \"cancel\" as a choice.  The function returns the index of the menuTable entry that was chosen, or 0 if the user cancels the menu.  If the menu has multiple pages, the function returns the page where the choice was made.\n    \n\n@*param* `menuTable` — A table of menu options.  The keys are the numbers that will be returned when the option is chosen.  The values are the text to display for each option.\n\n@*param* `menuText` — The text to display above the menu options.\n\n@*param* `menuTitle` — The title of the menu's text box.  Defaults to \"\".\n\n@*param* `canCancel` — Whether or not the menu should have a \"Cancel\" option, which returns 0.  Defaults to false.\n\n@*param* `dimensions` — The dimensions of the menu text box.  If not specified, the game will choose.\n\n@*param* `menuPage` — The page of the menu to start on.  Defaults to 1.\n\n@*return* `choice` — The index of the menuTable entry that was chosen.\n\n@*return* `menuPage` — The page of the menu where the choice was made.  This could be useful if you want to be able to re-open the menu on the same page.",
+                    "finish": 9310003,
+                    "returns": [
+                        {
+                            "desc": "The index of the menuTable entry that was chosen.",
+                            "name": "choice",
+                            "type": "function.return",
+                            "view": "integer"
+                        },
+                        {
+                            "desc": "The page of the menu where the choice was made.  This could be useful if you want to be able to re-open the menu on the same page.",
+                            "name": "menuPage",
+                            "type": "function.return",
+                            "view": "integer"
+                        }
+                    ],
+                    "start": 9280000,
+                    "type": "function",
+                    "view": "function text.menu(menuTable: table<integer, string>, menuText: string, menuTitle?: string, canCancel?: boolean, imageInfo?: string|table|imageObject, dimensions?: { width: integer|nil, height: integer|nil }, menuPage?: integer)\n  -> choice: integer\n  2. menuPage: integer"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 9280018,
+                "name": "menu",
+                "start": 9280009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19120018,
+                    "start": 19120013,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19120010,
+                "name": "money",
+                "start": 19120000,
+                "type": "setfield"
+            },
+            {
+                "desc": " text.newMenuRecord(specTable) --> menuRecord\n      converts a specification table for a menuRecord\n      into a menuRecord",
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 26060037,
+                            "name": "specTable",
+                            "start": 26060028,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "desc": " text.newMenuRecord(specTable) --> menuRecord\n      converts a specification table for a menuRecord\n      into a menuRecord",
+                    "finish": 26090003,
+                    "start": 26060000,
+                    "type": "function",
+                    "view": "function text.newMenuRecord(specTable: any)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 26060027,
+                "name": "newMenuRecord",
+                "start": 26060009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 20330024,
+                    "start": 20330016,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 20330013,
+                "name": "niceList",
+                "start": 20330000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 10750030,
+                    "start": 10750019,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 10750016,
+                "name": "openArchive",
+                "start": 10750000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 20680014,
+                    "start": 20680011,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 20680008,
+                "name": "pad",
+                "start": 20680000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Purges (deletes) all archived messages that have been marked for purging\nby the tribe.\n\n\n@*param* `tribeOrID` — The tribe or tribe ID for whom to purge the archive.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "The tribe or tribe ID for whom to purge the archive.",
+                            "finish": 10840036,
+                            "name": "tribeOrID",
+                            "start": 10840027,
+                            "type": "local",
+                            "view": "integer|tribeObject"
+                        }
+                    ],
+                    "desc": "Purges (deletes) all archived messages that have been marked for purging\nby the tribe.\n\n\n@*param* `tribeOrID` — The tribe or tribe ID for whom to purge the archive.",
+                    "finish": 11000003,
+                    "start": 10840000,
+                    "type": "function",
+                    "view": "function text.purgeArchive(tribeOrID: integer|tribeObject)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 10840026,
+                "name": "purgeArchive",
+                "start": 10840009,
+                "type": "setfield"
+            },
+            {
+                "desc": "Registers a 'dictionary' table with the text module.  The dictionary table\nshould have the following format:\n```\ndictionary[anyKey] = {singular=singularVersionOfWord, plural=pluralVersionOfWord, an=boolean}\n```\nan = true if it is 'an singularVersionOfWord' and false/nil if it is 'a singularVersionOfWord'\n\nThe keys in the dictionary table do not matter.\n\nThe dictionary table is used to enhance the functionality of text.substitute.\n\n\n@*param* `dictionary` — A table with the above format",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A table with the above format",
+                            "finish": 11680043,
+                            "name": "dictionary",
+                            "start": 11680033,
+                            "type": "local",
+                            "view": "table"
+                        }
+                    ],
+                    "desc": "Registers a 'dictionary' table with the text module.  The dictionary table\nshould have the following format:\n```\ndictionary[anyKey] = {singular=singularVersionOfWord, plural=pluralVersionOfWord, an=boolean}\n```\nan = true if it is 'an singularVersionOfWord' and false/nil if it is 'a singularVersionOfWord'\n\nThe keys in the dictionary table do not matter.\n\nThe dictionary table is used to enhance the functionality of text.substitute.\n\n\n@*param* `dictionary` — A table with the above format",
+                    "finish": 11840003,
+                    "start": 11680000,
+                    "type": "function",
+                    "view": "function text.registerDictionary(dictionary: table)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 11680032,
+                "name": "registerDictionary",
+                "start": 11680009,
+                "type": "setfield"
+            },
+            {
+                "desc": " text.registerUnitsImage(filename)\n      registers the name of the units image file\n      to be used for text.unitTypeImage\n      ",
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 23900041,
+                            "name": "filename",
+                            "start": 23900033,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "desc": " text.registerUnitsImage(filename)\n      registers the name of the units image file\n      to be used for text.unitTypeImage\n      ",
+                    "finish": 24010003,
+                    "start": 23900000,
+                    "type": "function",
+                    "view": "function text.registerUnitsImage(filename: any)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 23900032,
+                "name": "registerUnitsImage",
+                "start": 23900009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 20560016,
+                    "start": 20560012,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 20560009,
+                "name": "rpad",
+                "start": 20560000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 18920052,
+                    "start": 18920030,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 18920027,
+                "name": "setDigitGroupSeparator",
+                "start": 18920000,
+                "type": "setfield"
+            },
+            {
+                "desc": "This function lets you specify a table that is being used to store\nimageObjects.  Some functions in this module will allow you to\nspecify an imageObject by providing a (string) table key.  \nThis function specifies the table that will be used to look up\nthe image.\n\nIf you generate an object.lua file using the script included\nin the Lua Scenario Template, then the imageTable will be\nset to the object file.\n\n\n@*param* `table` — A table where images can be stored and looked up.\n\n@*param* `tableName` — A name for the table to use in error messages.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A table where images can be stored and looked up.",
+                            "finish": 2720033,
+                            "name": "table",
+                            "start": 2720028,
+                            "type": "local",
+                            "view": "table"
+                        },
+                        {
+                            "desc": "A name for the table to use in error messages.",
+                            "finish": 2720043,
+                            "name": "tableName",
+                            "start": 2720034,
+                            "type": "local",
+                            "view": "string"
+                        }
+                    ],
+                    "desc": "This function lets you specify a table that is being used to store\nimageObjects.  Some functions in this module will allow you to\nspecify an imageObject by providing a (string) table key.  \nThis function specifies the table that will be used to look up\nthe image.\n\nIf you generate an object.lua file using the script included\nin the Lua Scenario Template, then the imageTable will be\nset to the object file.\n\n\n@*param* `table` — A table where images can be stored and looked up.\n\n@*param* `tableName` — A name for the table to use in error messages.",
+                    "finish": 2850003,
+                    "start": 2720000,
+                    "type": "function",
+                    "view": "function text.setImageTable(table: table, tableName: string)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 2720027,
+                "name": "setImageTable",
+                "start": 2720009,
+                "type": "setfield"
+            },
+            {
+                "desc": " Set the number of lines per text box for some functions provided\n by this module (especially menus).\n By default, there is a setting in the configuration module\n that will allow the player to change this setting.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "An integer is a number without a fractional part. Unlike other programming Languages, Lua does not distinguish between integers and 'floating point' numbers. You can convert a number to an integer by using commands like <code>math.floor</code> and <code>math.ceil</code>.\n<br>\n[Programming in Lua, 2.3 -- Numbers](https://www.lua.org/pil/2.3.html)",
+                            "finish": 2240045,
+                            "name": "numberOfLines",
+                            "start": 2240032,
+                            "type": "local",
+                            "view": "integer"
+                        }
+                    ],
+                    "desc": " Set the number of lines per text box for some functions provided\n by this module (especially menus).\n By default, there is a setting in the configuration module\n that will allow the player to change this setting.",
+                    "finish": 2260003,
+                    "start": 2240000,
+                    "type": "function",
+                    "view": "function text.setLinesPerWindow(numberOfLines: integer)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 2240031,
+                "name": "setLinesPerWindow",
+                "start": 2240009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19330024,
+                    "start": 19330016,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19330013,
+                "name": "setMoney",
+                "start": 19330000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19680048,
+                    "start": 19680028,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19680025,
+                "name": "setShortVeteranTitle",
+                "start": 19680000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 19520038,
+                    "start": 19520023,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 19520020,
+                "name": "setVeteranTitle",
+                "start": 19520000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Shows a text box with the message and title, splitting\ninto multiple text boxes if the string is very long.\nIf a table of strings is input, each string is shown in\norder starting at tableOfStrings[1].  If an imageInfo\nis provided, the image is shown in the text box.\n\nThe function determines how many lines of text are in the\nmessage by counting newline characters (note that newline\ncharacters by themselves do not cause a line break in the\ntext box).  If the message has too many lines, as determined\nby the variable `linesPerWindow`, then the message is split\nat a newline character.  (`linesPerWindow` can be changed\nusing text.setLinesPerWindow -- by default, the player can\nchange it using the configuration module.)\n\nTo create a line break in the text box, use the character\nsequence \\\\n^ (newline, caret).\n\nIf you wish to break up a message into two text boxes\nat a particular point, use the sequence of characters\n'%PAGEBREAK' (not including quote marks).\n\nIf you wish to center a line of text, use the sequence\n\\\\n^^ (newline, caret, caret).\n\n\n@*param* `boxTitle` — The title for the text box.  Defaults to \"\"\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A string is a data type native to Lua which consists of a sequence of characters. These often represent text to be displayed, but are also useful in other contexts. Strings are commonly used as keys in tables, since they make code more readable.\n<br>\n[Programming in Lua, 2.4 -- Strings](https://www.lua.org/pil/2.4.html)",
+                            "finish": 5600034,
+                            "name": "stringOrTable",
+                            "start": 5600021,
+                            "type": "local",
+                            "view": "string|string[]"
+                        },
+                        {
+                            "desc": "The title for the text box.  Defaults to \"\"",
+                            "finish": 5600043,
+                            "name": "boxTitle",
+                            "start": 5600035,
+                            "type": "local",
+                            "view": "string?"
+                        },
+                        {
+                            "desc": "The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                            "finish": 5600053,
+                            "name": "imageInfo",
+                            "start": 5600044,
+                            "type": "local",
+                            "view": "(string|table|imageObject)?"
+                        }
+                    ],
+                    "desc": "Shows a text box with the message and title, splitting\ninto multiple text boxes if the string is very long.\nIf a table of strings is input, each string is shown in\norder starting at tableOfStrings[1].  If an imageInfo\nis provided, the image is shown in the text box.\n\nThe function determines how many lines of text are in the\nmessage by counting newline characters (note that newline\ncharacters by themselves do not cause a line break in the\ntext box).  If the message has too many lines, as determined\nby the variable `linesPerWindow`, then the message is split\nat a newline character.  (`linesPerWindow` can be changed\nusing text.setLinesPerWindow -- by default, the player can\nchange it using the configuration module.)\n\nTo create a line break in the text box, use the character\nsequence \\\\n^ (newline, caret).\n\nIf you wish to break up a message into two text boxes\nat a particular point, use the sequence of characters\n'%PAGEBREAK' (not including quote marks).\n\nIf you wish to center a line of text, use the sequence\n\\\\n^^ (newline, caret, caret).\n\n\n@*param* `boxTitle` — The title for the text box.  Defaults to \"\"\n\n@*param* `imageInfo` — The image to show in the text box.  Defaults to not showing an image.<br><br>An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                    "finish": 5890003,
+                    "start": 5600000,
+                    "type": "function",
+                    "view": "function text.simple(stringOrTable: string|string[], boxTitle?: string, imageInfo?: string|table|imageObject)"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 5600020,
+                "name": "simple",
+                "start": 5600009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 16320048,
+                    "start": 16320028,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 16320025,
+                "name": "simpleTabTableToText",
+                "start": 16320000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 15820038,
+                    "start": 15820022,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 15820021,
+                "name": "simpleTabulation",
+                "start": 15820000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 4390044,
+                    "start": 4390027,
+                    "type": "getfield",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 4390024,
+                "name": "stateImageReference",
+                "start": 4390000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 13640031,
+                    "start": 13640018,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 13640015,
+                "name": "substitute",
+                "start": 13640000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 16500036,
+                    "start": 16500022,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 16500019,
+                "name": "tabulationMenu",
+                "start": 16500000,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 17790048,
+                    "start": 17790027,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 17790026,
+                "name": "tabulationWithOptions",
+                "start": 17790000,
+                "type": "setfield"
+            },
+            {
+                "desc": "Converts an `imageInfo` to an `imageObject`.\n\n@*param* `input` — An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                            "finish": 3060027,
+                            "name": "input",
+                            "start": 3060022,
+                            "type": "local",
+                            "view": "string|table|imageObject"
+                        }
+                    ],
+                    "desc": "Converts an `imageInfo` to an `imageObject`.\n\n@*param* `input` — An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                    "finish": 3360003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "imageObject"
+                        }
+                    ],
+                    "start": 3060000,
+                    "type": "function",
+                    "view": "function text.toImage(input: string|table|imageObject)\n  -> imageObject"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 3060021,
+                "name": "toImage",
+                "start": 3060009,
+                "type": "setfield"
+            },
+            {
+                "desc": "Takes an imageInfo and returns a string or table that can be saved in the state table and used to recover the image later.\n\nIf the imageInfo is a table of arguments for civ.ui.loadImage, then the table is returned.  An error is thrown if civ.ui.loadImage doesn't return a valid imageObject when called with those arguments.\n\nIf the imageInfo is a string, then the string is returned if it is a key for an image in the `imageTable` (registered by `text.setImageTable`).  An error is thrown if the string is not a key for an image in the `imageTable`.\n\nIf the imageInfo is an imageObject, then the image is searched for in the `imageTable`, and the key for that image is returned.  If the image is not found in the `imageTable`, then an error is thrown.\n\n\n@*param* `imageInfo` — An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                            "finish": 3740036,
+                            "name": "imageInfo",
+                            "start": 3740027,
+                            "type": "local",
+                            "view": "string|table|imageObject"
+                        }
+                    ],
+                    "desc": "Takes an imageInfo and returns a string or table that can be saved in the state table and used to recover the image later.\n\nIf the imageInfo is a table of arguments for civ.ui.loadImage, then the table is returned.  An error is thrown if civ.ui.loadImage doesn't return a valid imageObject when called with those arguments.\n\nIf the imageInfo is a string, then the string is returned if it is a key for an image in the `imageTable` (registered by `text.setImageTable`).  An error is thrown if the string is not a key for an image in the `imageTable`.\n\nIf the imageInfo is an imageObject, then the image is searched for in the `imageTable`, and the key for that image is returned.  If the image is not found in the `imageTable`, then an error is thrown.\n\n\n@*param* `imageInfo` — An `imageInfo` is one of the following:<br><br>An `imageObject`. <br><br>A `table` such that the first 5 values (some of which can be nil) are valid arguments for `civ.ui.loadImage`.<br><br>A `string` that is the key corresponding to an `imageObject` in the `imageTable` registered by `text.setImageTable`.",
+                    "finish": 4380003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "boolean|string|number|table<string|number, boolean|string|number|table>"
+                        }
+                    ],
+                    "start": 3740000,
+                    "type": "function",
+                    "view": "function text.toStateImage(imageInfo: string|table|imageObject)\n  -> boolean|string|number|table<string|number, boolean|string|number|table>"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 3740026,
+                "name": "toStateImage",
+                "start": 3740009,
+                "type": "setfield"
+            },
+            {
+                "desc": " text.unitTypeImage(unitTypeOrID) --> imageObject\n      provides the image of a unit, found in the file provided to\n      text.registerUnitsImage, or nil if there is no image",
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 24060040,
+                            "name": "unitTypeOrID",
+                            "start": 24060028,
+                            "type": "local",
+                            "view": "any"
+                        }
+                    ],
+                    "desc": " text.unitTypeImage(unitTypeOrID) --> imageObject\n      provides the image of a unit, found in the file provided to\n      text.registerUnitsImage, or nil if there is no image",
+                    "finish": 24140003,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "unknown"
+                        }
+                    ],
+                    "start": 24060000,
+                    "type": "function",
+                    "view": "function text.unitTypeImage(unitTypeOrID: any)\n  -> unknown"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 24060027,
+                "name": "unitTypeImage",
+                "start": 24060009,
+                "type": "setfield"
+            },
+            {
+                "extends": {
+                    "finish": 22430018,
+                    "start": 22430013,
+                    "type": "getlocal",
+                    "view": "function"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaCore/text.lua",
+                "finish": 22430010,
+                "name": "upper",
+                "start": 22430000,
+                "type": "setfield"
+            }
+        ],
+        "name": "text",
+        "type": "type"
+    },
+    {
+        "defines": [
+            {
                 "extends": [
                     {
                         "finish": 3940031,
@@ -46650,7 +47891,7 @@
                 "type": "setfield"
             },
             {
-                "desc": "Updates all of tile's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the tile's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                "desc": "Updates all of tile's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the tile's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                 "extends": {
                     "args": [
                         {
@@ -46693,7 +47934,7 @@
                             "view": "string?"
                         }
                     ],
-                    "desc": "Updates all of tile's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the tile's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                    "desc": "Updates all of tile's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the tile's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                     "finish": 6350003,
                     "start": 6340000,
                     "type": "function",
@@ -47350,6 +48591,25 @@
     {
         "defines": [
             {
+                "extends": {
+                    "finish": 1190014,
+                    "start": 1190012,
+                    "type": "table",
+                    "view": "totpp.mod"
+                },
+                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/totpp.lua",
+                "finish": 1190009,
+                "start": 1190000,
+                "type": "setfield"
+            }
+        ],
+        "desc": "",
+        "name": "totpp.mod",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/totpp.lua",
                 "finish": 1170019,
                 "start": 1170010,
@@ -47388,19 +48648,19 @@
         "defines": [
             {
                 "extends": {
-                    "finish": 1190014,
-                    "start": 1190012,
+                    "finish": 1130030,
+                    "start": 1130028,
                     "type": "table",
-                    "view": "totpp.mod"
+                    "view": "totpp.movementMultipliers"
                 },
                 "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/totpp.lua",
-                "finish": 1190009,
-                "start": 1190000,
+                "finish": 1130025,
+                "start": 1130000,
                 "type": "setfield"
             }
         ],
         "desc": "",
-        "name": "totpp.mod",
+        "name": "totpp.movementMultipliers",
         "type": "variable"
     },
     {
@@ -47551,25 +48811,6 @@
         ],
         "name": "totpp.movementMultipliers",
         "type": "type"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "finish": 1130030,
-                    "start": 1130028,
-                    "type": "table",
-                    "view": "totpp.movementMultipliers"
-                },
-                "file": "file:///home/thomas/Desktop/Link%20to%20Test%20of%20Time%2016/Template/LuaDocumentation/totpp.lua",
-                "finish": 1130025,
-                "start": 1130000,
-                "type": "setfield"
-            }
-        ],
-        "desc": "",
-        "name": "totpp.movementMultipliers",
-        "type": "variable"
     },
     {
         "defines": [
@@ -51390,7 +52631,7 @@
                 "type": "setfield"
             },
             {
-                "desc": "Updates all of tribe's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the tribe's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                "desc": "Updates all of tribe's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the tribe's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                 "extends": {
                     "args": [
                         {
@@ -51432,7 +52673,7 @@
                             "view": "string?"
                         }
                     ],
-                    "desc": "Updates all of tribe's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the tribe's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                    "desc": "Updates all of tribe's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the tribe's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                     "finish": 6360003,
                     "start": 6350000,
                     "type": "function",
@@ -53883,7 +55124,7 @@
                 "type": "setfield"
             },
             {
-                "desc": "Updates all of unit's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the unit's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                "desc": "Updates all of unit's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the unit's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                 "extends": {
                     "args": [
                         {
@@ -53926,7 +55167,7 @@
                             "view": "string?"
                         }
                     ],
-                    "desc": "Updates all of unit's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n    * time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n        - Update the unit's data keys that have this updateTime.\n        - Default is \"custom\".\n    * tribe = nil|tribeObject\n        - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n        - Default is nil.\n    * key = nil|string\n        - The key to update.\n        - Default is nil, in which case all keys with the updateTime specified by time are updated.\n    * moduleName = nil|string\n        - The name of the module using this name, if applicable.\n        - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
+                    "desc": "Updates all of unit's data keys that have an updateTime of time, unless\nkey is specified, in which case, update that key only.\n* time = \"onTurn\"|\"onTribeTurnBegin\"|\"onTribeTurnEnd\"|\"custom\"\n    - Update the unit's data keys that have this updateTime.\n    - Default is \"custom\".\n* tribe = nil|tribeObject\n    - The tribe to consider the active tribe for onTribeTurnBegin and onTribeTurnEnd updates.\n    - Default is nil.\n* key = nil|string\n    - The key to update.\n    - Default is nil, in which case all keys with the updateTime specified by time are updated.\n* moduleName = nil|string\n    - The name of the module using this name, if applicable.\n    - Default is nil.\n\n\n---\n\n```lua\ntime:\n    | \"onTurn\"\n    | \"onTribeTurnBegin\"\n    | \"onTribeTurnEnd\"\n    | \"custom\"\n```",
                     "finish": 6370003,
                     "start": 6360000,
                     "type": "function",
