@@ -2799,6 +2799,8 @@ in the state table, so this execution point will only be run once per city per t
 
 <p>This execution point is triggered when a unit enters a tile from another tile.</p>
 
+<p>Optionally, the function can return true, in which case no more code will be executed for this event.  This is useful if your event kills the unit, so other events expecting a non-nil unit will not cause errors.</p>
+
 <p>This execution point will not work properly if <code class="language-plaintext highlighter-rouge">civ.scen.compatibility.activeUnitEveryMove</code> is set to <code class="language-plaintext highlighter-rouge">false</code>.  (In the Lua Scenario Template, it is set to <code class="language-plaintext highlighter-rouge">true</code> in the file <code class="language-plaintext highlighter-rouge">LuaParameterFiles\parameters.lua</code>.)</p>
 <h4 id="usage-27">
   
@@ -3415,12 +3417,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_3e7jKXg9oNus4Bbyv10WFT.xml"></include>
+<include src="/_6POhL0lwNzSr5cxMImdJAE.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_V560p2$QrTxtOULYoMZWP@.xml"></include> 
+<include src="/_C@N15syIrD$8vuj7hoQBTi.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
@@ -6284,6 +6286,8 @@ in the state table, so this execution point will only be run once per city per t
 
 <p>This execution point is triggered when a unit enters a tile from another tile.</p>
 
+<p>Optionally, the function can return true, in which case no more code will be executed for this event.  This is useful if your event kills the unit, so other events expecting a non-nil unit will not cause errors.</p>
+
 <p>This execution point will not work properly if <code class="language-plaintext highlighter-rouge">civ.scen.compatibility.activeUnitEveryMove</code> is set to <code class="language-plaintext highlighter-rouge">false</code>.  (In the Lua Scenario Template, it is set to <code class="language-plaintext highlighter-rouge">true</code> in the file <code class="language-plaintext highlighter-rouge">LuaParameterFiles\parameters.lua</code>.)</p>
 <h4 id="usage-27">
   
@@ -6900,12 +6904,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_3e7jKXg9oNus4Bbyv10WFT.xml"></include>
+<include src="/_6POhL0lwNzSr5cxMImdJAE.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_V560p2$QrTxtOULYoMZWP@.xml"></include> 
+<include src="/_C@N15syIrD$8vuj7hoQBTi.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>

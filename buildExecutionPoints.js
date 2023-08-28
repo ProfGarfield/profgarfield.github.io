@@ -833,6 +833,8 @@ in the state table, so this execution point will only be run once per city per t
 saveQuick("Unit Enters Tile","onEnterTile",`
 This execution point is triggered when a unit enters a tile from another tile.
 
+Optionally, the function can return true, in which case no more code will be executed for this event.  This is useful if your event kills the unit, so other events expecting a non-nil unit will not cause errors.
+
 This execution point will not work properly if \`civ.scen.compatibility.activeUnitEveryMove\` is set to \`false\`.  (In the Lua Scenario Template, it is set to \`true\` in the file \`LuaParameterFiles\\parameters.lua\`.)
 `,"",`
 This execution point is mostly implemented using the Unit Activation execution point.  Since the execution point is executed when the unit is ready to move again, code can check whether a unit has moved.
