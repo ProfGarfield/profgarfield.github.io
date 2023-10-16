@@ -359,7 +359,7 @@ message or menu into multiple text boxes.</p>
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.makeChooseNumberMenu(increments: any, extremes: any, selectionKey: any, nextMenu: any, goBackOptions: any, menuName: any)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.makeChooseNumberMenu(increments: any, extremes: any, selectionKey: any, nextMenu: any, goBackOptions: any, menuName: any, plusOptionWrapper: any, minusOptionWrapper: any, confirmOptionWrapper: any)
   -&gt; unknown
 </code></pre></div></div>
 <h3 id="makereverselistnogaps">
@@ -675,8 +675,13 @@ at a particular point, use the sequence of characters
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text.substitute --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.substitute(rawText: string, substitutionTable: table&lt;integer, any&gt;)
+  -&gt; string
 </code></pre></div></div>
+<p>Substitutes values from the substitutionTable into the rawText, based on 
+tags in the rawText.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">substitutionTable</code> — the values associated with the keys 0-9 are eligible to be used for substitution.</p>
 <h3 id="tabulationmenu">
   
   
@@ -1082,7 +1087,7 @@ message or menu into multiple text boxes.</p>
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.makeChooseNumberMenu(increments: any, extremes: any, selectionKey: any, nextMenu: any, goBackOptions: any, menuName: any)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.makeChooseNumberMenu(increments: any, extremes: any, selectionKey: any, nextMenu: any, goBackOptions: any, menuName: any, plusOptionWrapper: any, minusOptionWrapper: any, confirmOptionWrapper: any)
   -&gt; unknown
 </code></pre></div></div>
 <h3 id="makereverselistnogaps">
@@ -1398,8 +1403,13 @@ at a particular point, use the sequence of characters
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text.substitute --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function text.substitute(rawText: string, substitutionTable: table&lt;integer, any&gt;)
+  -&gt; string
 </code></pre></div></div>
+<p>Substitutes values from the substitutionTable into the rawText, based on 
+tags in the rawText.</p>
+
+<p>@<em>param</em> <code class="language-plaintext highlighter-rouge">substitutionTable</code> — the values associated with the keys 0-9 are eligible to be used for substitution.</p>
 <h3 id="tabulationmenu">
   
   

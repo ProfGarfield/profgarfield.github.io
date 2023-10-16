@@ -372,7 +372,6 @@ can be used to modify the city’s production.</p>
     <span class="kd">local</span> <span class="n">tradeChangeBeforeCorruption</span> <span class="o">=</span> <span class="mi">0</span> 
     <span class="kd">local</span> <span class="n">tradeChangeAfterCorruption</span> <span class="o">=</span> <span class="mi">0</span> 
 
-
     <span class="k">return</span>  <span class="n">foodChange</span><span class="o">+</span><span class="n">extraFood</span><span class="p">,</span>
             <span class="n">shieldChangeBeforeWaste</span> <span class="o">+</span> <span class="n">extraShields</span><span class="p">,</span>
             <span class="n">shieldChangeAfterWaste</span><span class="p">,</span>
@@ -1776,7 +1775,6 @@ between the two parties is disabled.</p>
 <span class="c1">-- If any of the events return false, negotiations are</span>
 <span class="c1">-- prevented, even if other negotiation events return true</span>
 <span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="kc">true</span>
 <span class="k">end</span>
 
@@ -2998,32 +2996,6 @@ If the registered function returns <code class="language-plaintext highlighter-r
   
 </h4>
     
-<h5 id="eventsfilesonusenuclearweaponlua">
-  
-  
-    <strong>EventsFiles\onUseNuclearWeapon.lua</strong> <a href="#eventsfilesonusenuclearweaponlua"><span class="self-link">&#128279</span></a>
-  
-  
-</h5>
-    
-<p>Change this function:</p>
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">---Add any events to happen with a nuclear strike, or  </span>
-<span class="c1">---return false to abort the strike.  Events.lua already</span>
-<span class="c1">---kills (and performs related events) for units in the</span>
-<span class="c1">---blast radius </span>
-<span class="c1">---@param unit unitObject The weapon (or spy) that is making the nuclear attack.</span>
-<span class="c1">---@param tile tileObject The location of the attack.</span>
-<span class="c1">---@return boolean If true, attack proceeds, if false, it is aborted.</span>
-<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onUseNuclearWeapon</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">tile</span><span class="p">)</span>
-
-    <span class="kd">local</span> <span class="n">proceedWithAttack</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="k">return</span> <span class="n">proceedWithAttack</span>
-<span class="k">end</span>
-
-</code></pre></div></div>
-<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or spy which is making the nuclear attack.</p>
-
-<p>The <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack.</p>
 <h4 id="implementation-30">
   
   
@@ -3417,12 +3389,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_6POhL0lwNzSr5cxMImdJAE.xml"></include>
+<include src="/_DQXv3TMAmh7$LFzBe@PNxl.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_C@N15syIrD$8vuj7hoQBTi.xml"></include> 
+<include src="/_OYAFNUdcW0KjoBrECsMIgD.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
@@ -3858,7 +3830,6 @@ can be used to modify the city’s production.</p>
     <span class="kd">local</span> <span class="n">shieldChangeAfterWaste</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">-- changes the value after factory/power plant applied</span>
     <span class="kd">local</span> <span class="n">tradeChangeBeforeCorruption</span> <span class="o">=</span> <span class="mi">0</span> 
     <span class="kd">local</span> <span class="n">tradeChangeAfterCorruption</span> <span class="o">=</span> <span class="mi">0</span> 
-
 
     <span class="k">return</span>  <span class="n">foodChange</span><span class="o">+</span><span class="n">extraFood</span><span class="p">,</span>
             <span class="n">shieldChangeBeforeWaste</span> <span class="o">+</span> <span class="n">extraShields</span><span class="p">,</span>
@@ -5263,7 +5234,6 @@ between the two parties is disabled.</p>
 <span class="c1">-- If any of the events return false, negotiations are</span>
 <span class="c1">-- prevented, even if other negotiation events return true</span>
 <span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onNegotiation</span><span class="p">(</span><span class="n">talker</span><span class="p">,</span><span class="n">listener</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="kc">true</span>
 <span class="k">end</span>
 
@@ -6485,32 +6455,6 @@ If the registered function returns <code class="language-plaintext highlighter-r
   
 </h4>
     
-<h5 id="eventsfilesonusenuclearweaponlua">
-  
-  
-    <a href="#eventsfilesonusenuclearweaponlua">&#128279</a> <strong>EventsFiles\onUseNuclearWeapon.lua</strong>
-  
-  
-</h5>
-    
-<p>Change this function:</p>
-<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">---Add any events to happen with a nuclear strike, or  </span>
-<span class="c1">---return false to abort the strike.  Events.lua already</span>
-<span class="c1">---kills (and performs related events) for units in the</span>
-<span class="c1">---blast radius </span>
-<span class="c1">---@param unit unitObject The weapon (or spy) that is making the nuclear attack.</span>
-<span class="c1">---@param tile tileObject The location of the attack.</span>
-<span class="c1">---@return boolean If true, attack proceeds, if false, it is aborted.</span>
-<span class="k">function</span> <span class="nc">register</span><span class="p">.</span><span class="nf">onUseNuclearWeapon</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">tile</span><span class="p">)</span>
-
-    <span class="kd">local</span> <span class="n">proceedWithAttack</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="k">return</span> <span class="n">proceedWithAttack</span>
-<span class="k">end</span>
-
-</code></pre></div></div>
-<p>The <code class="language-plaintext highlighter-rouge">unit</code> is the weapon or spy which is making the nuclear attack.</p>
-
-<p>The <code class="language-plaintext highlighter-rouge">tile</code> is the location of the attack.</p>
 <h4 id="implementation-30">
   
   
@@ -6904,12 +6848,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_6POhL0lwNzSr5cxMImdJAE.xml"></include>
+<include src="/_DQXv3TMAmh7$LFzBe@PNxl.xml"></include>
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_C@N15syIrD$8vuj7hoQBTi.xml"></include> 
+<include src="/_OYAFNUdcW0KjoBrECsMIgD.xml"></include> 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>

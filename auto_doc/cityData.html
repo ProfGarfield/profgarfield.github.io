@@ -33,7 +33,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#flags">Flags</a><ul><li><a href="#defineflag">defineFlag</a></li><li><a href="#definemoduleflag">defineModuleFlag</a></li><li><a href="#flaggetvalue">flagGetValue</a></li><li><a href="#flagsettrue">flagSetTrue</a></li><li><a href="#flagsetfalse">flagSetFalse</a></li><li><a href="#flagisnil">flagIsNil</a></li><li><a href="#flagreset">flagReset</a></li></ul></li><li><a href="#counters">Counters</a><ul><li><a href="#definecounter">defineCounter</a></li><li><a href="#definemodulecounter">defineModuleCounter</a></li><li><a href="#countergetvalue">counterGetValue</a></li><li><a href="#countersetvalue">counterSetValue</a></li><li><a href="#counterisnil">counterIsNil</a></li><li><a href="#counterreset">counterReset</a></li><li><a href="#counteradd">counterAdd</a></li><li><a href="#countersubtract">counterSubtract</a></li><li><a href="#counterisatleast">counterIsAtLeast</a></li><li><a href="#counterisatmost">counterIsAtMost</a></li><li><a href="#countersetwithin">counterSetWithin</a></li></ul></li><li><a href="#generic-data">Generic Data</a><ul><li><a href="#definegeneric">defineGeneric</a></li><li><a href="#definemodulegeneric">defineModuleGeneric</a></li><li><a href="#genericgetvalue">genericGetValue</a></li><li><a href="#genericsetvalue">genericSetValue</a></li></ul></li><li><a href="#phrases">Phrases</a><ul><li><a href="#definephrase">definePhrase</a></li><li><a href="#definemodulephrase">defineModulePhrase</a></li><li><a href="#phrasegetvalue">phraseGetValue</a></li><li><a href="#phrasesetvalue">phraseSetValue</a></li><li><a href="#phraseisnil">phraseIsNil</a></li><li><a href="#phrasereset">phraseReset</a></li></ul></li><li><a href="#general-tools">General Tools</a><ul><li><a href="#deletedata">deleteData</a></li><li><a href="#transferdata">transferData</a></li><li><a href="#transferordeletedata">transferOrDeleteData</a></li><li><a href="#update">update</a></li><li><a href="#generalupdate">generalUpdate</a></li><li><a href="#validate">validate</a></li><li><a href="#changevalidationinfo">changeValidationInfo</a></li><li><a href="#oncitydestroyed">onCityDestroyed</a></li></ul></li></ul></div>  
+    <ul><li><a href="#flags">Flags</a><ul><li><a href="#defineflag">defineFlag</a></li><li><a href="#definemoduleflag">defineModuleFlag</a></li><li><a href="#flaggetvalue">flagGetValue</a></li><li><a href="#flagsettrue">flagSetTrue</a></li><li><a href="#flagsetfalse">flagSetFalse</a></li><li><a href="#flagisnil">flagIsNil</a></li><li><a href="#flagreset">flagReset</a></li></ul></li><li><a href="#counters">Counters</a><ul><li><a href="#definecounter">defineCounter</a></li><li><a href="#definemodulecounter">defineModuleCounter</a></li><li><a href="#countergetvalue">counterGetValue</a></li><li><a href="#countersetvalue">counterSetValue</a></li><li><a href="#counterisnil">counterIsNil</a></li><li><a href="#counterreset">counterReset</a></li><li><a href="#counteradd">counterAdd</a></li><li><a href="#countersubtract">counterSubtract</a></li><li><a href="#counterisatleast">counterIsAtLeast</a></li><li><a href="#counterisatmost">counterIsAtMost</a></li><li><a href="#countersetwithin">counterSetWithin</a></li></ul></li><li><a href="#generic-data">Generic Data</a><ul><li><a href="#definegeneric">defineGeneric</a></li><li><a href="#definemodulegeneric">defineModuleGeneric</a></li><li><a href="#genericgetvalue">genericGetValue</a></li><li><a href="#genericsetvalue">genericSetValue</a></li></ul></li><li><a href="#phrases">Phrases</a><ul><li><a href="#definephrase">definePhrase</a></li><li><a href="#definemodulephrase">defineModulePhrase</a></li><li><a href="#phrasegetvalue">phraseGetValue</a></li><li><a href="#phrasesetvalue">phraseSetValue</a></li><li><a href="#phraseisnil">phraseIsNil</a></li><li><a href="#phrasereset">phraseReset</a></li></ul></li><li><a href="#general-tools">General Tools</a><ul><li><a href="#deletedata">deleteData</a></li><li><a href="#transferdata">transferData</a></li><li><a href="#transferordeletedata">transferOrDeleteData</a></li><li><a href="#update">update</a></li><li><a href="#generalupdate">generalUpdate</a></li><li><a href="#validate">validate</a></li><li><a href="#changevalidationinfo">changeValidationInfo</a></li><li><a href="#flagsetvalue">flagSetValue</a></li><li><a href="#oncitydestroyed">onCityDestroyed</a></li></ul></li></ul></div>  
   
   <div class="post-content">
     <h1 id="citydata">
@@ -1105,6 +1105,18 @@ key is specified, in which case, update that key only.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function cityData.changeValidationInfo(city: cityObject)
 </code></pre></div></div>
 <p>Replaces existing values of the sameItemCheck with new ones.</p>
+<h3 id="flagsetvalue">
+  
+  
+    flagSetValue <a href="#flagsetvalue"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function cityData.flagSetValue(city: cityObject, flagName: string, value: boolean, moduleName?: string)
+</code></pre></div></div>
+<p>Sets the value associated with the city’s flag of flagName to the <code class="language-plaintext highlighter-rouge">value</code> 
+(true or false) specified.</p>
 <h3 id="oncitydestroyed">
   
   
@@ -2188,6 +2200,18 @@ key is specified, in which case, update that key only.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function cityData.changeValidationInfo(city: cityObject)
 </code></pre></div></div>
 <p>Replaces existing values of the sameItemCheck with new ones.</p>
+<h3 id="flagsetvalue">
+  
+  
+    <a href="#flagsetvalue">&#128279</a> flagSetValue
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function cityData.flagSetValue(city: cityObject, flagName: string, value: boolean, moduleName?: string)
+</code></pre></div></div>
+<p>Sets the value associated with the city’s flag of flagName to the <code class="language-plaintext highlighter-rouge">value</code> 
+(true or false) specified.</p>
 <h3 id="oncitydestroyed">
   
   

@@ -292,9 +292,10 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer):boolean|nil)
 </code></pre></div></div>
-<p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).</p>
+<p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).
+If true is returned, no further discrete events are executed for this event.</p>
 
 <p>As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
 <h3 id="onentertilepriority">
@@ -305,7 +306,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer):boolean|nil)
 </code></pre></div></div>
 <p>Registers an onEnterTile event before all other onEnterTile events.  It is used for “transport” events, so that units can “drag” other units into the tile before the regular onEnterTile event.</p>
 <h3 id="onfinalordergiven">
@@ -663,6 +664,7 @@ This is combined with the consolidated events, the legacy events, and the separa
 </h3>
     
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTile(unit: any, previousTile: any, previousDomainSpec: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonentertilepriority">
   
@@ -673,6 +675,7 @@ This is combined with the consolidated events, the legacy events, and the separa
 </h3>
     
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTilePriority(unit: any, previousTile: any, previousDomainSpec: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonfinalordergiven">
   
@@ -1077,9 +1080,10 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTile(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer):boolean|nil)
 </code></pre></div></div>
-<p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).</p>
+<p>Registers code to be executed when a unit enters a tile.  (Implemented using several civ.scen functions.)  <code class="language-plaintext highlighter-rouge">unit</code> is the unit which entered the tile, <code class="language-plaintext highlighter-rouge">previousTile</code> is where the unit was before it moved, and <code class="language-plaintext highlighter-rouge">previousDomainSpec</code> is the value of unit.domainSpec before it moved into the square (useful for units with range).
+If true is returned, no further discrete events are executed for this event.</p>
 
 <p>As a Discrete Event, this function can be called multiple times, and all code will be registered to the event.</p>
 <h3 id="onentertilepriority">
@@ -1090,7 +1094,7 @@ This is combined with the consolidated events, the legacy events, and the separa
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.onEnterTilePriority(code: fun(unit: unitObject, previousTile: tileObject, previousDomainSpec: integer):boolean|nil)
 </code></pre></div></div>
 <p>Registers an onEnterTile event before all other onEnterTile events.  It is used for “transport” events, so that units can “drag” other units into the tile before the regular onEnterTile event.</p>
 <h3 id="onfinalordergiven">
@@ -1448,6 +1452,7 @@ This is combined with the consolidated events, the legacy events, and the separa
 </h3>
     
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTile(unit: any, previousTile: any, previousDomainSpec: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonentertilepriority">
   
@@ -1458,6 +1463,7 @@ This is combined with the consolidated events, the legacy events, and the separa
 </h3>
     
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function discreteEvents.performOnEnterTilePriority(unit: any, previousTile: any, previousDomainSpec: any)
+  -&gt; unknown
 </code></pre></div></div>
 <h3 id="performonfinalordergiven">
   
