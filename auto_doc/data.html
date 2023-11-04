@@ -33,7 +33,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#counteradd">counterAdd</a></li><li><a href="#countergetvalue">counterGetValue</a></li><li><a href="#counterisatleast">counterIsAtLeast</a></li><li><a href="#counterisatmost">counterIsAtMost</a></li><li><a href="#counterisnil">counterIsNil</a></li><li><a href="#counterreset">counterReset</a></li><li><a href="#countersetvalue">counterSetValue</a></li><li><a href="#countersetwithin">counterSetWithin</a></li><li><a href="#countersubtract">counterSubtract</a></li><li><a href="#definecounter">defineCounter</a></li><li><a href="#defineflag">defineFlag</a></li><li><a href="#definegeneric">defineGeneric</a></li><li><a href="#definemodulecounter">defineModuleCounter</a></li><li><a href="#definemoduleflag">defineModuleFlag</a></li><li><a href="#definemodulegeneric">defineModuleGeneric</a></li><li><a href="#definemodulephrase">defineModulePhrase</a></li><li><a href="#definephrase">definePhrase</a></li><li><a href="#flaggetvalue">flagGetValue</a></li><li><a href="#flagisnil">flagIsNil</a></li><li><a href="#flagreset">flagReset</a></li><li><a href="#flagsetfalse">flagSetFalse</a></li><li><a href="#flagsettrue">flagSetTrue</a></li><li><a href="#flagsetvalue">flagSetValue</a></li><li><a href="#genericgetvalue">genericGetValue</a></li><li><a href="#genericsetvalue">genericSetValue</a></li><li><a href="#phrasegetvalue">phraseGetValue</a></li><li><a href="#phraseisnil">phraseIsNil</a></li><li><a href="#phrasereset">phraseReset</a></li><li><a href="#phrasesetvalue">phraseSetValue</a></li><li><a href="#update">update</a></li></ul></div>  
+    <ul><li><a href="#counteradd">counterAdd</a></li><li><a href="#countergetvalue">counterGetValue</a></li><li><a href="#counterisatleast">counterIsAtLeast</a></li><li><a href="#counterisatmost">counterIsAtMost</a></li><li><a href="#counterisnil">counterIsNil</a></li><li><a href="#counterreset">counterReset</a></li><li><a href="#countersetvalue">counterSetValue</a></li><li><a href="#countersetwithin">counterSetWithin</a></li><li><a href="#countersubtract">counterSubtract</a></li><li><a href="#definecounter">defineCounter</a></li><li><a href="#defineflag">defineFlag</a></li><li><a href="#definegeneric">defineGeneric</a></li><li><a href="#definemodulecounter">defineModuleCounter</a></li><li><a href="#definemoduleflag">defineModuleFlag</a></li><li><a href="#definemodulegeneric">defineModuleGeneric</a></li><li><a href="#definemodulephrase">defineModulePhrase</a></li><li><a href="#definephrase">definePhrase</a></li><li><a href="#flaggetvalue">flagGetValue</a></li><li><a href="#flagisnil">flagIsNil</a></li><li><a href="#flagreset">flagReset</a></li><li><a href="#flagsetfalse">flagSetFalse</a></li><li><a href="#flagsettrue">flagSetTrue</a></li><li><a href="#flagsetvalue">flagSetValue</a></li><li><a href="#genericgetvalue">genericGetValue</a></li><li><a href="#genericsetvalue">genericSetValue</a></li><li><a href="#listofcounterkeys">listOfCounterKeys</a></li><li><a href="#listofflagkeys">listOfFlagKeys</a></li><li><a href="#listofgenerickeys">listOfGenericKeys</a></li><li><a href="#listofphrasekeys">listOfPhraseKeys</a></li><li><a href="#phrasegetvalue">phraseGetValue</a></li><li><a href="#phraseisnil">phraseIsNil</a></li><li><a href="#phrasereset">phraseReset</a></li><li><a href="#phrasesetvalue">phraseSetValue</a></li><li><a href="#update">update</a></li></ul></div>  
   
   <div class="post-content">
     <h1 id="data">
@@ -864,6 +864,58 @@ specified (true or false).</p>
 </code></pre></div></div>
 <p>Changes the value stored by keyName to <code class="language-plaintext highlighter-rouge">value</code>.
 Returns the value that was just set.</p>
+<h3 id="listofcounterkeys">
+  
+  
+    listOfCounterKeys <a href="#listofcounterkeys"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfCounterKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all counter keys that have been defined without
+ a module component.</p>
+<h3 id="listofflagkeys">
+  
+  
+    listOfFlagKeys <a href="#listofflagkeys"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfFlagKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all flag keys that have been defined without
+ a module component.</p>
+<h3 id="listofgenerickeys">
+  
+  
+    listOfGenericKeys <a href="#listofgenerickeys"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfGenericKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all generic keys that have been defined without
+ a module component.</p>
+<h3 id="listofphrasekeys">
+  
+  
+    listOfPhraseKeys <a href="#listofphrasekeys"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfPhraseKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all phrase keys that have been defined without
+ a module component.</p>
 <h3 id="phrasegetvalue">
   
   
@@ -1770,6 +1822,58 @@ specified (true or false).</p>
 </code></pre></div></div>
 <p>Changes the value stored by keyName to <code class="language-plaintext highlighter-rouge">value</code>.
 Returns the value that was just set.</p>
+<h3 id="listofcounterkeys">
+  
+  
+    <a href="#listofcounterkeys">&#128279</a> listOfCounterKeys
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfCounterKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all counter keys that have been defined without
+ a module component.</p>
+<h3 id="listofflagkeys">
+  
+  
+    <a href="#listofflagkeys">&#128279</a> listOfFlagKeys
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfFlagKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all flag keys that have been defined without
+ a module component.</p>
+<h3 id="listofgenerickeys">
+  
+  
+    <a href="#listofgenerickeys">&#128279</a> listOfGenericKeys
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfGenericKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all generic keys that have been defined without
+ a module component.</p>
+<h3 id="listofphrasekeys">
+  
+  
+    <a href="#listofphrasekeys">&#128279</a> listOfPhraseKeys
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function data.listOfPhraseKeys()
+  -&gt; table
+</code></pre></div></div>
+<p>Returns the list of all phrase keys that have been defined without
+ a module component.</p>
 <h3 id="phrasegetvalue">
   
   

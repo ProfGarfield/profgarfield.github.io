@@ -33,7 +33,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#add">add</a></li><li><a href="#define">define</a></li><li><a href="#eventskeylist">eventsKeyList</a></li><li><a href="#initializecounters">initializeCounters</a></li><li><a href="#isatleast">isAtLeast</a></li><li><a href="#isatmost">isAtMost</a></li><li><a href="#isnegative">isNegative</a></li><li><a href="#ispositive">isPositive</a></li><li><a href="#isstrictlynegative">isStrictlyNegative</a></li><li><a href="#isstrictlypositive">isStrictlyPositive</a></li><li><a href="#iszero">isZero</a></li><li><a href="#linkstate">linkState</a></li><li><a href="#setatleast">setAtLeast</a></li><li><a href="#setatleastzero">setAtLeastZero</a></li><li><a href="#setatmost">setAtMost</a></li><li><a href="#setatmostzero">setAtMostZero</a></li><li><a href="#setvalue">setValue</a></li><li><a href="#subtract">subtract</a></li><li><a href="#value">value</a></li></ul></div>  
+    <ul><li><a href="#add">add</a></li><li><a href="#define">define</a></li><li><a href="#isatleast">isAtLeast</a></li><li><a href="#isatmost">isAtMost</a></li><li><a href="#isnegative">isNegative</a></li><li><a href="#ispositive">isPositive</a></li><li><a href="#isstrictlynegative">isStrictlyNegative</a></li><li><a href="#isstrictlypositive">isStrictlyPositive</a></li><li><a href="#iszero">isZero</a></li><li><a href="#linkstate">linkState</a></li><li><a href="#setatleast">setAtLeast</a></li><li><a href="#setatleastzero">setAtLeastZero</a></li><li><a href="#setatmost">setAtMost</a></li><li><a href="#setatmostzero">setAtMostZero</a></li><li><a href="#setvalue">setValue</a></li><li><a href="#setwithin">setWithin</a></li><li><a href="#subtract">subtract</a></li><li><a href="#value">value</a></li></ul></div>  
   
   <div class="post-content">
     <h1 id="counter">
@@ -45,7 +45,9 @@
 </h1>
     
 
-<p>undefined</p>
+<p>The functions in this module provide an alternative way to access
+the data module.  The data module is recommended for new scenarios,
+but this module is provided for backwards compatibility.</p>
 <h3 id="add">
   
   
@@ -54,8 +56,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.add --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.add(key: string, increment: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Adds <code class="language-plaintext highlighter-rouge">increment</code> to the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterAdd instead.</p>
 <h3 id="define">
   
   
@@ -64,29 +70,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.define --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.define(key: string, initialValue: number, moduleName?: string)
 </code></pre></div></div>
-<h3 id="eventskeylist">
-  
-  
-    eventsKeyList <a href="#eventskeylist"><span class="self-link">&#128279</span></a>
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.eventsKeyList --&gt; table
-</code></pre></div></div>
-<p>this allows for object.js to be built</p>
-<h3 id="initializecounters">
-  
-  
-    initializeCounters <a href="#initializecounters"><span class="self-link">&#128279</span></a>
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.initializeCounters --&gt; function
-</code></pre></div></div>
+<p>Defines a counter with a given key and initial value.
+It is recommended to use data.defineCounter instead.</p>
 <h3 id="isatleast">
   
   
@@ -95,8 +82,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isAtLeast --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isAtLeast(key: string, minValue: number, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is greater than or equal to <code class="language-plaintext highlighter-rouge">minValue</code>.
+Returns false otherwise.
+It is recommended to use data.counterIsAtLeast instead.</p>
 <h3 id="isatmost">
   
   
@@ -105,8 +96,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isAtMost --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isAtMost(key: string, maxValue: number, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is less than or equal to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Returns false otherwise.
+It is recommended to use data.counterIsAtMost instead.</p>
 <h3 id="isnegative">
   
   
@@ -115,8 +110,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isNegative --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isNegative(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is less than zero.
+Returns false otherwise.
+It is recommended to use data.counterIsAtMost instead.</p>
 <h3 id="ispositive">
   
   
@@ -125,8 +124,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isPositive --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isPositive(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is greater than or equal to zero.
+Returns false otherwise.
+It is recommended to use data.counterIsAtLeast instead.</p>
 <h3 id="isstrictlynegative">
   
   
@@ -135,8 +138,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isStrictlyNegative --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isStrictlyNegative(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is strictly less than zero.
+Returns false otherwise.</p>
 <h3 id="isstrictlypositive">
   
   
@@ -145,8 +151,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isStrictlyPositive --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isStrictlyPositive(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is strictly greater than zero.
+Returns false otherwise.</p>
 <h3 id="iszero">
   
   
@@ -155,8 +164,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isZero(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is exactly 0.
+Returns false otherwise.</p>
 <h3 id="linkstate">
   
   
@@ -175,8 +187,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtLeast --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtLeast(key: string, minValue: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than <code class="language-plaintext highlighter-rouge">minValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">minValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatleastzero">
   
   
@@ -185,8 +203,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtLeastZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtLeastZero(key: string, moduleName: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than 0, the counter is set to 0.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatmost">
   
   
@@ -195,8 +219,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtMost --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtMost(key: string, maxValue: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is greater than <code class="language-plaintext highlighter-rouge">maxValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatmostzero">
   
   
@@ -205,8 +235,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtMostZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtMostZero(key: string, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is greater than 0, the counter is set to 0.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setvalue">
   
   
@@ -215,8 +251,29 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setValue --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setValue(key: string, value: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Sets the value of the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to <code class="language-plaintext highlighter-rouge">value</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterSetValue instead.</p>
+<h3 id="setwithin">
+  
+  
+    setWithin <a href="#setwithin"><span class="self-link">&#128279</span></a>
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setWithin(key: string, minValue: number, maxValue: number, moduleName?: string)
+  -&gt; number
+</code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than <code class="language-plaintext highlighter-rouge">minValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">minValue</code>.
+If the counter is greater than <code class="language-plaintext highlighter-rouge">maxValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="subtract">
   
   
@@ -225,8 +282,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.subtract --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.subtract(key: string, increment: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Subtracts <code class="language-plaintext highlighter-rouge">increment</code> from the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterSubtract instead.</p>
 <h3 id="value">
   
   
@@ -235,8 +296,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.value --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.value(key: string, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Returns the value of the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+It is recommended to use data.counterGetValue instead.</p>
 
   </div>
 </article>
@@ -250,7 +314,9 @@
 </h1>
     
 
-<p>undefined</p>
+<p>The functions in this module provide an alternative way to access
+the data module.  The data module is recommended for new scenarios,
+but this module is provided for backwards compatibility.</p>
 <h3 id="add">
   
   
@@ -259,8 +325,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.add --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.add(key: string, increment: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Adds <code class="language-plaintext highlighter-rouge">increment</code> to the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterAdd instead.</p>
 <h3 id="define">
   
   
@@ -269,29 +339,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.define --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.define(key: string, initialValue: number, moduleName?: string)
 </code></pre></div></div>
-<h3 id="eventskeylist">
-  
-  
-    <a href="#eventskeylist">&#128279</a> eventsKeyList
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.eventsKeyList --&gt; table
-</code></pre></div></div>
-<p>this allows for object.js to be built</p>
-<h3 id="initializecounters">
-  
-  
-    <a href="#initializecounters">&#128279</a> initializeCounters
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.initializeCounters --&gt; function
-</code></pre></div></div>
+<p>Defines a counter with a given key and initial value.
+It is recommended to use data.defineCounter instead.</p>
 <h3 id="isatleast">
   
   
@@ -300,8 +351,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isAtLeast --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isAtLeast(key: string, minValue: number, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is greater than or equal to <code class="language-plaintext highlighter-rouge">minValue</code>.
+Returns false otherwise.
+It is recommended to use data.counterIsAtLeast instead.</p>
 <h3 id="isatmost">
   
   
@@ -310,8 +365,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isAtMost --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isAtMost(key: string, maxValue: number, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is less than or equal to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Returns false otherwise.
+It is recommended to use data.counterIsAtMost instead.</p>
 <h3 id="isnegative">
   
   
@@ -320,8 +379,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isNegative --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isNegative(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is less than zero.
+Returns false otherwise.
+It is recommended to use data.counterIsAtMost instead.</p>
 <h3 id="ispositive">
   
   
@@ -330,8 +393,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isPositive --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isPositive(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is greater than or equal to zero.
+Returns false otherwise.
+It is recommended to use data.counterIsAtLeast instead.</p>
 <h3 id="isstrictlynegative">
   
   
@@ -340,8 +407,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isStrictlyNegative --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isStrictlyNegative(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is strictly less than zero.
+Returns false otherwise.</p>
 <h3 id="isstrictlypositive">
   
   
@@ -350,8 +420,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isStrictlyPositive --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isStrictlyPositive(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is strictly greater than zero.
+Returns false otherwise.</p>
 <h3 id="iszero">
   
   
@@ -360,8 +433,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.isZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.isZero(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns true if the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> is exactly 0.
+Returns false otherwise.</p>
 <h3 id="linkstate">
   
   
@@ -380,8 +456,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtLeast --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtLeast(key: string, minValue: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than <code class="language-plaintext highlighter-rouge">minValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">minValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatleastzero">
   
   
@@ -390,8 +472,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtLeastZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtLeastZero(key: string, moduleName: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than 0, the counter is set to 0.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatmost">
   
   
@@ -400,8 +488,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtMost --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtMost(key: string, maxValue: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is greater than <code class="language-plaintext highlighter-rouge">maxValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setatmostzero">
   
   
@@ -410,8 +504,14 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setAtMostZero --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setAtMostZero(key: string, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is greater than 0, the counter is set to 0.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="setvalue">
   
   
@@ -420,8 +520,29 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.setValue --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setValue(key: string, value: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Sets the value of the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to <code class="language-plaintext highlighter-rouge">value</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterSetValue instead.</p>
+<h3 id="setwithin">
+  
+  
+    <a href="#setwithin">&#128279</a> setWithin
+  
+  
+</h3>
+    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.setWithin(key: string, minValue: number, maxValue: number, moduleName?: string)
+  -&gt; number
+</code></pre></div></div>
+<p>Considers the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+If the counter is less than <code class="language-plaintext highlighter-rouge">minValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">minValue</code>.
+If the counter is greater than <code class="language-plaintext highlighter-rouge">maxValue</code>, the counter is set to <code class="language-plaintext highlighter-rouge">maxValue</code>.
+Otherwise, the counter remains unchanged.
+Returns the new value of the counter.
+It is recommended to use data.counterSetWithin instead.</p>
 <h3 id="subtract">
   
   
@@ -430,8 +551,12 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.subtract --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.subtract(key: string, increment: number, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Subtracts <code class="language-plaintext highlighter-rouge">increment</code> from the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+Returns the new value of the counter.
+It is recommended to use data.counterSubtract instead.</p>
 <h3 id="value">
   
   
@@ -440,8 +565,11 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>counter.value --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function counter.value(key: string, moduleName?: string)
+  -&gt; number
 </code></pre></div></div>
+<p>Returns the value of the counter associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.
+It is recommended to use data.counterGetValue instead.</p>
  -->
       </div>
     </main><footer class="site-footer h-card">

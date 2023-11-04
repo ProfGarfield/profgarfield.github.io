@@ -33,7 +33,7 @@
   
   <div class="toc-div">
     <h2 class="toc-header">Contents</h2>
-    <ul><li><a href="#define">define</a></li><li><a href="#eventskeylist">eventsKeyList</a></li><li><a href="#initializeflags">initializeFlags</a></li><li><a href="#linkstate">linkState</a></li><li><a href="#setfalse">setFalse</a></li><li><a href="#settrue">setTrue</a></li><li><a href="#toggle">toggle</a></li><li><a href="#value">value</a></li></ul></div>  
+    <ul><li><a href="#define">define</a></li><li><a href="#linkstate">linkState</a></li><li><a href="#setfalse">setFalse</a></li><li><a href="#settrue">setTrue</a></li><li><a href="#toggle">toggle</a></li><li><a href="#value">value</a></li></ul></div>  
   
   <div class="post-content">
     <h1 id="flag">
@@ -45,7 +45,9 @@
 </h1>
     
 
-<p>table of flag functions to be returned with the module</p>
+<p>The functions in this module provide an alternative way to access
+the data module.  The data module is recommended for new scenarios,
+but this module is provided for backwards compatibility.</p>
 <h3 id="define">
   
   
@@ -54,29 +56,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.define --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.define(key: string, initialValue: boolean, moduleName?: string)
 </code></pre></div></div>
-<h3 id="eventskeylist">
-  
-  
-    eventsKeyList <a href="#eventskeylist"><span class="self-link">&#128279</span></a>
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.eventsKeyList --&gt; table
-</code></pre></div></div>
-<p>This allows for object.js to be built</p>
-<h3 id="initializeflags">
-  
-  
-    initializeFlags <a href="#initializeflags"><span class="self-link">&#128279</span></a>
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.initializeFlags --&gt; function
-</code></pre></div></div>
+<p>Defines a flag with the given key and initial value.
+It is recommended to use data.defineFlag instead.</p>
 <h3 id="linkstate">
   
   
@@ -95,8 +78,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.setFalse --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.setFalse(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Sets the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to false.</p>
 <h3 id="settrue">
   
   
@@ -105,8 +89,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.setTrue --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.setTrue(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Sets the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to true.</p>
 <h3 id="toggle">
   
   
@@ -115,8 +100,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.toggle --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.toggle(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Changes the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to the opposite of its current value.</p>
 <h3 id="value">
   
   
@@ -125,8 +111,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.value --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.value(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.</p>
 
   </div>
 </article>
@@ -140,7 +128,9 @@
 </h1>
     
 
-<p>table of flag functions to be returned with the module</p>
+<p>The functions in this module provide an alternative way to access
+the data module.  The data module is recommended for new scenarios,
+but this module is provided for backwards compatibility.</p>
 <h3 id="define">
   
   
@@ -149,29 +139,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.define --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.define(key: string, initialValue: boolean, moduleName?: string)
 </code></pre></div></div>
-<h3 id="eventskeylist">
-  
-  
-    <a href="#eventskeylist">&#128279</a> eventsKeyList
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.eventsKeyList --&gt; table
-</code></pre></div></div>
-<p>This allows for object.js to be built</p>
-<h3 id="initializeflags">
-  
-  
-    <a href="#initializeflags">&#128279</a> initializeFlags
-  
-  
-</h3>
-    
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.initializeFlags --&gt; function
-</code></pre></div></div>
+<p>Defines a flag with the given key and initial value.
+It is recommended to use data.defineFlag instead.</p>
 <h3 id="linkstate">
   
   
@@ -190,8 +161,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.setFalse --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.setFalse(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Sets the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to false.</p>
 <h3 id="settrue">
   
   
@@ -200,8 +172,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.setTrue --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.setTrue(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Sets the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to true.</p>
 <h3 id="toggle">
   
   
@@ -210,8 +183,9 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.toggle --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.toggle(key: string, moduleName?: string)
 </code></pre></div></div>
+<p>Changes the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code> to the opposite of its current value.</p>
 <h3 id="value">
   
   
@@ -220,8 +194,10 @@
   
 </h3>
     
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flag.value --&gt; function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function flag.value(key: string, moduleName?: string)
+  -&gt; boolean
 </code></pre></div></div>
+<p>Returns the value of the flag associated with <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">moduleName</code>.</p>
  -->
       </div>
     </main><footer class="site-footer h-card">
