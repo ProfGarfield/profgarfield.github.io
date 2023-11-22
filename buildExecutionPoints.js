@@ -823,6 +823,7 @@ The \`turn\` is the turn number (an integer).
 
 The \`tribe\` is the tribe which has just finished its turn.
 `,"")
+/*
 saveQuick("City Processed","onCityProcessed",`
 This execution point is triggered during the processing of a city's production, at the start of its owner's turn.  This execution point is implemented during the City Yield Calculation execution point, so anything that can't be effectively changed during that execution point can't be changed here either.  For example, changing the cosmic parameter \`sizeAquaduct\` will not change the size a city can grow without an aquaduct, because the size is in place before this execution point is triggered.
 `,"",`
@@ -830,6 +831,21 @@ The City Processed execution point is implemented using the TOTPP function \`civ
 hasn't been processed yet this turn.  After the city is processed, the information is recorded
 in the state table, so this execution point will only be run once per city per turn.
 `)
+*/
+
+saveQuick("Just Before City Processed","onJustBeforeCityProcessed",`
+This execution point is triggered just before the game processes a city's production, at the start of its owner's turn.  This execution point is implemented during the City Yield Calculation execution point, so anything that can't be effectively changed during that execution point can't be changed here either.  For example, changing the cosmic parameter \`sizeAquaduct\` will not change the size a city can grow without an aquaduct, because the size is in place before this execution point is triggered.
+`,"",`
+The Just Before City Processed execution point is implemented using the TOTPP function \`civ.scen.onCalculateCityYield\`.   During the Before City Processing execution point, a list of the cities that will be processed is created.  (Cities are processed with highest ID number starting first, then working backwards.)  If the previous city processed is just before the current city, then the Just Before City Processed execution point is triggered on the next call to \`civ.scen.onCalculateCityYield\`.  Checks are made to prevent the "Zoom to Home City Trick" from triggering this execution point prematurely.  These checks can fail if a city screen was left open at the end of the player's last turn, and the player uses the "Zoom to Home City Trick" to open the city screen of the city to be processed next.
+`)
+
+saveQuick("Just After City Processed","onJustAfterCityProcessed",`
+This execution point is triggered just after the game processes a city's production, at the start of its owner's turn.  
+`,"",`
+The Just After City Processed execution point is implemented using the TOTPP function \`civ.scen.onCalculateCityYield\`, checking that the last time \`civ.scen.onCalculateCityYield\` was called, the Just Before City Processed execution point was triggered.  As part of the city processing, each city has its yield calculated at least twice, once before production is applied, and once after.
+`)
+
+
 saveQuick("Unit Enters Tile","onEnterTile",`
 This execution point is triggered when a unit enters a tile from another tile.
 
