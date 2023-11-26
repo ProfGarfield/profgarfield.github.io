@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let z = document.body.getElementsByTagName("include")
+        for (let i = 0; i < z.length; ++i) {
+            let elmnt = z[i]
+            let xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = function() { elmnt.innerHTML = this.responseText }
+            xhttp.open("GET", elmnt.getAttribute("src"), true)
+            xhttp.send()
+        }
+    })
+</script>
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <!--img src="/assets/logo-cfc.png" class="center"--><a class="site-title" rel="author" href="/">Lua for Civilization II</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/auto_doc/autoIndex.html">Function Docs</a><a class="page-link" href="/executionPoints.html">Execution Points</a><a class="page-link" href="/lua_lessons/lessons_toc.html">Lua Lessons</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <head><title></title>
+</head>
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+  
+  <div class="post-content">
+    <table>
+  <tbody>
+    <tr>
+      <td>Previous: <a href="04_civObjectsAndIfStatements.html">Civilization II Objects and If Statements</a></td>
+      <td>Next: <a href=""></a></td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="loops-and-tables">
+  
+  
+    Loops and Tables <a href="#loops-and-tables"><span class="self-link">&#128279</span></a>
+  
+  
+</h1>
+    
+<h2 id="introduction">
+  
+  
+    Introduction <a href="#introduction"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>Over the past lessons, we’ve been gradually learning about different parts of the Lua Programming Language, and the basics of how they are used.  In this lesson, we’ll introduce the last two major components of the language: Loops and Tables.  Loops are a way to execute a section of code multiple times and tables are a way to manipulate multiple values at once.</p>
+<h2 id="file-update-temporary-section">
+  
+  
+    File Update (Temporary Section) <a href="#file-update-temporary-section"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>If you downloaded the ClassicRome scenario for lesson 4 on or before November 26, 2023, then there is a file update that you need to make.  Download <a href="lesson_downloads/documentationUpdate.zip">this zip file</a>, and replace the following two files in the ClassicRome Scenario: <strong>LuaCore\generalLibrary.lua</strong> and <strong>LuaDocumentation\civ.lua</strong>.  (Alternatively, you could download the <a href="lesson_downloads/ClassicRome-lesson-4.zip">new version of the scenario</a> and replace <strong>discreteEvents.lua</strong> with the copy you made in the last lesson.)</p>
+
+<p>I don’t intend to make a habit of retroactively changing files in these lessons, but I changed the documentation of iterators (which you’ll learn about in this lesson) to match what LuaLS expects.</p>
+<h2 id="the-numeric-for-loop">
+  
+  
+    The Numeric For Loop <a href="#the-numeric-for-loop"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>In Lua, loops come in a couple different varieties.  We’ll introduce loops by looking at the <em>numeric for</em> loop.  In VS Code, open the <strong>lua</strong> folder within your <strong>Test of Time</strong> directory, which we worked with during lessons 2 and 3.  Open a tab with the <strong>conversion.lua</strong> file.  It should look something like this:</p>
+
+<p><img src="05_lesson_images/conversion-lua.png" alt="conversion.lua" /></p>
+
+<p>In this file, we convert 3 numbers between miles and kilometres.  Until now, if we wanted to print many conversions, we would have to copy and paste each command over and over, and then change the numbers.  Now, however, we can use a loop to simplify the process, and reduce typos.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">numKm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span> <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numKm</span><span class="o">..</span><span class="s2">" kilometres is "</span><span class="o">..</span><span class="n">kmToMiles</span><span class="p">(</span><span class="n">numKm</span><span class="p">)</span><span class="o">..</span><span class="s2">" miles."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Let’s break down this code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> 
+</code></pre></div></div>
+<p>The <em>for</em> keyword tells Lua that a <em>for loop</em> is being created.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numKm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">numKm</code> is a local variable to be created for use within the loop.  <code class="language-plaintext highlighter-rouge">=1,10</code> means that <code class="language-plaintext highlighter-rouge">numKm</code> will first take on a value of <code class="language-plaintext highlighter-rouge">1</code>, then <code class="language-plaintext highlighter-rouge">2</code>, then <code class="language-plaintext highlighter-rouge">3</code>, and so on, incrementing by 1 each time until <code class="language-plaintext highlighter-rouge">10</code> is reached.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numKm</span><span class="o">..</span><span class="s2">" kilometres is "</span><span class="o">..</span><span class="n">kmToMiles</span><span class="p">(</span><span class="n">numKm</span><span class="p">)</span><span class="o">..</span><span class="s2">" miles."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>The code between <code class="language-plaintext highlighter-rouge">do</code> and <code class="language-plaintext highlighter-rouge">end</code> will be executed for each value of <code class="language-plaintext highlighter-rouge">numKm</code> that the loop specifies.  In this case, a message with a unit conversion is printed to the console for each value of <code class="language-plaintext highlighter-rouge">numKm</code>.  <strong>conversion.lua</strong> will look like this:</p>
+
+<p><img src="05_lesson_images/conversion-lua-2.png" alt="conversion.lua - 2" /></p>
+
+<p>Load a saved game in the <strong>Original</strong> folder, not <strong>ClassicRome</strong> and run the script.  (The ClassicRome scenario disables global variables, and this file has some.)</p>
+
+<p><img src="05_lesson_images/km-to-mile-chart.png" alt="km to miles chart" /></p>
+
+<p>For loop variables do not have to increment by 1.  In fact, they can decrement if you prefer.  Let’s look at an example:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">numMi</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span> <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numMi</span><span class="o">..</span><span class="s2">" miles is "</span><span class="o">..</span><span class="n">milesToKm</span><span class="p">(</span><span class="n">numMi</span><span class="p">)</span><span class="o">..</span><span class="s2">" kilometres."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>The following part is different from the previous example:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numMi</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span>
+</code></pre></div></div>
+<p>In this case, <code class="language-plaintext highlighter-rouge">numMi</code> starts with a value of <code class="language-plaintext highlighter-rouge">10</code>, and has an ending value of <code class="language-plaintext highlighter-rouge">1</code>.  What’s new is that the third number, <code class="language-plaintext highlighter-rouge">-2</code>, is the increment value for <code class="language-plaintext highlighter-rouge">numMi</code>.  In this case, the “increment” actually reduces the value by 2 each time.  So, <code class="language-plaintext highlighter-rouge">numMi</code> will be <code class="language-plaintext highlighter-rouge">10</code>, then <code class="language-plaintext highlighter-rouge">8</code>, then <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">4</code>, and, finally <code class="language-plaintext highlighter-rouge">2</code>.  The next value after <code class="language-plaintext highlighter-rouge">2</code> would be <code class="language-plaintext highlighter-rouge">0</code>, but <code class="language-plaintext highlighter-rouge">0</code> is outside of the values of <code class="language-plaintext highlighter-rouge">10</code> through <code class="language-plaintext highlighter-rouge">1</code>, so the loop stops there.  The loop is not run for the case when <code class="language-plaintext highlighter-rouge">numMi</code> is <code class="language-plaintext highlighter-rouge">1</code> because the increment and starting value didn’t cause it to take on a value of exactly <code class="language-plaintext highlighter-rouge">1</code>.</p>
+
+<p>Add this loop to <strong>conversion.lua</strong>, save, and run the script again.</p>
+
+<p><img src="05_lesson_images/two-loops-console.png" alt="two loops run" /></p>
+<h2 id="a-for-loop-in-a-function">
+  
+  
+    A For Loop in a Function <a href="#a-for-loop-in-a-function"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>Now, let’s do something slightly more complicated.  In math, <include src="/_DxIngMh8W9bKewVmApFLrC.xml"></include> is called “six factorial” and means <include src="/_q5CaiOg4dhFUJoXkjEL3bz.xml"></include>.  In general, <include src="/_r42FoExiBNXDGj6dVsMJH3.xml"></include>.  We will write a Lua function to compute factorials:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
+        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Let’s look at this code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</code></pre></div></div>
+<p>We’ve seen this before.  Since there is no <code class="language-plaintext highlighter-rouge">local</code> keyword, we’re writing a global function, called <code class="language-plaintext highlighter-rouge">factorial</code>, and which has a parameter <code class="language-plaintext highlighter-rouge">N</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>In this function, we’re going to perform the multiplication over multiple “steps,” and at each step, we’re going to keep track of the result that we have computed thus far into the computation.  Since the factorial involves multiplication, it is natural to initialize <code class="language-plaintext highlighter-rouge">resultSoFar</code> to <code class="language-plaintext highlighter-rouge">1</code>, because anything multiplied by 1 gets itself back.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
+</code></pre></div></div>
+<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_s2FeW$RpvlXGEn5Yq7I90w.xml"></include> and <include src="/_N@T4VzZ2H17d0XtQUW6kGa.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_OnskIBTcDxEMtwNbfmWjZd.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
+</code></pre></div></div>
+
+<p>After the loop is complete, the <code class="language-plaintext highlighter-rouge">resultSoFar</code> is, in fact, the result, so it can be returned.</p>
+
+<p>We can add a nice loop to <strong>conversion.lua</strong> to print the factorials for 1 through 10.</p>
+
+<p><img src="05_lesson_images/conversion-factorial.png" alt="conversion.lua with factorial" /></p>
+
+<p><img src="05_lesson_images/factorial-list.png" alt="factorial list" /></p>
+<h2 id="while-loops">
+  
+  
+    While Loops <a href="#while-loops"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>Now, let’s look at a different kind of loop, the <em>while loop</em>.  The <em>numeric for loop</em> repeated the loop body a predetermined number of times.  The <em>while loop</em>, on the other hand, keeps performing a set of instructions as long as a certain condition is met, and then stops.  In fact, if the condition is not met when the <em>while loop</em> is first reached, it won’t be executed even once.</p>
+
+<p>Let’s look at <em>while loop</em> version of the factorial function:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorialWhile</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">do</span>
+        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span><span class="o">*</span><span class="n">N</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorialWhile</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p>These are the same as the function with the <em>numeric for loop</em>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">while</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">do</span>
+</code></pre></div></div>
+<p>This line checks that <code class="language-plaintext highlighter-rouge">N</code> is greater than or equal to <code class="language-plaintext highlighter-rouge">1</code>.  The <code class="language-plaintext highlighter-rouge">&gt;=</code> operator returns <code class="language-plaintext highlighter-rouge">true</code> if the number to the left is at least as much as the the number on the right, and <code class="language-plaintext highlighter-rouge">false</code> otherwise.  If <code class="language-plaintext highlighter-rouge">true</code> is returned, the loop body (between <code class="language-plaintext highlighter-rouge">do</code> and <code class="language-plaintext highlighter-rouge">end</code>) is executed, otherwise, the code skips to the <code class="language-plaintext highlighter-rouge">end</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span><span class="o">*</span><span class="n">N</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+<p>This is the loop body.  Once again, we’re multiplying the <code class="language-plaintext highlighter-rouge">resultSoFar</code> by the current integer.  However, this time we must also increment <code class="language-plaintext highlighter-rouge">N</code>, since there is no loop variable this time.  This may be the first time in these lessons that I’ve changed the value of a variable that is defined in the function parameters list, but it is allowed.  (We could also have just defined another variable if we wanted.)</p>
+
+<p>Once the <code class="language-plaintext highlighter-rouge">end</code> is reached, the <code class="language-plaintext highlighter-rouge">N &gt;=1 </code> check is made again, and the code keeps executing as long as <code class="language-plaintext highlighter-rouge">N</code> is greater than 1.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>As with the numeric for loop, once we exit the loop, the <code class="language-plaintext highlighter-rouge">resultSoFar</code> is the final result.</p>
+
+<p>Adding a loop to test this function gives the code:</p>
+
+<p><img src="05_lesson_images/factorial-while.png" alt="factorialWhile" /></p>
+
+<p><img src="05_lesson_images/two-factorial-charts.png" alt="two factorial charts" /></p>
+
+<p>In this example, the <em>while loop</em> is a bit more work than the <em>numeric for loop</em>, since we had to increment a counter ourselves.  <em>While loops</em> are useful in situations where you don’t know ahead of time how many times you will need to execute the loop body.  This is more likely to be the case when solving more complicated problems, so we will have to wait for future lessons to see some in action.</p>
+
+<p>You should also note that if you choose your condition poorly the <em>while loop</em> will never stop, and you will be forced to close Civ II through the task manager.</p>
+
+<p>Later in this lesson, we’ll look at the <em>generic for loop</em>, but, for now we will turn our attention to Lua <em>tables</em>.</p>
+<h2 id="tables">
+  
+  
+    Tables <a href="#tables"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>Thus far, we have always stored a single <em>value</em> in a <em>variable</em>.  This can sometimes be inconvenient for a couple of reasons.  The first reason is that sometimes it is much more convenient to manipulate multiple values at once.  The second reason is that sometimes we don’t know how how many variables that we’ll need ahead of time.  For example, if we’re gathering a list of cities, we will probably not know ahead of time how many cities will be in that list.  Lua <em>tables</em> help us get around both of these problems.</p>
+
+<p>A Lua <em>table</em> is a programming object that associates <em>keys</em> with <em>values</em>.  Every <em>key</em> can have an associated <em>value</em>.  Several <em>keys</em> can have the same value associated with it, but the same <em>key</em> can’t have multiple different <em>values</em>.  Another way of saying it is that <em>values</em> can be repeated in a <em>table</em>, but there can only be one of each <em>key</em>.  I think that Lua uses the name <em>table</em> because behind the scenes they are <a href="https://en.wikipedia.org/wiki/Hash_table">hash tables</a>, but reading up on hash tables won’t be of any help programming in Lua.</p>
+
+<p>We will begin by creating a new <em>table</em>.  In the <strong>lua</strong> folder, create a new file called <strong>tables.lua</strong>, which we will program in during this next section.  You should also reload your saved game in the <strong>Original</strong> folder, to clear the console from earlier in the lesson.</p>
+
+<p>In order to create a <em>table</em>, we use the following syntax:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">myTable</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div></div>
+<p>At the moment, <code class="language-plaintext highlighter-rouge">myTable</code> doesn’t have any <em>key</em>-<em>value</em> associations.  Although any data type except <em>nil</em> can be a <em>table</em> <em>key</em>, we will usually restrict ourselves to <em>numbers</em> and <em>strings</em> for keys.  To start, we will assign the value <code class="language-plaintext highlighter-rouge">"one"</code> to the key <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"one"</span>
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">[]</code> brackets are used to specify that what is inside of them is a <em>table</em> <em>key</em>, which is also sometimes called an <em>index</em>.  So, <code class="language-plaintext highlighter-rouge">[1]</code> tells Lua that we’re interested in the <em>key</em> <code class="language-plaintext highlighter-rouge">1</code> of a <em>table</em>, and <code class="language-plaintext highlighter-rouge">myTable[1]</code> tells Lua that <code class="language-plaintext highlighter-rouge">myTable</code> is the <em>table</em> in question.  Since this is all on the left hand side of the <code class="language-plaintext highlighter-rouge">=</code> sign, Lua knows that a <em>value</em> is being assigned to that <em>table</em> and <em>key</em>.  In this case, the value is <code class="language-plaintext highlighter-rouge">"one"</code>.</p>
+
+<p>In order to get the <em>value</em> associated with a <em>table’s</em> <em>key</em>, very similar syntax is used:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+<p>Once again, the <code class="language-plaintext highlighter-rouge">[1]</code> tells Lua that we’re interested in the <em>value</em> assigned to the <em>index</em> <code class="language-plaintext highlighter-rouge">1</code>, and <code class="language-plaintext highlighter-rouge">myTable[1]</code> tells that we want the value from the <em>table</em> stored in the <code class="language-plaintext highlighter-rouge">myTable</code> variable.  Since it is not to the left of an <code class="language-plaintext highlighter-rouge">=</code> sign, Lua knows that we want to get the <em>value</em> rather than assign it.</p>
+
+<p>Save and run the script.</p>
+
+<p><img src="05_lesson_images/tables-lua.png" alt="tables.lua" /></p>
+
+<p><img src="05_lesson_images/myTable-one.png" alt="myTable[1]" /></p>
+
+<p>Next, let’s assign another <em>value</em> to <code class="language-plaintext highlighter-rouge">myTable</code>.  This time, we’ll assign the <em>value</em> <code class="language-plaintext highlighter-rouge">2</code> to the <em>key</em> <code class="language-plaintext highlighter-rouge">"two"</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myTable</span><span class="p">[</span><span class="s2">"two"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">"two"</span><span class="p">]</span><span class="o">..</span><span class="s2">" is 2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can also use the <em>values</em> of <em>variables</em> as <em>keys</em> or <em>values</em> in a <em>table</em>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">trois</span> <span class="o">=</span> <span class="s2">"trois"</span>
+<span class="kd">local</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="kd">local</span> <span class="n">four</span> <span class="o">=</span> <span class="s2">"quatre"</span>
+
+<span class="n">myTable</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">trois</span>
+<span class="n">myTable</span><span class="p">[</span><span class="n">four</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="n">three</span><span class="p">]</span><span class="o">..</span><span class="s2">" is trois"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">"quatre"</span><span class="p">]</span><span class="o">..</span><span class="s2">" is 4"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Another characteristic of <em>tables</em> is that if you try to get the value of a <em>key</em> that doesn’t have an assigned value, <em>nil</em> will be returned as the assigned value.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">print</span><span class="p">(</span><span class="nb">tostring</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">..</span><span class="s2">" is nil"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="05_lesson_images/my-table-five-values.png" alt="myTable 5 values" /></p>
+<h2 id="counting-animals">
+  
+  
+    Counting Animals <a href="#counting-animals"><span class="self-link">&#128279</span></a>
+  
+  
+</h2>
+    
+
+<p>Let’s have a little example where we record animals that we’ve “seen”.  Whenever we “see” an animal, we’ll call the function <code class="language-plaintext highlighter-rouge">spotted</code> to record the animal.</p>
+
+<p>We comment out the previous code, and add this new code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">caesarTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">hannibalTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="nf">printTotals</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Caesar's totals are: Horses: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hannibal's totals are: Horses: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+<span class="k">end</span>
+
+<span class="n">printTotals</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Let’s go through the code:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">caesarTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">hannibalTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,}</span>
+</code></pre></div></div>
+
+<p>Here, we’re defining two tables, one table to keep track of how many animals Caesar spotted, and the other to keep track of how many animals Hannibal spotted.  These have been made into global variables, so that they can be accessed from the Lua Console if desired.</p>
+
+<p>This time, we’re defining a table with some stuff between the <code class="language-plaintext highlighter-rouge">{}</code> brackets. <code class="language-plaintext highlighter-rouge">["horse"]=0</code> means that the <em>key</em> <code class="language-plaintext highlighter-rouge">"horse"</code> should be created with the new table, and that it should be initialised with a <em>value</em> of <code class="language-plaintext highlighter-rouge">0</code>.  Each of these initialisations bust be separated with a <code class="language-plaintext highlighter-rouge">,</code>.  It is allowed to have or not have a <code class="language-plaintext highlighter-rouge">,</code> after the last <em>key</em> (<code class="language-plaintext highlighter-rouge">["dog"]=0</code> vs <code class="language-plaintext highlighter-rouge">["dog"]=0,</code>).  So, for these two tables, the <em>keys</em> <code class="language-plaintext highlighter-rouge">"horse"</code>, <code class="language-plaintext highlighter-rouge">"cat"</code>, and <code class="language-plaintext highlighter-rouge">"dog"</code> are all assigned a value of <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Here, we define the global function <code class="language-plaintext highlighter-rouge">spotted</code>, which as two parameters: <code class="language-plaintext highlighter-rouge">totals</code> and <code class="language-plaintext highlighter-rouge">animal</code>.  <code class="language-plaintext highlighter-rouge">totals</code> is a <em>table</em> that keeps track of the number of each animal spotted, and <code class="language-plaintext highlighter-rouge">animal</code> is a string that represents a particular kind of animal, and which is also a key in a <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">animal</code> key of the <code class="language-plaintext highlighter-rouge">totals</code> table is updated by adding <code class="language-plaintext highlighter-rouge">1</code> to the previous value.</p>
+
+<p>There is something important to note here: the <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em> is not returned by the <code class="language-plaintext highlighter-rouge">spotted</code> function.  It doesn’t have to be.  When a variable containing an integer or string is updated, the new value must be assigned to the variable to replace the existing one:</p>
+
+<p><img src="05_lesson_images/updating-string.png" alt="updating a string value" /></p>
+
+<p>However, <em>tables</em> are different.  It is best to think of <em>tables</em> as “things” that just exist, and that what we’re storing in the variable is just the <em>name</em> of the <em>table</em>.  We don’t need to update the name of the <em>table</em> when we make a change to the <em>table</em> itself.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Here, Caesar and Hannibal are “spotting” different animals.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">printTotals</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Caesar's totals are: Horses: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hannibal's totals are: Horses: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>This function just prints the contents of the two tables.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printTotals</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Here, we print the the totals of the tables, based on the “spotted” animals in our script.</p>
+
+<p>Save the file, and run the script.  (Remember to comment out the code from the previous section.)</p>
+
+<p><img src="05_lesson_images/animal-count-code.png" alt="animal count code" />
+<img src="05_lesson_images/count-output.png" alt="count output" /></p>
+
+<p>In the console, we can call the <code class="language-plaintext highlighter-rouge">spotted</code> and <code class="language-plaintext highlighter-rouge">printTotals</code> functions to increment the values further, and see the new ones.  Here are some sample commands that I’ve done:</p>
+
+<p><img src="05_lesson_images/more-animals-spotted.png" alt="more animals spotted" /></p>
+
+<p>Tip: You can use the up and down arrows to bring up previous commands, so you don’t have to type the entire command each time.</p>
+
+<p>Now, let’s cause an error.  Try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code>:</p>
+
+<p><img src="05_lesson_images/arithmetic-nil-value.png" alt="arithmetic on nil value error" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Games\Test of Time\lua\tables.lua:29: attempt to perform arithmetic on a nil value (field '?')
+stack traceback:
+	C:\Games\Test of Time\lua\tables.lua:29: in function 'spotted'
+	(...tail calls...)
+</code></pre></div></div>
+<p>This is line 29:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p>and the error is “attempt to perform arithmetic on a nil value (field ‘?’)”.</p>
+
+<p>This error means that you’re trying to do arithmetic (basic math like addition or subtraction) but one of the values is <em>nil</em>.  Why did we get this error?  Let’s perform the calculations.  First, we replace <code class="language-plaintext highlighter-rouge">totals</code> with <code class="language-plaintext highlighter-rouge">caesarTotals</code> and <code class="language-plaintext highlighter-rouge">animal</code> with <code class="language-plaintext highlighter-rouge">"cow"</code>, since those are the values that the <code class="language-plaintext highlighter-rouge">spotted</code> function was called with:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">=</span> <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+<p>On the Left Hand Side, we’re trying to assign a value to the <code class="language-plaintext highlighter-rouge">"cow"</code> <em>key</em> of <code class="language-plaintext highlighter-rouge">caesarTotals</code>, so that’s fully simplified.  On the Right Hand Side, however, we still have to replace <code class="language-plaintext highlighter-rouge">caesarTotals["cow"]</code> with the corresponding value.  Since the table <code class="language-plaintext highlighter-rouge">caesarTotals</code> does not yet have anything assigned to the <code class="language-plaintext highlighter-rouge">"cow"</code> <em>key</em>, <code class="language-plaintext highlighter-rouge">nil</code> is considered to be the value:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span> <span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+<p>And, here, we see that <code class="language-plaintext highlighter-rouge">nil</code> can’t be added to <code class="language-plaintext highlighter-rouge">1</code>, so we get an error.</p>
+
+<p>We should do something when the <code class="language-plaintext highlighter-rouge">spotted</code> function is called for a <em>key</em> that isn’t already in the totals table.</p>
+
+<p>One option is to use the <code class="language-plaintext highlighter-rouge">error</code> function.  This will still cause an error, but the error will be more informative:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">then</span>
+        <span class="nb">error</span><span class="p">(</span><span class="n">animal</span><span class="o">..</span><span class="s2">" is not an animal that can be spotted."</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>This line checks if the <em>value</em> for the <em>key</em> <code class="language-plaintext highlighter-rouge">animal</code> in the <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em> is <code class="language-plaintext highlighter-rouge">nil</code>.  If it is, we go inside the if statement to find</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nb">error</span><span class="p">(</span><span class="n">animal</span><span class="o">..</span><span class="s2">" is not an animal that can be spotted."</span><span class="p">)</span>
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">error</code> command will create an error on this line, and print its argument as part of the error.  Change the <code class="language-plaintext highlighter-rouge">spotted</code> function, save <strong>tables.lua</strong>, load the script again, and try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code> once again:</p>
+
+<p><img src="05_lesson_images/custom-error.png" alt="custom error" /></p>
+
+<p>Now, we get the more helpful error that “cow is not an animal that can be spotted.”</p>
+
+<p>However, maybe we don’t want to generate an error.  An alternative is to simply do nothing.  Let’s look at a different version of <code class="language-plaintext highlighter-rouge">spotted</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="k">then</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>We only need to look at</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>In the last lesson I wrote that an if statement of the form</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">value</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>executes if the <code class="language-plaintext highlighter-rouge">value</code> is <code class="language-plaintext highlighter-rouge">true</code> and explained the way if statements worked as if the <code class="language-plaintext highlighter-rouge">value</code> must be a <em>boolean</em>.  I did that for simplicity.  In fact, the <code class="language-plaintext highlighter-rouge">value</code> between <code class="language-plaintext highlighter-rouge">if</code> and <code class="language-plaintext highlighter-rouge">then</code> can be <em>any</em> data type.  The body of the if statement is executed if the value is “truthy,” and is’t executed if the value is “falsy.”  In Lua, <strong>all</strong> values are “truthy” except <code class="language-plaintext highlighter-rouge">false</code> and <code class="language-plaintext highlighter-rouge">nil</code>.  (This is different from a lot of other programming languages, where some other values like <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">""</code> are falsy.)</p>
+
+<p>Since only <code class="language-plaintext highlighter-rouge">nil</code> and <code class="language-plaintext highlighter-rouge">false</code> are falsy, <code class="language-plaintext highlighter-rouge">if table[key] then</code> is a compact way to execute code only if a <code class="language-plaintext highlighter-rouge">table</code> has an assigned value for <code class="language-plaintext highlighter-rouge">key</code>, as long as <code class="language-plaintext highlighter-rouge">false</code> isn’t a <em>value</em> in the <code class="language-plaintext highlighter-rouge">table</code>.</p>
+
+<p>That means that this version of the <code class="language-plaintext highlighter-rouge">spotted</code> function increments the total if <code class="language-plaintext highlighter-rouge">animal</code> is a <em>key</em> in the <code class="language-plaintext highlighter-rouge">totals</code> table, and does nothing if it isn’t.</p>
+
+<p>Save this version of spotted, reload <strong>tables.lua</strong> and try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code> again.  Call <code class="language-plaintext highlighter-rouge">caesarTotals["cow"]</code> to check that nothing has been assigned to the <code class="language-plaintext highlighter-rouge">"cow"</code> key:</p>
+
+<p><img src="05_lesson_images/ignore-cow.png" alt="ignore cow version" /></p>
+
+<p>We have another option for dealing with a new <em>key</em>: we can initialize it to 0 before adding 1 to it:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+  </div>
+</article>
+<!--
+    <table>
+  <tbody>
+    <tr>
+      <td>Previous: <a href="04_civObjectsAndIfStatements.html">Civilization II Objects and If Statements</a></td>
+      <td>Next: <a href=""></a></td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="loops-and-tables">
+  
+  
+    <a href="#loops-and-tables">&#128279</a> Loops and Tables
+  
+  
+</h1>
+    
+<h2 id="introduction">
+  
+  
+    <a href="#introduction">&#128279</a> Introduction
+  
+  
+</h2>
+    
+
+<p>Over the past lessons, we’ve been gradually learning about different parts of the Lua Programming Language, and the basics of how they are used.  In this lesson, we’ll introduce the last two major components of the language: Loops and Tables.  Loops are a way to execute a section of code multiple times and tables are a way to manipulate multiple values at once.</p>
+<h2 id="file-update-temporary-section">
+  
+  
+    <a href="#file-update-temporary-section">&#128279</a> File Update (Temporary Section)
+  
+  
+</h2>
+    
+
+<p>If you downloaded the ClassicRome scenario for lesson 4 on or before November 26, 2023, then there is a file update that you need to make.  Download <a href="lesson_downloads/documentationUpdate.zip">this zip file</a>, and replace the following two files in the ClassicRome Scenario: <strong>LuaCore\generalLibrary.lua</strong> and <strong>LuaDocumentation\civ.lua</strong>.  (Alternatively, you could download the <a href="lesson_downloads/ClassicRome-lesson-4.zip">new version of the scenario</a> and replace <strong>discreteEvents.lua</strong> with the copy you made in the last lesson.)</p>
+
+<p>I don’t intend to make a habit of retroactively changing files in these lessons, but I changed the documentation of iterators (which you’ll learn about in this lesson) to match what LuaLS expects.</p>
+<h2 id="the-numeric-for-loop">
+  
+  
+    <a href="#the-numeric-for-loop">&#128279</a> The Numeric For Loop
+  
+  
+</h2>
+    
+
+<p>In Lua, loops come in a couple different varieties.  We’ll introduce loops by looking at the <em>numeric for</em> loop.  In VS Code, open the <strong>lua</strong> folder within your <strong>Test of Time</strong> directory, which we worked with during lessons 2 and 3.  Open a tab with the <strong>conversion.lua</strong> file.  It should look something like this:</p>
+
+<p><img src="05_lesson_images/conversion-lua.png" alt="conversion.lua" /></p>
+
+<p>In this file, we convert 3 numbers between miles and kilometres.  Until now, if we wanted to print many conversions, we would have to copy and paste each command over and over, and then change the numbers.  Now, however, we can use a loop to simplify the process, and reduce typos.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">numKm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span> <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numKm</span><span class="o">..</span><span class="s2">" kilometres is "</span><span class="o">..</span><span class="n">kmToMiles</span><span class="p">(</span><span class="n">numKm</span><span class="p">)</span><span class="o">..</span><span class="s2">" miles."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Let’s break down this code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> 
+</code></pre></div></div>
+<p>The <em>for</em> keyword tells Lua that a <em>for loop</em> is being created.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numKm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">numKm</code> is a local variable to be created for use within the loop.  <code class="language-plaintext highlighter-rouge">=1,10</code> means that <code class="language-plaintext highlighter-rouge">numKm</code> will first take on a value of <code class="language-plaintext highlighter-rouge">1</code>, then <code class="language-plaintext highlighter-rouge">2</code>, then <code class="language-plaintext highlighter-rouge">3</code>, and so on, incrementing by 1 each time until <code class="language-plaintext highlighter-rouge">10</code> is reached.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numKm</span><span class="o">..</span><span class="s2">" kilometres is "</span><span class="o">..</span><span class="n">kmToMiles</span><span class="p">(</span><span class="n">numKm</span><span class="p">)</span><span class="o">..</span><span class="s2">" miles."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>The code between <code class="language-plaintext highlighter-rouge">do</code> and <code class="language-plaintext highlighter-rouge">end</code> will be executed for each value of <code class="language-plaintext highlighter-rouge">numKm</code> that the loop specifies.  In this case, a message with a unit conversion is printed to the console for each value of <code class="language-plaintext highlighter-rouge">numKm</code>.  <strong>conversion.lua</strong> will look like this:</p>
+
+<p><img src="05_lesson_images/conversion-lua-2.png" alt="conversion.lua - 2" /></p>
+
+<p>Load a saved game in the <strong>Original</strong> folder, not <strong>ClassicRome</strong> and run the script.  (The ClassicRome scenario disables global variables, and this file has some.)</p>
+
+<p><img src="05_lesson_images/km-to-mile-chart.png" alt="km to miles chart" /></p>
+
+<p>For loop variables do not have to increment by 1.  In fact, they can decrement if you prefer.  Let’s look at an example:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">numMi</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span> <span class="k">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numMi</span><span class="o">..</span><span class="s2">" miles is "</span><span class="o">..</span><span class="n">milesToKm</span><span class="p">(</span><span class="n">numMi</span><span class="p">)</span><span class="o">..</span><span class="s2">" kilometres."</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>The following part is different from the previous example:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numMi</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span>
+</code></pre></div></div>
+<p>In this case, <code class="language-plaintext highlighter-rouge">numMi</code> starts with a value of <code class="language-plaintext highlighter-rouge">10</code>, and has an ending value of <code class="language-plaintext highlighter-rouge">1</code>.  What’s new is that the third number, <code class="language-plaintext highlighter-rouge">-2</code>, is the increment value for <code class="language-plaintext highlighter-rouge">numMi</code>.  In this case, the “increment” actually reduces the value by 2 each time.  So, <code class="language-plaintext highlighter-rouge">numMi</code> will be <code class="language-plaintext highlighter-rouge">10</code>, then <code class="language-plaintext highlighter-rouge">8</code>, then <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">4</code>, and, finally <code class="language-plaintext highlighter-rouge">2</code>.  The next value after <code class="language-plaintext highlighter-rouge">2</code> would be <code class="language-plaintext highlighter-rouge">0</code>, but <code class="language-plaintext highlighter-rouge">0</code> is outside of the values of <code class="language-plaintext highlighter-rouge">10</code> through <code class="language-plaintext highlighter-rouge">1</code>, so the loop stops there.  The loop is not run for the case when <code class="language-plaintext highlighter-rouge">numMi</code> is <code class="language-plaintext highlighter-rouge">1</code> because the increment and starting value didn’t cause it to take on a value of exactly <code class="language-plaintext highlighter-rouge">1</code>.</p>
+
+<p>Add this loop to <strong>conversion.lua</strong>, save, and run the script again.</p>
+
+<p><img src="05_lesson_images/two-loops-console.png" alt="two loops run" /></p>
+<h2 id="a-for-loop-in-a-function">
+  
+  
+    <a href="#a-for-loop-in-a-function">&#128279</a> A For Loop in a Function
+  
+  
+</h2>
+    
+
+<p>Now, let’s do something slightly more complicated.  In math, <include src="/_DxIngMh8W9bKewVmApFLrC.xml"></include> is called “six factorial” and means <include src="/_q5CaiOg4dhFUJoXkjEL3bz.xml"></include>.  In general, <include src="/_r42FoExiBNXDGj6dVsMJH3.xml"></include>.  We will write a Lua function to compute factorials:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
+        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Let’s look at this code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</code></pre></div></div>
+<p>We’ve seen this before.  Since there is no <code class="language-plaintext highlighter-rouge">local</code> keyword, we’re writing a global function, called <code class="language-plaintext highlighter-rouge">factorial</code>, and which has a parameter <code class="language-plaintext highlighter-rouge">N</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>In this function, we’re going to perform the multiplication over multiple “steps,” and at each step, we’re going to keep track of the result that we have computed thus far into the computation.  Since the factorial involves multiplication, it is natural to initialize <code class="language-plaintext highlighter-rouge">resultSoFar</code> to <code class="language-plaintext highlighter-rouge">1</code>, because anything multiplied by 1 gets itself back.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
+</code></pre></div></div>
+<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_s2FeW$RpvlXGEn5Yq7I90w.xml"></include> and <include src="/_N@T4VzZ2H17d0XtQUW6kGa.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_OnskIBTcDxEMtwNbfmWjZd.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
+</code></pre></div></div>
+
+<p>After the loop is complete, the <code class="language-plaintext highlighter-rouge">resultSoFar</code> is, in fact, the result, so it can be returned.</p>
+
+<p>We can add a nice loop to <strong>conversion.lua</strong> to print the factorials for 1 through 10.</p>
+
+<p><img src="05_lesson_images/conversion-factorial.png" alt="conversion.lua with factorial" /></p>
+
+<p><img src="05_lesson_images/factorial-list.png" alt="factorial list" /></p>
+<h2 id="while-loops">
+  
+  
+    <a href="#while-loops">&#128279</a> While Loops
+  
+  
+</h2>
+    
+
+<p>Now, let’s look at a different kind of loop, the <em>while loop</em>.  The <em>numeric for loop</em> repeated the loop body a predetermined number of times.  The <em>while loop</em>, on the other hand, keeps performing a set of instructions as long as a certain condition is met, and then stops.  In fact, if the condition is not met when the <em>while loop</em> is first reached, it won’t be executed even once.</p>
+
+<p>Let’s look at <em>while loop</em> version of the factorial function:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorialWhile</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">do</span>
+        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span><span class="o">*</span><span class="n">N</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorialWhile</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p>These are the same as the function with the <em>numeric for loop</em>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">while</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">do</span>
+</code></pre></div></div>
+<p>This line checks that <code class="language-plaintext highlighter-rouge">N</code> is greater than or equal to <code class="language-plaintext highlighter-rouge">1</code>.  The <code class="language-plaintext highlighter-rouge">&gt;=</code> operator returns <code class="language-plaintext highlighter-rouge">true</code> if the number to the left is at least as much as the the number on the right, and <code class="language-plaintext highlighter-rouge">false</code> otherwise.  If <code class="language-plaintext highlighter-rouge">true</code> is returned, the loop body (between <code class="language-plaintext highlighter-rouge">do</code> and <code class="language-plaintext highlighter-rouge">end</code>) is executed, otherwise, the code skips to the <code class="language-plaintext highlighter-rouge">end</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span><span class="o">*</span><span class="n">N</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+<p>This is the loop body.  Once again, we’re multiplying the <code class="language-plaintext highlighter-rouge">resultSoFar</code> by the current integer.  However, this time we must also increment <code class="language-plaintext highlighter-rouge">N</code>, since there is no loop variable this time.  This may be the first time in these lessons that I’ve changed the value of a variable that is defined in the function parameters list, but it is allowed.  (We could also have just defined another variable if we wanted.)</p>
+
+<p>Once the <code class="language-plaintext highlighter-rouge">end</code> is reached, the <code class="language-plaintext highlighter-rouge">N &gt;=1 </code> check is made again, and the code keeps executing as long as <code class="language-plaintext highlighter-rouge">N</code> is greater than 1.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>As with the numeric for loop, once we exit the loop, the <code class="language-plaintext highlighter-rouge">resultSoFar</code> is the final result.</p>
+
+<p>Adding a loop to test this function gives the code:</p>
+
+<p><img src="05_lesson_images/factorial-while.png" alt="factorialWhile" /></p>
+
+<p><img src="05_lesson_images/two-factorial-charts.png" alt="two factorial charts" /></p>
+
+<p>In this example, the <em>while loop</em> is a bit more work than the <em>numeric for loop</em>, since we had to increment a counter ourselves.  <em>While loops</em> are useful in situations where you don’t know ahead of time how many times you will need to execute the loop body.  This is more likely to be the case when solving more complicated problems, so we will have to wait for future lessons to see some in action.</p>
+
+<p>You should also note that if you choose your condition poorly the <em>while loop</em> will never stop, and you will be forced to close Civ II through the task manager.</p>
+
+<p>Later in this lesson, we’ll look at the <em>generic for loop</em>, but, for now we will turn our attention to Lua <em>tables</em>.</p>
+<h2 id="tables">
+  
+  
+    <a href="#tables">&#128279</a> Tables
+  
+  
+</h2>
+    
+
+<p>Thus far, we have always stored a single <em>value</em> in a <em>variable</em>.  This can sometimes be inconvenient for a couple of reasons.  The first reason is that sometimes it is much more convenient to manipulate multiple values at once.  The second reason is that sometimes we don’t know how how many variables that we’ll need ahead of time.  For example, if we’re gathering a list of cities, we will probably not know ahead of time how many cities will be in that list.  Lua <em>tables</em> help us get around both of these problems.</p>
+
+<p>A Lua <em>table</em> is a programming object that associates <em>keys</em> with <em>values</em>.  Every <em>key</em> can have an associated <em>value</em>.  Several <em>keys</em> can have the same value associated with it, but the same <em>key</em> can’t have multiple different <em>values</em>.  Another way of saying it is that <em>values</em> can be repeated in a <em>table</em>, but there can only be one of each <em>key</em>.  I think that Lua uses the name <em>table</em> because behind the scenes they are <a href="https://en.wikipedia.org/wiki/Hash_table">hash tables</a>, but reading up on hash tables won’t be of any help programming in Lua.</p>
+
+<p>We will begin by creating a new <em>table</em>.  In the <strong>lua</strong> folder, create a new file called <strong>tables.lua</strong>, which we will program in during this next section.  You should also reload your saved game in the <strong>Original</strong> folder, to clear the console from earlier in the lesson.</p>
+
+<p>In order to create a <em>table</em>, we use the following syntax:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">myTable</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div></div>
+<p>At the moment, <code class="language-plaintext highlighter-rouge">myTable</code> doesn’t have any <em>key</em>-<em>value</em> associations.  Although any data type except <em>nil</em> can be a <em>table</em> <em>key</em>, we will usually restrict ourselves to <em>numbers</em> and <em>strings</em> for keys.  To start, we will assign the value <code class="language-plaintext highlighter-rouge">"one"</code> to the key <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"one"</span>
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">[]</code> brackets are used to specify that what is inside of them is a <em>table</em> <em>key</em>, which is also sometimes called an <em>index</em>.  So, <code class="language-plaintext highlighter-rouge">[1]</code> tells Lua that we’re interested in the <em>key</em> <code class="language-plaintext highlighter-rouge">1</code> of a <em>table</em>, and <code class="language-plaintext highlighter-rouge">myTable[1]</code> tells Lua that <code class="language-plaintext highlighter-rouge">myTable</code> is the <em>table</em> in question.  Since this is all on the left hand side of the <code class="language-plaintext highlighter-rouge">=</code> sign, Lua knows that a <em>value</em> is being assigned to that <em>table</em> and <em>key</em>.  In this case, the value is <code class="language-plaintext highlighter-rouge">"one"</code>.</p>
+
+<p>In order to get the <em>value</em> associated with a <em>table’s</em> <em>key</em>, very similar syntax is used:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+<p>Once again, the <code class="language-plaintext highlighter-rouge">[1]</code> tells Lua that we’re interested in the <em>value</em> assigned to the <em>index</em> <code class="language-plaintext highlighter-rouge">1</code>, and <code class="language-plaintext highlighter-rouge">myTable[1]</code> tells that we want the value from the <em>table</em> stored in the <code class="language-plaintext highlighter-rouge">myTable</code> variable.  Since it is not to the left of an <code class="language-plaintext highlighter-rouge">=</code> sign, Lua knows that we want to get the <em>value</em> rather than assign it.</p>
+
+<p>Save and run the script.</p>
+
+<p><img src="05_lesson_images/tables-lua.png" alt="tables.lua" /></p>
+
+<p><img src="05_lesson_images/myTable-one.png" alt="myTable[1]" /></p>
+
+<p>Next, let’s assign another <em>value</em> to <code class="language-plaintext highlighter-rouge">myTable</code>.  This time, we’ll assign the <em>value</em> <code class="language-plaintext highlighter-rouge">2</code> to the <em>key</em> <code class="language-plaintext highlighter-rouge">"two"</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myTable</span><span class="p">[</span><span class="s2">"two"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">"two"</span><span class="p">]</span><span class="o">..</span><span class="s2">" is 2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can also use the <em>values</em> of <em>variables</em> as <em>keys</em> or <em>values</em> in a <em>table</em>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">trois</span> <span class="o">=</span> <span class="s2">"trois"</span>
+<span class="kd">local</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="kd">local</span> <span class="n">four</span> <span class="o">=</span> <span class="s2">"quatre"</span>
+
+<span class="n">myTable</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">trois</span>
+<span class="n">myTable</span><span class="p">[</span><span class="n">four</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="n">three</span><span class="p">]</span><span class="o">..</span><span class="s2">" is trois"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">"quatre"</span><span class="p">]</span><span class="o">..</span><span class="s2">" is 4"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Another characteristic of <em>tables</em> is that if you try to get the value of a <em>key</em> that doesn’t have an assigned value, <em>nil</em> will be returned as the assigned value.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">print</span><span class="p">(</span><span class="nb">tostring</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">..</span><span class="s2">" is nil"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="05_lesson_images/my-table-five-values.png" alt="myTable 5 values" /></p>
+<h2 id="counting-animals">
+  
+  
+    <a href="#counting-animals">&#128279</a> Counting Animals
+  
+  
+</h2>
+    
+
+<p>Let’s have a little example where we record animals that we’ve “seen”.  Whenever we “see” an animal, we’ll call the function <code class="language-plaintext highlighter-rouge">spotted</code> to record the animal.</p>
+
+<p>We comment out the previous code, and add this new code:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">caesarTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">hannibalTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="nf">printTotals</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Caesar's totals are: Horses: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hannibal's totals are: Horses: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+<span class="k">end</span>
+
+<span class="n">printTotals</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Let’s go through the code:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">caesarTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">hannibalTotals</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,[</span><span class="s2">"dog"</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">,}</span>
+</code></pre></div></div>
+
+<p>Here, we’re defining two tables, one table to keep track of how many animals Caesar spotted, and the other to keep track of how many animals Hannibal spotted.  These have been made into global variables, so that they can be accessed from the Lua Console if desired.</p>
+
+<p>This time, we’re defining a table with some stuff between the <code class="language-plaintext highlighter-rouge">{}</code> brackets. <code class="language-plaintext highlighter-rouge">["horse"]=0</code> means that the <em>key</em> <code class="language-plaintext highlighter-rouge">"horse"</code> should be created with the new table, and that it should be initialised with a <em>value</em> of <code class="language-plaintext highlighter-rouge">0</code>.  Each of these initialisations bust be separated with a <code class="language-plaintext highlighter-rouge">,</code>.  It is allowed to have or not have a <code class="language-plaintext highlighter-rouge">,</code> after the last <em>key</em> (<code class="language-plaintext highlighter-rouge">["dog"]=0</code> vs <code class="language-plaintext highlighter-rouge">["dog"]=0,</code>).  So, for these two tables, the <em>keys</em> <code class="language-plaintext highlighter-rouge">"horse"</code>, <code class="language-plaintext highlighter-rouge">"cat"</code>, and <code class="language-plaintext highlighter-rouge">"dog"</code> are all assigned a value of <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Here, we define the global function <code class="language-plaintext highlighter-rouge">spotted</code>, which as two parameters: <code class="language-plaintext highlighter-rouge">totals</code> and <code class="language-plaintext highlighter-rouge">animal</code>.  <code class="language-plaintext highlighter-rouge">totals</code> is a <em>table</em> that keeps track of the number of each animal spotted, and <code class="language-plaintext highlighter-rouge">animal</code> is a string that represents a particular kind of animal, and which is also a key in a <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">animal</code> key of the <code class="language-plaintext highlighter-rouge">totals</code> table is updated by adding <code class="language-plaintext highlighter-rouge">1</code> to the previous value.</p>
+
+<p>There is something important to note here: the <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em> is not returned by the <code class="language-plaintext highlighter-rouge">spotted</code> function.  It doesn’t have to be.  When a variable containing an integer or string is updated, the new value must be assigned to the variable to replace the existing one:</p>
+
+<p><img src="05_lesson_images/updating-string.png" alt="updating a string value" /></p>
+
+<p>However, <em>tables</em> are different.  It is best to think of <em>tables</em> as “things” that just exist, and that what we’re storing in the variable is just the <em>name</em> of the <em>table</em>.  We don’t need to update the name of the <em>table</em> when we make a change to the <em>table</em> itself.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"horse"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"dog"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">caesarTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+<span class="n">spotted</span><span class="p">(</span><span class="n">hannibalTotals</span><span class="p">,</span><span class="s2">"cat"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Here, Caesar and Hannibal are “spotting” different animals.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">printTotals</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Caesar's totals are: Horses: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hannibal's totals are: Horses: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"horse"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Cats: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span><span class="o">..</span><span class="s2">" Dogs: "</span><span class="o">..</span><span class="n">hannibalTotals</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">])</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>This function just prints the contents of the two tables.</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printTotals</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Here, we print the the totals of the tables, based on the “spotted” animals in our script.</p>
+
+<p>Save the file, and run the script.  (Remember to comment out the code from the previous section.)</p>
+
+<p><img src="05_lesson_images/animal-count-code.png" alt="animal count code" />
+<img src="05_lesson_images/count-output.png" alt="count output" /></p>
+
+<p>In the console, we can call the <code class="language-plaintext highlighter-rouge">spotted</code> and <code class="language-plaintext highlighter-rouge">printTotals</code> functions to increment the values further, and see the new ones.  Here are some sample commands that I’ve done:</p>
+
+<p><img src="05_lesson_images/more-animals-spotted.png" alt="more animals spotted" /></p>
+
+<p>Tip: You can use the up and down arrows to bring up previous commands, so you don’t have to type the entire command each time.</p>
+
+<p>Now, let’s cause an error.  Try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code>:</p>
+
+<p><img src="05_lesson_images/arithmetic-nil-value.png" alt="arithmetic on nil value error" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Games\Test of Time\lua\tables.lua:29: attempt to perform arithmetic on a nil value (field '?')
+stack traceback:
+	C:\Games\Test of Time\lua\tables.lua:29: in function 'spotted'
+	(...tail calls...)
+</code></pre></div></div>
+<p>This is line 29:</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p>and the error is “attempt to perform arithmetic on a nil value (field ‘?’)”.</p>
+
+<p>This error means that you’re trying to do arithmetic (basic math like addition or subtraction) but one of the values is <em>nil</em>.  Why did we get this error?  Let’s perform the calculations.  First, we replace <code class="language-plaintext highlighter-rouge">totals</code> with <code class="language-plaintext highlighter-rouge">caesarTotals</code> and <code class="language-plaintext highlighter-rouge">animal</code> with <code class="language-plaintext highlighter-rouge">"cow"</code>, since those are the values that the <code class="language-plaintext highlighter-rouge">spotted</code> function was called with:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">=</span> <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+<p>On the Left Hand Side, we’re trying to assign a value to the <code class="language-plaintext highlighter-rouge">"cow"</code> <em>key</em> of <code class="language-plaintext highlighter-rouge">caesarTotals</code>, so that’s fully simplified.  On the Right Hand Side, however, we still have to replace <code class="language-plaintext highlighter-rouge">caesarTotals["cow"]</code> with the corresponding value.  Since the table <code class="language-plaintext highlighter-rouge">caesarTotals</code> does not yet have anything assigned to the <code class="language-plaintext highlighter-rouge">"cow"</code> <em>key</em>, <code class="language-plaintext highlighter-rouge">nil</code> is considered to be the value:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">caesarTotals</span><span class="p">[</span><span class="s2">"cow"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span> <span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+<p>And, here, we see that <code class="language-plaintext highlighter-rouge">nil</code> can’t be added to <code class="language-plaintext highlighter-rouge">1</code>, so we get an error.</p>
+
+<p>We should do something when the <code class="language-plaintext highlighter-rouge">spotted</code> function is called for a <em>key</em> that isn’t already in the totals table.</p>
+
+<p>One option is to use the <code class="language-plaintext highlighter-rouge">error</code> function.  This will still cause an error, but the error will be more informative:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">then</span>
+        <span class="nb">error</span><span class="p">(</span><span class="n">animal</span><span class="o">..</span><span class="s2">" is not an animal that can be spotted."</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>This line checks if the <em>value</em> for the <em>key</em> <code class="language-plaintext highlighter-rouge">animal</code> in the <code class="language-plaintext highlighter-rouge">totals</code> <em>table</em> is <code class="language-plaintext highlighter-rouge">nil</code>.  If it is, we go inside the if statement to find</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nb">error</span><span class="p">(</span><span class="n">animal</span><span class="o">..</span><span class="s2">" is not an animal that can be spotted."</span><span class="p">)</span>
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">error</code> command will create an error on this line, and print its argument as part of the error.  Change the <code class="language-plaintext highlighter-rouge">spotted</code> function, save <strong>tables.lua</strong>, load the script again, and try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code> once again:</p>
+
+<p><img src="05_lesson_images/custom-error.png" alt="custom error" /></p>
+
+<p>Now, we get the more helpful error that “cow is not an animal that can be spotted.”</p>
+
+<p>However, maybe we don’t want to generate an error.  An alternative is to simply do nothing.  Let’s look at a different version of <code class="language-plaintext highlighter-rouge">spotted</code>:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">spotted</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span><span class="n">animal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="k">then</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>We only need to look at</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">totals</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>In the last lesson I wrote that an if statement of the form</p>
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">value</span> <span class="k">then</span>
+</code></pre></div></div>
+<p>executes if the <code class="language-plaintext highlighter-rouge">value</code> is <code class="language-plaintext highlighter-rouge">true</code> and explained the way if statements worked as if the <code class="language-plaintext highlighter-rouge">value</code> must be a <em>boolean</em>.  I did that for simplicity.  In fact, the <code class="language-plaintext highlighter-rouge">value</code> between <code class="language-plaintext highlighter-rouge">if</code> and <code class="language-plaintext highlighter-rouge">then</code> can be <em>any</em> data type.  The body of the if statement is executed if the value is “truthy,” and is’t executed if the value is “falsy.”  In Lua, <strong>all</strong> values are “truthy” except <code class="language-plaintext highlighter-rouge">false</code> and <code class="language-plaintext highlighter-rouge">nil</code>.  (This is different from a lot of other programming languages, where some other values like <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">""</code> are falsy.)</p>
+
+<p>Since only <code class="language-plaintext highlighter-rouge">nil</code> and <code class="language-plaintext highlighter-rouge">false</code> are falsy, <code class="language-plaintext highlighter-rouge">if table[key] then</code> is a compact way to execute code only if a <code class="language-plaintext highlighter-rouge">table</code> has an assigned value for <code class="language-plaintext highlighter-rouge">key</code>, as long as <code class="language-plaintext highlighter-rouge">false</code> isn’t a <em>value</em> in the <code class="language-plaintext highlighter-rouge">table</code>.</p>
+
+<p>That means that this version of the <code class="language-plaintext highlighter-rouge">spotted</code> function increments the total if <code class="language-plaintext highlighter-rouge">animal</code> is a <em>key</em> in the <code class="language-plaintext highlighter-rouge">totals</code> table, and does nothing if it isn’t.</p>
+
+<p>Save this version of spotted, reload <strong>tables.lua</strong> and try to “spot” a <code class="language-plaintext highlighter-rouge">"cow"</code> again.  Call <code class="language-plaintext highlighter-rouge">caesarTotals["cow"]</code> to check that nothing has been assigned to the <code class="language-plaintext highlighter-rouge">"cow"</code> key:</p>
+
+<p><img src="05_lesson_images/ignore-cow.png" alt="ignore cow version" /></p>
+
+<p>We have another option for dealing with a new <em>key</em>: we can initialize it to 0 before adding 1 to it:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+ -->
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+-->
+<!--
+-->
+      </div>
+      <div class="footer-col">
+        <p>Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+  <li><a rel="me" href="https://github.com/ProfGarfield" target="_blank" title="ProfGarfield"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>ProfGarfield</a></li>
+  <li><a rel="me" href="https://www.youtube.com/user/ProfCiv2" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#youtube"></use></svg>ProfCiv2</a></li>
+  <li><a rel="me" href="https://forums.civfanatics.com/members/prof-garfield.43783/" target="_blank" title="Civfanatics Profile"><img src="/assets/civfanatics_icon.png" class="svg-icon grey"></img>Prof. Garfield</a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
