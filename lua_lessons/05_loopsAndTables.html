@@ -1,10 +1,30 @@
 <!DOCTYPE html>
+
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css">
   <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+    <title></title>
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lua for Civilization II" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lua for Civilization II | Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Lua for Civilization II" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
+<meta property="og:description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
+<link rel="canonical" href="http://localhost:4000/lua_lessons/05_loopsAndTables.html" />
+<meta property="og:url" content="http://localhost:4000/lua_lessons/05_loopsAndTables.html" />
+<meta property="og:site_name" content="Lua for Civilization II" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lua for Civilization II" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Reference materials and lessons for using Lua to program events for Civilization II: Test of Time","headline":"Lua for Civilization II","url":"http://localhost:4000/lua_lessons/05_loopsAndTables.html"}</script>
+<!-- End Jekyll SEO tag -->
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         let z = document.body.getElementsByTagName("include")
@@ -146,7 +166,7 @@
 </h2>
     
 
-<p>Now, let’s do something slightly more complicated.  In math, <include src="/_DxIngMh8W9bKewVmApFLrC.xml"></include> is called “six factorial” and means <include src="/_q5CaiOg4dhFUJoXkjEL3bz.xml"></include>.  In general, <include src="/_r42FoExiBNXDGj6dVsMJH3.xml"></include>.  We will write a Lua function to compute factorials:</p>
+<p>Now, let’s do something slightly more complicated.  In math, <include src="/_yZmzK89g7$YC25SBvoEbRT.xml"></include> is called “six factorial” and means <include src="/_O1eJW$Y@4fNhrFg28miHB0.xml"></include>.  In general, <include src="/_3EhipTzs0jAYnROBl4QIMg.xml"></include>.  We will write a Lua function to compute factorials:</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
@@ -169,11 +189,11 @@
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
 </code></pre></div></div>
-<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_s2FeW$RpvlXGEn5Yq7I90w.xml"></include> and <include src="/_N@T4VzZ2H17d0XtQUW6kGa.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
+<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_dsKyDe0WBCA4tzjaMF9c7V.xml"></include> and <include src="/_Bi$FVr5IobMWdw4DzgKvE@.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
     <span class="k">end</span>
 </code></pre></div></div>
-<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_OnskIBTcDxEMtwNbfmWjZd.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
+<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_tkICiUHobXh6Mf5j7ATEd9.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
 </code></pre></div></div>
@@ -575,7 +595,7 @@ stack traceback:
 </h2>
     
 
-<p>Now, let’s do something slightly more complicated.  In math, <include src="/_DxIngMh8W9bKewVmApFLrC.xml"></include> is called “six factorial” and means <include src="/_q5CaiOg4dhFUJoXkjEL3bz.xml"></include>.  In general, <include src="/_r42FoExiBNXDGj6dVsMJH3.xml"></include>.  We will write a Lua function to compute factorials:</p>
+<p>Now, let’s do something slightly more complicated.  In math, <include src="/_yZmzK89g7$YC25SBvoEbRT.xml"></include> is called “six factorial” and means <include src="/_O1eJW$Y@4fNhrFg28miHB0.xml"></include>.  In general, <include src="/_3EhipTzs0jAYnROBl4QIMg.xml"></include>.  We will write a Lua function to compute factorials:</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">resultSoFar</span> <span class="o">=</span> <span class="mi">1</span>
@@ -598,11 +618,11 @@ stack traceback:
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="k">do</span>
 </code></pre></div></div>
-<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_s2FeW$RpvlXGEn5Yq7I90w.xml"></include> and <include src="/_N@T4VzZ2H17d0XtQUW6kGa.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
+<p>This time, the loop variable is called <code class="language-plaintext highlighter-rouge">i</code>.  <code class="language-plaintext highlighter-rouge">i</code> is a standard name for a loop variable if you can’t think of anything better.  The <code class="language-plaintext highlighter-rouge">N</code> means that the initial value of <code class="language-plaintext highlighter-rouge">i</code> is set to whatever the current value of <code class="language-plaintext highlighter-rouge">N</code> is.  The factorial definition requires us to multiply each integer value between <include src="/_dsKyDe0WBCA4tzjaMF9c7V.xml"></include> and <include src="/_Bi$FVr5IobMWdw4DzgKvE@.xml"></include> inclusive, so we increment by <code class="language-plaintext highlighter-rouge">-1</code> and end the loop at <code class="language-plaintext highlighter-rouge">1</code>.</p>
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">resultSoFar</span> <span class="o">=</span> <span class="n">resultSoFar</span> <span class="o">*</span> <span class="n">i</span>
     <span class="k">end</span>
 </code></pre></div></div>
-<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_OnskIBTcDxEMtwNbfmWjZd.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
+<p>This is the actual “work” of the function.  The current integer <code class="language-plaintext highlighter-rouge">i</code> is multiplied by the current <code class="language-plaintext highlighter-rouge">resultSoFar</code> in order to get a new <code class="language-plaintext highlighter-rouge">resultSoFar</code>.  When <code class="language-plaintext highlighter-rouge">i</code> is <code class="language-plaintext highlighter-rouge">N</code>, <code class="language-plaintext highlighter-rouge">resultSoFar</code> is <code class="language-plaintext highlighter-rouge">1</code>, and it is set to <code class="language-plaintext highlighter-rouge">N</code> to start the calculation.  After that, the code effectively progresses left to right on the calculation <include src="/_tkICiUHobXh6Mf5j7ATEd9.xml"></include> multiplying the next integer into the result, until <code class="language-plaintext highlighter-rouge">1</code> is reached.</p>
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">resultSoFar</span>
 </code></pre></div></div>

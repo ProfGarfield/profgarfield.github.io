@@ -1,10 +1,30 @@
 <!DOCTYPE html>
+
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css">
   <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
+    <title></title>
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lua for Civilization II" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lua for Civilization II | Reference materials and lessons for using Lua to program events for Civilization II: Test of Time</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Lua for Civilization II" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
+<meta property="og:description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
+<link rel="canonical" href="http://localhost:4000/lua_lessons/04_civObjectsAndIfStatements.html" />
+<meta property="og:url" content="http://localhost:4000/lua_lessons/04_civObjectsAndIfStatements.html" />
+<meta property="og:site_name" content="Lua for Civilization II" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lua for Civilization II" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Reference materials and lessons for using Lua to program events for Civilization II: Test of Time","headline":"Lua for Civilization II","url":"http://localhost:4000/lua_lessons/04_civObjectsAndIfStatements.html"}</script>
+<!-- End Jekyll SEO tag -->
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         let z = document.body.getElementsByTagName("include")
@@ -543,7 +563,7 @@
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">turn</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
 </code></pre></div></div>
-<p>This line introduces two new operators, <code class="language-plaintext highlighter-rouge">%</code> and <code class="language-plaintext highlighter-rouge">==</code>.  <code class="language-plaintext highlighter-rouge">turn % 2</code> is evaluated first, so let’s start with <code class="language-plaintext highlighter-rouge">%</code>, the “<a href="https://en.wikipedia.org/wiki/Modulo">modulo operator</a>.”  The modulo operator gets the remainder of a division.  Usually, when we divide one number by another, we don’t get an even split.  For example <include src="/_nRmakuFPjhyt9UH1pKIVv3.xml"></include>.  This is what makes sense in most contexts.  However, another way to describe the division is <include src="/_70FhW9Ysi412ND@lEZVGqP.xml"></include> with remainder <include src="/_rvhSx06yYpiNtP7Z8T@OGj.xml"></include>.  That is, we can make 2 groups of 4 out of 11, but we still have 3 left over.  This <code class="language-plaintext highlighter-rouge">%</code> operator extracts that 3 for us in this example.  So, <code class="language-plaintext highlighter-rouge">11 % 4</code> evaluates as <code class="language-plaintext highlighter-rouge">3</code> because 3 is the left over remainder when dividing 11 by 4.</p>
+<p>This line introduces two new operators, <code class="language-plaintext highlighter-rouge">%</code> and <code class="language-plaintext highlighter-rouge">==</code>.  <code class="language-plaintext highlighter-rouge">turn % 2</code> is evaluated first, so let’s start with <code class="language-plaintext highlighter-rouge">%</code>, the “<a href="https://en.wikipedia.org/wiki/Modulo">modulo operator</a>.”  The modulo operator gets the remainder of a division.  Usually, when we divide one number by another, we don’t get an even split.  For example <include src="/_PA0oSCIR$E3quYkgVH7cjx.xml"></include>.  This is what makes sense in most contexts.  However, another way to describe the division is <include src="/_M6Jpoj7BPWxtHh1svI@UAE.xml"></include> with remainder <include src="/_gyBuxZocw4DS6WUjr5nhLA.xml"></include>.  That is, we can make 2 groups of 4 out of 11, but we still have 3 left over.  This <code class="language-plaintext highlighter-rouge">%</code> operator extracts that 3 for us in this example.  So, <code class="language-plaintext highlighter-rouge">11 % 4</code> evaluates as <code class="language-plaintext highlighter-rouge">3</code> because 3 is the left over remainder when dividing 11 by 4.</p>
 
 <p>In the case of <code class="language-plaintext highlighter-rouge">turn % 2</code>, the result can either be <code class="language-plaintext highlighter-rouge">0</code> (<code class="language-plaintext highlighter-rouge">turn</code> is an even integer, so there is 0 left over when dividing by 2) or <code class="language-plaintext highlighter-rouge">1</code> (<code class="language-plaintext highlighter-rouge">turn</code> is an odd integer, so there is 1 left over when dividing by 2).</p>
 
@@ -1323,7 +1343,7 @@
 
 <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">turn</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
 </code></pre></div></div>
-<p>This line introduces two new operators, <code class="language-plaintext highlighter-rouge">%</code> and <code class="language-plaintext highlighter-rouge">==</code>.  <code class="language-plaintext highlighter-rouge">turn % 2</code> is evaluated first, so let’s start with <code class="language-plaintext highlighter-rouge">%</code>, the “<a href="https://en.wikipedia.org/wiki/Modulo">modulo operator</a>.”  The modulo operator gets the remainder of a division.  Usually, when we divide one number by another, we don’t get an even split.  For example <include src="/_nRmakuFPjhyt9UH1pKIVv3.xml"></include>.  This is what makes sense in most contexts.  However, another way to describe the division is <include src="/_70FhW9Ysi412ND@lEZVGqP.xml"></include> with remainder <include src="/_rvhSx06yYpiNtP7Z8T@OGj.xml"></include>.  That is, we can make 2 groups of 4 out of 11, but we still have 3 left over.  This <code class="language-plaintext highlighter-rouge">%</code> operator extracts that 3 for us in this example.  So, <code class="language-plaintext highlighter-rouge">11 % 4</code> evaluates as <code class="language-plaintext highlighter-rouge">3</code> because 3 is the left over remainder when dividing 11 by 4.</p>
+<p>This line introduces two new operators, <code class="language-plaintext highlighter-rouge">%</code> and <code class="language-plaintext highlighter-rouge">==</code>.  <code class="language-plaintext highlighter-rouge">turn % 2</code> is evaluated first, so let’s start with <code class="language-plaintext highlighter-rouge">%</code>, the “<a href="https://en.wikipedia.org/wiki/Modulo">modulo operator</a>.”  The modulo operator gets the remainder of a division.  Usually, when we divide one number by another, we don’t get an even split.  For example <include src="/_PA0oSCIR$E3quYkgVH7cjx.xml"></include>.  This is what makes sense in most contexts.  However, another way to describe the division is <include src="/_M6Jpoj7BPWxtHh1svI@UAE.xml"></include> with remainder <include src="/_gyBuxZocw4DS6WUjr5nhLA.xml"></include>.  That is, we can make 2 groups of 4 out of 11, but we still have 3 left over.  This <code class="language-plaintext highlighter-rouge">%</code> operator extracts that 3 for us in this example.  So, <code class="language-plaintext highlighter-rouge">11 % 4</code> evaluates as <code class="language-plaintext highlighter-rouge">3</code> because 3 is the left over remainder when dividing 11 by 4.</p>
 
 <p>In the case of <code class="language-plaintext highlighter-rouge">turn % 2</code>, the result can either be <code class="language-plaintext highlighter-rouge">0</code> (<code class="language-plaintext highlighter-rouge">turn</code> is an even integer, so there is 0 left over when dividing by 2) or <code class="language-plaintext highlighter-rouge">1</code> (<code class="language-plaintext highlighter-rouge">turn</code> is an odd integer, so there is 1 left over when dividing by 2).</p>
 
