@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
   <!--<link rel="icon" type="image/png" href="/assets/civfanatics_icon.png">-->
     <title>Lua Execution Points</title>
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lua for Civilization II" />
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Lua for Civilization II" />
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Lua Execution Points | Lua for Civilization II</title>
 <meta name="generator" content="Jekyll v4.3.2" />
@@ -15,28 +15,16 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
 <meta property="og:description" content="Reference materials and lessons for using Lua to program events for Civilization II: Test of Time" />
-<link rel="canonical" href="http://localhost:4000/executionPoints.html" />
-<meta property="og:url" content="http://localhost:4000/executionPoints.html" />
+<link rel="canonical" href="/executionPoints.html" />
+<meta property="og:url" content="/executionPoints.html" />
 <meta property="og:site_name" content="Lua for Civilization II" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Lua Execution Points" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Reference materials and lessons for using Lua to program events for Civilization II: Test of Time","headline":"Lua Execution Points","url":"http://localhost:4000/executionPoints.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Reference materials and lessons for using Lua to program events for Civilization II: Test of Time","headline":"Lua Execution Points","url":"/executionPoints.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        let z = document.body.getElementsByTagName("include")
-        for (let i = 0; i < z.length; ++i) {
-            let elmnt = z[i]
-            let xhttp = new XMLHttpRequest()
-            xhttp.onreadystatechange = function() { elmnt.innerHTML = this.responseText }
-            xhttp.open("GET", elmnt.getAttribute("src"), true)
-            xhttp.send()
-        }
-    })
-</script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -3492,12 +3480,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_M3sZD@LVwrUAhPFOKBq6JR.xml"></include>
+\[unitValue = \frac{unitDefense \times unitHitpoints}{unitMaxHitpoints}\]
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_dRZWr2DBLE7OQ3op6MfP@A.xml"></include> 
+\(\frac{candidateDefenseValue}{attackersValue}\) 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
@@ -7034,12 +7022,12 @@ in combat.</p>
 
 <p>The standard Civ II method for choosing the defender is to choose the unit with the highest “defenderValue”, computed in the following way:</p>
 
-<include src="/_M3sZD@LVwrUAhPFOKBq6JR.xml"></include>
+\[unitValue = \frac{unitDefense \times unitHitpoints}{unitMaxHitpoints}\]
 
 <p>With the division rounded down to the nearest integer.  Although unitDefense takes into account bonuses like the veteran status and the pikeman bonus, this computation does not take unit hitpoints or firepower into account.  For example, a damaged Armor unit (with more than 20 HP remaining) could defend after an Alpine Troops unit, even though it would be a better defender.</p>
 
 <p>The default implementation of <code class="language-plaintext highlighter-rouge">register.onChooseDefender</code> keeps this basic choice system, but does not use the <code class="language-plaintext highlighter-rouge">defaultFunction</code> so that it can take into account combat customisations made in <code class="language-plaintext highlighter-rouge">computeCombatStatistics</code>.  The most notable change is that instead of relying on only the defense value of the candidate unit, the ratio of 
-<include src="/_dRZWr2DBLE7OQ3op6MfP@A.xml"></include> 
+\(\frac{candidateDefenseValue}{attackersValue}\) 
 is used instead (without integer division).  This is because the base Civilization II game rarely modifies the attack value of a unit (I think the only case of this is a Partisan attacking a 0 attack unit), while this is an obvious thing to do with Lua.</p>
 
 <p>If the attacker has 0 attack value when facing a certain unit, that unit’s defense value is set to ten million, so that it will be chosen as the defender by default.  (This can be changed in the next step.)</p>
