@@ -1,0 +1,76 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize";
+
+
+/*  These settings allow vim colouring, see this website:
+https://lars.st0ne.at/blog/export+vim+syntax+highlighting+to+html
+(note that some stuff has been changed/added)
+ */
+.WarningMsg { color: #ff6060; }
+.WildMenu { color: #808080; background-color: #ffff00; }
+.Folded { color: #8080ff; background-color: #ffffff; }
+.FoldColumn { color: #8080ff; background-color: #ffffff; }
+.DiffAdd { background-color: #8080ff; }
+.DiffChange { background-color: #ff40ff; }
+.DiffDelete { color: #8080ff; background-color: #00ffff; font-weight: bold; }
+.DiffText { background-color: #ff6060; font-weight: bold; }
+.SignColumn { color: #8080ff; background-color: #ffffff; }
+.SpellBad { background-color: #ff6060; }
+.SpellCap { background-color: #8080ff; }
+.SpellRare { background-color: #ff40ff; }
+.SpellLocal { background-color: #00ffff; }
+.Pmenu { background-color: #ff40ff; }
+.PmenuSel { background-color: #ffffff; }
+.PmenuSbar { background-color: #ffffff; }
+.PmenuThumb { color: #ffffff; background-color: #000000; }
+.TabLine { color: #808080; background-color: #ffffff; text-decoration: underline; }
+.TabLineSel { font-weight: bold; }
+.TabLineFill { color: #ffffff; background-color: #000000; }
+.CursorColumn { background-color: #ffffff; }
+.CursorLine { text-decoration: underline; }
+.MatchParen { background-color: #00ffff; }
+.Comment { color: #5050ff; }
+.Constant { color: #ff00ff; }
+.Special { color: #ff40ff; }
+.Identifier { color: #008b8b; }
+.Statement { color: #a52a2a; font-weight: bold; }
+.PreProc { color: #ff40ff; }
+.Type { color: #00ff00; }
+.Underlined { color: #ff40ff; text-decoration: underline; }
+.Ignore { color: #ffffff; font-weight: bold; }
+.Error { color: #ffffff; background-color: #ff6060; font-weight: bold; }
+.Todo { color: #808080; background-color: #ffff00; }
+.SpecialKey { color: #8080ff; }
+.NonText { color: #8080ff; font-weight: bold; }
+.Directory { color: #8080ff; }
+.ErrorMsg { color: #ffffff; background-color: #ff6060; font-weight: bold; }
+.IncSearch { color: #ffffff; background-color: #000000; }
+.Search { color: #808080; background-color: #ffff00; }
+.MoreMsg { color: #00ff00; }
+.ModeMsg { font-weight: bold; }
+.LineNr { color: #a52a2a; }
+.Question { color: #00ff00; }
+.StatusLine { color: #ffffff; background-color: #000000; font-weight: bold; }
+.StatusLineNC { color: #ffffff; background-color: #000000; }
+.VertSplit { color: #ffffff; background-color: #000000; }
+.Title { color: #ff40ff; }
+.Visual { color: #ffffff; background-color: #000000; }
+.CivFunc { color: #006400; }
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #eeeeee; }
+.CivObjectKey { color: #a020f0; }
+
+/* End of Vim colour settings */
+
+.self-link {
+  opacity: 5%;
+}
+
+.self-link:hover {
+  opacity: 100%;
+  transition: opacity .1s;
+}
