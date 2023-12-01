@@ -3,6 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
 tabTitle: Lua for Civilization II
+title: Lua for Civilization II
 ---
 
 # Lua for Civilization II: Test of Time
@@ -32,7 +33,18 @@ This is the current state of documentation of functions provided by the Lua Scen
 This page explains the concept of "execution points" and lists the available execution points.
 
 
+## Lessons
 
+With these lessons, you can learn to program Civilization II events using Lua, working with the features provided by the Lua Scenario Template.  These lessons do not require any prior programming experience.
+
+### [Lessons Table of Contents](lua_lessons/lessons_toc.html)
+
+### Recent Lessons
+
+* [Lesson 4](lua_lessons/04_civObjectsAndIfStatements.html) (November 4) Civ Objects and If Statements
+* [Lesson 3](lua_lessons/03_valuesAndVariables.html) (November 4) Values and Variables
+* [Lesson 2](lua_lessons/02_writingScripts.html) (November 4) Writing Scripts
+* [Lesson 1](lua_lessons/01_helloWorld.html) (November 4) Hello World
 
 ## External Resources
 
@@ -55,8 +67,5 @@ A program that is useful for creating Lua programs.  Lua Scenario Template code 
 A program to interpret Lua comments as documentation.  Available as an extension for Visual Studio Code and other programs (like [Neovim](https://neovim.io/)). 
 
 
-## Lessons
-
-[Table of Contents](lua_lessons/lessons_toc.html)
 
 ---
