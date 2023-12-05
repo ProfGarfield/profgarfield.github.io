@@ -41,6 +41,7 @@ With these lessons, you can learn to program Civilization II events using Lua, w
 
 ### Recent Lessons
 
+* [Lesson 5](lua_lessons/05_loopsAndTables.html) (December 4) Loops and Tables
 * [Lesson 4](lua_lessons/04_civObjectsAndIfStatements.html) (November 4) Civ Objects and If Statements
 * [Lesson 3](lua_lessons/03_valuesAndVariables.html) (November 4) Values and Variables
 * [Lesson 2](lua_lessons/02_writingScripts.html) (November 4) Writing Scripts

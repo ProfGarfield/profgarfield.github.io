@@ -3,7 +3,7 @@ layout: page
 tabTitle: Civ Objects and If Statements (Lesson 4)
 ---
 
-| Previous: [Values and Variables](03_valuesAndVariables.html) ||
+| Previous: [Values and Variables](03_valuesAndVariables.html) |Next: [Loops and Tables](05_loopsAndTables.html)|
 
 # Civilization II Objects and If Statements
 
@@ -639,4 +639,4 @@ Save this event, load your game, and try it out.
 In this lesson, we've worked with several kinds of TOTPP objects in order to get or change information in the game.  We've also worked with _if statements_ so that our code can do different things depending on the arguments provided when the event is triggered.  In the next lesson, we will increase the sophistication of our events through the use of _tables_ and _loops_.
 
 
-| Previous: [Values and Variables](03_valuesAndVariables.html) |  |
+| Previous: [Values and Variables](03_valuesAndVariables.html) | Next: [Loops and Tables](05_loopsAndTables.html) |

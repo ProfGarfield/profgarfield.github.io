@@ -21,7 +21,7 @@ These functions are generally useful for creating events.
 
 ### createUnit
 ```
-function gen.createUnit(unitType: unitTypeObject, tribe: tribeObject, locations: table|table<integer, table|tileObject>|tileObject, options: table)
+function gen.createUnit(unitType: unitTypeObject, tribe: tribeObject, locations: table<integer, tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }>|tileObject|...(too long)...r }...(+1), options: table)
   -> table
 ```
 This is a createUnit function, meant to supersede civlua.createUnit.
@@ -153,7 +153,7 @@ function gen.isWonderActiveForTribe(wonder: integer|wonderObject, tribe: integer
 
 ### distance
 ```
-function gen.distance(itemA: table|cityObject|tileObject|unitObject, itemB: table|cityObject|tileObject|unitObject, zDist?: integer)
+function gen.distance(itemA: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2), itemB: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2), zDist?: integer)
   -> integer
 ```
  Takes two objects and a 'vertical distance' (0 if absent)
@@ -190,7 +190,7 @@ function gen.tileDist(tileA: tileObject, tileB: tileObject, zDist?: integer)
 
 ### gameMechanicDistance
 ```
-function gen.gameMechanicDistance(itemA: table|cityObject|tileObject|unitObject, itemB: table|cityObject|tileObject|unitObject)
+function gen.gameMechanicDistance(itemA: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2), itemB: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2))
   -> integer
 ```
  gen.gameMechanicDistance(itemOnMap1,itemOnMap2)
@@ -325,7 +325,7 @@ false otherwise. A unit or units can be excluded from the check.
 
 ### getAdjacentTiles
 ```
-function gen.getAdjacentTiles(tile: table|tileObject)
+function gen.getAdjacentTiles(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> tileTable: table<integer, tileObject>
 ```
  Returns a table (indexed by integers) with all adjacent
@@ -415,7 +415,7 @@ simpleSettings.clearAdjacentAirProtectionHuman = false
 
 ### cityRadiusTiles
 ```
-function gen.cityRadiusTiles(input: table|cityObject|tileObject)
+function gen.cityRadiusTiles(input: cityObject|tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }...(+1))
   -> table<integer, tileObject>
 ```
   Returns a table of tiles around a center tile, the 
@@ -444,7 +444,7 @@ function gen.cityRadiusTiles(input: table|cityObject|tileObject)
 
 ### getTilesInRadius
 ```
-function gen.getTilesInRadius(centre: table|tileObject, radius: integer, minRadius?: integer, maps?: integer|table)
+function gen.getTilesInRadius(centre: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, radius: integer, minRadius?: integer, maps?: integer|table)
   -> table<integer, tileObject>
 ```
 Produces a table of nearby tiles to centre.  
@@ -504,7 +504,7 @@ function gen.isSinglePlayerGame()
 
 ### nearbyUnits
 ```
-function gen.nearbyUnits(center: table|tileObject, radius: integer, maps?: integer|table)
+function gen.nearbyUnits(center: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, radius: integer, maps?: integer|table)
   -> fun():unitObject
 ```
  gen.nearbyUnits(center,radius,maps={0,1,2,3}) --> iterator providing units
@@ -539,7 +539,7 @@ If nil is entered, all terrain is allowed.
 
 ### nearbyUnoccupiedTiles
 ```
-function gen.nearbyUnoccupiedTiles(centerTile: table|tileObject, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>)
+function gen.nearbyUnoccupiedTiles(centerTile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>)
   -> table<integer, tileObject>
 ```
 Returns the table of nearby unoccupied tiles.
@@ -556,7 +556,7 @@ If `nil` is entered, all terrain is allowed.
 
 ### getRandomNearbyUnoccupiedTile
 ```
-function gen.getRandomNearbyUnoccupiedTile(centerTile: table|tileObject, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>)
+function gen.getRandomNearbyUnoccupiedTile(centerTile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>)
   -> tileObject|nil
 ```
 Returns a random unoccupied square near tile, on the same map.  Returns nil if there is no such tile.
@@ -572,7 +572,7 @@ If `nil` is entered, all terrain is allowed.
 
 ### nearbyOpenTilesForTribe
 ```
-function gen.nearbyOpenTilesForTribe(centerTile: table|tileObject, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>, tribe: tribeObject)
+function gen.nearbyOpenTilesForTribe(centerTile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>, tribe: tribeObject)
   -> table<integer, tileObject>
 ```
   gen.nearbyOpenTilesForTribe(centerTile,distance,allowedTiles,tribe)
@@ -591,7 +591,7 @@ If `nil` is entered, all terrain is allowed.
 
 ### getRandomNearbyOpenTileForTribe
 ```
-function gen.getRandomNearbyOpenTileForTribe(centerTile: table|tileObject, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>, tribe: tribeObject)
+function gen.getRandomNearbyOpenTileForTribe(centerTile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, distance: integer, allowedTiles: fun(tile: tileObject):boolean|table<integer, integer>, tribe: tribeObject)
   -> tileObject|nil
 ```
 Returns a random square near tile, on the same map, that is either empty or only has units/city of the same tribe.  Returns nil if there is no such tile.
@@ -608,7 +608,7 @@ If `nil` is entered, all terrain is allowed.
 
 ### getTileProduction
 ```
-function gen.getTileProduction(tile: table|tileObject, city: cityObject, ignoreCustomCosmic?: boolean)
+function gen.getTileProduction(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, city: cityObject, ignoreCustomCosmic?: boolean)
   -> foodProduction: integer
   2. shieldProduction: integer
   3. tradeProduction: integer
@@ -663,7 +663,7 @@ function gen.spendMovementPoints(unit: unitObject, points: number, multiplier?: 
 
 ### getBearing
 ```
-function gen.getBearing(compassPoint: table|cityObject|tileObject|unitObject, compassCentre: table|cityObject|tileObject|unitObject)
+function gen.getBearing(compassPoint: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2), compassCentre: cityObject|tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }...(+2))
   -> bearing: ""|"E"|"N"|"NE"|"NW"...(+4)
 ```
  Returns one of "N","S","E","W","NW","NE","SW","SE","" based on the locations
@@ -862,9 +862,14 @@ comment
 
 ### copyTable
 ```
-gen.copyTable --> function
+function gen.copyTable(table: any)
+  -> any
 ```
-
+ Constructs (and returns) a new table with the same keys as the input.
+ Tables within the table are also copied.
+ Note: although this is meant for copying tables, 
+ the way the function is constructed, any value can be input and
+ returned.
 
 
 
@@ -1435,7 +1440,7 @@ Returns a terrainObject from the corresponding id number created by gen.getTerra
 
 ### getTileID
 ```
-function gen.getTileID(tileORX: integer|table|tileObject, y?: integer, z?: integer)
+function gen.getTileID(tileORX: integer|tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }...(+1), y?: integer, z?: integer)
   -> nil
 ```
  Returns a single-value numeric key that uniquely identifies a tile on any map.
@@ -1774,7 +1779,7 @@ These functions interact with tile improvements.
 
 ### toTile
 ```
-function gen.toTile(tileAnalog: table|tileObject)
+function gen.toTile(tileAnalog: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> tileObject
 ```
  If given a tile object, returns the tile.
@@ -1787,7 +1792,7 @@ function gen.toTile(tileAnalog: table|tileObject)
 
 ### hasIrrigation
 ```
-function gen.hasIrrigation(tile: table|tileObject)
+function gen.hasIrrigation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
  Returns true if tile has irrigation but no farm.
@@ -1801,7 +1806,7 @@ function gen.hasIrrigation(tile: table|tileObject)
 
 ### placeIrrigation
 ```
-function gen.placeIrrigation(tile: table|tileObject)
+function gen.placeIrrigation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places irrigation on the tile provided
  removes mines and farmland if present
@@ -1813,7 +1818,7 @@ function gen.placeIrrigation(tile: table|tileObject)
 
 ### removeIrrigation
 ```
-function gen.removeIrrigation(tile: table|tileObject)
+function gen.removeIrrigation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  If tile has irrigation but no farmland, removes the irrigation
  Does nothing to farmland
@@ -1825,7 +1830,7 @@ function gen.removeIrrigation(tile: table|tileObject)
 
 ### hasMine
 ```
-function gen.hasMine(tile: table|tileObject)
+function gen.hasMine(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -1834,7 +1839,7 @@ function gen.hasMine(tile: table|tileObject)
 
 ### placeMine
 ```
-function gen.placeMine(tile: table|tileObject)
+function gen.placeMine(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places mines on the tile provided
  removes irrigation and farmland if present
@@ -1846,7 +1851,7 @@ function gen.placeMine(tile: table|tileObject)
 
 ### placeMineUnderCity
 ```
-function gen.placeMineUnderCity(tile: table|tileObject)
+function gen.placeMineUnderCity(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places mine on a tile, even if a city is present
  removes irrigation and farmland if present
@@ -1857,7 +1862,7 @@ function gen.placeMineUnderCity(tile: table|tileObject)
 
 ### removeMine
 ```
-function gen.removeMine(tile: table|tileObject)
+function gen.removeMine(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  if tile has mining but no farmland, removes mines
  does nothing to farmland
@@ -1869,7 +1874,7 @@ function gen.removeMine(tile: table|tileObject)
 
 ### removeMineUnderCity
 ```
-function gen.removeMineUnderCity(tile: table|tileObject)
+function gen.removeMineUnderCity(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  if tile has mining but no farmland, removes mines
  does nothing to farmland
@@ -1880,7 +1885,7 @@ function gen.removeMineUnderCity(tile: table|tileObject)
 
 ### hasFarmland
 ```
-function gen.hasFarmland(tile: table|tileObject)
+function gen.hasFarmland(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -1889,7 +1894,7 @@ function gen.hasFarmland(tile: table|tileObject)
 
 ### placeFarmland
 ```
-function gen.placeFarmland(tile: table|tileObject)
+function gen.placeFarmland(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places farmland on a tile (removing mining)
  does nothing if a city is present
@@ -1900,7 +1905,7 @@ function gen.placeFarmland(tile: table|tileObject)
 
 ### removeFarmland
 ```
-function gen.removeFarmland(tile: table|tileObject)
+function gen.removeFarmland(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  removes farmland if present
  does nothing to irrigation or mining
@@ -1912,7 +1917,7 @@ function gen.removeFarmland(tile: table|tileObject)
 
 ### hasAgriculture
 ```
-function gen.hasAgriculture(tile: table|tileObject)
+function gen.hasAgriculture(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
  returns true if tile has irrigation or farmland
@@ -1923,7 +1928,7 @@ function gen.hasAgriculture(tile: table|tileObject)
 
 ### improveAgriculture
 ```
-function gen.improveAgriculture(tile: table|tileObject)
+function gen.improveAgriculture(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  if tile has no irrigation, place irrigation (even if mining present)
  if tile has irrigation, place farmland
@@ -1935,7 +1940,7 @@ function gen.improveAgriculture(tile: table|tileObject)
 
 ### degradeAgriculture
 ```
-function gen.degradeAgriculture(tile: table|tileObject)
+function gen.degradeAgriculture(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  if tile has farmland, reduce to irrigation
  if tile has irrigation, remove
@@ -1947,7 +1952,7 @@ function gen.degradeAgriculture(tile: table|tileObject)
 
 ### removeAgriculture
 ```
-function gen.removeAgriculture(tile: table|tileObject)
+function gen.removeAgriculture(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  remove farmland and irrigation if present
  do nothing to mining
@@ -1959,7 +1964,7 @@ function gen.removeAgriculture(tile: table|tileObject)
 
 ### hasRoad
 ```
-function gen.hasRoad(tile: table|tileObject)
+function gen.hasRoad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
  returns true if tile has a road
@@ -1970,7 +1975,7 @@ function gen.hasRoad(tile: table|tileObject)
 
 ### placeRoad
 ```
-function gen.placeRoad(tile: table|tileObject)
+function gen.placeRoad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places a road on the tile
  does nothing if city present
@@ -1981,7 +1986,7 @@ function gen.placeRoad(tile: table|tileObject)
 
 ### removeRoad
 ```
-function gen.removeRoad(tile: table|tileObject)
+function gen.removeRoad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  removes a road if there is a road but no rail
  doesn't touch rail or cities
@@ -1992,7 +1997,7 @@ function gen.removeRoad(tile: table|tileObject)
 
 ### hasRailroad
 ```
-function gen.hasRailroad(tile: table|tileObject)
+function gen.hasRailroad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
  returns true if a tile has a railroad (and road)
@@ -2003,7 +2008,7 @@ function gen.hasRailroad(tile: table|tileObject)
 
 ### placeRailroad
 ```
-function gen.placeRailroad(tile: table|tileObject)
+function gen.placeRailroad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places a railroad (and road) on a tile
  does nothing if city is present
@@ -2014,7 +2019,7 @@ function gen.placeRailroad(tile: table|tileObject)
 
 ### removeRailroad
 ```
-function gen.removeRailroad(tile: table|tileObject)
+function gen.removeRailroad(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  removes railroad from a tile if it exits,
  leaving road intact (if there is already road there)
@@ -2026,7 +2031,7 @@ function gen.removeRailroad(tile: table|tileObject)
 
 ### hasTransportation
 ```
-function gen.hasTransportation(tile: table|tileObject)
+function gen.hasTransportation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
  returns true if tile has road or rail 
@@ -2038,7 +2043,7 @@ function gen.hasTransportation(tile: table|tileObject)
 
 ### upgradeTransportation
 ```
-function gen.upgradeTransportation(tile: table|tileObject)
+function gen.upgradeTransportation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places railroad if road exists, otherwise places road
  does nothing if city present
@@ -2049,7 +2054,7 @@ function gen.upgradeTransportation(tile: table|tileObject)
 
 ### degradeTransportation
 ```
-function gen.degradeTransportation(tile: table|tileObject)
+function gen.degradeTransportation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  reduces railroad to road, if rail exists
  if no rail but road, removes road
@@ -2062,7 +2067,7 @@ function gen.degradeTransportation(tile: table|tileObject)
 
 ### removeTransportation
 ```
-function gen.removeTransportation(tile: table|tileObject)
+function gen.removeTransportation(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  removes road and rail, if it exists
  does nothing if city present
@@ -2073,7 +2078,7 @@ function gen.removeTransportation(tile: table|tileObject)
 
 ### hasFortress
 ```
-function gen.hasFortress(tile: table|tileObject)
+function gen.hasFortress(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -2082,7 +2087,7 @@ function gen.hasFortress(tile: table|tileObject)
 
 ### placeFortress
 ```
-function gen.placeFortress(tile: table|tileObject)
+function gen.placeFortress(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places a fortress on a square, unless
  there is already a city, transporter, or airbase on the tile
@@ -2093,7 +2098,7 @@ function gen.placeFortress(tile: table|tileObject)
 
 ### placeFortressForce
 ```
-function gen.placeFortressForce(tile: table|tileObject)
+function gen.placeFortressForce(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places fortress (replacing airbase/transporter if necessary)
  If city on tile, nothing happens
@@ -2104,7 +2109,7 @@ function gen.placeFortressForce(tile: table|tileObject)
 
 ### removeFortress
 ```
-function gen.removeFortress(tile: table|tileObject)
+function gen.removeFortress(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  Checks that a fortress is in place (so as not to change
  other terrain improvements), and if so, removes the fortress
@@ -2115,7 +2120,7 @@ function gen.removeFortress(tile: table|tileObject)
 
 ### hasAirbase
 ```
-function gen.hasAirbase(tile: table|tileObject)
+function gen.hasAirbase(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -2124,7 +2129,7 @@ function gen.hasAirbase(tile: table|tileObject)
 
 ### placeAirbase
 ```
-function gen.placeAirbase(tile: table|tileObject)
+function gen.placeAirbase(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places an airbase on a tile as long as there is not already
  pollution, fortress, or transporter on the tile
@@ -2136,7 +2141,7 @@ function gen.placeAirbase(tile: table|tileObject)
 
 ### placeAirbaseForce
 ```
-function gen.placeAirbaseForce(tile: table|tileObject)
+function gen.placeAirbaseForce(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places airbase, removing fortress/transporter/pollution if necessary
  if city on tile, nothing happens
@@ -2147,7 +2152,7 @@ function gen.placeAirbaseForce(tile: table|tileObject)
 
 ### removeAirbase
 ```
-function gen.removeAirbase(tile: table|tileObject)
+function gen.removeAirbase(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  removes airbase, if one is on tile
  (so that something else doesn't get removed)
@@ -2159,7 +2164,7 @@ function gen.removeAirbase(tile: table|tileObject)
 
 ### hasPollution
 ```
-function gen.hasPollution(tile: table|tileObject)
+function gen.hasPollution(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -2168,7 +2173,7 @@ function gen.hasPollution(tile: table|tileObject)
 
 ### placePollution
 ```
-function gen.placePollution(tile: table|tileObject)
+function gen.placePollution(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places pollution, unless the tile has a city, airbase
  or transporter already on the tile
@@ -2179,7 +2184,7 @@ function gen.placePollution(tile: table|tileObject)
 
 ### placePollutionForce
 ```
-function gen.placePollutionForce(tile: table|tileObject)
+function gen.placePollutionForce(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  places pollution, unless the tile has a city, 
  transporters and airbases are removed
@@ -2190,7 +2195,7 @@ function gen.placePollutionForce(tile: table|tileObject)
 
 ### removePollution
 ```
-function gen.removePollution(tile: table|tileObject)
+function gen.removePollution(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
  checks if tile has pollution, and if so, removes it
 
@@ -2200,7 +2205,7 @@ function gen.removePollution(tile: table|tileObject)
 
 ### hasTransporter
 ```
-function gen.hasTransporter(tile: table|tileObject)
+function gen.hasTransporter(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
   -> boolean
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
@@ -2219,7 +2224,7 @@ function gen.placeTransporter(tile: any)
 
 ### removeTransporter
 ```
-function gen.removeTransporter(tile: table|tileObject)
+function gen.removeTransporter(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer })
 ```
 @*param* `tile` — Can be:<br><br>tileObject<br><br>{[1]=xCoord,[2]=yCoord,[3]=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{[1]=xCoord,[2]=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)<br><br>{x=xCoord,y=yCoord,z=zCoord}<br>Converted to civ.getTile(xCoord,yCoord,zCoord) <br><br>{x=xCoord,y=yCoord}<br>Converted to civ.getTile(xCoord,yCoord,0)
 
@@ -3239,7 +3244,7 @@ function gen.isGoingTo(unit: unitObject)
 
 ### setToGoingTo
 ```
-function gen.setToGoingTo(unit: unitObject, tile: table|tileObject|nil)
+function gen.setToGoingTo(unit: unitObject, tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }...(+1))
 ```
  gives the unit a goto order for the tile
  if nil is submitted, and the unit already
@@ -4181,7 +4186,7 @@ These functions control what is shown to individual tribes on the map.
 
 ### isTileRevealed
 ```
-function gen.isTileRevealed(tile: table|tileObject, tribe: tribeObject)
+function gen.isTileRevealed(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, tribe: tribeObject)
   -> boolean
 ```
  Returns true if `tile` is revealed to `tribe`, false otherwise.
@@ -4192,7 +4197,7 @@ function gen.isTileRevealed(tile: table|tileObject, tribe: tribeObject)
 
 ### revealTile
 ```
-function gen.revealTile(tile: table|tileObject, tribe: tribeObject)
+function gen.revealTile(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, tribe: tribeObject)
 ```
  gen.revealTile(tile,tribe) -> void
  makes `tile` visible to `tribe`
@@ -4203,7 +4208,7 @@ function gen.revealTile(tile: table|tileObject, tribe: tribeObject)
 
 ### coverTile
 ```
-function gen.coverTile(tile: table|tileObject, tribe: tribeObject)
+function gen.coverTile(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, tribe: tribeObject)
 ```
  gen.coverTile(tile,tribe) -> void
  covers a tile so it isn't visible to tribe (if it ever was)
@@ -4229,7 +4234,7 @@ function gen.isUnitStackVisible(unitOrTile: tileObject|unitObject, tribe: tribeO
 
 ### hideUnitStack
 ```
-function gen.hideUnitStack(unitOrTile: table|tileObject|unitObject, tribe: tribeObject)
+function gen.hideUnitStack(unitOrTile: tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }...(+1), tribe: tribeObject)
 ```
  If a unit is provided, hides the unit and all other units on the tile from tribe
  If a tile is provided, hides all units on the tile (if any are present)
@@ -4240,7 +4245,7 @@ function gen.hideUnitStack(unitOrTile: table|tileObject|unitObject, tribe: tribe
 
 ### revealUnitStack
 ```
-function gen.revealUnitStack(unitOrTile: table|tileObject|unitObject, tribe: tribeObject)
+function gen.revealUnitStack(unitOrTile: tileObject|unitObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }...(+1), tribe: tribeObject)
 ```
  If a unit is provided, reveals that unit and all other units on the tile
  to the tribe.
@@ -5419,7 +5424,7 @@ function gen.declareMapRound()
 
 ### setTerrainType
 ```
-function gen.setTerrainType(tile: table|tileObject, terrainID: integer)
+function gen.setTerrainType(tile: tileObject|{ [1]: integer, [2]: integer }|{ [1]: integer, [2]: integer, [3]: integer }|{ x: integer, y: integer }|{ x: integer, y: integer, z: integer }, terrainID: integer)
 ```
  changes the terrain type of tile to terrainID
  have this function, so that if

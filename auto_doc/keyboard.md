@@ -1,6 +1,7 @@
 ---
 layout: page
 tabTitle: Keyboard Code Documentation
+title: Keyboard Code Documentation
 ---
 
 
