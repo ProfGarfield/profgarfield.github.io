@@ -14,6 +14,8 @@ Over the past few lessons, I've been writing about "local" and "global" variable
 
 Because it is a related subject, we will also see how to share data and functions between files.  Having multiple files is convenient for organizing our code.  As part of this, we'll see how to use the **object.lua** file to make our code more readable.
 
+Almost by accident, the data sharing discussion will lead us to an explanation of how to use "methods," which we haven't had a chance to discuss yet.
+
 
 
 ## Variable Scope Gone Wrong
