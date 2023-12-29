@@ -1,6 +1,7 @@
 ---
 layout: page
 tabTile: Loops and Tables (Lesson 5)
+title: Loops and Tables (Lesson 5)
 ---
 
 |Previous: [Civilization II Objects and If Statements](04_civObjectsAndIfStatements.html) | Next: []() |

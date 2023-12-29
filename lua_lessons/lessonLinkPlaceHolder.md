@@ -13,3 +13,9 @@ Files linked from
 
 ### 04_civObjectsAndIfStatements.md
 * line 561 guarding against nil values
+
+### 06_variableScopeAndSharingData.md
+* line 295 a lesson introducing repeat-until loop, probably a lesson on randomness (repeat a random choice until the choice satisfies a condition)
+* line 1366 a lesson building object.lua from a script.
+* line 1438 a lesson relating to text.substitute
+* line 1442 a lesson relating to images
