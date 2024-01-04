@@ -12,9 +12,11 @@ title: Variable Scope and Sharing Data (Lesson 6)
 
 Over the past few lessons, I've been writing about "local" and "global" variables, but I haven't given them a proper explanation.  I also haven't explained why the Lua Scenario Template disables global variables, even though it makes trying things out in the console inconvenient.  I'll explain all that in this lesson.
 
-Because it is a related subject, we will also see how to share data and functions between files.  Having multiple files is convenient for organizing our code.  As part of this, we'll see how to use the **object.lua** file to make our code more readable.
+Because it is a related subject, we will also see how to share data and functions between files.  Having multiple files is convenient for organizing our code.  As part of this, we'll see how to use the **object.lua** file to make our code more readable.  We will also build a counting function and an event to "capture" enemy triremes as part of this discussion.
 
-Almost by accident, the data sharing discussion will lead us to an explanation of how to use "methods," which we haven't had a chance to discuss yet.
+We will be interpreting some errors as part of this discussion, and we will learn how to use the "short circuiting" feature of the `and` and `or` operators to prevent "index a nil value" errors.
+
+Almost by accident, the data sharing discussion will lead us to an explanation of how to use "methods," which we haven't yet taken an opportunity to discuss.
 
 
 
@@ -26,7 +28,7 @@ Let's create an example conflict to illustrate what can go wrong if a variable's
 
 Create a new file, **scope.lua**.
 
-In math, the $N^{th}$ [triangle number](https://en.wikipedia.org/wiki/Triangular_number) is defined to be $T_{N} = 1 + 2 + 3 + ... + (N-1) + N $, which is to say, the sum of the first $N$ counting numbers.  There is a formula for the triangle numbers, but we'll write a function that adds all these numbers up:
+In math, the $N^{th}$ [triangle number](https://en.wikipedia.org/wiki/Triangular_number) is defined to be $T_{N} = 1 + 2 + 3 + ... + (N-1) + N $, which is to say, the sum of the first $N$ counting numbers.  There is a formula for the triangle numbers, but we will write a straightforward function that adds all these numbers up:
 
 ```lua
 local function getTriangleNumber(N)
@@ -37,7 +39,7 @@ local function getTriangleNumber(N)
     return sumSoFar
 end
 ```
-Since we're creating an example with a scope conflict, we omit the `local` designation of `sumSoFar`, so that its _scope_ goes beyond the function `getTriangleNumber`.  The logic of this code is very similar to that of the [factorial function](05_loopsAndTables.html#a-for-loop-in-a-function) from the last lesson.
+Since we're creating an example with a _scope_ conflict, we omit the `local` designation of `sumSoFar`, so that its _scope_ goes beyond the function `getTriangleNumber`.  The logic of this code is very similar to that of the [factorial function](05_loopsAndTables.html#a-for-loop-in-a-function) from the last lesson.
 
 We can get a list of triangle numbers from the Wikipedia page and put the list in a table.  Then, we can compare the numbers our function generates with the actual numbers.
 
@@ -202,7 +204,7 @@ At this point, the loop ends since `j = 2` is the maximum value for `j`.
 ```lua
     return 6
 ```
-And so, `6` is returned, which is incorrect.  If `getTriangleNumber` didn't modify `sumSoFar` for `getTetrahedralNumber`, the computation would work correctly.  Here's an abbreviated demonstration of the computation.
+And so, `6` is returned, which is incorrect.  If `getTriangleNumber` didn't modify `sumSoFar` for `getTetrahedralNumber`, the computation would work correctly.  Here's an demonstration of the computation.
 
 ```lua
 -- M = 2
@@ -291,13 +293,15 @@ And so, `6` is returned, which is incorrect.  If `getTriangleNumber` didn't modi
 ```
 And, the second tetrahedral number is, in fact, 4.
 
-This example illustrates one of the reasons why global variables are disabled in the Lua Scenario Template.  If you forget to write `local` before your variable when you define and initialize it, by default Lua sees that not as a mistake, but as an indication that you wanted to use a global variable in that instance.  So, because we "forgot" to write `local` a couple times, these very simple functions didn't behave as expected, and the error is not obvious.
+This example illustrates one of the reasons why global variables are disabled in the Lua Scenario Template.  If you forget to write `local` before your variable when you define and initialize it, by default Lua sees that not as a mistake, but as an indication that you wanted to use a global variable in that instance.  So, because we "forgot" to write `local` a couple times, these very simple functions didn't behave as expected, and mistake which causes the error is not obvious.
 
 ## Determining a Variable's Scope
 
-Now that we have an example of the problems that arise when a variable's _scope_ is too large, let's explore the rules that determine a variable's _scope_.  These rules are mostly described if we have the idea of a _code block_.
+Now that we have an example of the problems that arise when a variable's _scope_ is too large, let's explore the rules that determine a variable's _scope_.  These rules are mostly described if understand the concept of a _code block_.
 
-A _code block_ is a portion of code that begins with `for`, `if`, `while`, or `function`, and finishes with a corresponding `end`.  (Lua has a `repeat`-`until` loop structure that I will discuss in a [future lesson](lessonLinkPlaceHolder.html), which is also a _code block_.) Additionally, the entire file is considered a _code block_ as well. 
+A _code block_ is a portion of code that begins with `for`, `if`, `while`, or `function`, and finishes with a corresponding `end`.  (Lua has a `repeat`-`until` loop structure that I will discuss in a [future lesson](lessonLinkPlaceHolder.html), which is also a _code block_.) Additionally, the entire file is considered a _code block_ as well.
+
+The idea of a _code block_ will be clearer if we look at the contents of a couple files and point out the _code blocks_.
 
 Here is the current **scope.lua** code:
 
@@ -520,7 +524,7 @@ print("file i: "..i.."(7)")
 anotherFunction()
 print("file i: "..i.."(9)")
 ```
-You can run this code to see that the values in parentheses are, in fact, the values of `i` at that particular point.  I'll go through the code, and explain anything interesting.
+You can run this code to see that the values in parentheses are, in fact, the values of `i` at that particular point.  I'll go through the code, and explain why `i` takes on these values.
 ```lua
 local i = 7
 print("file i: "..i.."(7)")
@@ -620,7 +624,7 @@ print("file i: "..i.."(9)")
 ```
 At this point, executing `anotherFunction` increases "file `i`" to `9`.  `anotherFunction` prints this new value, then the `print` line does so again.
 
-Don't worry too much about about the details of scope, because it most of it doesn't really matter.  Instead of remembering the difference between "file `i`" and "if `i`", just name one of them `j` or `ifI`.  Your code will be much easier to read and understand that way.
+Don't worry about memorizing the details of _scope_, because it most of the time it doesn't really matter.  Instead of remembering the difference between "file `i`" and "if `i`", just name one of them `j` or `ifI`.  Your code will be much easier to read and understand that way.
 
 In practice, the fact that local variables work the way they do is typically a source of protection for your code, rather than a source of bugs.  When you use `local` to create "if `i`", you don't have to worry about whether there is some "file `i`" in your code that you've forgotten about.
 
@@ -648,17 +652,17 @@ end
 print(a)
 ```
 
-We will use this kind of mistake in a future example, where we see just how much trouble global variables can cause.
+We will use this kind of mistake in a future example, where we will see just how much trouble global variables can cause.
 
 ## The Treacherous Global Variable
 
-This section title is a bit over the top, but only a little.  Global variables can turn errors that should be easy to detect and fix into subtle and inconsistent bugs, as we'll see.
+This section title is a little over the top, but only a little.  Global variables can turn errors that should be easy to detect and fix into subtle and inconsistent bugs, as we saw earlier and will see again shortly.
 
 The global variables are actually stored in a table.  If you like, you can reference it with the variable name `_G`.  So, if you wanted, you could write `_G.print` or `_G.someKey` and use it like any other table.  
 
 However, we don't write `_G.print`, we just write `print`.  The reason is that whenever we write a variable name, Lua checks if that name corresponds to a local variable in _scope_.  If it doesn't, then Lua converts the variable name to a string and checks the global table `_G` for the value associated with the key.  If we want, say, the `print` function or the `civ` table of functions then everything's great.  
 
-The problems arise when we use a global variable by mistake.  Since `_G` is a table, it will return `nil` for any key that doesn't already have an associated value.  If we type `myvariable` instead of `myVariable`, Lua dutifully assumes that we wanted to access the global variable `myvariable` and not that we've made a typo.  Instead of generating an error that we can notice and fix, we have to detect that our code isn't doing what we want it to do because somewhere that we want to use the value of `myVariable`, we're just getting `nil` because we accidentally typed `myvariable`.
+The problems arise when we use a global variable by mistake.  Since `_G` is a table, it will return `nil` for any key that doesn't already have an associated value.  If we type `myvariable` instead of `myVariable`, Lua dutifully assumes that we wanted to access the global variable `myvariable` and not that we've made a typo.  Instead of generating an error that we can notice and fix, Lua forces us to detect that our code isn't doing what we want it to do because somewhere that we want to use the value of `myVariable`, we're just getting `nil` because we accidentally typed `myvariable`.
 
 Here is an example.  Comment out the previous code in **scope.lua** and add this code:
 
@@ -683,7 +687,7 @@ The Lua Language Server catches `someitem` as a possible mistake, but let's see 
 
 ![is true truthy?](06_lesson_images/isTruthy-true.png)
 
-Well, `true` is definitely not falsy.  What we want in this situation is for Lua to generate an error, saying that `someitem` is not a registered variable name.  This would clue us in to the existence of the typo.  Instead, Lua just gets the `"someitem"` entry in `_G`, which is `nil`, and it is up to us to notice that our function is not working properly.  That's easy in this example, but even noticing there is a problem can quickly become difficult in a complicated event.
+Well, `true` is definitely not falsy.  What we want in this situation is for Lua to generate an error, saying that `someitem` is not a registered variable name.  This would alert us to the existence of the typo.  Instead, Lua just gets the `"someitem"` entry in `_G`, which is `nil`, and it is up to us to notice that our function is not working properly.  That's easy in this example, but even noticing there is a problem can quickly become difficult in a complicated event.
 
 This Lua behaviour can even create bugs that sometimes cause errors, while not causing them at other times.  Add the following function to **scope.lua** and load the script again.
 
@@ -784,7 +788,7 @@ function shorten(str)
     print(str.." -> "..shortString)
 end
 ```
-Since we're here, let's cover a trick to allow us to rename `str` as `string`.  For the existing references to the `string` functions, we will prepend `_G.` so that the reference to the global variables table is explicit instead of implicit:
+Since we're here, let's take note of a trick to allow us to rename `str` as `string`.  For the existing references to the `string` functions, we will prepend `_G.` so that the reference to the global variables table is explicit instead of implicit:
 
 ```lua
 function shorten(str)
@@ -825,7 +829,7 @@ In the last lesson, we made a Key Press event in **discreteEvents.lua** to test 
 
 ![table key press](06_lesson_images/table-key-press.png)
 
-Now, we're going to change contents of this "event" to test out the bad code that we looked at earlier.  Let's begin with the triangle and tetrahedral numbers:
+Now, we're going to change contents of this "event" to test out the bad code that we looked at earlier.  Let's begin with the triangle and tetrahedral numbers.  Remove the existing key press event, and replace it with this code:
 
 ```lua
 local function getTriangleNumber(N)
@@ -863,7 +867,7 @@ end)
 ```
 Note that I eliminated the nearby comments.  They were mostly there for information.  The `---&autoDoc` and `---&endAutoDoc` comments are there for me to more easily build this website's documentation from the template, and you don't need to keep them in your scenarios.
 
-Save the **discreteEvents.lua** file, re-load the game, and press backspace.  We get the following error:
+Save the **discreteEvents.lua** file, load a saved game in the **ClassicRome** folder, and press backspace.  We get the following error:
 
 ![tetrahedral global error](06_lesson_images/tetrahedral-global-error.png)
 
@@ -881,7 +885,7 @@ If you are trying to define a variable in the console, use the command:
 console.restoreGlobal()
 to restore access to global variables (locals don't work well in the console)
 ```
-Here is my custom error message.  It suggests three possible problems that might cause the error.
+This is my custom error message.  It suggests three possible problems that might cause the error.
 
 The first is that we forgot to put the `local` keyword before the `sumSoFar` variable, the first time we used it (this is, in fact, our mistake).
 
@@ -898,7 +902,7 @@ stack traceback:
 	...Scenario\ClassicRome\LuaCore\discreteEventsRegistrar.lua:363: in field 'performOnKeyPress'
 	C:\Games\Test of Time\Scenario\ClassicRome\events.lua:622: in function <C:\Games\Test of Time\Scenario\ClassicRome\events.lua:620>
 ```
-The "stack traceback" is the list of files and lines associated with the error.  Starting at the line with the code that caused the error, Lua provides the part of the program that "asked" for the error to be executed.
+The "_stack traceback_" is the list of files and lines associated with the error.  Starting at the line with the code that caused the error, Lua provides the part of the program that "asked" for the error to be executed.
 
 ```
 	[C]: in function 'error'
@@ -915,7 +919,7 @@ This is the actual location of our error, since we failed to make `sumSoFar` a l
 
 ![line 391](06_lesson_images/line-391.png)
 
-Add the missing `local`, but we'll look through the rest of this error message, since, sometimes, the error might be in a different file.
+Add the missing `local` to fix the error, but we'll look through the rest of this error message, since, sometimes, the error might be in a different file.
 
 
 ```
@@ -935,7 +939,7 @@ The next level up for the error is in **LuaCore\discreteEventsRegistrar.lua** at
 
 ![](06_lesson_images/registrar-line-363.png)
 
-It will sometimes be helpful to look at code within the **LuaCore** directory in order to determine the cause of an error.  However, **discreteEventsRegistrar.lua** is not one of these files.  The code in this file registers events.  If you reach the point where you need to look inside this file for troubleshooting, ask for help in the Forum.  I can help you find the bug in your code, or fix the bug in this file if I made a mistake programming it.
+It will sometimes be helpful to look at code within **LuaCore** directory files in order to determine the cause of an error.  However, **discreteEventsRegistrar.lua** is not a useful file to check.  The code in this file registers events.  If you reach the point where you need to look inside this file for troubleshooting, ask for help in the [Forum](https://forums.civfanatics.com/categories/civilization-ii.5/).  I can help you find the bug in your code, or fix the bug in this file if I made a mistake programming it.
 
 ```
 	C:\Games\Test of Time\Scenario\ClassicRome\events.lua:622: in function <C:\Games\Test of Time\Scenario\ClassicRome\events.lua:620>
@@ -988,9 +992,9 @@ Save the file, and reload the game.  During the process of loading the game, you
 
 This is the same error we've seen before, with the Lua Interpreter complaining that we've apparently forgotten to put local before `isTruthy`.
 
-The reason this error is appearing now instead of when we press backspace is because the `isTruthy` function is created and assigned a variable during the code initialisation which happens when a game is loaded.
+The reason this error is appearing now instead of when we press backspace is because the `isTruthy` function is created and assigned to a variable during the code initialisation which happens when a game is loaded.
 
-This time, code in **discreteEventsRegistrar.lua** part of the _stack traceback_, because this didn't occur during the execution of an event.  Instead, it happened during a call to the `require` function, which allows Lua files to access information from other files.  I will explain `require` later on in this lesson.
+This time, code in **discreteEventsRegistrar.lua** is not part of the _stack traceback_, because this didn't occur during the execution of an event.  Instead, it happened during a call to the `require` function, which allows Lua files to access information from other files.  I will explain `require` later on in this lesson.
 
 For now, change line 409 (or whatever it is in your version of **discreteEvents.lua**) to
 
@@ -1112,7 +1116,7 @@ This corresponds to the line
 ```
 Since the beginning of the error tells us that `shortString` doesn't match any local variables, we must look backwards in the code to find out why that is.
 
-Upon inspection, all the previous references to `shortString` are within the if statement, and, therefore, not within the code block containing line 423.  We must fix this by defining `shortString` before the if-else statement where it must be modified.
+Upon inspection, all the previous references to `shortString` are within the if statement, and, therefore, not within the code block containing line 423.  We must fix this by defining `shortString` before the if-else statement where it must be modified.  We must also remove the `local` keyword from within the if statement.
 
 ![](06_lesson_images/shorten-fixed.png)
 
@@ -1129,7 +1133,7 @@ The first thing we will do is create the `count` table:
 ```lua
 local count = {}
 ```
-Any value which we want to make available outside of **counting.lua** will have to be assigned to a key in the `count` table (or to a table which is itself assigned to the `count` table.  The name of this table can be anything, but the Lua Language Server will use it in the documentation it generates.
+Any value which we want to make available outside of **counting.lua** will have to be assigned to a key in the `count` table (or to a table which is itself assigned to the `count` table).  The name of this table can be anything, but the Lua Language Server will use it in the documentation it generates.
 
 We tell Lua that `count` is the table that we want to make available to other files with the line:
 
@@ -1213,7 +1217,7 @@ At the end of this section, add the line
 ```lua
 local c = require("counting")
 ```
-This code takes the table returned by **counting.lua** and assigns it to the local variable `c` in this file.  Using `count` instead of `c` would have been fine, but I wanted to make it clear that you can use any name.
+This code takes the table returned by **counting.lua** and assigns it to the local variable `c` in this file.  Using `count` instead of `c` would have been normal, but I wanted to make it clear that you can use any name.
 
 The argument for the `require` function is the file name of the file you want, except that you omit the **.lua** from the end.
 
@@ -1261,7 +1265,7 @@ Using our `count.units` function, referred to here as `c.units` because of how w
 ```lua
     civ.ui.text("The "..tribe.name.." have "..number.." "..activeUnit.type.name.." units.")
 ```
-This is a pretty standard message like we've seen before.
+This is pretty standard message code like we've seen before.
 
 Trying out this event gives:
 
@@ -1279,7 +1283,7 @@ We're also going to need the General Library in order to use `gen.createUnit`.
 local gen = require("generalLibrary")
 ```
 
-Let's begin with an event to "capture" a defeated trireme, if the trireme is at sea:
+Let's create an event to "capture" a defeated trireme, if the trireme is at sea:
 
 ```lua
 local trireme = civ.getUnitType(32) --[[@as unitTypeObject]]
@@ -1330,18 +1334,18 @@ This checks if the `loser` is a trireme and if the defeat happened on an ocean t
 ```
 `gen.createUnit` returns a table of the units produced, so we must get the first element of the `capturedTable` in order to get the `capturedTrireme`.
 
-A `trireme` is the unit type we want to create, the winner's tribe should own it, so we use `winner.owner` to get that information.  We want the "captured" trireme to be created on the tile of the unit that captured it, which we can get with `winner.location`.  In the options, we set `homeCity = winner.homeCity` so the new trireme is homed to the same city that supports the trireme that captured it.  `veteran = false` means that the new trireme won't be a veteran. This wasn't necessary, since that is the default behaviour anyway.
+A `trireme` is the unit type we want to create, the winner's tribe should own it, so we use `winner.owner` to get that information.  We want the "captured" trireme to be created on the tile of the unit that captured it, which we can get with `winner.location`.  In the options, we set `homeCity = winner.homeCity` so the new trireme is homed to the same city that supports the trireme that captured it.  `veteran = false` means that the new trireme won't be a veteran. This wasn't necessary, since that non-veteran is the default behaviour anyway.
 
 ```lua
         capturedTrireme.damage = trireme.hitpoints - 2
 ```
-Since the trireme was captured in combat, it makes sense to heavily damage it.  I've decided that the trireme should have 2 hitpoints, but `unit.hitpoints` can't be set.  We have to set the amount of damage a unit has instead.  Since we have a "goal" of 2 hitpoints, we get the maximum hitpoint value using `unitType.hitpoints`, and subtract 2.
+Since the trireme was captured in combat, it makes sense to heavily damage it.  I've decided that the trireme should have 2 hitpoints, but the `unit.hitpoints` field can't be assigned a new value (it is "get" only).  We have to set the amount of damage a unit has instead.  Since we have a "goal" of 2 hitpoints, we get the maximum hitpoint value using `unitType.hitpoints`, and subtract 2.
 
 Save **trireme.lua**, reload the game, and try to trigger this event.  You will find you can't.
 
 The reason for this is that we haven't called `require` on this file.  So, as far as Lua is concerned, **trireme.lua** is just an extra file that doesn't do anything.  In order for a file to do something, it must be `require`d by **events.lua**, or by a file which is itself `require`d by **events.lua**.  (A longer "chain" of `require`s is also permissible.)
 
-So, we have to execute `require("trireme")` in at least one file.  Any file would be fine, but **MechanicsFiles\registerFiles.lua** is set aside for this purpose.  Sometimes files supplied by the Lua Scenario Template will be registered in this file, so that **events.lua** doesn't have to be updated so much.  However, at the moment, this **MechanicsFiles\registerFiles.lua** doesn't register any Template file.
+So, we have to execute `require("trireme")` in at least one file.  Any file would be fine, but **MechanicsFiles\registerFiles.lua** is set aside for this purpose.  Sometimes files supplied by the Lua Scenario Template will be registered in this file, so that **events.lua** doesn't have to be updated so much.  However, at the time of writing, this **MechanicsFiles\registerFiles.lua** doesn't register any Template file.
 
 In this file, call `require` for **trireme.lua**, save, and try the event again.
 
@@ -1374,7 +1378,9 @@ The **LuaParameterFiles\object.lua** file solves both these problems.  By consol
 
 There are a couple require lines, which are necessary to make stuff work.
 
-This section defines the `object` table.  However, instead of using an "ordinary" table, the [`gen.makeDataTable`](/auto_doc/gen.html#makedatatable) function creates a special kind of table (which I named a _dataTable_).  The _dataTable_ uses metadata techniques to allow it to be given special properties.  The [`gen.forbidReplacement`](/auto_doc/gen.html#forbidreplacement) function, for example, causes an error if you change a key's value after it has been assigned.  The [`gen.forbidNewKeys`](/auto_doc/gen.html#forbidnewkeys) prevents you from assigning new key-value pairs to a table, and [`gen.forbidNilValueAccess`](/auto_doc/gen.html#forbidnilvalueaccess) stops you from trying to get the value from a key if that value is `nil`.  Depending on the use of the _dataTable_, these features can catch typos or accidental misuse of a table that is supposed to be storing data for your scenario.  Despite the fact that `object` is a _dataTable_, I'll usually just refer to it as the "`object` table."
+This section defines the `object` table.  However, instead of using an "ordinary" table, the [`gen.makeDataTable`](/auto_doc/gen.html#makedatatable) function creates a special kind of table (which I named a _dataTable_).  The _dataTable_ uses metatable techniques to allow it to be given special properties.  (Earlier in this lesson, I mentioned that metatables change the rule of how tables work, but that I wouldn't be discussing them.)  
+
+The [`gen.forbidReplacement`](/auto_doc/gen.html#forbidreplacement) function, for example, causes an error if you change a key's value after it has been assigned.  The [`gen.forbidNewKeys`](/auto_doc/gen.html#forbidnewkeys) function prevents you from assigning new key-value pairs to a table, and [`gen.forbidNilValueAccess`](/auto_doc/gen.html#forbidnilvalueaccess) stops you from trying to get the value from a key if that value is `nil`.  Depending on the use of the _dataTable_, these features can catch typos or accidental misuse of a table that is supposed to be storing data for your scenario.  Despite the fact that `object` is a _dataTable_, I'll usually just refer to it as the "`object` table."
 
 The annotation
 ```lua
@@ -1386,7 +1392,7 @@ The first section of **object.lua** lists the Civilization advances:
 
 ![](06_lesson_images/object-advances.png)
 
-The keys of `object` which correspond to a _techObject_ have `a` as the first letter, for "advance" (`t` is used elsewhere).  This serves two functions.  The first is that it makes it easier to preserve the naming convention of the first "word" of a variable name being all lower case, while subsequent words in the name start with an uppercase letter.  Second, and more importantly, provides a clue as to the kind of object it is and makes it easier for autocomplete to suggest the name you want.
+The keys of `object` which correspond to a _techObject_ have `a` as the first letter, for "advance" (`t` is used elsewhere).  This serves two functions.  The first is that it makes it easier to preserve the naming convention of the first "word" of a variable name being all lower case, while subsequent words in the name start with an uppercase letter.  Second, and more importantly, it provides a clue as to the kind of object it is and makes it easier for autocomplete to suggest the name you want.
 
 ![](06_lesson_images/object-dot-a.png)
 
@@ -1436,7 +1442,7 @@ The _baseTerrainObjects_ are prefixed with `b`.
 
 ![](06_lesson_images/object-baseTerrain.png)
 
-The `t` prefix, which could fit so many kinds of objects goes to the _terrainObject_.
+The `t` prefix, which could fit so many kinds of objects, goes to the _terrainObject_.
 
 ![](06_lesson_images/object-terrain.png)
 
@@ -1461,9 +1467,9 @@ Now that we understand how to use the **object.lua** file, go to **trireme.lua**
 Your code should work after you remove the `trireme` and `ocean` local variables.
 
 <details>
-<summary>Expand to see modified version of **trireme.lua**</summary>
+<summary>Expand to see modified version of <b>trireme.lua</b></summary>
 
-![](06_lesson_images/trireme-object.png)
+<img src="06_lesson_images/trireme-object.png">
 </details>
 
 ## `and` and `or` "Short Circuiting"
@@ -1531,6 +1537,7 @@ discreteEvents.onCityTaken(function(city,defender)
     end      
 end)
 ```
+Let's begin with
 ```lua
     if city.location ~= object.lLilybaeum and
         city.location ~= object.lSyracuse then
@@ -1565,6 +1572,9 @@ nil and false --> nil
 false and nil --> false
 7 and 8 --> 8
 true and "spain" --> "spain"
+```
+Similarly, `a or b` returns `a` if `a` is truthy, otherwise, it returns `b`.
+```lua
 7 or false --> 7
 false or 7 --> 7
 nil or false --> false
@@ -1593,7 +1603,7 @@ If it is truthy, `object.lLilybaeum.city.owner == object.pRomans` is evaluated. 
 
 If `object.lLilybaeum.city.owner == object.pRomans` is `true`, we move on to checking if `object.lSyracuse.city` is truthy.  If it isn't, we stop and the if statement doesn't execute.  If it is, `object.lSyracuse.city.owner == object.pRomans` can be evaluated without causing an error.
 
-The final section of this event code is the loop body.
+The final section of this event code is the body of the if statement.
 
 ```lua
         civ.ui.text("The "..object.pRomans.name.." have captured "..city.name..
@@ -1625,7 +1635,7 @@ end)
 ```
 If I change the value of `_global.eventTesting` to `true` in **events.lua**, I can easily test whether events are working if I make substantial changes to the template.  (The alternate method is to uncomment tests and hope I remember to comment them out again when I'm finished.)
 
-Since **discreteEvents.lua** is `require`d by **events.lua**, it can't `require` that file itself.  Therefore, the value of an "eventTesting" variable couldn't be passed through a table provided by `require`.  There is a way to "pass back" information without using global variables, but it is more work, and I won't discuss it now.
+Since **discreteEvents.lua** is `require`d by **events.lua**, it can't `require` **events.lua** itself.  Therefore, the value of an "eventTesting" variable couldn't be passed through a table provided by `require`.  There is a way to "pass back" information without using global variables, but it is more work, and I won't discuss it now.
 
 In case it wasn't obvious by the `_global.eventTesting` example, the Lua Scenario Template provides global variables through use of the `_global` table.  `_global` is a "real" global variable (a key in the `_G` table), so you can use it in any file without a `require` line, like you can do with `print`.
 
@@ -1670,17 +1680,17 @@ Even if you don't find it convenient to use the `gen.original` table yourself, y
 
 The General Library also includes another useful reference table, the `gen.constants` table, with [this reference page](/auto_doc/gen_constants.html).  There are many fields for _civ objects_ that have integer values which represent a list of possible options, rather than numbers.  For example, a _unitTypeObject_ has these fields:
 
-### domain
-```
-unitTypeObject.domain --> integer
-```
-(get/set - ephemeral) Returns the domain of the unit type (0 - Ground, 1 - Air, 2 - Sea).
+>### domain
+>```
+>unitTypeObject.domain --> integer
+>```
+>(get/set - ephemeral) Returns the domain of the unit type (0 - Ground, 1 - Air, 2 - Sea).
 
-### role
-```
-unitTypeObject.role --> integer
-```
-(get/set - ephemeral) Returns the role of the unit type.
+>### role
+>```
+>unitTypeObject.role --> integer
+>```
+>(get/set - ephemeral) Returns the role of the unit type.
 
 For these fields, and others like them, making checks like
 ```lua
@@ -1724,7 +1734,7 @@ local discreteEvents = require("discreteEventsRegistrar"):minVersion(4)
 ```
 ![](06_lesson_images/discrete-events-require.png)
 
-The reason for this different syntax is to cause an error if you have outdated files.  Since the Lua Scenario Template is a work in progress, I sometimes update modules or provide entirely new ones.  It is pretty easy to give someone an updated file, if they want to use a feature that didn't exist when they started building their scenario.  
+The purpose of this different syntax is to cause an error if you have outdated files.  Since the Lua Scenario Template is a work in progress, I sometimes update modules or provide entirely new ones.  It is pretty easy to give someone an updated file, if they want to use a feature that didn't exist when they started building their scenario.  
 
 What isn't so easy, however, is making sure that all the dependencies are updated.  Sometimes, adding new features to a module involves updating another module, such as the General Library.  Having an outdated version of the General Library will eventually produce an error when the new module asks for a function that isn't in the obsolete version, but that probably won't be right when the scenario is loaded.
 
@@ -1763,7 +1773,7 @@ Open the Lua Console in a **ClassicRome** saved game, and enter the following co
 ```lua
 civ.getTile(40,28,0).city:relocate(civ.getTile(39,29,0))
 ```
-Let's break down this line.  Since this is a _method_, the form takes `cityObject:relocate(tileObject)`.  Note the `:` between `cityObject` and the name of the method, `relocate`.
+Let's break down this line.  Since this is a _method_, the form is `cityObject:relocate(tileObject)`.  Note the `:` between `cityObject` and the name of the method, `relocate`.
 
 Before executing this command, Rome is located on the tile (40,28,0), so, in order to get the `cityObject` that we want, we call `civ.getTile(40,28,0).city` to get the Rome _cityObject_.  We call `civ.getTile(39,29,0)` to get the `tileObject` that is the destination.  Put it all together, and we get the code to move Rome southwest by one tile.
 
@@ -1772,10 +1782,17 @@ While the `relocate` method returns a boolean to tell you if the relocation was 
 Although writing functions is very common, writing methods is quite rare, so I won't explain how to give a table a method now.  
 
 
+## Conclusion
 
-![](06_lesson_images
-![](06_lesson_images
-![](06_lesson_images
-![](06_lesson_images
-![](06_lesson_images
-![](06_lesson_images
+In this lesson, we've learned about variable scope and global variables.  As part of the discussion, we analysed how code executes in a particularly detailed way.  Determining why code doesn't behave the way we want it to will sometimes require this kind of analysis, but it is rare to have to be quite so painstaking.  We have also analysed several error messages as part of this discussion.
+
+In this lesson, we have also learned about the `require` function and how to use it to share information between files.  I also showed you the **object.lua** file and how to use it to make your files more readable.  As part of that process, we build a counting function and an event to "capture" triremes.
+
+We also discussed the "index a nil value" error and how to avoid them using the "short circuiting" property of the `and` and `or` operators.
+
+Finally, we discussed object _methods_ and how to use them.
+
+As always, if you have any questions or feedback for this lesson, you can post it in [this thread](https://forums.civfanatics.com/threads/feedback-thread-for-totpp-get-started-with-lua-events.636239/).
+
+
+| Previous: [Loops and Tables](05_loopsAndTables.html) | Next: []() |

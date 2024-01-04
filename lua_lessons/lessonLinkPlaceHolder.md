@@ -7,12 +7,7 @@ This page exists because I referenced a future lesson that I hadn't written at t
 
 Files linked from
 
-### 03_valuesAndVariables.md 
-* line 90, 275, 361, 475 variable scope lesson 
-* line 433, explain . between tables
 
-### 04_civObjectsAndIfStatements.md
-* line 561 guarding against nil values
 
 ### 06_variableScopeAndSharingData.md
 * line 295 a lesson introducing repeat-until loop, probably a lesson on randomness (repeat a random choice until the choice satisfies a condition)

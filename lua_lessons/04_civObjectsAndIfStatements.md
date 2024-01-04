@@ -560,7 +560,7 @@ Something you may have noticed about the code we just wrote is that the variable
 
 ![need check nil](04_lesson_images/need-check-nil.png)
 
-The Lua Language Server has noted that both `tile.city` and `civ.getTribe` can return `nil` values, but we're using variables as if they are not `nil` without first checking this in code.  We'll discuss this kind of check [in another lesson](lessonLinkPlaceholder.html).  However, we have an option to tell the Lua LS that we know the variables are not nil.  We can add the following annotations:
+The Lua Language Server has noted that both `tile.city` and `civ.getTribe` can return `nil` values, but we're using variables as if they are not `nil` without first checking this in code.  We'll discuss this kind of check in [other](05_loopsAndTables.html#handling-absent-table-keys) [lessons](06_variableScopeAndSharingData.html#and-and-or-short-circuiting).  However, we have an option to tell the Lua LS that we know the variables are not nil.  We can add the following annotations:
 
 ```lua
 local lilybaeum = civ.getTile(41,53,0).city --[[@as cityObject]]

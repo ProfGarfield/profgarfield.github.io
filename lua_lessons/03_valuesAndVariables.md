@@ -87,7 +87,7 @@ Of course, you probably shouldn't redefine other built in commands, like `print`
 
 Finally, we have the special keyword `local`, which, you may notice, is one of the reserved words in the list above.  `local` tells the Lua Interpreter that the variable `shipName` is only valid within pinafore.lua.  Another file can still have a variable called `shipName`, but they will be completely separate.
 
-If we didn't include the `local` keyword, `shipName` would be a "global" variable, which could be accessed and modified in the Lua Console, or even other scripts.  There is a future lesson on [variable "scope"](lessonLinkPlaceHolder.html) where we will go into more detail.  For now, use this rule: if you are defining a variable in the Lua Console (local variables last one line in the Console), or want to be able to access your variable from the Lua Console, use a global variable.  Otherwise, use a local variable.
+If we didn't include the `local` keyword, `shipName` would be a "global" variable, which could be accessed and modified in the Lua Console, or even other scripts.  There is a future lesson on [variable "scope"](06_variableScopeAndSharingData.html) where we will go into more detail.  For now, use this rule: if you are defining a variable in the Lua Console (local variables last one line in the Console), or want to be able to access your variable from the Lua Console, use a global variable.  Otherwise, use a local variable.
 
 Let's add the following code to the top of pinafore.lua:
 ```lua
@@ -272,7 +272,7 @@ You may notice that kmToMiles is underlined in blue.  Hover your cursor over it 
 
 ![lower case global](03_lesson_images/lower-case-global.png)
 
-The Lua Language Server has noticed that `kmToMiles` is a global variable, and the convention that Lua Language Server follows is that global variables start with a capital letter.  I don't follow that convention (and didn't even know that Lua LS would note this until writing this lesson) because I only use global variables to make functionality available to the console.  The reasons why will be discussed in a [future lesson](lessonLinkPlaceHolder.html).
+The Lua Language Server has noticed that `kmToMiles` is a global variable, and the convention that Lua Language Server follows is that global variables start with a capital letter.  I don't follow that convention (and didn't even know that Lua LS would note this until writing this lesson) because I only use global variables to make functionality available to the console.  The reasons why will be discussed in a [future lesson](06_variableScopeAndSharingData.html).
 
 A light bulb appears near the "spelling mistake" and offers options:
 
@@ -430,7 +430,7 @@ Let's have a look at the code block:
 ```lua
 function civ.scen.onTurn(code: fun(turn: integer))
 ```
-This part of the documentation tells us how to use this function.  `function civ.scen.onTurn` tells us that this is a function that we can call, and that we call it by writing `civ.scen.onTurn` (You may notice that `.` is not a valid character for a variable name.  This will be explained [in a later lesson](lessonLinkPlaceHolder.html).)
+This part of the documentation tells us how to use this function.  `function civ.scen.onTurn` tells us that this is a function that we can call, and that we call it by writing `civ.scen.onTurn` (You may notice that `.` is not a valid character for a variable name.  This will be explained [in a later lesson](05_loopsAndTables.html#the-tablekey-syntax-for-tables).)
 
 The part within the `()` tells us the parameter name and the kind of argument the function expects for the parameter.  `code` tells us that the function's parameter name is "code" .  We don't _need_ the parameter name to use the function, but the parameter name can give insight into how the designer expects the function to be used.
 
@@ -472,7 +472,7 @@ In the code `civ` is underlined as a possible mistake.  When we hover the cursor
 
 ![undefined global](03_lesson_images/undefined-global-civ.png)
 
-The Lua Language Server warns us when we're trying to use a global variable that hasn't been specified elsewhere, since that often means we've made a typo or a mistake.  As I've said before, we'll discuss this more in the [lesson on variable scope](lessonLinkPlaceHolder.html).
+The Lua Language Server warns us when we're trying to use a global variable that hasn't been specified elsewhere, since that often means we've made a typo or a mistake.  As I've said before, we'll discuss this more in the [lesson on variable scope](06_variableScopeAndSharingData.html).
 
 For now, click on the "Quick Fix..." option, and then select "Disable diagnostics on this line (undefined-global)."
 
