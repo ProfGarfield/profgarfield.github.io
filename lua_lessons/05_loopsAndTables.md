@@ -12,13 +12,8 @@ title: Loops and Tables (Lesson 5)
 
 Over the past lessons, we've been gradually learning about different parts of the Lua Programming Language, and the basics of how they are used.  In this lesson, we'll introduce the last two major components of the language: Loops and Tables.  Loops are a way to execute a section of code multiple times and tables are a way to manipulate multiple values at once and to store data.
 
-<!--
-## File Update (Temporary Section)
+[//]: # (## File Update (Temporary Section) If you downloaded the ClassicRome scenario for lesson 4 on or before November 26, 2023, then there is a file update that you need to make.  Download [this zip file](lesson_downloads/documentationUpdate.zip), and replace the following two files in the ClassicRome Scenario: **LuaCore\generalLibrary.lua** and **LuaDocumentation\civ.lua**.  (Alternatively, you could download the [new version of the scenario](lesson_downloads/ClassicRome-lesson-4.zip) and replace **discreteEvents.lua** with the copy you made in the last lesson.) I don't intend to make a habit of retroactively changing files in these lessons, but I changed the documentation of iterators (which you'll learn about in this lesson) to match what LuaLS expects. )
 
-If you downloaded the ClassicRome scenario for lesson 4 on or before November 26, 2023, then there is a file update that you need to make.  Download [this zip file](lesson_downloads/documentationUpdate.zip), and replace the following two files in the ClassicRome Scenario: **LuaCore\generalLibrary.lua** and **LuaDocumentation\civ.lua**.  (Alternatively, you could download the [new version of the scenario](lesson_downloads/ClassicRome-lesson-4.zip) and replace **discreteEvents.lua** with the copy you made in the last lesson.)
-
-I don't intend to make a habit of retroactively changing files in these lessons, but I changed the documentation of iterators (which you'll learn about in this lesson) to match what LuaLS expects.
--->
 
 ## The Numeric For Loop
 
